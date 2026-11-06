@@ -69,6 +69,8 @@ button.primary{width:100%;padding:14px;font-size:16px;margin-top:18px;border-rad
 .langbar button{background:#fff;color:#1f4e9c;border:1px solid #c9d1df;border-radius:8px;padding:6px 12px;font-size:13px}
 .langbar button.on{background:#1f4e9c;color:#fff;border-color:#1f4e9c}
 .stats .ic{display:flex;justify-content:center;color:#1f4e9c;margin-bottom:6px}
+.elapsed-wrap{font-size:14px;color:#4a5568}
+.elapsed-wrap b{color:#1f4e9c;font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
@@ -247,12 +249,14 @@ const SPEC = {
 function buildTest(){
   const queues={};
   ABIL.forEach(a=>{ queues[a]=R.shuffle(SPEC[a].map(f=>f())); });
-  const out=[]; let last=null;
+  const out=[]; let last=null; const seen=new Set();
   while(out.length<TOTAL){
     let avail=ABIL.filter(a=>queues[a].length && a!==last);
     if(!avail.length) avail=ABIL.filter(a=>queues[a].length);
     const a=R.pick(avail);
-    out.push(queues[a].pop()); last=a;
+    let it=queues[a].pop(); let guard=0;
+    while(seen.has(it.stem) && queues[a].length && guard++<200) it=queues[a].pop();
+    seen.add(it.stem); out.push(it); last=a;
   }
   return out;
 }
@@ -309,6 +313,7 @@ function startTest(){
   ST.timer=setInterval(tick,250);
 }
 function go(j){
+  ST.furthest=Math.max(ST.furthest||0,j);
   ST.idx=j;
   if(!ST.deadline[j] && !ST.locked[j]) ST.deadline[j]=Date.now()+SECONDS*1000;
   renderQ();
@@ -318,7 +323,7 @@ function renderQ(){
   const opts=it.options.map((o,j)=>`<button class="opt ${ST.ans[i]===j?'sel':''}" ${locked?'disabled':''} onclick="choose(${j})"><span class="ltr">${'ABCD'[j]}</span><span>${esc(o)}</span></button>`).join('');
   document.getElementById('app').innerHTML=`
     <div class="qhead"><div class="logo">${CONFIG.photo?`<img src="${CONFIG.photo}" alt="" style="width:36px;height:36px;border-radius:50%;object-fit:cover">`:'<span class="dot"></span>'}${esc(CONFIG.brand||'')}</div>
-      <span id="timer" class="timer"></span></div>
+      <span class="elapsed-wrap"><span class="elapsed-label">Elapsed</span> <b id="elapsed">00:00</b></span> <span id="timer" class="timer"></span></div>
     <div class="qmeta">${u.question} ${i+1} ${u.of} ${TOTAL}</div>
     <div class="bar"><div style="width:${(i+1)/TOTAL*100}%"></div></div>
     <div class="qtext">${esc(it.stem)}</div>
@@ -335,6 +340,8 @@ function renderQ(){
 }
 function choose(j){ if(ST.done || ST.locked[ST.idx]) return; ST.ans[ST.idx]=j; renderQ(); }
 function updateTimer(){
+  const ex=document.getElementById('elapsed');
+  if(ex && ST.startedAt){ const e=Math.floor((Date.now()-ST.startedAt)/1000); ex.textContent=String(Math.floor(e/60)).padStart(2,'0')+':'+String(e%60).padStart(2,'0'); }
   const el=document.getElementById('timer'); if(!el) return;
   const i=ST.idx, u=UI[LANG];
   if(ST.locked[i]){ el.textContent='0 '+u.sec; el.className='timer low'; return; }
@@ -346,7 +353,7 @@ function tick(){
   const now=Date.now();
   for(let k=0;k<TOTAL;k++){ if(ST.deadline[k] && !ST.locked[k] && now>=ST.deadline[k]) ST.locked[k]=true; }
   if(ST.locked.every(Boolean)){ finish(); return; }
-  if(ST.locked[ST.idx]){                       // current question expired: move on automatically
+  if(ST.locked[ST.idx] && ST.idx===ST.furthest){                       // current question expired: move on automatically
     let j=ST.idx+1; while(j<TOTAL && ST.locked[j]) j++;
     if(j>=TOTAL){ finish(); return; }
     go(j); return;
