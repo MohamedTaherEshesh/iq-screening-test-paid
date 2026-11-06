@@ -71,6 +71,7 @@ button.primary{width:100%;padding:14px;font-size:16px;margin-top:18px;border-rad
 .stats .ic{display:flex;justify-content:center;color:#1f4e9c;margin-bottom:6px}
 .elapsed-wrap{font-size:14px;color:#4a5568}
 .elapsed-wrap b{color:#1f4e9c;font-variant-numeric:tabular-nums}
+.rvgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px;margin:12px 0}.rv{padding:8px 0;border:0;border-radius:6px;font-weight:600;color:#fff;cursor:pointer}.rv:disabled{opacity:.35;cursor:default}.rv.done{background:#2e7d4f}.rv.flagged{background:#d98e04}.rv.expired{background:#c0392b}.rv.todo{background:#8a94a6}
 </style>
 </head>
 <body>
@@ -175,86 +176,206 @@ const BIRDS   = {en:["eagle","owl","penguin"], ar:["نسر","بومة","بطري
 const NAMES   = {en:["Ali","Bo","Cy","Dana","Eli","Fay"], ar:["علي","أحمد","سارة","منى","خالد","ليلى"]};
 const SYM = ["▲","●","■","◆","★","✚"];
 
-/* ---------- generators (fresh random content on every test) ---------- */
-const G = {
-  // Numerical
-  n1(){ const a=R.rnd(12,99), b=R.rnd(12,99); const plus=Math.random()<.5;
-    const x=plus?a:Math.max(a,b), y=plus?b:Math.min(a,b); const op=plus?'+':'−'; const c=plus?x+y:x-y;
-    return ITEM('num',1, tx(`What is ${x} ${op} ${y}?`,`ما ناتج ${x} ${op} ${y}؟`), c, [c+10,Math.abs(c-10),c+1,Math.abs(c-1)]); },
-  n2(){ const p=R.pick([5,10,15,20,25,30,40]); const n=R.rnd(4,40)*20; const c=n*p/100;
-    return ITEM('num',2, tx(`What is ${p}% of ${n}?`,`كم يساوي ${p}% من ${n}؟`), c, [c+5,c*2,c+10,Math.max(1,c-5)]); },
-  n3(){ const w=R.rnd(2,9), k=R.rnd(2,9), d=2*k; const c=k;
-    return ITEM('num',3, tx(`${w} workers finish a job in ${d} days. How many days would ${2*w} workers need for the same job?`,
-      `يُنجز ${w} عمّال عملاً في ${d} يومًا. كم يومًا يحتاج ${2*w} عمّال لإنجاز العمل نفسه؟`), c, [d,c+1,c+2,c+3]); },
+/* ---------- generators (Phase 1: varied families, no repeats within one exam) ---------- */
+const exLang = () => (EXAM === 'ar' ? 'ar' : 'en');
+const distract = (c, cands) => { const out = []; cands.forEach(x => { if (x !== c && x >= 0 && !out.includes(x)) out.push(x); }); return out; };
+const allPerms = a => { if (a.length <= 1) return [a.slice()]; const out = []; a.forEach((x, i) => { allPerms(a.slice(0, i).concat(a.slice(i + 1))).forEach(p => out.push([x, ...p])); }); return out; };
 
-  // Pattern
-  p1(){ const s=R.rnd(1,30), st=R.rnd(2,9); const seq=[0,1,2,3,4].map(i=>s+i*st); const c=s+5*st;
-    return ITEM('pat',1, tx(`What comes next?\n${seq.join(', ')}, ?`, `ما العدد التالي؟\n${seq.join('، ')}، ؟`), c, [c+st,c+1,c-1,c+2*st]); },
-  p2(){ const x0=R.rnd(1,20), s=R.rnd(2,6); const seq=[x0]; for(let i=0;i<6;i++) seq.push(seq[i]+s+i);
-    const shown=seq.slice(0,6), c=seq[6];
-    return ITEM('pat',2, tx(`What comes next?\n${shown.join(', ')}, ?`, `ما العدد التالي؟\n${shown.join('، ')}، ؟`), c, [c+1,c-s,c+s]); },
-  p3(){ const a0=R.rnd(1,20), b0=R.rnd(1,4);
-    const shown=[a0,b0,a0+3,b0*2,a0+6,b0*4,a0+9]; const c=b0*8;
-    return ITEM('pat',3, tx(`Two sequences are interleaved. What is the next number?\n${shown.join(', ')}, ?`,
-      `تتداخل متتاليتان. ما العدد التالي؟\n${shown.join('، ')}، ؟`), c, [b0*6,b0*16,b0*8+2]); },
+const SYN = {
+  en: [["big","large","tiny","quick","calm"],["begin","start","end","rest","hide"],["clever","smart","dull","quiet","rude"],["honest","truthful","deceitful","loud","rare"],["rare","scarce","common","wide","bright"],["accurate","precise","vague","loud","kind"],["gather","collect","scatter","hide","pause"],["brief","short","long","heavy","bright"],["fragile","delicate","sturdy","loud","rapid"],["estimate","approximate","measure","ignore","shrink"]],
+  ar: [["كبير","ضخم","صغير","سريع","هادئ"],["يبدأ","يشرع","ينتهي","يستريح","يخفي"],["ذكي","فطن","غبي","هادئ","وقح"],["صادق","أمين","كاذب","صاخب","نادر"],["نادر","قليل","شائع","واسع","لامع"],["دقيق","مضبوط","غامض","صاخب","لطيف"],["يجمع","يلم","يبعثر","يخفي","يتوقف"],["موجز","قصير","طويل","ثقيل","لامع"],["هش","رقيق","متين","صاخب","سريع"],["يقدّر","يقارب","يقيس","يتجاهل","يتقلص"]]
+};
+const ODD = {
+  en: { fruit: ["apple","pear","plum","mango","grape"], tools: ["hammer","saw","drill","wrench","pliers"], instr: ["violin","flute","drum","piano","guitar"], furn: ["chair","table","sofa","bed","desk"] },
+  ar: { fruit: ["تفاح","كمثرى","برقوق","مانجو","عنب"], tools: ["مطرقة","منشار","مثقاب","مفتاح","كماشة"], instr: ["كمان","ناي","طبلة","بيانو","عود"], furn: ["كرسي","طاولة","أريكة","سرير","مكتب"] }
+};
+const COMP = {
+  en: [
+    ["The proof was so ____ that no one could dispute it.","conclusive","tentative","ambiguous","modest"],
+    ["Despite the ____ weather, the marathon went ahead as planned.","harsh","pleasant","mild","calm"],
+    ["The committee's decision was ____, leaving no room for appeal.","final","provisional","partial","tentative"],
+    ["Her explanation was so ____ that every student grasped it at once.","lucid","obscure","convoluted","vague"],
+    ["The city grew at a ____ pace, doubling its population in a decade.","remarkable","negligible","modest","gradual"],
+    ["He remained ____ even when the critics attacked him.","composed","agitated","frantic","anxious"]
+  ],
+  ar: [
+    ["كان الدليل ____ بحيث لا يستطيع أحد أن يجادل فيه.","قاطعًا","مترددًا","غامضًا","متواضعًا"],
+    ["رغم الطقس ____ أُقيم السباق في موعده.","القاسي","اللطيف","المعتدل","الهادئ"],
+    ["كان قرار اللجنة ____ ولم يترك مجالًا للاستئناف.","نهائيًا","مؤقتًا","جزئيًا","مبدئيًا"],
+    ["كان تفسيرها ____ حتى فهمه الطلاب فورًا.","واضحًا","معقدًا","غامضًا","ملتويًا"],
+    ["نما المشروع بوتيرة ____، إذ تضاعف حجمه في عام.","لافتة","ضئيلة","متواضعة","تدريجية"],
+    ["ظل ____ حتى حين هاجمه النقاد.","رزينًا","مضطربًا","هائجًا","قلقًا"]
+  ]
+};
+const PRIMES = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53];
 
-  // Verbal
-  v1(){ const P=PAIRS[lx()]; const [i,j]=two(P.length); const p1=P[i], p2=P[j]; const c=p2[1];
-    const pool=[p1[0],p1[1],p2[0],...P.filter((_,k)=>k!==i&&k!==j).map(p=>p[1])];
-    return ITEM('verb',1, tx('Complete the analogy:','أكمل التشابه:')+`\n${p1[0]} : ${p1[1]} :: ${p2[0]} : ?`, c, pool); },
-  v2(){ const C=CATS[lx()]; const [i,j]=two(C.length); const c=C[j][1];
-    const pool=[C[i][1],...C.filter((_,k)=>k!==i&&k!==j).map(p=>p[1])];
-    return ITEM('verb',2, tx('Complete the analogy:','أكمل التشابه:')+`\n${C[i][0]} : ${C[i][1]} :: ${C[j][0]} : ?`, c, pool); },
-  v3(){ const L=lx(); const M=R.shuffle(MAMMALS[L].slice()).slice(0,3); const B=R.pick(BIRDS[L]);
-    const opts=R.shuffle([...M,B]);
-    return {ability:'verb', diff:3, stem:tx('Which one does not belong?','أيّ كلمة لا تنتمي للمجموعة؟'), options:opts, answer:opts.indexOf(B)}; },
-
-  // Logical deduction (transitive ordering)
-  lg(n, ask, diff){ const N=NAMES[lx()]; const chain=R.shuffle(N.slice()).slice(0,n); // chain[0] is tallest
-    const st=[]; for(let i=0;i<n-1;i++) st.push(tx(`${chain[i]} is taller than ${chain[i+1]}.`,`${chain[i]} أطول من ${chain[i+1]}.`));
-    const order=R.shuffle(st);
-    let idx, q;
-    if(ask==='tallest'){ idx=0; q=tx('Who is the tallest?','من هو الأطول؟'); }
-    else if(ask==='shortest'){ idx=n-1; q=tx('Who is the shortest?','من هو الأقصر؟'); }
-    else { idx=1; q=tx('Who is the second tallest?','من هو ثاني أطول شخص؟'); }
-    const c=chain[idx]; const pool=R.shuffle(N.filter(x=>x!==c));
-    return ITEM('logic',diff, order.join('\n')+'\n'+q, c, pool); },
-
-  // Visual-spatial
-  sq(n){ return n*(n+1)*(2*n+1)/6; },
-  s1(){ const n=R.pick([2,3]); const c=G.sq(n);
-    return ITEM('vis',1, tx(`How many squares of any size are in a grid of ${n}×${n} cells?`,`كم عدد المربعات بكل الأحجام الموجودة في شبكة ${n}×${n} خلية؟`), c, [c+1,c-1,c+3]); },
-  s2(){ const n=R.pick([4,5]); const c=G.sq(n);
-    return ITEM('vis',2, tx(`How many squares of any size are in a grid of ${n}×${n} cells?`,`كم عدد المربعات بكل الأحجام الموجودة في شبكة ${n}×${n} خلية؟`), c, [c-4,c+5,c+10]); },
-  s3(){ const n=R.pick([2,3,4]); const c=Math.pow(n*(n+1)/2,2);
-    return ITEM('vis',3, tx(`How many rectangles of any size are in a grid of ${n}×${n} cells?`,`كم عدد المستطيلات بكل الأحجام الموجودة في شبكة ${n}×${n} خلية؟`), c, [c+n,c-n,c+2*n]); },
-  sy(p, diff){ const S=R.shuffle(SYM.slice()); const per=S.slice(0,p); const N=R.rnd(20,60);
-    const shown=[]; for(let i=0;i<2*p+2;i++) shown.push(per[i%p]);
-    const c=per[(N-1)%p];
-    return ITEM('vis',diff, tx(`The symbols follow a repeating pattern:\n${shown.join(' ')} …\nWhich symbol is in position ${N}?`,
-      `تتبع الرموز نمطًا متكررًا:\n${shown.join(' ')} …\nما الرمز الموجود في الموضع ${N}؟`), c, S.filter(x=>x!==c)); }
+// Numerical
+const n_rate = () => {
+  const opts = [[3,6,2],[4,12,3],[6,12,4],[10,15,6],[8,24,6],[5,20,4],[12,24,8],[6,3,2]];
+  const [X,Y,c] = R.pick(opts);
+  return ITEM('num',2, tx(`Pipe A fills a tank in ${X} hours and pipe B fills the same tank in ${Y} hours. Working together, how many hours do they need?`,
+    `يملأ الأنبوب A خزانًا في ${X} ساعة، ويملأه الأنبوب B في ${Y} ساعة. كم ساعة يحتاجان معًا لملئه؟`), c, distract(c,[X+Y, c+3, c+7, X, Y, c+1, c*2]));
+};
+const n_percent = () => {
+  const P = R.pick([200,400,600,800]), p = R.pick([10,20,50]);
+  const c = P*(100+p)*(100-p)/10000;
+  return ITEM('num',2, tx(`A price of ${P} rises by ${p}% and then falls by ${p}%. What is the new price?`,
+    `ارتفع سعر ${P} بنسبة ${p}% ثم انخفض بنسبة ${p}%. ما السعر الجديد؟`), c, distract(c,[P, P*(100-p)/100, P*(100+p)/100, c+10, c-10]));
+};
+const n_age = () => {
+  const s = R.rnd(4,15), sum = 4*s+12;
+  return ITEM('num',3, tx(`Ahmed is three times as old as Sara. In six years, the sum of their ages will be ${sum}. How old is Sara now?`,
+    `أحمد أكبر من سارة ثلاث مرات. وبعد ست سنوات يصبح مجموع عمريهما ${sum}. كم عمر سارة الآن؟`), s, distract(s,[3*s, s+6, s-1, s+1]));
+};
+const n_interest = () => {
+  const P = R.pick([200,300,400,500,600,700,800,900]), r = R.pick([2,4,5,10]), t = R.pick([2,3,4]);
+  const c = P*r*t/100;
+  return ITEM('num',2, tx(`What is the simple interest on ${P} for ${t} years at ${r}% per year?`,
+    `ما الفائدة البسيطة على مبلغ ${P} لمدة ${t} سنوات بنسبة ${r}% سنويًا؟`), c, distract(c,[c*2, P*r, c+10, c-10, P]));
+};
+const n_avg = () => {
+  for (;;) {
+    const a=R.rnd(10,60), b=R.rnd(10,60), cc=R.rnd(10,60), d=R.rnd(10,60), m=R.rnd(20,50);
+    const fifth = 5*m - (a+b+cc+d);
+    if (fifth < 1 || fifth > 99) continue;
+    return ITEM('num',2, tx(`Four numbers are ${a}, ${b}, ${cc} and ${d}. The average of all five numbers is ${m}. What is the fifth number?`,
+      `الأعداد الأربعة هي ${a} و${b} و${cc} و${d}. متوسط الأعداد الخمسة هو ${m}. ما العدد الخامس؟`), fifth, distract(fifth,[m, fifth+3, fifth-3, fifth+5]));
+  }
 };
 
-// 10 items per ability: 3 easy, 4 medium, 3 hard
+// Pattern and abstract
+const p_two = () => {
+  const x = R.rnd(1,9), a = R.rnd(2,3), b = R.rnd(2,9);
+  const seq = [x]; for (let i=0;i<5;i++) seq.push(i%2===0 ? seq[i]*a : seq[i]+b);
+  const shown = seq.slice(0,5), c = seq[5];
+  return ITEM('pat',2, tx(`What comes next?\n${shown.join(', ')}, ?`, `ما العدد التالي؟\n${shown.join('، ')}، ؟`), c, distract(c,[c+1,c-1,c+a,c-b]));
+};
+const p_primes = () => {
+  const i = R.rnd(0,10), shown = PRIMES.slice(i,i+5), c = PRIMES[i+5];
+  return ITEM('pat',1, tx(`Which prime number comes next?\n${shown.join(', ')}, ?`, `ما العدد الأولي التالي؟\n${shown.join('، ')}، ؟`), c, distract(c,[c-1,c+1,c+2,c-2]));
+};
+const p_letters = () => {
+  const k = R.rnd(2,3), s = R.rnd(0, 25-5*k);
+  const idx = j => s + j*k, L = n => String.fromCharCode(65+n);
+  const shown = [0,1,2,3,4].map(j => L(idx(j))), c = idx(5), cLetter = L(c);
+  const d3 = c+1 <= 25 ? c+1 : c-3;
+  return ITEM('pat',2, tx(`Which letter comes next?\n${shown.join(' , ')} , ?`, `ما الحرف التالي؟\n${shown.join(' ، ')} ، ؟`), cLetter, [L(c-1),L(c-2),L(d3)].filter(x => x!==cLetter));
+};
+const p_grow = () => {
+  const x = R.rnd(1,10), d = R.rnd(1,4);
+  const seq = [x]; let st = d; for (let i=0;i<5;i++){ seq.push(seq[i]+st); st += 2; }
+  const shown = seq.slice(0,5), c = seq[5];
+  return ITEM('pat',3, tx(`What comes next?\n${shown.join(', ')}, ?`, `ما العدد التالي؟\n${shown.join('، ')}، ؟`), c, distract(c,[c-2,c+2,c+1,c-1]));
+};
+const p_matrix = () => {
+  const v = () => R.rnd(1,9);
+  const a=v(), b=v(), c=v(), d=v(), e=v(), f=v();
+  const ans = c+f;
+  return ITEM('pat',3, tx(`Rows 1 and 2:\n${a}   ${b}   ${c}\n${d}   ${e}   ${f}\nRow 3 follows the rule: each number is the sum of the two numbers above it.\n${a+d}   ${b+e}   ?\nWhat number replaces the ?`,
+    `الصفان الأول والثاني:\n${a}   ${b}   ${c}\n${d}   ${e}   ${f}\nالصف الثالث يتبع القاعدة: كل عدد هو مجموع العددين فوقه.\n${a+d}   ${b+e}   ؟\nما العدد مكان علامة الاستفهام؟`), ans, distract(ans,[ans+1, ans-1, ans+2, Math.abs(c-f)+1]));
+};
+
+// Verbal
+const v_syn = () => {
+  const L = exLang(), list = SYN[L], row = R.pick(list), w = row[0], c = row[1];
+  return ITEM('verb', 1, tx(`Choose the word closest in meaning to "${w}".`, `اختر الكلمة الأقرب في المعنى إلى "${w}".`), c, row.slice(2));
+};
+const v_ant = () => {
+  const P = PAIRS[exLang()], p = R.pick(P), c = p[1];
+  return ITEM('verb', 1, tx(`Choose the opposite of "${p[0]}".`, `اختر عكس كلمة "${p[0]}".`), c, P.filter(q => q !== p).map(q => q[1]));
+};
+const v_odd = () => {
+  const G = ODD[exLang()], keys = Object.keys(G), [ka, kb] = two(keys.length);
+  const three = R.shuffle(G[keys[ka]].slice()).slice(0,3), odd = R.pick(G[keys[kb]]);
+  return ITEM('verb', 1, tx('Which word does not belong with the others?', 'أي كلمة لا تنتمي إلى المجموعة؟'), odd, three);
+};
+const v_comp = () => {
+  const row = R.pick(COMP[exLang()]);
+  return ITEM('verb', 2, row[0], row[1], row.slice(2));
+};
+
+// Logic: seating puzzles that have exactly one solution
+function makeClue(N, n) {
+  const [A,B,C] = R.shuffle(N.slice());
+  const kind = R.rnd(0,4);
+  if (kind===0) return { text: tx(`${A} sits immediately to the left of ${B}.`, `${A} يجلس مباشرة على يسار ${B}.`), ok: p => p[B]===p[A]+1 };
+  if (kind===1) return { text: tx(`${A} and ${B} do not sit next to each other.`, `${A} و${B} لا يجلسان بجوار بعضهما.`), ok: p => Math.abs(p[A]-p[B])!==1 };
+  if (kind===2) return { text: tx(`${A} sits somewhere to the right of ${B}.`, `${A} يجلس في مكان ما على يمين ${B}.`), ok: p => p[A]>p[B] };
+  if (kind===3) return { text: tx(`${B} sits between ${A} and ${C}.`, `${B} يجلس بين ${A} و${C}.`), ok: p => p[B]>Math.min(p[A],p[C]) && p[B]<Math.max(p[A],p[C]) };
+  return { text: tx(`${A} sits at one end of the row.`, `${A} يجلس في أحد طرفي الصف.`), ok: p => p[A]===1 || p[A]===n };
+}
+function logicPuzzle(n, diff) {
+  const L = exLang();
+  for (;;) {
+    const N = R.shuffle(NAMES[L].slice()).slice(0,n);
+    const hidden = R.shuffle(N.slice());
+    const hpos = {}; hidden.forEach((p,i) => hpos[p] = i+1);
+    const perms = allPerms(N);
+    let clues = [];
+    const count = () => perms.filter(arr => { const p = {}; arr.forEach((x,i) => p[x] = i+1); return clues.every(c => c.ok(p)); }).length;
+    let guard = 0;
+    while (count() > 1 && clues.length < n+4 && guard++ < 300) {
+      const c = makeClue(N, n);
+      if (!clues.some(d => d.text===c.text) && c.ok(hpos)) clues.push(c);
+    }
+    if (count() !== 1) continue;
+    const k = R.rnd(1,n), answer = hidden[k-1];
+    const stem = clues.map(c => c.text).join('\n') + '\n' + tx(`Who sits in seat ${k}? (Seat 1 is the far left.)`, `من يجلس في المقعد ${k}؟ (المقعد 1 أقصى اليسار.)`);
+    return ITEM('logic', diff, stem, answer, NAMES[L].filter(x => x!==answer));
+  }
+}
+
+// Visual-spatial, described in words
+const s_cube = () => {
+  const n = R.pick([3,4,5]), k = R.pick([0,1,2]);
+  const c = k===0 ? (n-2)**3 : k===1 ? 6*(n-2)**2 : 12*(n-2);
+  return ITEM('vis',2, tx(`A ${n}×${n}×${n} cube is painted on all six outer faces, then cut into ${n**3} small unit cubes. How many small cubes have exactly ${k} painted face${k===1?'':'s'}?`,
+    `جسم مكعب ${n}×${n}×${n} طُليت أوجهه الست الخارجية، ثم قُطع إلى ${n**3} مكعبًا صغيرًا. كم مكعبًا صغيرًا له ${k} وجه مطلي بالضبط؟`), c, distract(c,[c+1,c+2,c-1,c+n]));
+};
+const s_dir = () => {
+  const L = exLang();
+  const D = L==='ar' ? ["الشمال","الشرق","الجنوب","الغرب"] : ["north","east","south","west"];
+  const OPS = L==='ar' ? { R:"تدور يمينًا", Lf:"تدور يسارًا", U:"تستدير للخلف" } : { R:"turn right", Lf:"turn left", U:"turn around" };
+  const SHIFT = { R:1, Lf:3, U:2 };
+  const s = R.rnd(0,3), ops = [0,1,2,3].map(() => R.pick(['R','Lf','U']));
+  const end = ops.reduce((acc,o) => (acc + SHIFT[o]) % 4, s);
+  const word = L==='ar' ? "ثم " : "then ";
+  const stemTxt = L==='ar'
+    ? `أنت تواجه ${D[s]}. ثم ${ops.map(o => OPS[o]).join('، ثم ')}. أي اتجاه تواجه الآن؟`
+    : `You are facing ${D[s]}. Then you ${ops.map(o => OPS[o]).join(', then you ')}. Which direction are you facing now?`;
+  return ITEM('vis',2, stemTxt, D[end], D.filter((_,i) => i!==end));
+};
+const s_clock = () => {
+  const h = R.rnd(1,12), m = R.pick([10,20,30,40,50]);
+  let angle = Math.abs(30*h - 5.5*m) % 360; if (angle > 180) angle = 360-angle;
+  const pad = String(m).padStart(2,'0');
+  return ITEM('vis',2, tx(`What is the smaller angle, in degrees, between the hour and minute hands at ${h}:${pad}?`,
+    `ما قياس الزاوية الأصغر بالدرجات بين عقربي الساعات والدقائق عند الساعة ${h}:${pad}؟`), angle, distract(angle,[angle+5, angle+10, angle-5, angle+15]));
+};
+
+// 10 items per ability, spread over several question families (each family at most ~a fair share per exam)
 const SPEC = {
-  num:  [G.n1,G.n1,G.n1, G.n2,G.n2,G.n2,G.n2, G.n3,G.n3,G.n3],
-  pat:  [G.p1,G.p1,G.p1, G.p2,G.p2,G.p2,G.p2, G.p3,G.p3,G.p3],
-  verb: [G.v1,G.v1,G.v1, G.v2,G.v2,G.v2,G.v2, G.v3,G.v3,G.v3],
-  logic:[()=>G.lg(3,'tallest',1),()=>G.lg(3,'tallest',1),()=>G.lg(3,'tallest',1),
-         ()=>G.lg(4,'shortest',2),()=>G.lg(4,'shortest',2),()=>G.lg(4,'shortest',2),()=>G.lg(4,'shortest',2),
-         ()=>G.lg(5,'second',3),()=>G.lg(5,'second',3),()=>G.lg(5,'second',3)],
-  vis:  [G.s1,G.s1,()=>G.sy(3,1), ()=>G.sy(4,2),()=>G.sy(4,2),G.s2,()=>G.sy(4,2), G.s3,()=>G.sy(5,3),G.s3]
+  num:  [n_rate, n_percent, n_age, n_interest, n_avg],
+  pat:  [p_two, p_primes, p_letters, p_grow, p_matrix],
+  verb: [v_syn, v_ant, v_odd, v_comp],
+  logic:[()=>logicPuzzle(3,1), ()=>logicPuzzle(4,2), ()=>logicPuzzle(5,3)],
+  vis:  [s_cube, s_dir, s_clock]
 };
 
 function buildTest(){
   const per=TOTAL/ABIL.length; const left={}; ABIL.forEach(a=>left[a]=per);
-  const seen=new Set(); const out=[]; let last=null; let tries=0;
-  while(out.length<TOTAL && tries++<5000){
+  const famUse=new Map(); const seen=new Set(); const out=[]; let last=null; let tries=0;
+  while(out.length<TOTAL && tries++<20000){
     const avail=ABIL.filter(a=>left[a]>0 && a!==last);
     const pool=avail.length?avail:ABIL.filter(a=>left[a]>0);
     const a=R.pick(pool);
-    const it=R.pick(SPEC[a])();
-    if(seen.has(it.stem)) continue;
+    const cap=Math.ceil(per/SPEC[a].length);
+    const open=SPEC[a].filter(f=>(famUse.get(f)||0)<cap);
+    if(!open.length) continue;
+    const f=R.pick(open);
+    const it=f();
+    if(!it || seen.has(it.stem)) continue;
+    famUse.set(f,(famUse.get(f)||0)+1);
     seen.add(it.stem); out.push(it); left[a]--; last=a;
   }
   return out;
@@ -303,11 +424,39 @@ function submitReg(){
   startTest();
 }
 
+Object.assign(UI.en,{flag:'Mark for later', unflag:'Unmark', review:'Review questions', flagged:'Marked for later', answeredCount:'Answered', rvLegend:'Green = answered, orange = marked for later, red = time expired, grey = not answered. Click a number to go back to it.', backToQ:'Back to question'});
+Object.assign(UI.ar,{flag:'وضع علامة للمراجعة', unflag:'إلغاء العلامة', review:'مراجعة الأسئلة', flagged:'معلّم للمراجعة', answeredCount:'تمت الإجابة', rvLegend:'أخضر = تمت الإجابة، برتقالي = معلّم للمراجعة، أحمر = انتهى الوقت، رمادي = لم تتم الإجابة. اضغط رقم السؤال للعودة إليه.', backToQ:'العودة إلى السؤال'});
+Object.assign(UI.fr,{flag:'Marquer pour plus tard', unflag:'Retirer le marquage', review:'Revoir les questions', flagged:'Marquée pour plus tard', answeredCount:'Répondues', rvLegend:'Vert = répondue, orange = marquée, rouge = temps écoulé, gris = sans réponse. Cliquez un numéro pour y revenir.', backToQ:'Retour à la question'});
+function toggleFlag(){ if(ST.done) return; ST.flag[ST.idx]=!ST.flag[ST.idx]; renderQ(); }
+function showReview(){
+  if(ST.done) return;
+  ST.review=true; const u=UI[LANG];
+  const cells=ST.items.map((_,k)=>{
+    const visited=k<=(ST.furthest||0);
+    const cls=ST.flag[k]?'flagged':(ST.ans[k]!==null?'done':(ST.locked[k]?'expired':'todo'));
+    return '<button class="rv '+cls+'" '+(visited?'':'disabled')+' onclick="goFromReview('+k+')">'+(k+1)+'</button>';
+  }).join('');
+  const answered=ST.ans.filter(a=>a!==null).length;
+  const flagged=ST.flag.filter(Boolean).length;
+  document.getElementById('app').innerHTML=`
+    <div class="qhead"><div class="logo"><span class="dot"></span>${esc(CONFIG.brand||'')}</div>
+      <span class="elapsed-wrap"><span class="elapsed-label">Elapsed</span> <b id="elapsed">00:00</b></span></div>
+    <h3>${u.review}</h3>
+    <p class="hint">${u.answeredCount}: ${answered} / ${TOTAL} · ${u.flagged}: ${flagged}</p>
+    <div class="rvgrid">${cells}</div>
+    <p class="hint">${u.rvLegend}</p>
+    <div class="nav">
+      <button class="ghost" onclick="renderQ()">${u.backToQ}</button>
+      <button class="ghost" onclick="finish()">${u.finish}</button>
+    </div>`;
+  updateTimer();
+}
+function goFromReview(k){ ST.idx=k; renderQ(); }
 /* ---------- test flow ---------- */
 function startTest(){
   hideStats();
   ST.items=buildTest(); ST.ans=Array(TOTAL).fill(null); ST.deadline=Array(TOTAL).fill(null);
-  ST.locked=Array(TOTAL).fill(false); ST.idx=0; ST.tabSwitches=0; ST.done=false; ST.startedAt=Date.now();
+  ST.locked=Array(TOTAL).fill(false); ST.flag=Array(TOTAL).fill(false); ST.review=false; ST.idx=0; ST.tabSwitches=0; ST.done=false; ST.startedAt=Date.now();
   go(0);
   ST.timer=setInterval(tick,250);
 }
@@ -318,19 +467,22 @@ function go(j){
   renderQ();
 }
 function renderQ(){
+  ST.review=false;
   const u=UI[LANG]; const i=ST.idx; const it=ST.items[i]; const locked=ST.locked[i];
   const opts=it.options.map((o,j)=>`<button class="opt ${ST.ans[i]===j?'sel':''}" ${locked?'disabled':''} onclick="choose(${j})"><span class="ltr">${'ABCD'[j]}</span><span>${esc(o)}</span></button>`).join('');
   document.getElementById('app').innerHTML=`
     <div class="qhead"><div class="logo">${CONFIG.photo?`<img src="${CONFIG.photo}" alt="" style="width:36px;height:36px;border-radius:50%;object-fit:cover">`:'<span class="dot"></span>'}${esc(CONFIG.brand||'')}</div>
       <span class="elapsed-wrap"><span class="elapsed-label">Elapsed</span> <b id="elapsed">00:00</b></span> <span id="timer" class="timer"></span></div>
-    <div class="qmeta">${u.question} ${i+1} ${u.of} ${TOTAL}</div>
+    <div class="qmeta">${u.question} ${i+1} ${u.of} ${TOTAL}${ST.flag[i]?' · '+u.flagged:''}</div>
     <div class="bar"><div style="width:${(i+1)/TOTAL*100}%"></div></div>
     <div class="qtext">${esc(it.stem)}</div>
     ${opts}
     <p class="hint">${locked?u.timeUp:u.hint}</p>
     <div class="nav">
       <button class="ghost" ${i===0?'disabled':''} onclick="go(${i-1})">${u.prev}</button>
-      <div style="display:flex;gap:8px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="ghost" onclick="toggleFlag()">${ST.flag[i]?u.unflag:u.flag}</button>
+        <button class="ghost" onclick="showReview()">${u.review}</button>
         <button class="ghost" onclick="finish()">${u.finish}</button>
         <button ${i===TOTAL-1?'disabled':''} onclick="go(${i+1})">${u.next}</button>
       </div>
@@ -352,7 +504,7 @@ function tick(){
   const now=Date.now();
   for(let k=0;k<TOTAL;k++){ if(ST.deadline[k] && !ST.locked[k] && now>=ST.deadline[k]) ST.locked[k]=true; }
   if(ST.locked.every(Boolean)){ finish(); return; }
-  if(ST.locked[ST.idx] && ST.idx===ST.furthest){                       // current question expired: move on automatically
+  if(!ST.review && ST.locked[ST.idx] && ST.idx===ST.furthest){                       // current question expired: move on automatically
     let j=ST.idx+1; while(j<TOTAL && ST.locked[j]) j++;
     if(j>=TOTAL){ finish(); return; }
     go(j); return;
