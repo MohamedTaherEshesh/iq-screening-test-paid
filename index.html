@@ -247,16 +247,15 @@ const SPEC = {
 };
 
 function buildTest(){
-  const queues={};
-  ABIL.forEach(a=>{ queues[a]=R.shuffle(SPEC[a].map(f=>f())); });
-  const out=[]; let last=null; const seen=new Set();
-  while(out.length<TOTAL){
-    let avail=ABIL.filter(a=>queues[a].length && a!==last);
-    if(!avail.length) avail=ABIL.filter(a=>queues[a].length);
-    const a=R.pick(avail);
-    let it=queues[a].pop(); let guard=0;
-    while(seen.has(it.stem) && queues[a].length && guard++<200) it=queues[a].pop();
-    seen.add(it.stem); out.push(it); last=a;
+  const per=TOTAL/ABIL.length; const left={}; ABIL.forEach(a=>left[a]=per);
+  const seen=new Set(); const out=[]; let last=null; let tries=0;
+  while(out.length<TOTAL && tries++<5000){
+    const avail=ABIL.filter(a=>left[a]>0 && a!==last);
+    const pool=avail.length?avail:ABIL.filter(a=>left[a]>0);
+    const a=R.pick(pool);
+    const it=R.pick(SPEC[a])();
+    if(seen.has(it.stem)) continue;
+    seen.add(it.stem); out.push(it); left[a]--; last=a;
   }
   return out;
 }
