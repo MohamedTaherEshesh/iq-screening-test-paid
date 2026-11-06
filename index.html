@@ -427,7 +427,10 @@ function submitReg(){
 Object.assign(UI.en,{flag:'Mark for later', unflag:'Unmark', review:'Review questions', flagged:'Marked for later', answeredCount:'Answered', rvLegend:'Green = answered, orange = marked for later, red = time expired, grey = not answered. Click a number to go back to it.', backToQ:'Back to question'});
 Object.assign(UI.ar,{flag:'وضع علامة للمراجعة', unflag:'إلغاء العلامة', review:'مراجعة الأسئلة', flagged:'معلّم للمراجعة', answeredCount:'تمت الإجابة', rvLegend:'أخضر = تمت الإجابة، برتقالي = معلّم للمراجعة، أحمر = انتهى الوقت، رمادي = لم تتم الإجابة. اضغط رقم السؤال للعودة إليه.', backToQ:'العودة إلى السؤال'});
 Object.assign(UI.fr,{flag:'Marquer pour plus tard', unflag:'Retirer le marquage', review:'Revoir les questions', flagged:'Marquée pour plus tard', answeredCount:'Répondues', rvLegend:'Vert = répondue, orange = marquée, rouge = temps écoulé, gris = sans réponse. Cliquez un numéro pour y revenir.', backToQ:'Retour à la question'});
-function toggleFlag(){ if(ST.done) return; ST.flag[ST.idx]=!ST.flag[ST.idx]; renderQ(); }
+function toggleFlag(){ if(ST.done) return; const i=ST.idx; ST.flag[i]=!ST.flag[i];
+  if(ST.flag[i]) ST.deadline[i]=null;
+  else if(!ST.locked[i] && ST.ans[i]===null) ST.deadline[i]=Date.now()+SECONDS*1000;
+  renderQ(); }
 function showReview(){
   if(ST.done) return;
   ST.review=true; const u=UI[LANG];
@@ -463,7 +466,7 @@ function startTest(){
 function go(j){
   ST.furthest=Math.max(ST.furthest||0,j);
   ST.idx=j;
-  if(!ST.deadline[j] && !ST.locked[j]) ST.deadline[j]=Date.now()+SECONDS*1000;
+  if(!ST.locked[j] && (ST.flag[j] ? ST.ans[j]===null : !ST.deadline[j])) ST.deadline[j]=Date.now()+SECONDS*1000;
   renderQ();
 }
 function renderQ(){
@@ -473,7 +476,7 @@ function renderQ(){
   document.getElementById('app').innerHTML=`
     <div class="qhead"><div class="logo">${CONFIG.photo?`<img src="${CONFIG.photo}" alt="" style="width:36px;height:36px;border-radius:50%;object-fit:cover">`:'<span class="dot"></span>'}${esc(CONFIG.brand||'')}</div>
       <span class="elapsed-wrap"><span class="elapsed-label">Elapsed</span> <b id="elapsed">00:00</b></span> <span id="timer" class="timer"></span></div>
-    <div class="qmeta">${u.question} ${i+1} ${u.of} ${TOTAL}${ST.flag[i]?' · '+u.flagged:''}</div>
+    <div class="qmeta">${u.question} ${i+1} ${u.of} ${TOTAL}</div>
     <div class="bar"><div style="width:${(i+1)/TOTAL*100}%"></div></div>
     <div class="qtext">${esc(it.stem)}</div>
     ${opts}
@@ -481,8 +484,6 @@ function renderQ(){
     <div class="nav">
       <button class="ghost" ${i===0?'disabled':''} onclick="go(${i-1})">${u.prev}</button>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="ghost" onclick="toggleFlag()">${ST.flag[i]?u.unflag:u.flag}</button>
-        <button class="ghost" onclick="showReview()">${u.review}</button>
         <button class="ghost" onclick="finish()">${u.finish}</button>
         <button ${i===TOTAL-1?'disabled':''} onclick="go(${i+1})">${u.next}</button>
       </div>
@@ -496,13 +497,14 @@ function updateTimer(){
   const el=document.getElementById('timer'); if(!el) return;
   const i=ST.idx, u=UI[LANG];
   if(ST.locked[i]){ el.textContent='0 '+u.sec; el.className='timer low'; return; }
+  if(!ST.deadline[i]){ el.textContent=ST.flag[i]?u.flagged:''; el.className='timer'; return; }
   const rem=Math.max(0,Math.ceil((ST.deadline[i]-Date.now())/1000));
   el.textContent=rem+' '+u.sec; el.className='timer'+(rem<=10?' low':'');
 }
 function tick(){
   if(ST.done) return;
   const now=Date.now();
-  for(let k=0;k<TOTAL;k++){ if(ST.deadline[k] && !ST.locked[k] && now>=ST.deadline[k]) ST.locked[k]=true; }
+  for(let k=0;k<TOTAL;k++){ if(ST.deadline[k] && !ST.locked[k] && !ST.flag[k] && now>=ST.deadline[k]) ST.locked[k]=true; }
   if(ST.locked.every(Boolean)){ finish(); return; }
   if(!ST.review && ST.locked[ST.idx] && ST.idx===ST.furthest){                       // current question expired: move on automatically
     let j=ST.idx+1; while(j<TOTAL && ST.locked[j]) j++;
