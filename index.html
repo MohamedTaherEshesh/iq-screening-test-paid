@@ -200,8 +200,11 @@ function showReview(){
     <div class="rvgrid">${cells}</div>
     <p class="hint">${u.rvLegend}</p>
     <div class="nav">
-      <button class="ghost" onclick="renderQ()">${u.backToQ}</button>
-      <button class="ghost" onclick="finish()">${u.finish}</button>
+      <button class="ghost" ${i===0?'disabled':''} onclick="go(${i-1})">${u.prev}</button>
+      <button ${i===TOTAL-1?'disabled':''} onclick="go(${i+1})">${u.next}</button>
+    </div>
+    <div style="text-align:center;margin-top:22px">
+      <button style="min-width:240px;padding:12px 24px;background:#15803d;color:#fff;border:0;border-radius:8px;font-weight:600;cursor:pointer" onclick="confirmFinish()">${u.finish}</button>
     </div>`;
   updateTimer();
 }
@@ -262,6 +265,13 @@ function tick(){
   if(ST.done) return;
   if(Date.now()>=ST.endAt){ finish(); return; }   // time is up: submit the answers given so far
   updateTimer();
+}
+function confirmFinish(){
+  if(ST.done) return;
+  const msg = EXAM==="ar"
+    ? "هل تريد إنهاء الاختبار الآن؟ لن تتمكن من تغيير الإجابات بعد ذلك."
+    : "Finish the test now? You cannot change your answers after this.";
+  if(confirm(msg)) finish();
 }
 function finish(){
   if(ST.done) return;
