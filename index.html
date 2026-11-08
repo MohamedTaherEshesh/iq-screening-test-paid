@@ -163,10 +163,20 @@ function renderReg(err, keep){
     <p class="secure">🔒 ${u.secure}</p>`;
 }
 function changeLang(l){ LANG=l; refreshStatLabels(); document.documentElement.lang=l; document.documentElement.dir=UI[l].dir; renderReg(null, readReg()); }
+function ageOk(birth){
+  const b=new Date(birth+"T00:00:00"); if(isNaN(b)) return false;
+  const t=new Date(); let age=t.getFullYear()-b.getFullYear();
+  const m=t.getMonth()-b.getMonth(); if(m<0||(m===0&&t.getDate()<b.getDate())) age--;
+  return age>=5 && age<=100;
+}
+Object.assign(UI.en,{ageErr:"Age must be between 5 and 100 years."});
+Object.assign(UI.ar,{ageErr:"يجب أن يكون العمر بين 5 و100 سنة."});
+Object.assign(UI.fr,{ageErr:"L'âge doit être compris entre 5 et 100 ans."});
 function submitReg(){
   const r=readReg(); const u=UI[LANG];
   let err='';
   if(r.name.length<3 || !r.gender || !r.birth) err=u.reqErr;
+  else if(!ageOk(r.birth)) err=u.ageErr;
   else if(!document.getElementById('f_consent').checked) err=u.consentErr;
   else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(r.email)) err=u.emailErr;
   else if(!/^\+?[0-9\s-]{7,20}$/.test(r.phone)) err=u.phoneErr;
@@ -245,10 +255,10 @@ function renderQ(){
     <p class="hint">${locked?u.timeUp:u.hint}</p>
     <div class="nav">
       <button class="ghost" ${i===0?'disabled':''} onclick="go(${i-1})">${u.prev}</button>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="ghost" onclick="finish()">${u.finish}</button>
-        <button ${i===TOTAL-1?'disabled':''} onclick="go(${i+1})">${u.next}</button>
-      </div>
+      <button ${i===TOTAL-1?'disabled':''} onclick="go(${i+1})">${u.next}</button>
+    </div>
+    <div style="text-align:center;margin-top:22px">
+      <button style="min-width:240px;padding:12px 24px;background:#15803d;color:#fff;border:0;border-radius:8px;font-weight:600;cursor:pointer" onclick="confirmFinish()">${u.finish}</button>
     </div>`;
   updateTimer();
 }
