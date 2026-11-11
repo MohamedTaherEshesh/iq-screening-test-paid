@@ -30,8 +30,23 @@
   <div id="err" class="err"></div>
   <div id="out"></div>
 </div>
+<script src="./staging-config.js"></script>
 <script>
-const API = "https://trfmircskunoszetgfjt.supabase.co/functions/v1";
+// Development safety: never connect this page to the live Supabase project.
+const STAGING_API = String(window.OMSAZE_STAGING_API_BASE || "").replace(/\\/$/, "");
+let stagingReady = false;
+try {
+  const u = new URL(STAGING_API);
+  stagingReady = u.protocol === "https:" && u.hostname.endsWith(".supabase.co")
+    && u.hostname !== "trfmircskunoszetgfjt.supabase.co"
+    && u.pathname === "/functions/v1";
+} catch (_) {}
+if (!stagingReady) {
+  document.getElementById("err").textContent =
+    "Development mode: configure a separate Supabase Staging URL in staging-config.js before using payments.";
+  document.getElementById("go").disabled = true;
+}
+const API = stagingReady ? STAGING_API : "";
 const money = b => b.egp.toFixed(2) + " EGP";
 const row = (label, b) => `<tr><td>${label}</td><td class="r">${b.count}</td><td class="r strong">${money(b)}</td></tr>`;
 
@@ -39,6 +54,7 @@ document.getElementById("go").onclick = load;
 document.getElementById("pc").addEventListener("keydown", e => { if (e.key === "Enter") load(); });
 
 async function load() {
+  if (!stagingReady) return;
   const err = document.getElementById("err"), out = document.getElementById("out");
   err.textContent = ""; out.innerHTML = "";
   const passcode = document.getElementById("pc").value;
