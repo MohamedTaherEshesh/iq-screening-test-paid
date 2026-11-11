@@ -33,7 +33,7 @@
 <script src="./staging-config.js"></script>
 <script>
 // Development safety: never connect this page to the live Supabase project.
-const STAGING_API = String(window.OMSAZE_STAGING_API_BASE || "").replace(/\\/$/, "");
+const STAGING_API = String(window.OMSAZE_STAGING_API_BASE || "").replace(new RegExp("/$"), "");
 let stagingReady = false;
 try {
   const u = new URL(STAGING_API);
