@@ -1,0 +1,53 @@
+name: OMSAZE T Development Frontend Checks
+
+on:
+  push:
+    branches: [development]
+    paths:
+      - 'index.html'
+      - 'assessments.html'
+      - 'assessment-catalog.js'
+      - '.github/workflows/omsaze-development-frontend-checks.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'assessments.html'
+      - 'assessment-catalog.js'
+      - '.github/workflows/omsaze-development-frontend-checks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catalog-and-existing-page-sanity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect static assessment preview and legacy site boundaries
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          index=Path('index.html').read_text(encoding='utf-8')
+          preview=Path('assessments.html').read_text(encoding='utf-8')
+          catalog=Path('assessment-catalog.js').read_text(encoding='utf-8')
+          assert '<a href="./assessments.html"' in index
+          assert 'Development preview only' in index
+          assert 'id="app"' in index and 'id="stats"' in index
+          assert 'setPageLang(' in index
+          assert 'window.OMSAZE_T_CATALOG' in catalog
+          ids=re.findall(r'\{ id:"([a-z0-9-]+)"',catalog)
+          assert len(ids)==8 and len(set(ids))==8,ids
+          assert 'university-iq-preparation' in ids
+          assert 'enabled: false' in catalog
+          assert 'button.disabled = true' in preview
+          assert 'noindex,nofollow' in preview
+          assert 'assessment-catalog.js' in preview
+          assert 'UNIVERSITY_APPROVED_BANK' not in index
+          assert 'UNIVERSITY_APPROVED_BANK' not in preview
+          assert 'serverAnswerKey' not in index
+          assert 'serverAnswerKey' not in preview
+          print('PASS: 8 disabled public catalog types, legacy UI preserved, no University private answer keys')
+          PY
