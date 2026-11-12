@@ -37,7 +37,7 @@ jobs:
           assert 'Development preview only' in index
           assert 'id="app"' in index and 'id="stats"' in index
           assert 'setPageLang(' in index
-          assert 'window.OMSAZE_T_CATALOG' in catalog
+          assert 'w.OMSAZE_T_CATALOG' in catalog
           ids=re.findall(r'\{ id:"([a-z0-9-]+)"',catalog)
           assert len(ids)==8 and len(set(ids))==8,ids
           assert 'university-iq-preparation' in ids
