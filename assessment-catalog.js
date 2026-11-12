@@ -4,7 +4,7 @@
 (function (w) {
   "use strict";
   const categories = [
-    { id:"university-iq-preparation", group:"university", en:"University IQ Preparation", ar:"التحضير لاختبار الذكاء الجامعي", pilot:true },
+    { id:"university-iq-preparation", group:"university", en:"University IQ Preparation", ar:"التحضير لاختبار الذكاء الجامعي", pilot:true, questionCount:70, durationSeconds:6300, domains:7, previewHref:"./university.html" },
     { id:"university-cognitive-skills", group:"university", en:"University Cognitive Skills", ar:"المهارات المعرفية الجامعية" },
     { id:"junior-iq-preparation", group:"junior", en:"Junior IQ Preparation", ar:"التحضير لاختبارات الذكاء للناشئين" },
     { id:"junior-cognitive-skills", group:"junior", en:"Junior Cognitive Skills", ar:"المهارات المعرفية للناشئين" },
