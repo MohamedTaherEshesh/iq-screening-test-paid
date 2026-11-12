@@ -75,6 +75,12 @@ button.primary{width:100%;padding:14px;font-size:16px;margin-top:18px;border-rad
 </style>
 </head>
 <body>
+<nav aria-label="OMSAZE T development assessment catalog" style="max-width:720px;margin:18px auto 0;padding:0 12px;text-align:center">
+  <a href="./assessments.html" style="display:inline-block;padding:10px 16px;border:1px solid #c9d1df;border-radius:9px;background:#fff;color:#1f4e9c;text-decoration:none;font-weight:600">
+    OMSAZE T · Assessment types preview / معاينة أنواع الاختبارات
+  </a>
+  <p style="font-size:12px;color:#5b6577;margin:6px 0">Development preview only — no new assessments are enabled / معاينة تطوير فقط، والاختبارات الجديدة غير مفعّلة</p>
+</nav>
 <div class="langbar" id="langbar"><span class="globe"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><button type="button" id="lg_en" onclick="setPageLang('en')">English</button><button type="button" id="lg_ar" onclick="setPageLang('ar')">العربية</button></div><div class="card stats" id="stats"><div><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></span><b id="st_v">–</b><span id="lb_v">Total Visitors</span></div><div><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><b id="st_s">–</b><span id="lb_s">Total Submitted</span></div></div>
 <div class="card" id="app"></div>
 <script src="./staging-config.js"></script>
