@@ -7,12 +7,20 @@ on:
       - 'index.html'
       - 'assessments.html'
       - 'assessment-catalog.js'
+      - 'university.html'
+      - 'university-client.js'
+      - 'university-config.js'
+      - 'tests/university-client.test.mjs'
       - '.github/workflows/omsaze-development-frontend-checks.yml'
   pull_request:
     paths:
       - 'index.html'
       - 'assessments.html'
       - 'assessment-catalog.js'
+      - 'university.html'
+      - 'university-client.js'
+      - 'university-config.js'
+      - 'tests/university-client.test.mjs'
       - '.github/workflows/omsaze-development-frontend-checks.yml'
   workflow_dispatch:
 
@@ -25,6 +33,13 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check revised University client contract
+        run: |
+          node --check university-client.js
+          node --test tests/university-client.test.mjs
       - name: Inspect static assessment preview and legacy site boundaries
         run: |
           python3 - <<'PY'
