@@ -74,7 +74,8 @@ Deno.serve(async req => {
       return response({ error: "unmatched verified sandbox order; reconcile first" }, 503);
     }
 
-    if (obj.success !== true || obj.is_refunded === true || obj.is_voided === true) {
+    if (obj.is_live !== false || obj.pending !== false || obj.error_occured !== false ||
+        obj.success !== true || obj.is_refunded === true || obj.is_voided === true) {
       // No paid transition. Failure/refund handling needs dedicated reviewed state machine.
       return response({ ok: true, ignored: "not a confirmed successful payment" });
     }
