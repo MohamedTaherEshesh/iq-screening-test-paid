@@ -94,7 +94,7 @@ function serverScore(test: {
     iq: Math.round(100 + 15 * z), pctl: Math.round(normalCdf(z) * 100),
     per, unanswered, elapsed, late, date: new Date().toISOString().slice(0, 10),
   };
-  return {result, late, report: reportHtml(result, {name, email, phone}, "")};
+  return {result, late};
 }
 
 Deno.serve(async (req) => {
@@ -108,28 +108,31 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, {
     status: origin === allowed && !!allowed ? 204 : 403, headers: cors,
   });
-  if (req.method !== "POST") return json({error:"method not allowed"},405);
-  if (origin && origin !== allowed) return json({error:"origin not allowed"},403);
+  const reply = (data: unknown, status = 200) => new Response(JSON.stringify(data), {
+    status, headers: { "content-type": "application/json", "cache-control": "no-store", ...cors },
+  });
+  if (req.method !== "POST") return reply({error:"method not allowed"},405);
+  if (origin && origin !== allowed) return reply({error:"origin not allowed"},403);
   try {
     requireStaging();
     if (Deno.env.get("OMSAZE_PAYMENTS_MODE") !== "sandbox") {
-      return json({error:"sandbox payments disabled"},503);
+      return reply({error:"sandbox payments disabled"},503);
     }
     const raw = await req.text();
-    if (raw.length > 20_000) return json({error:"request too large"},413);
+    if (raw.length > 20_000) return reply({error:"request too large"},413);
     let body: Payload;
-    try { body = JSON.parse(raw); } catch { return json({error:"invalid json"},400); }
+    try { body = JSON.parse(raw); } catch { return reply({error:"invalid json"},400); }
     let parsed: ReturnType<typeof validateSubmission>;
     try { parsed = validateSubmission(body); }
-    catch { return json({error:"invalid registration or answers"},400); }
+    catch { return reply({error:"invalid registration or answers"},400); }
 
     const sb = stagingDb();
     const {data: test,error: tErr} = await sb.from("test_sessions")
       .select("id,lang,seed,answer_key,started_at,submitted")
       .eq("id",parsed.testId).maybeSingle();
     if (tErr) throw tErr;
-    if (!test) return json({error:"unknown test"},404);
-    if (test.submitted) return json({error:"already submitted"},409);
+    if (!test) return reply({error:"unknown test"},404);
+    if (test.submitted) return reply({error:"already submitted"},409);
 
     // Server computes score. Browser only supplies responses and registration.
     const scored = serverScore(test,parsed.answers,parsed.name,parsed.email,parsed.phone);
@@ -152,10 +155,10 @@ Deno.serve(async (req) => {
     if (saveErr) {
       // Concurrent submissions and data errors must not create another payment.
       console.error("staging submission claim failed",saveErr.message);
-      return json({error:"submission could not be claimed; retry requires support"},409);
+      return reply({error:"submission could not be claimed; retry requires support"},409);
     }
     if (typeof submissionId !== "string") throw new Error("invalid submission receipt");
-    if (scored.late) return json({error:"time limit exceeded; review required"},409);
+    if (scored.late) return reply({error:"time limit exceeded; review required"},409);
 
     let orderId: number;
     let paymentUrl: string;
@@ -167,7 +170,7 @@ Deno.serve(async (req) => {
     } catch {
       await sb.from("submissions").update({status:"failed"})
         .eq("id",submissionId).eq("status","pending_payment");
-      return json({error:"sandbox checkout could not be started; no payment was initiated"},502);
+      return reply({error:"sandbox checkout could not be started; no payment was initiated"},502);
     }
 
     const {data:saved,error:orderErr} = await sb.from("submissions")
@@ -178,13 +181,13 @@ Deno.serve(async (req) => {
       // A Paymob sandbox order may exist but isn't linked to a submission.
       // Do not return paymentUrl; do not create another order automatically.
       console.error("staging Paymob order could not be persisted", orderErr?.message ?? "row unavailable");
-      return json({error:"sandbox payment setup incomplete; manual reconciliation required"},503);
+      return reply({error:"sandbox payment setup incomplete; manual reconciliation required"},503);
     }
     return new Response(JSON.stringify({submissionId,paymentUrl}),{
       status:200,headers:{"content-type":"application/json","cache-control":"no-store",...cors}
     });
   } catch (err) {
     console.error("staging submit unavailable",err instanceof Error ? err.message : "unknown error");
-    return json({error:"staging submission unavailable"},503);
+    return reply({error:"staging submission unavailable"},503);
   }
 });
