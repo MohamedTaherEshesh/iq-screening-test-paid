@@ -1,6 +1,6 @@
 /* Public staging client. All ownership, limits, expiry and start permission are enforced server-side. */
 export class EmailVerificationClient {
-  constructor(config,{fetcher=globalThis.fetch,storage=globalThis.sessionStorage,now=()=>Date.now()}={}){
+  constructor(config,{fetcher=globalThis.fetch.bind(globalThis),storage=globalThis.sessionStorage,now=()=>Date.now()}={}){
     this.config=config;this.fetcher=fetcher;this.storage=storage;this.now=now;this.offset=0;this.busy=false;
     try{this.state=JSON.parse(storage.getItem('omsaze-email-verification')||'null')||{}}catch{this.state={}}
     if(!this.state.browserSecret)this.state.browserSecret=Array.from(crypto.getRandomValues(new Uint8Array(32)),x=>x.toString(16).padStart(2,'0')).join('');
