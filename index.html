@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OMSAZE — Choose an assessment</title>
 <style>
-:root{color-scheme:light;--navy:#0b1f3a;--blue:#1f4e9c;--muted:#5b6779;--line:#dfe6ee;--paper:#eef3fa}
+:root{color-scheme:light;--navy:#0B1F3A;--blue:#0070F2;--teal:#00A6A6;--muted:#667085;--line:#dfe6ee;--paper:#F2F4F7}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--navy);font-family:system-ui,"Segoe UI",Tahoma,Arial,sans-serif}
+body{margin:0;background:var(--paper);color:var(--navy);font-family:"Aptos Display","Aptos",Inter,"Segoe UI",system-ui,Tahoma,Arial,sans-serif;font-size:16.5px}
 main{max-width:1060px;margin:auto;padding:28px 20px 90px}
 .brandbar{display:flex;justify-content:center;margin-bottom:14px}
 .brandmark{font-size:25px;font-weight:800;letter-spacing:2px;color:var(--blue);direction:ltr}
@@ -18,30 +18,30 @@ main{max-width:1060px;margin:auto;padding:28px 20px 90px}
 .langbar button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
 .stats{display:flex;gap:12px;margin-bottom:16px}
 .stats>div{flex:1;text-align:center;padding:14px;background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(11,31,58,.05)}
-.stats b{display:block;font-size:26px;color:var(--blue)}
-.stats span{font-size:13px;color:#4a5568}
+.stats b{display:block;font-size:27px;color:var(--teal)}
+.stats span{font-size:14px;color:var(--muted)}
 .stats .ic{display:flex;justify-content:center;color:var(--blue);margin-bottom:6px}
-#geoLine{text-align:center;font-size:12px;color:var(--muted);margin:-6px 0 16px}
+#geoLine{text-align:center;font-size:13px;color:var(--muted);margin:-6px 0 16px}
 header.hero{padding:4px 0 22px}
 h1{font-size:clamp(28px,5vw,42px);margin:10px 0;line-height:1.3}
-.lede{font-size:15px;color:var(--muted);line-height:1.8;max-width:760px}
-.note{background:#fff;border:1px solid var(--line);border-inline-start:4px solid var(--blue);padding:15px 19px;border-radius:12px;line-height:1.8;margin:20px 0 28px;font-size:13.5px}
+.lede{font-size:16.5px;color:var(--muted);line-height:1.8;max-width:760px}
+.note{background:#fff;border:1px solid var(--line);border-inline-start:4px solid var(--blue);padding:15px 19px;border-radius:12px;line-height:1.8;margin:20px 0 28px;font-size:14.5px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}
 article{min-height:208px;display:flex;flex-direction:column;gap:12px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 5px 18px rgba(11,31,58,.03)}
 article.pilot{border:2px solid var(--blue)}
-.kicker{font-size:12px;color:var(--muted);font-weight:700}
-h2{font-size:20px;line-height:1.55;margin:0}
-.english{font-size:12px;color:var(--muted);direction:ltr;text-align:right}
-.status{margin-top:auto;color:#526273;font-size:13px;font-weight:700}
-article.pilot .status{color:#075ac2}
+.kicker{font-size:13px;color:var(--muted);font-weight:700}
+h2{font-size:21px;line-height:1.55;margin:0}
+.english{font-size:13px;color:var(--muted);direction:ltr;text-align:right}
+.status{margin-top:auto;color:var(--muted);font-size:14px;font-weight:700}
+article.pilot .status{color:var(--blue)}
 a.previewBtn{display:block;text-align:center;text-decoration:none;border:1px solid var(--blue);background:#eaf2ff;color:var(--blue);border-radius:9px;padding:10px 16px;font-weight:700}
-button.soon{font-size:15px;font-weight:800;letter-spacing:.3px;color:#fff;background:linear-gradient(90deg,#e8453c 0%,#2ea043 50%,#3b82f6 100%);border:none;border-radius:9px;padding:11px 16px;text-align:center;box-shadow:0 2px 10px rgba(59,130,246,.35);width:100%;cursor:not-allowed}
+button.soon{font-size:15px;font-weight:700;letter-spacing:.3px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:11px 16px;text-align:center;width:100%;cursor:not-allowed}
 .card{max-width:420px;margin:24px auto 0;background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
 .card label{display:block;margin:10px 0 4px;font-weight:600;font-size:13px}
 .card input{width:100%;padding:10px;border:1px solid #c9d1df;border-radius:8px;font-size:14px}
 .card button{background:var(--blue);color:#fff;border:0;border-radius:8px;padding:10px 18px;font-size:14px;cursor:pointer;margin-top:8px}
-.err{color:#c0392b;font-size:13px;margin-top:6px;min-height:16px}
-footer{font-size:12px;color:var(--muted);line-height:1.9;margin-top:40px;max-width:1060px;margin-inline:auto}
+.err{color:#c0392b;font-size:14px;margin-top:6px;min-height:16px}
+footer{font-size:13px;color:var(--muted);line-height:1.9;margin-top:40px;max-width:1060px;margin-inline:auto}
 </style>
 </head>
 <body>
