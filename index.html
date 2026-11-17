@@ -554,7 +554,7 @@ async function showPaymentReturn(){
 /* ---------- init ---------- */
 if(typeof document!=='undefined' && document.getElementById('app')){
   document.documentElement.dir=UI[LANG].dir;
-  trackVisit(); loadStats(); updateLangButtons();
+  trackVisit().finally(loadStats); updateLangButtons();
   if(new URLSearchParams(location.search).get('payment')==='return') showPaymentReturn();
   else renderReg();
 }
