@@ -81,7 +81,17 @@ if (item.previewHref) {
   button = document.createElement("button");
   button.type = "button";
   button.disabled = true;
-  button.textContent = "غير متاح الآن";
+  button.innerHTML = "قريباً! Coming soon!";
+  button.style.fontSize = "15px";
+  button.style.fontWeight = "800";
+  button.style.letterSpacing = "0.3px";
+  button.style.color = "#ffffff";
+  button.style.background = "linear-gradient(90deg, #e8453c 0%, #2ea043 50%, #3b82f6 100%)";
+  button.style.border = "none";
+  button.style.borderRadius = "9px";
+  button.style.padding = "11px 16px";
+  button.style.textAlign = "center";
+  button.style.boxShadow = "0 2px 10px rgba(59,130,246,0.35)";
 }
     card.append(kicker,title,subtitle,status,button);
     root.append(card);
