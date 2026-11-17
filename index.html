@@ -52,21 +52,21 @@ footer{font-size:12px;color:var(--muted);line-height:1.9;margin-top:40px;max-wid
 <p id="geoLine"></p>
 <header class="hero">
   <h1 id="h1" dir="rtl">اختر الاختبار الذي تريد معاينته</h1>
-  <p class="lede" id="lede" dir="rtl">OMSAZE تطوّر ثمانية أنواع من اختبارات التفكير والمهارات المعرفية. اختر اختبارًا أدناه لمعاينته، وبعد تأكيد بريدك الإلكتروني واجتياز التحقق البشري يمكنك بدء الاختبار الفعلي.</p>
+  <p class="lede" id="lede" dir="rtl">OMSAZE تطوّر ثمانية أنواع من اختبارات التفكير والمهارات المعرفية. اختر اختبارًا أدناه؛ المسارات الجاهزة تبدأ فورًا بعد تأكيد بريدك الإلكتروني واجتياز التحقق البشري.</p>
 </header>
 <div class="note" id="note" dir="rtl"><strong>مسارا "المهارات المعرفية الجامعية" و"التحضير لاختبار الذكاء الجامعي" قيد التجربة التدريجية.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.</div>
 <section class="grid" id="catalog" aria-label="أنواع الاختبارات"></section>
 <p style="text-align:center;margin:18px 0 0"><button type="button" id="adminToggle" style="font-size:11px;padding:5px 10px;opacity:.55;background:#e7ecf5;color:#1d2433;border:0;border-radius:8px;cursor:pointer">Admin</button></p>
 <div class="card" id="adminPanel" style="display:none;max-width:420px"></div>
-<footer>OMSAZE — Assessment catalog. This page previews assessment types and routes to each pilot's own sign-in, human-check and exam flow. It does not itself collect answers or process payments.</footer>
+<footer>OMSAZE — Assessment catalog. This page lists the available assessment types and routes you to each one's own sign-in, human-check and exam flow. It does not itself collect answers or process payments.</footer>
 </main>
 <script src="./staging-config.js"></script>
 <script src="./assessment-catalog.js"></script>
 <script>
 "use strict";
 let LANG='ar';
-const STAGE_LABELS={en:{visitors:'Total Visitors',submitted:'Total Submitted',h1:'Choose an assessment to preview',lede:'OMSAZE is developing eight types of reasoning and cognitive-skills assessments. Pick one below to preview it — after confirming your email and passing the human check, you can start the real exam.',note:'<strong>University Cognitive Skills and University IQ Preparation are in staged pilot testing.</strong> Every exam begins with email confirmation and a human check before any question is shown. No answers or protected questions are ever shown here.'},
-  ar:{visitors:'إجمالي الزوار',submitted:'إجمالي من أنهوا الاختبار',h1:'اختر الاختبار الذي تريد معاينته',lede:'OMSAZE تطوّر ثمانية أنواع من اختبارات التفكير والمهارات المعرفية. اختر اختبارًا أدناه لمعاينته، وبعد تأكيد بريدك الإلكتروني واجتياز التحقق البشري يمكنك بدء الاختبار الفعلي.',note:'<strong>مسارا "المهارات المعرفية الجامعية" و"التحضير لاختبار الذكاء الجامعي" قيد التجربة التدريجية.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.'}};
+const STAGE_LABELS={en:{visitors:'Total Visitors',submitted:'Total Submitted',h1:'Choose an assessment',lede:'OMSAZE is developing eight types of reasoning and cognitive-skills assessments. Pick one below — the ready tracks start right away once you confirm your email and pass the human check.',note:'<strong>University Cognitive Skills and University IQ Preparation are live for testing.</strong> Every exam begins with email confirmation and a human check before any question is shown. No answers or protected questions are ever shown here.'},
+  ar:{visitors:'إجمالي الزوار',submitted:'إجمالي من أنهوا الاختبار',h1:'اختر الاختبار',lede:'OMSAZE تطوّر ثمانية أنواع من اختبارات التفكير والمهارات المعرفية. اختر اختبارًا أدناه؛ المسارات الجاهزة تبدأ فورًا بعد تأكيد بريدك الإلكتروني واجتياز التحقق البشري.',note:'<strong>مساران "المهارات المعرفية الجامعية" و"التحضير لاختبار الذكاء الجامعي" جاهزان للاختبار الآن.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.'}};
 function renderCatalog(){
   const root=document.getElementById('catalog'); root.innerHTML='';
   const catalog=window.OMSAZE_T_CATALOG;
@@ -76,11 +76,11 @@ function renderCatalog(){
     const kicker=document.createElement('div'); kicker.className='kicker'; kicker.textContent=item.pilot?(LANG==='ar'?'أول مسار للتطوير':'First pilot track'):(LANG==='ar'?'مسار مخطط':'Planned track');
     const title=document.createElement('h2'); title.textContent=LANG==='ar'?item.ar:item.en;
     const subtitle=document.createElement('div'); subtitle.className='english'; subtitle.textContent=LANG==='ar'?item.en:item.ar;
-    const status=document.createElement('div'); status.className='status'; status.textContent=item.pilot?(LANG==='ar'?'تجهيز بنك أسئلة أصلي ومراجع':'Building an original, reviewed question bank'):(LANG==='ar'?'قيد التخطيط':'Planned');
+    const status=document.createElement('div'); status.className='status'; status.textContent=item.previewHref?(LANG==='ar'?'الاختبار جاهز — يتطلب تأكيد البريد والتحقق البشري':'Exam ready — email confirmation and human check required'):(item.pilot?(LANG==='ar'?'تجهيز بنك أسئلة أصلي ومراجع':'Building an original, reviewed question bank'):(LANG==='ar'?'قيد التخطيط':'Planned'));
     let button;
     if(item.previewHref){
       button=document.createElement('a'); button.className='previewBtn'; button.href=item.previewHref;
-      button.textContent=LANG==='ar'?'معاينة النسخة التجريبية':'Preview pilot';
+      button.textContent=LANG==='ar'?'ابدأ الاختبار':'Start exam';
     } else {
       button=document.createElement('button'); button.type='button'; button.disabled=true; button.className='soon';
       button.textContent=LANG==='ar'?'قريباً! Coming soon!':'Coming soon!';
