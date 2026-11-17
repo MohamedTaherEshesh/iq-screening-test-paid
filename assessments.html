@@ -63,10 +63,26 @@ footer {font-size:13px;color:var(--muted);line-height:1.9;margin-top:36px}
     const status = document.createElement("div");
     status.className = "status";
     status.textContent = item.pilot ? "تجهيز بنك أسئلة أصلي ومراجع" : "قيد التخطيط";
-    const button = document.createElement("button");
-    button.type = "button";
-    button.disabled = true;
-    button.textContent = "غير متاح الآن";
+   let button;
+if (item.previewHref) {
+  button = document.createElement("a");
+  button.href = item.previewHref;
+  button.textContent = "معاينة النسخة التجريبية";
+  button.style.display = "block";
+  button.style.textAlign = "center";
+  button.style.textDecoration = "none";
+  button.style.border = "1px solid var(--blue)";
+  button.style.background = "#eaf2ff";
+  button.style.color = "var(--blue)";
+  button.style.borderRadius = "9px";
+  button.style.padding = "10px 16px";
+  button.style.fontWeight = "700";
+} else {
+  button = document.createElement("button");
+  button.type = "button";
+  button.disabled = true;
+  button.textContent = "غير متاح الآن";
+}
     card.append(kicker,title,subtitle,status,button);
     root.append(card);
   }
