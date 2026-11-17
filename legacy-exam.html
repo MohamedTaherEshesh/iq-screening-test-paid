@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MindProof - Cognitive Assessment</title>
+<style>
+body{font-family:system-ui,"Segoe UI",Tahoma,Arial,sans-serif;margin:0;background:#f4f6fa;color:#1d2433}
+.card{max-width:720px;margin:24px auto;background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+h1{font-size:22px;margin:0 0 10px}
+h2{font-size:18px;margin:18px 0 6px}
+label{display:block;margin:12px 0 4px;font-weight:600;font-size:14px}
+input,select{width:100%;padding:10px;border:1px solid #c9d1df;border-radius:8px;font-size:15px;box-sizing:border-box;background:#fff}
+button{background:#1f4e9c;color:#fff;border:0;border-radius:8px;padding:10px 18px;font-size:15px;cursor:pointer}
+button:disabled{background:#9aa6bd;cursor:default}
+button.ghost{background:#e7ecf5;color:#1d2433}
+.opt{display:block;width:100%;text-align:start;margin:8px 0;background:#f0f4fb;color:#1d2433;border:2px solid transparent;font-size:16px;padding:12px}
+.opt.sel{border-color:#1f4e9c;background:#dfe9fb}
+.opt:disabled{background:#f3f4f6;color:#6b7280}
+.timer{font-size:20px;font-weight:700}
+.timer.low{color:#c0392b}
+.bar{height:8px;background:#e3e8f2;border-radius:4px;overflow:hidden}
+.bar>div{height:100%;background:#1f4e9c}
+.err{color:#c0392b;font-size:13px;margin-top:6px;min-height:16px}
+.qtext{font-size:18px;line-height:1.6;white-space:pre-line;margin:14px 0}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+td,th{padding:8px;border-bottom:1px solid #e3e8f2;text-align:start}
+.disc{font-size:12px;color:#5b6577;margin-top:16px;line-height:1.5}
+.brand{font-size:12px;color:#5b6577;margin-bottom:6px}
+/* PHOTO_DATA_URI */
+/* ---- Canva design system: light blue-grey page, centered white card, brand blue ---- */
+body{background:#eef3fa;min-height:100vh}
+.card{max-width:640px;border-radius:16px;padding:32px 36px;box-shadow:0 10px 30px rgba(31,78,156,.12)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;color:#1f4e9c;font-size:16px;margin-bottom:14px}
+.logo .dot{width:22px;height:22px;border-radius:50%;background:#1f4e9c;display:inline-block}
+.steps{display:flex;gap:6px;margin:6px 0 4px}
+.steps span{flex:1;height:4px;border-radius:2px;background:#dfe6f2}
+.steps span.on{background:#1f4e9c}
+.step-label{font-size:13px;color:#1f4e9c;font-weight:600;margin-bottom:10px}
+h1{text-align:center;font-size:24px}
+.sub{text-align:center;color:#5b6577;margin:0 0 18px}
+.row3,.row2{display:grid;gap:12px}
+.row3{grid-template-columns:1fr 1fr 1fr}
+.row2{grid-template-columns:1fr 1fr}
+.row3>div,.row2>div{min-width:0}
+input,select{border-radius:10px;border-color:#d5dce8}
+button.primary{width:100%;padding:14px;font-size:16px;margin-top:18px;border-radius:10px;background:#1f4e9c}
+.secure{text-align:center;font-size:12px;color:#5b6577;margin-top:12px}
+.qhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.qmeta{font-size:13px;color:#5b6577;margin-bottom:6px}
+.timer{background:#e8f0fc;color:#1f4e9c;border-radius:999px;padding:6px 14px;font-size:15px;font-weight:700;min-width:70px;text-align:center}
+.timer.low{background:#fdecea;color:#c0392b}
+.opt{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid #dfe6f2;border-radius:12px;padding:14px 16px;margin:10px 0}
+.opt:hover:not(:disabled){border-color:#1f4e9c}
+.opt.sel{border-color:#1f4e9c;background:#eef4ff;box-shadow:0 0 0 3px rgba(31,78,156,.12)}
+.ltr{width:28px;height:28px;border-radius:8px;background:#eef3fa;color:#1f4e9c;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex:0 0 28px}
+.hint{font-size:13px;color:#5b6577;min-height:18px}
+.nav{display:flex;justify-content:space-between;margin-top:14px;gap:8px;flex-wrap:wrap}
+@media (max-width:620px){.row3{grid-template-columns:1fr}.row2{grid-template-columns:1fr}.card{padding:22px}}
+.stats{display:flex;gap:12px;margin-bottom:0}
+.stats>div{flex:1;text-align:center;padding:14px;background:#f0f4fb;border-radius:10px}
+.stats b{display:block;font-size:26px;color:#1f4e9c}
+.stats span{font-size:13px;color:#4a5568}
+.consent{display:flex;gap:8px;align-items:flex-start;font-weight:400;margin:16px 0 8px;font-size:13px;line-height:1.5}
+.consent input{width:auto;margin-top:3px}
+.pay-note{font-size:13px;color:#4a5568}
+.langbar{display:flex;align-items:center;justify-content:flex-end;gap:8px;max-width:720px;margin:16px auto 0;padding:0 2px}
+.langbar .globe{display:flex;color:#1f4e9c}
+.langbar button{background:#fff;color:#1f4e9c;border:1px solid #c9d1df;border-radius:8px;padding:6px 12px;font-size:13px}
+.langbar button.on{background:#1f4e9c;color:#fff;border-color:#1f4e9c}
+.stats .ic{display:flex;justify-content:center;color:#1f4e9c;margin-bottom:6px}
+.elapsed-wrap{font-size:14px;color:#4a5568}
+.elapsed-wrap b{color:#1f4e9c;font-variant-numeric:tabular-nums}
+.rvgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px;margin:12px 0}.rv{padding:8px 0;border:0;border-radius:6px;font-weight:600;color:#fff;cursor:pointer}.rv:disabled{opacity:.35;cursor:default}.rv.done{background:#2e7d4f}.rv.flagged{background:#d98e04}.rv.expired{background:#c0392b}.rv.todo{background:#8a94a6}
+</style>
+</head>
+<body>
+<nav aria-label="OMSAZE T development assessment catalog" style="max-width:720px;margin:18px auto 0;padding:0 12px;text-align:center">
+  <a href="./assessments.html" style="display:inline-block;padding:10px 16px;border:1px solid #c9d1df;border-radius:9px;background:#fff;color:#1f4e9c;text-decoration:none;font-weight:600">
+    OMSAZE T · Assessment types preview / معاينة أنواع الاختبارات
+  </a>
+  <p style="font-size:12px;color:#5b6577;margin:6px 0">Development preview only — no new assessments are enabled / معاينة تطوير فقط، والاختبارات الجديدة غير مفعّلة</p>
+</nav>
+<div class="langbar" id="langbar"><span class="globe"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><button type="button" id="lg_en" onclick="setPageLang('en')">English</button><button type="button" id="lg_ar" onclick="setPageLang('ar')">العربية</button></div><div class="card stats" id="stats"><div><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></span><b id="st_v">–</b><span id="lb_v">Total Visitors</span></div><div><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><b id="st_s">–</b><span id="lb_s">Total Submitted</span></div></div>
+<p id="geoLine" style="text-align:center;font-size:12px;color:#5b6577;margin:-6px 0 10px"></p>
+<div class="card" id="app"></div>
+<p style="text-align:center;margin:18px 0 0"><button type="button" id="adminToggle" class="ghost" style="font-size:11px;padding:5px 10px;opacity:.55">Admin</button></p>
+<div class="card" id="adminPanel" style="display:none;max-width:420px"></div>
+<script src="./staging-config.js"></script>
+<script>
+const CONFIG = {"brand": "MindProof", "apiBase": "", "priceNote": "Full report fee: 1 USD (paid in EGP through a secure gateway).", "ccEmail": "", "norm": {"mean": 25, "sd": 8}, "jobBands": [{"minIQ": 130, "en": "Senior and leadership roles requiring complex analysis", "ar": "أدوار قيادية وعليا تتطلب تحليلًا معقدًا", "fr": "Postes seniors et de direction à analyse complexe"}, {"minIQ": 110, "en": "Professional and analytical roles", "ar": "أدوار مهنية وتحليلية", "fr": "Postes professionnels et analytiques"}, {"minIQ": 90, "en": "Operational and structured roles", "ar": "أدوار تشغيلية ومنظمة", "fr": "Postes opérationnels et structurés"}, {"minIQ": 0, "en": "Roles with clear procedures and supervision", "ar": "أدوار ذات إجراءات واضحة وإشراف", "fr": "Postes à procédures claires et encadrés"}], "photo": ""};
+// Development-only fail-closed API selection; do NOT send real client data to Production.
+const STAGING_API = String(window.OMSAZE_STAGING_API_BASE || "").replace(new RegExp("/$"), "");
+let stagingReady = false;
+try {
+  const u = new URL(STAGING_API);
+  stagingReady = u.protocol === "https:" && u.hostname.endsWith(".supabase.co")
+    && u.hostname !== "trfmircskunoszetgfjt.supabase.co"
+    && u.pathname === "/functions/v1";
+} catch (_) {}
+CONFIG.apiBase = stagingReady ? STAGING_API : "";
+if (!stagingReady) {
+  document.getElementById("app").textContent =
+    "OMSAZE Development: staging backend is not configured. Configure staging-config.js with a NEW Supabase project's public Edge Functions URL; production is intentionally blocked.";
+  throw new Error("Development backend not configured; production access blocked");
+}
+
+/* ---------- UI strings ---------- */
+const UI = {
+  en: {dir:'ltr', title:'MindProof - Cognitive Assessment', intro:'Answer 50 questions. Each question has 30 seconds. Unanswered or timed-out questions count as incorrect. Do not use outside help.',
+    name:'Full name', gender:'Gender', male:'Male', female:'Female', birth:'Date of birth', language:'Exam language', phone:'Phone number', email:'Email address', start:'Start test',
+    next:'Next', prev:'Previous', finish:'Finish test', of:'of', sec:'s', timeUp:'Time is up for this question.',
+    reqErr:'Please fill in all fields correctly.', emailErr:'Enter a valid email address.', phoneErr:'Enter a valid phone number.',
+    rTitle:'Your Report', candidate:'Candidate', score:'Score', pct:'Percentage', estimate:'Estimated IQ-equivalent score', pctl:'Percentile',
+    abil:'Ability breakdown', strong:'Strengths', weak:'Areas to develop', none:'None identified', jobs:'Role fit (indicative)',
+    timeouts:'Timed-out questions', unanswered:'Unanswered questions', tabs:'Window/tab switches during test',
+    disc:'This is a screening estimate, not a clinically validated IQ measurement. The score mapping uses assumed norms until calibrated on a representative sample. Use it together with other assessment information.',
+    download:'Download report', sending:'Sending report by email...', sent:'Report sent by email.', sendFail:'Could not send the email automatically. Please download the report.',
+    ab:{num:'Numerical reasoning', pat:'Pattern reasoning', verb:'Verbal reasoning', logic:'Logical deduction', vis:'Visual-spatial reasoning'}},
+  ar: {dir:'rtl', title:'اختبار الفحص المعرفي', intro:'أجب عن 50 سؤالًا. لكل سؤال 30 ثانية. الأسئلة غير المُجابة أو التي انتهى وقتها تُحسب خطأ. يُرجى عدم الاستعانة بأي مصدر خارجي.',
+    name:'الاسم الكامل', gender:'النوع', male:'ذكر', female:'أنثى', birth:'تاريخ الميلاد', language:'لغة الاختبار', phone:'رقم الهاتف', email:'البريد الإلكتروني', start:'بدء الاختبار',
+    next:'التالي', prev:'السابق', finish:'إنهاء الاختبار', of:'من', sec:'ث', timeUp:'انتهى الوقت لهذا السؤال.',
+    reqErr:'يُرجى تعبئة جميع الحقول بشكل صحيح.', emailErr:'أدخل بريدًا إلكترونيًا صحيحًا.', phoneErr:'أدخل رقم هاتف صحيحًا.',
+    rTitle:'تقريرك', candidate:'المتقدم', score:'الدرجة', pct:'النسبة المئوية', estimate:'الدرجة التقديرية المكافئة لمعامل الذكاء', pctl:'المئين',
+    abil:'تحليل القدرات', strong:'نقاط القوة', weak:'مجالات التطوير', none:'لا يوجد', jobs:'ملاءمة الأدوار (مؤشر إرشادي)',
+    timeouts:'أسئلة انتهى وقتها', unanswered:'أسئلة غير مُجابة', tabs:'تبديل النافذة أو التبويب أثناء الاختبار',
+    disc:'هذا تقدير فحص وليس قياسًا سريريًا معتمدًا لمعامل الذكاء. يعتمد التحويل على معايير مفترضة حتى يتم معايرته على عينة ممثلة. استخدمه مع معلومات تقييم أخرى.',
+    download:'تحميل التقرير', sending:'جارٍ إرسال التقرير بالبريد...', sent:'تم إرسال التقرير بالبريد.', sendFail:'تعذّر الإرسال التلقائي للبريد. يُرجى تحميل التقرير.',
+    ab:{num:'الاستدلال العددي', pat:'استدلال الأنماط', verb:'الاستدلال اللفظي', logic:'الاستنتاج المنطقي', vis:'الاستدلال البصري المكاني'}},
+  fr: {dir:'ltr', title:'Test de dépistage cognitif', intro:'Répondez à 50 questions. Chaque question dispose de 30 secondes. Les questions sans réponse ou expirées comptent comme incorrectes.',
+    name:'Nom complet', gender:'Genre', male:'Homme', female:'Femme', birth:'Date de naissance', language:'Langue du test', phone:'Téléphone', email:'E-mail', start:'Commencer le test',
+    next:'Suivant', prev:'Précédent', finish:'Terminer', of:'sur', sec:'s', timeUp:'Temps écoulé pour cette question.',
+    reqErr:'Veuillez remplir correctement tous les champs.', emailErr:'Adresse e-mail invalide.', phoneErr:'Numéro de téléphone invalide.',
+    rTitle:'Votre rapport', candidate:'Candidat', score:'Score', pct:'Pourcentage', estimate:'Score estimé équivalent QI', pctl:'Centile',
+    abil:'Détail des capacités', strong:'Points forts', weak:'Axes de progression', none:'Aucun identifié', jobs:'Adéquation aux rôles (indicatif)',
+    timeouts:'Questions expirées', unanswered:'Questions sans réponse', tabs:'Changements de fenêtre/onglet pendant le test',
+    disc:'Ceci est une estimation de dépistage, non une mesure clinique validée du QI. La conversion utilise des normes supposées jusqu’à calibrage sur un échantillon représentatif.',
+    download:'Télécharger le rapport', sending:'Envoi du rapport par e-mail...', sent:'Rapport envoyé par e-mail.', sendFail:'Envoi automatique impossible. Veuillez télécharger le rapport.',
+    ab:{num:'Raisonnement numérique', pat:'Raisonnement par motifs', verb:'Raisonnement verbal', logic:'Déduction logique', vis:'Raisonnement visuo-spatial'}}
+};
+
+Object.assign(UI.en,{step1:'Step 1 of 2',secure:'Your information is secure and will only be used to administer the test.',question:'Question',hint:'Choose the best answer before the timer ends.'});
+Object.assign(UI.ar,{step1:'الخطوة 1 من 2',secure:'بياناتك محمية وستُستخدم فقط لإجراء الاختبار.',question:'السؤال',hint:'اختر أفضل إجابة قبل انتهاء الوقت.'});
+Object.assign(UI.fr,{step1:'Étape 1 sur 2',secure:'Vos informations sont sécurisées et serviront uniquement à administrer le test.',question:'Question',hint:'Choisissez la meilleure réponse avant la fin du temps.'});
+Object.assign(UI.en,{country:'Country',city:'City',selectCountry:'Select your country',selectCity:'Select your city',otherCountry:'Other',otherCity:'Other / not listed',countryErr:'Please select your country.',cityErr:'Please select or enter your city.'});
+Object.assign(UI.ar,{country:'الدولة',city:'المدينة',selectCountry:'اختر دولتك',selectCity:'اختر مدينتك',otherCountry:'أخرى',otherCity:'أخرى / غير مدرجة',countryErr:'يُرجى اختيار الدولة.',cityErr:'يُرجى اختيار أو إدخال المدينة.'});
+Object.assign(UI.fr,{country:'Pays',city:'Ville',selectCountry:'Sélectionnez votre pays',selectCity:'Sélectionnez votre ville',otherCountry:'Autre',otherCity:'Autre / non listée',countryErr:'Veuillez sélectionner votre pays.',cityErr:'Veuillez sélectionner ou saisir votre ville.'});
+/* ---------- country -> city (parent -> child) ---------- */
+const COUNTRIES={
+  EG:{en:'Egypt',ar:'مصر',fr:'Égypte',cities:['Cairo','Giza','Alexandria','Damietta','Mansoura','Tanta','Port Said','Suez','Luxor','Aswan']},
+  SA:{en:'Saudi Arabia',ar:'السعودية',fr:'Arabie saoudite',cities:['Riyadh','Jeddah','Mecca','Medina','Dammam','Khobar','Tabuk','Abha']},
+  AE:{en:'United Arab Emirates',ar:'الإمارات',fr:'Émirats arabes unis',cities:['Dubai','Abu Dhabi','Sharjah','Ajman','Al Ain']},
+  KW:{en:'Kuwait',ar:'الكويت',fr:'Koweït',cities:['Kuwait City','Hawalli','Salmiya']},
+  QA:{en:'Qatar',ar:'قطر',fr:'Qatar',cities:['Doha','Al Rayyan']},
+  BH:{en:'Bahrain',ar:'البحرين',fr:'Bahreïn',cities:['Manama','Riffa']},
+  OM:{en:'Oman',ar:'عُمان',fr:'Oman',cities:['Muscat','Salalah']},
+  JO:{en:'Jordan',ar:'الأردن',fr:'Jordanie',cities:['Amman','Zarqa','Irbid']},
+  LB:{en:'Lebanon',ar:'لبنان',fr:'Liban',cities:['Beirut','Tripoli']},
+  OTHER:{en:'Other',ar:'أخرى',fr:'Autre',cities:[]}
+};
+function cityOptionsFor(countryCode,selectedCity){
+  const u=UI[LANG];
+  if(!countryCode)return `<option value="">${esc(u.selectCity)}</option>`;
+  const c=COUNTRIES[countryCode];
+  if(!c||!c.cities.length)return '';
+  const opts=c.cities.map(name=>`<option value="${esc(name)}" ${name===selectedCity?'selected':''}>${esc(name)}</option>`).join('');
+  return `<option value="">${esc(u.selectCity)}</option>${opts}<option value="__other__" ${selectedCity==='__other__'?'selected':''}>${esc(u.otherCity)}</option>`;
+}
+function onCountryChange(){
+  const country=document.getElementById('f_country').value;
+  const wrap=document.getElementById('f_city_wrap');
+  if(!wrap)return;
+  if(country==='OTHER'){
+    wrap.innerHTML=`<label>${esc(UI[LANG].city)}</label><input id="f_city" value="">`;
+  }else{
+    wrap.innerHTML=`<label>${esc(UI[LANG].city)}</label><select id="f_city" onchange="onCityChange()">${cityOptionsFor(country)}</select>`;
+  }
+}
+function onCityChange(){
+  const sel=document.getElementById('f_city');
+  if(sel&&sel.value==='__other__'){
+    const wrap=document.getElementById('f_city_wrap');
+    wrap.innerHTML=`<label>${esc(UI[LANG].city)}</label><input id="f_city" value="">`;
+  }
+}
+
+Object.assign(UI.en,{visitors:'Total Visitors', submitted:'Total Submitted', consent:'I agree that my name, email, phone and answers are stored to run this test and send my report.', consentErr:'Please accept the data consent to continue.', paying:'Redirecting to secure payment...', payFail:'Could not start the payment. Please try again.', waiting:'Confirming your payment...', payDone:'Payment confirmed.', payNotDone:'The payment was not completed. Please try again.', payPending:'Payment is still being confirmed. Your report will also be emailed to you.', again:'Back to start'});
+Object.assign(UI.ar,{visitors:'إجمالي الزوار', submitted:'إجمالي المشاركات', consent:'أوافق على حفظ اسمي وبريدي الإلكتروني وهاتفي وإجاباتي لإجراء هذا الاختبار وإرسال التقرير.', consentErr:'يُرجى الموافقة على معالجة البيانات للمتابعة.', paying:'جارٍ تحويلك إلى الدفع الآمن...', payFail:'تعذّر بدء الدفع. يُرجى المحاولة مرة أخرى.', waiting:'جارٍ تأكيد الدفع...', payDone:'تم تأكيد الدفع.', payNotDone:'لم يكتمل الدفع. يُرجى المحاولة مرة أخرى.', payPending:'جارٍ تأكيد الدفع. سيُرسل التقرير إلى بريدك أيضًا.', again:'العودة للبداية'});
+Object.assign(UI.fr,{visitors:'Visiteurs totaux', submitted:'Tests soumis', consent:'J\'accepte que mon nom, e-mail, téléphone et réponses soient enregistrés pour réaliser ce test et envoyer mon rapport.', consentErr:'Veuillez accepter le consentement pour continuer.', paying:'Redirection vers le paiement sécurisé...', payFail:'Impossible de lancer le paiement. Réessayez.', waiting:'Confirmation du paiement...', payDone:'Paiement confirmé.', payNotDone:'Le paiement n\'a pas abouti. Réessayez.', payPending:'Paiement en cours de confirmation. Le rapport vous sera aussi envoyé par e-mail.', again:'Retour au début'});
+
+const ABIL = ['num','pat','verb','logic','vis'];
+const TOTAL = 50, SECONDS = 30;
+let LANG = 'en';
+let EXAM = 'en';   // language of the questions, chosen in the form
+const ST = {};            // test state
+
+/* ---------- helpers (display only) ---------- */
+const tx=(en,ar)=> EXAM==='ar' ? ar : en;
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+/* ---------- registration ---------- */
+function readReg(){
+  const g=id=>{const el=document.getElementById(id); return el?el.value.trim():(ST.reg?ST.reg[id]:'');};
+  return {name:g('f_name'), gender:g('f_gender'), birth:g('f_birth'), lang:g('f_lang')||'en', phone:g('f_phone'), email:g('f_email'), country:g('f_country'), city:g('f_city')};
+}
+function renderReg(err, keep){
+  const u=UI[LANG];
+  const v=keep||{};
+  const langOpts=[['en','English'],['ar','العربية'],['fr','Français']].map(([c,n])=>`<option value="${c}" ${c===LANG?'selected':''}>${n}</option>`).join('');
+  const countryOpts=`<option value="">${esc(u.selectCountry)}</option>`+Object.entries(COUNTRIES).map(([code,c])=>`<option value="${code}" ${code===v.country?'selected':''}>${esc(c[LANG]||c.en)}</option>`).join('');
+  document.getElementById('app').innerHTML=`
+    <div class="logo"><span class="omega" style="font-weight:700;margin-inline-end:4px">Ω</span>${esc(CONFIG.brand||'')}</div>
+    <div class="steps"><span class="on"></span><span></span></div>
+    <div class="step-label">${u.step1}</div>
+    <h1>${u.title}</h1><p class="sub">${u.intro}</p>
+    <label>${u.name}</label><input id="f_name" value="${esc(v.name||'')}">
+    <div class="row3">
+      <div><label>${u.gender}</label><select id="f_gender"><option value="male" ${v.gender==='male'?'selected':''}>${u.male}</option><option value="female" ${v.gender==='female'?'selected':''}>${u.female}</option></select></div>
+      <div><label>${u.birth}</label><input id="f_birth" type="date" value="${esc(v.birth||'')}"></div>
+      <div><label>${u.language}</label><select id="f_lang" >${langOpts}</select></div>
+    </div>
+    <div class="row2">
+      <div><label>${u.country}</label><select id="f_country" onchange="onCountryChange()">${countryOpts}</select></div>
+      <div id="f_city_wrap">${v.country==='OTHER'?`<label>${esc(u.city)}</label><input id="f_city" value="${esc(v.city||'')}">`:`<label>${esc(u.city)}</label><select id="f_city" onchange="onCityChange()">${cityOptionsFor(v.country,v.city)}</select>`}</div>
+    </div>
+    <div class="row2">
+      <div><label>${u.phone}</label><input id="f_phone" value="${esc(v.phone||'')}"></div>
+      <div><label>${u.email}</label><input id="f_email" type="email" value="${esc(v.email||'')}"></div>
+    </div>
+    <div class="err" id="f_err">${err||''}</div>
+    <label class="consent"><input type="checkbox" id="f_consent"> ${u.consent}</label>
+    <p class="secure">${CONFIG.priceNote||""}</p>
+    <button class="primary" onclick="submitReg()">${u.start}</button>
+    <p class="secure">🔒 ${u.secure}</p>`;
+}
+function changeLang(l){ LANG=l; refreshStatLabels(); document.documentElement.lang=l; document.documentElement.dir=UI[l].dir; renderReg(null, readReg()); }
+function ageOk(birth){
+  const b=new Date(birth+"T00:00:00"); if(isNaN(b)) return false;
+  const t=new Date(); let age=t.getFullYear()-b.getFullYear();
+  const m=t.getMonth()-b.getMonth(); if(m<0||(m===0&&t.getDate()<b.getDate())) age--;
+  return age>=5 && age<=100;
+}
+Object.assign(UI.en,{ageErr:"Age must be between 5 and 100 years."});
+Object.assign(UI.ar,{ageErr:"يجب أن يكون العمر بين 5 و100 سنة."});
+Object.assign(UI.fr,{ageErr:"L'âge doit être compris entre 5 et 100 ans."});
+function submitReg(){
+  const r=readReg(); const u=UI[LANG];
+  let err='';
+  if(r.name.length<3 || !r.gender || !r.birth) err=u.reqErr;
+  else if(!ageOk(r.birth)) err=u.ageErr;
+  else if(!r.country) err=u.countryErr;
+  else if(!r.city || r.city==='__other__') err=u.cityErr;
+  else if(!document.getElementById('f_consent').checked) err=u.consentErr;
+  else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(r.email)) err=u.emailErr;
+  else if(!/^\+?[0-9\s-]{7,20}$/.test(r.phone)) err=u.phoneErr;
+  if(err){ document.getElementById('f_err').textContent=err; return; }
+  ST.reg=r; EXAM=r.lang;
+  startTest();
+}
+
+Object.assign(UI.en,{flag:'Mark for later', unflag:'Unmark', review:'Review questions', flagged:'Marked for later', answeredCount:'Answered', rvLegend:'Green = answered, orange = marked for later, red = time expired, grey = not answered. Click a number to go back to it.', backToQ:'Back to question'});
+Object.assign(UI.ar,{flag:'وضع علامة للمراجعة', unflag:'إلغاء العلامة', review:'مراجعة الأسئلة', flagged:'معلّم للمراجعة', answeredCount:'تمت الإجابة', rvLegend:'أخضر = تمت الإجابة، برتقالي = معلّم للمراجعة، أحمر = انتهى الوقت، رمادي = لم تتم الإجابة. اضغط رقم السؤال للعودة إليه.', backToQ:'العودة إلى السؤال'});
+Object.assign(UI.fr,{flag:'Marquer pour plus tard', unflag:'Retirer le marquage', review:'Revoir les questions', flagged:'Marquée pour plus tard', answeredCount:'Répondues', rvLegend:'Vert = répondue, orange = marquée, rouge = temps écoulé, gris = sans réponse. Cliquez un numéro pour y revenir.', backToQ:'Retour à la question'});
+function toggleFlag(){ if(ST.done) return; const i=ST.idx; ST.flag[i]=!ST.flag[i];
+  if(ST.flag[i]) ST.deadline[i]=null;
+  else if(!ST.locked[i] && ST.ans[i]===null) ST.deadline[i]=Date.now()+SECONDS*1000;
+  renderQ(); }
+function showReview(){
+  if(ST.done) return;
+  ST.review=true; const u=UI[LANG];
+  const cells=ST.items.map((_,k)=>{
+    const visited=k<=(ST.furthest||0);
+    const cls=ST.flag[k]?'flagged':(ST.ans[k]!==null?'done':(ST.locked[k]?'expired':'todo'));
+    return '<button class="rv '+cls+'" '+(visited?'':'disabled')+' onclick="goFromReview('+k+')">'+(k+1)+'</button>';
+  }).join('');
+  const answered=ST.ans.filter(a=>a!==null).length;
+  const flagged=ST.flag.filter(Boolean).length;
+  document.getElementById('app').innerHTML=`
+    <div class="qhead"><div class="logo"><span class="dot"></span>${esc(CONFIG.brand||'')}</div>
+      <span class="elapsed-wrap"><span class="elapsed-label">Elapsed</span> <b id="elapsed">00:00</b></span></div>
+    <h3>${u.review}</h3>
+    <p class="hint">${u.answeredCount}: ${answered} / ${TOTAL} · ${u.flagged}: ${flagged}</p>
+    <div class="rvgrid">${cells}</div>
+    <p class="hint">${u.rvLegend}</p>
+    <div class="nav">
+      <button class="ghost" ${i===0?'disabled':''} onclick="go(${i-1})">${u.prev}</button>
+      <button ${i===TOTAL-1?'disabled':''} onclick="go(${i+1})">${u.next}</button>
+    </div>
+    <div style="text-align:center;margin-top:22px">
+      <button style="min-width:240px;padding:12px 24px;background:#15803d;color:#fff;border:0;border-radius:8px;font-weight:600;cursor:pointer" onclick="confirmFinish()">${u.finish}</button>
+    </div>`;
+  updateTimer();
+}
+function goFromReview(k){ ST.idx=k; renderQ(); }
+/* ---------- test flow ---------- */
+async function startTest(){
+  hideStats();
+  let t;
+  try{
+    const r=await fetch(CONFIG.apiBase+'/start-test',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:EXAM})});
+    t=await r.json();
+    if(!r.ok||!t.testId) throw new Error(t.error||'start failed');
+  }catch(e){ document.getElementById('app').innerHTML='<p class="err">'+esc(e.message)+'</p>'; return; }
+  ST.testId=t.testId;
+  ST.items=t.questions;                       // stems and options only; answers stay on the server
+  ST.ans=Array(TOTAL).fill(null); ST.locked=Array(TOTAL).fill(false); ST.flag=Array(TOTAL).fill(false); ST.deadline=Array(TOTAL).fill(null);
+  ST.review=false; ST.idx=0; ST.tabSwitches=0; ST.done=false; ST.startedAt=Date.now();
+  ST.endAt=Date.now()+t.seconds*1000;         // one countdown for the whole test
+  go(0);
+  ST.timer=setInterval(tick,250);
+}
+function go(j){
+  ST.furthest=Math.max(ST.furthest||0,j);
+  ST.idx=j;
+  renderQ();
+}
+function renderQ(){
+  ST.review=false;
+  const u=UI[LANG]; const i=ST.idx; const it=ST.items[i]; const locked=ST.locked[i];
+  const opts=it.options.map((o,j)=>`<button class="opt ${ST.ans[i]===j?'sel':''}" ${locked?'disabled':''} onclick="choose(${j})"><span class="ltr">${'ABCD'[j]}</span><span>${esc(o)}</span></button>`).join('');
+  document.getElementById('app').innerHTML=`
+    <div class="qhead"><div class="logo"><span class="omega" style="font-weight:700;margin-inline-end:4px">Ω</span>${esc(CONFIG.brand||'')}</div>
+      <span class="elapsed-wrap"><span class="elapsed-label">Elapsed</span> <b id="elapsed">00:00</b></span> <span id="timer" class="timer"></span></div>
+    <div class="qmeta">${u.question} ${i+1} ${u.of} ${TOTAL}</div>
+    <div class="bar"><div style="width:${(i+1)/TOTAL*100}%"></div></div>
+    <div class="qtext">${esc(it.stem)}</div>
+    ${opts}
+    <p class="hint">${locked?u.timeUp:u.hint}</p>
+    <div class="nav">
+      <button class="ghost" ${i===0?'disabled':''} onclick="go(${i-1})">${u.prev}</button>
+      <button ${i===TOTAL-1?'disabled':''} onclick="go(${i+1})">${u.next}</button>
+    </div>
+    <div style="text-align:center;margin-top:22px">
+      <button style="min-width:240px;padding:12px 24px;background:#15803d;color:#fff;border:0;border-radius:8px;font-weight:600;cursor:pointer" onclick="confirmFinish()">${u.finish}</button>
+    </div>`;
+  updateTimer();
+}
+function choose(j){ if(ST.done || ST.locked[ST.idx]) return; ST.ans[ST.idx]=j; renderQ(); }
+function updateTimer(){
+  const ex=document.getElementById('elapsed');
+  if(ex && ST.startedAt){ const e=Math.floor((Date.now()-ST.startedAt)/1000); ex.textContent=String(Math.floor(e/60)).padStart(2,'0')+':'+String(e%60).padStart(2,'0'); }
+  const el=document.getElementById('timer'); if(!el || !ST.endAt) return;
+  const rem=Math.max(0,Math.ceil((ST.endAt-Date.now())/1000));
+  el.textContent=String(Math.floor(rem/60)).padStart(2,'0')+':'+String(rem%60).padStart(2,'0');
+  el.className='timer'+(rem<=60?' low':'');
+}
+function tick(){
+  if(ST.done) return;
+  if(Date.now()>=ST.endAt){ finish(); return; }   // time is up: submit the answers given so far
+  updateTimer();
+}
+function confirmFinish(){
+  if(ST.done) return;
+  const msg = EXAM==="ar"
+    ? "هل تريد إنهاء الاختبار الآن؟ لن تتمكن من تغيير الإجابات بعد ذلك."
+    : "Finish the test now? You cannot change your answers after this.";
+  if(confirm(msg)) finish();
+}
+function finish(){
+  if(ST.done) return;
+  ST.done=true; clearInterval(ST.timer);
+  submitForPayment({reg:ST.reg, lang:EXAM, testId:ST.testId, answers:ST.ans});
+}
+
+/* ---------- scoring & report ---------- */
+function bandFor(iq){
+  const bands=(CONFIG.jobBands||[]).slice().sort((a,b)=>b.minIQ-a.minIQ);
+  return bands.find(b=>iq>=b.minIQ) || null;
+}
+function reportHTML(lang, res){
+  const u=UI[lang]||UI.en;
+  const rows=ABIL.map(a=>{ const p=res.per[a].n?Math.round(res.per[a].c/res.per[a].n*100):0; return `<tr><td>${u.ab[a]}</td><td>${res.per[a].c} / ${res.per[a].n}</td><td>${p}%</td></tr>`; }).join('');
+  const strong=ABIL.filter(a=>res.per[a].n && res.per[a].c/res.per[a].n>=0.8).map(a=>u.ab[a]);
+  const weak=ABIL.filter(a=>res.per[a].n && res.per[a].c/res.per[a].n<=0.5).map(a=>u.ab[a]);
+  const band=bandFor(res.iq);
+  const job=band?(band[lang]||band.en):'';
+  return `<div dir="${u.dir}" style="font-family:system-ui,Arial,sans-serif;color:#1d2433">
+    <h2>${u.rTitle}</h2>
+    <p><b>${u.candidate}:</b> ${esc(res.reg.name)}<br><b>Date:</b> ${res.date}<br><b>Email:</b> ${esc(res.reg.email)} · <b>Phone:</b> ${esc(res.reg.phone)}</p>
+    <p><b>${u.score}:</b> ${res.correct} / ${res.total} &nbsp; <b>${u.pct}:</b> ${res.pct}%</p>
+    <p><b>${u.estimate}:</b> ${res.iq} &nbsp; <b>${u.pctl}:</b> ${res.pctl}</p>
+    <h2>${u.abil}</h2>
+    <table><tr><th>${u.abil}</th><th>${u.score}</th><th>${u.pct}</th></tr>${rows}</table>
+    <p><b>${u.strong}:</b> ${strong.length?strong.join(', '):u.none}<br><b>${u.weak}:</b> ${weak.length?weak.join(', '):u.none}</p>
+    <p><b>${u.jobs}:</b> ${esc(job)}</p>
+    <p><b>${u.timeouts}:</b> ${res.timeouts} &nbsp; <b>${u.unanswered}:</b> ${res.unanswered} &nbsp; <b>${u.tabs}:</b> ${res.tabSwitches}</p>
+    <p class="disc">${u.disc}</p>
+  </div>`;
+}
+function renderReport(res){
+  const full=reportHTML('en',res) + (LANG!=='en' ? '<hr>'+reportHTML(LANG,res) : '');
+  ST.report=full; ST.result=res;
+  const u=UI[LANG];
+  document.getElementById('app').innerHTML=`
+    <h1>${u.rTitle}</h1>
+    ${full}
+    <p><button onclick="downloadReport()">${u.download}</button></p>
+    <div class="err" id="mail_status" style="color:#1d2433"></div>`;
+  sendReport(full, res);
+}
+function downloadReport(){
+  const blob=new Blob(['<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>'+ST.report+'</body></html>'],{type:'text/html'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='report_'+(ST.reg.name||'candidate').replace(/\s+/g,'_')+'.html'; a.click();
+}
+async function sendReport(html, res){
+  const el=document.getElementById('mail_status'); if(!el) return;
+  if(!CONFIG.webhookUrl){ el.textContent=''; return; }
+  el.textContent=UI[LANG].sending;
+  try{
+    const payload={to:res.reg.email, cc:CONFIG.ccEmail||'', subject:'Test result - '+res.reg.name, reportHtml:html,
+      candidate:res.reg, score:{correct:res.correct,total:res.total,pct:res.pct,estimate:res.iq,percentile:res.pctl}, timeouts:res.timeouts, tabSwitches:res.tabSwitches};
+    await fetch(CONFIG.webhookUrl,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)});
+    el.textContent=UI[LANG].sent;
+  }catch(e){ el.textContent=UI[LANG].sendFail; }
+}
+
+/* ---------- integrity signals ---------- */
+if(typeof document!=='undefined'){
+  document.addEventListener('visibilitychange',()=>{ if(document.hidden && ST.items && !ST.done) ST.tabSwitches++; });
+  ['copy','cut','paste','contextmenu'].forEach(ev=>document.addEventListener(ev,e=>{ if(ST.items && !ST.done) e.preventDefault(); }));
+}
+
+/* ---------- backend: visitors, stats, payment ---------- */
+function updateLangButtons(){
+  const en=document.getElementById('lg_en'), ar=document.getElementById('lg_ar');
+  if(en) en.classList.toggle('on', LANG==='en'); if(ar) ar.classList.toggle('on', LANG==='ar');
+}
+function setPageLang(l){
+  LANG=l; document.documentElement.lang=l; document.documentElement.dir=UI[l].dir;
+  refreshStatLabels(); updateLangButtons();
+  if(!ST.items) renderReg(null, readReg());   // re-draw the form in the new page language, keeping what was typed
+}
+function refreshStatLabels(){
+  const u=UI[LANG]||UI.en;
+  const a=document.getElementById('lb_v'), b=document.getElementById('lb_s');
+  if(a) a.textContent=u.visitors; if(b) b.textContent=u.submitted;
+}
+function hideStats(){ for(const id of ['stats','langbar']){ const el=document.getElementById(id); if(el) el.style.display='none'; } }
+const STAGING_BASE=window.OMSAZE_STAGING_API_BASE||'', STAGING_KEY='sb_publishable_Xg48L8YEyp6wLSgDo4_7ww_ljIgB3H_';
+async function trackVisit(){
+  if(!STAGING_BASE)return;
+  try{
+    const r=await fetch(STAGING_BASE+'/track-visit',{method:'POST',headers:{'Content-Type':'application/json',apikey:STAGING_KEY},body:JSON.stringify({path:location.pathname})});
+    const j=await r.json();
+    const geo=document.getElementById('geoLine');
+    if(geo&&(j.city||j.country)){
+      const where=[j.city,j.country].filter(Boolean).join(', ');
+      geo.textContent=(LANG==='ar'?'تزورنا الآن من ':'Visiting from ')+where;
+    }
+  }catch(e){}
+}
+async function loadStats(){
+  refreshStatLabels();
+  if(!STAGING_BASE)return;
+  try{
+    const r=await fetch(STAGING_BASE+'/track-visit',{method:'POST',headers:{'Content-Type':'application/json',apikey:STAGING_KEY},body:JSON.stringify({action:'counts'})});
+    const j=await r.json();
+    document.getElementById('st_v').textContent=j.visitors;
+    document.getElementById('st_s').textContent=j.submitted;
+  }catch(e){}
+}
+/* ---------- admin mini-panel (OTP-gated, mohamedtahereshesh@gmail.com only) ---------- */
+function adminToken(){
+  try{const raw=sessionStorage.getItem('omsaze-admin-token');if(!raw)return null;const t=JSON.parse(raw);
+    if(t&&t.token&&t.exp>Date.now())return t.token;}catch(e){}
+  return null;
+}
+async function adminCall(body){
+  const r=await fetch(STAGING_BASE+'/payment-dashboard',{method:'POST',headers:{'Content-Type':'application/json',apikey:STAGING_KEY},body:JSON.stringify(body)});
+  const j=await r.json();if(!r.ok)throw new Error(j.error||'Request failed');return j;
+}
+function renderAdminLogin(msg){
+  const p=document.getElementById('adminPanel');
+  p.innerHTML=`<label>Admin email</label><input id="admEmail" type="email" placeholder="you@example.com">
+    <div id="admCodeWrap" style="display:none"><label>Code</label><input id="admCode" inputmode="numeric" maxlength="8"></div>
+    <button type="button" id="admGo">Request code</button>
+    <p class="err" id="admMsg">${msg||''}</p>`;
+  let requested=false;
+  document.getElementById('admGo').onclick=async()=>{
+    const email=document.getElementById('admEmail').value.trim();
+    const msgEl=document.getElementById('admMsg');
+    try{
+      if(!requested){
+        await adminCall({action:'requestAccess',email});
+        requested=true;document.getElementById('admCodeWrap').style.display='block';
+        document.getElementById('admGo').textContent='Verify code';msgEl.textContent='If that email is authorized, a code was sent.';
+      }else{
+        const code=document.getElementById('admCode').value.trim();
+        const r=await adminCall({action:'verifyAccess',email,code});
+        sessionStorage.setItem('omsaze-admin-token',JSON.stringify({token:r.adminToken,exp:Date.now()+r.expiresInSeconds*1000}));
+        renderAdminSummary();
+      }
+    }catch(e){msgEl.textContent=e.message;}
+  };
+}
+async function renderAdminSummary(){
+  const p=document.getElementById('adminPanel');
+  try{
+    const j=await adminCall({action:'data'});
+    p.innerHTML=`<p style="font-size:13px;color:#4a5568;margin:0 0 8px"><b>${j.totalVisits}</b> visitors · <b>${j.submittedExams}</b> submitted exams</p>
+      <p><a href="./payment-analytics.html">Open payment analytics →</a></p>`;
+  }catch(e){
+    sessionStorage.removeItem('omsaze-admin-token');
+    renderAdminLogin('Session expired. '+e.message);
+  }
+}
+document.getElementById('adminToggle')?.addEventListener('click',()=>{
+  const p=document.getElementById('adminPanel');
+  const show=p.style.display==='none';
+  p.style.display=show?'block':'none';
+  if(show){ if(adminToken()) renderAdminSummary(); else renderAdminLogin(); }
+});
+function summaryOf(res){
+  return {correct:res.correct,total:res.total,pct:res.pct,iq:res.iq,pctl:res.pctl,per:res.per,
+    unanswered:res.unanswered,timeouts:res.timeouts,tabSwitches:res.tabSwitches,elapsed:res.elapsed,date:res.date};
+}
+async function submitForPayment(sub){
+  const u=UI[LANG]||UI.en; const app=document.getElementById('app');
+  app.innerHTML=`<h1>${u.rTitle}</h1><p class="pay-note">${u.paying}</p>`;
+  try{
+    const r=await fetch(CONFIG.apiBase+'/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({reg:sub.reg, lang:sub.lang, testId:sub.testId, answers:sub.answers})});
+    const j=await r.json();
+    if(!r.ok || !j.paymentUrl) throw new Error(j.error||'submit failed');
+    sessionStorage.setItem('iq_sid', j.submissionId);   // used after the payment returns to this page
+    location.href=j.paymentUrl;
+  }catch(e){
+    app.innerHTML=`<h1>${u.rTitle}</h1><p class="err">${u.payFail}</p><button onclick="location.reload()">${u.again}</button>`;
+  }
+}
+async function showPaymentReturn(){
+  const u=UI[LANG]||UI.en; const app=document.getElementById('app');
+  const q=new URLSearchParams(location.search); const sid=sessionStorage.getItem('iq_sid');
+  hideStats();
+  if(q.get('success')!=='true'){
+    app.innerHTML=`<h1>${u.rTitle}</h1><p class="err">${u.payNotDone}</p><button onclick="location.href=location.pathname">${u.again}</button>`; return;
+  }
+  if(!sid){ app.innerHTML=`<h1>${u.rTitle}</h1><p>${u.payPending}</p>`; return; }
+  app.innerHTML=`<h1>${u.rTitle}</h1><p class="pay-note">${u.waiting}</p>`;
+  for(let i=0;i<40;i++){                       // the payment webhook may arrive a few seconds after the redirect
+    try{
+      const r=await fetch(CONFIG.apiBase+'/result?sid='+encodeURIComponent(sid)); const j=await r.json();
+      if(j.status==='paid'){
+        ST.report=j.reportHtml; ST.reg={name:j.name||'candidate'};
+        app.innerHTML=`<p class="pay-note">✔ ${u.payDone}</p>${j.reportHtml}<p><button onclick="downloadReport()">${u.download}</button></p>`;
+        sessionStorage.removeItem('iq_sid'); return;
+      }
+    }catch(e){}
+    await new Promise(done=>setTimeout(done,3000));
+  }
+  app.innerHTML=`<h1>${u.rTitle}</h1><p>${u.payPending}</p>`;
+}
+
+/* ---------- init ---------- */
+if(typeof document!=='undefined' && document.getElementById('app')){
+  document.documentElement.dir=UI[LANG].dir;
+  trackVisit().finally(loadStats); updateLangButtons();
+  if(new URLSearchParams(location.search).get('payment')==='return') showPaymentReturn();
+  else renderReg();
+}
+</script>
+</body>
+</html>
