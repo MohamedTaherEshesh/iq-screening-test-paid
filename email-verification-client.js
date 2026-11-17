@@ -12,12 +12,22 @@ export class EmailVerificationClient {
     if(this.busy)throw Error('Please wait for the current request.');this.busy=true;
     try{const r=await this.fetcher(this.config.apiBase+'/email-verification',{method:'POST',headers:{'content-type':'application/json',apikey:this.config.publishableKey},body:JSON.stringify({...body,email:this.state.email,browserSecret:this.state.browserSecret}),signal:AbortSignal.timeout(20000)});const data=await r.json();if(!r.ok)throw Error(data.error||'Verification request failed.');if(data.serverNow)this.offset=Date.parse(data.serverNow)-this.now();return data}finally{this.busy=false}
   }
-  async request(email,accepted,language='ar'){
+  async issueHumanCheck(){
+    if(!this.configured)throw Error('Human check is not connected yet.');
+    const r=await this.fetcher(this.config.apiBase+'/human-check',{method:'POST',headers:{'content-type':'application/json',apikey:this.config.publishableKey},body:JSON.stringify({action:'issue'}),signal:AbortSignal.timeout(15000)});
+    const data=await r.json();if(!r.ok)throw Error(data.error||'Could not start human check.');return data;
+  }
+  async verifyHumanCheck(challengeId,answer){
+    const r=await this.fetcher(this.config.apiBase+'/human-check',{method:'POST',headers:{'content-type':'application/json',apikey:this.config.publishableKey},body:JSON.stringify({action:'verify',challengeId,answer}),signal:AbortSignal.timeout(15000)});
+    const data=await r.json();if(!r.ok)throw Error(data.error||'Human check failed.');if(data.verified!==true)throw Error(data.error||'Incorrect answer.');return data.token;
+  }
+  async request(email,accepted,language='ar',humanCheckToken){
     if(accepted!==true)throw Error('Please accept the acknowledgement first.');
+    if(!humanCheckToken)throw Error('Please solve the human-check puzzle first.');
     const normalized=email.trim().toLowerCase();if(!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(normalized))throw Error('Enter a valid email address.');
     if(this.state.email!==normalized){const browserSecret=this.state.browserSecret;this.state={email:normalized,browserSecret}}
     this.state.email=normalized;this.state.accepted=true;this.persist();
-    const data=await this.call({action:'request',accepted:true,acknowledgement:'omsaze-practice-v1',language});
+    const data=await this.call({action:'request',accepted:true,acknowledgement:'omsaze-practice-v1',language,humanCheckToken});
     Object.assign(this.state,{requestId:data.requestId,expiresAt:data.expiresAt,resendsRemaining:data.resendsRemaining,lastSentAt:this.now()+this.offset,proof:null,session:null});this.persist();return data;
   }
   async resend(){if(!this.state.requestId)throw Error('Request a code first.');const data=await this.call({action:'resend',requestId:this.state.requestId});Object.assign(this.state,{expiresAt:data.expiresAt,resendsRemaining:data.resendsRemaining,lastSentAt:this.now()+this.offset,proof:null,session:null});this.persist();return data}
