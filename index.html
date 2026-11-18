@@ -1,1 +1,180 @@
-&lt;!DOCTYPE html&gt;
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OMSAZE — Choose an assessment</title>
+<style>
+:root{color-scheme:light;--navy:#0B1F3A;--blue:#0070F2;--teal:#00A6A6;--muted:#667085;--line:#dfe6ee;--paper:#F2F4F7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--navy);font-family:"Aptos Display","Aptos",Inter,"Segoe UI",system-ui,Tahoma,Arial,sans-serif;font-size:16.5px}
+main{max-width:1060px;margin:auto;padding:28px 20px 90px}
+.brandbar{display:flex;justify-content:center;margin-bottom:14px}
+.brandmark{font-size:25px;font-weight:800;letter-spacing:2px;color:var(--blue);direction:ltr}
+.brandmark b{font-size:30px;line-height:1}
+.langbar{display:flex;align-items:center;justify-content:flex-end;gap:8px;max-width:1060px;margin:0 auto 16px;padding:0 2px}
+.langbar .globe{display:flex;color:var(--blue)}
+.langbar button{background:#fff;color:var(--blue);border:1px solid #c9d1df;border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer}
+.langbar button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.stats{display:flex;gap:12px;margin-bottom:16px}
+.stats>div{flex:1;text-align:center;padding:14px;background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(11,31,58,.05)}
+.stats b{display:block;font-size:27px;color:var(--teal)}
+.stats span{font-size:14px;color:var(--muted)}
+.stats .ic{display:flex;justify-content:center;color:var(--blue);margin-bottom:6px}
+#geoLine{text-align:center;font-size:13px;color:var(--muted);margin:-6px 0 16px}
+header.hero{padding:4px 0 22px}
+h1{font-size:clamp(28px,5vw,42px);margin:10px 0;line-height:1.3}
+.lede{font-size:16.5px;color:var(--muted);line-height:1.8;max-width:760px}
+.note{background:#fff;border:1px solid var(--line);border-inline-start:4px solid var(--blue);padding:15px 19px;border-radius:12px;line-height:1.8;margin:20px 0 28px;font-size:14.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}
+article{min-height:208px;display:flex;flex-direction:column;gap:12px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 5px 18px rgba(11,31,58,.03)}
+article.pilot{border:2px solid var(--blue)}
+.kicker{font-size:13px;color:var(--muted);font-weight:700}
+h2{font-size:21px;line-height:1.55;margin:0}
+.english{font-size:13px;color:var(--muted);direction:ltr;text-align:right}
+.status{margin-top:auto;color:var(--muted);font-size:14px;font-weight:700}
+article.pilot .status{color:var(--blue)}
+a.previewBtn{display:block;text-align:center;text-decoration:none;border:1px solid var(--blue);background:#eaf2ff;color:var(--blue);border-radius:9px;padding:10px 16px;font-weight:700}
+button.soon{font-size:15px;font-weight:800;letter-spacing:.3px;color:#ffffff;background:linear-gradient(90deg, #e8453c 0%, #2ea043 50%, #3b82f6 100%);border:none;border-radius:9px;padding:11px 16px;text-align:center;width:100%;cursor:not-allowed;box-shadow:0 2px 10px rgba(59,130,246,0.35)}
+.card{max-width:420px;margin:24px auto 0;background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.card label{display:block;margin:10px 0 4px;font-weight:600;font-size:13px}
+.card input{width:100%;padding:10px;border:1px solid #c9d1df;border-radius:8px;font-size:14px}
+.card button{background:var(--blue);color:#fff;border:0;border-radius:8px;padding:10px 18px;font-size:14px;cursor:pointer;margin-top:8px}
+.err{color:#c0392b;font-size:14px;margin-top:6px;min-height:16px}
+footer{font-size:13px;color:var(--muted);line-height:1.9;margin-top:40px;max-width:1060px;margin-inline:auto}
+</style>
+</head>
+<body>
+<main>
+<div class="brandbar"><span class="brandmark"><b>Ω</b>MSAZE</span></div>
+<div class="langbar" id="langbar"><span class="globe"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><button type="button" id="lg_en" onclick="setPageLang('en')">English</button><button type="button" id="lg_ar" onclick="setPageLang('ar')">العربية</button></div>
+<div class="card stats" id="stats"><div><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></span><b id="st_v">–</b><span id="lb_v">Total Visitors</span></div><div><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><b id="st_s">–</b><span id="lb_s">Total Submitted</span></div></div>
+<p id="geoLine"></p>
+<header class="hero">
+  <h1 id="h1" dir="rtl">اختر الاختبار الذي تريد معاينته</h1>
+  <p class="lede" id="lede" dir="rtl">OMSAZE تطوّر ثمانية أنواع من اختبارات التفكير والمهارات المعرفية. اختر اختبارًا أدناه؛ المسارات الجاهزة تبدأ فورًا بعد تأكيد بريدك الإلكتروني واجتياز التحقق البشري.</p>
+</header>
+<div class="note" id="note" dir="rtl"><strong>مسارا "المهارات المعرفية الجامعية" و"التحضير لاختبار الذكاء الجامعي" قيد التجربة التدريجية.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.</div>
+<section class="grid" id="catalog" aria-label="أنواع الاختبارات"></section>
+<p style="text-align:center;margin:18px 0 0"><button type="button" id="adminToggle" style="font-size:11px;padding:5px 10px;opacity:.55;background:#e7ecf5;color:#1d2433;border:0;border-radius:8px;cursor:pointer">Admin</button></p>
+<div class="card" id="adminPanel" style="display:none;max-width:420px"></div>
+<footer>OMSAZE — Assessment catalog. This page lists the available assessment types and routes you to each one's own sign-in, human-check and exam flow. It does not itself collect answers or process payments.</footer>
+</main>
+<script src="./staging-config.js"></script>
+<script src="./assessment-catalog.js"></script>
+<script>
+"use strict";
+let LANG='ar';
+const STAGE_LABELS={en:{visitors:'Total Visitors',submitted:'Total Submitted',h1:'Choose an assessment',lede:'OMSAZE is developing eight types of reasoning and cognitive-skills assessments. Pick one below — the ready tracks start right away once you confirm your email and pass the human check.',note:'<strong>University Cognitive Skills and University IQ Preparation are live for testing.</strong> Every exam begins with email confirmation and a human check before any question is shown. No answers or protected questions are ever shown here.'},
+  ar:{visitors:'إجمالي الزوار',submitted:'إجمالي من أنهوا الاختبار',h1:'اختر الاختبار',lede:'OMSAZE تطوّر ثمانية أنواع من اختبارات التفكير والمهارات المعرفية. اختر اختبارًا أدناه؛ المسارات الجاهزة تبدأ فورًا بعد تأكيد بريدك الإلكتروني واجتياز التحقق البشري.',note:'<strong>مساران "المهارات المعرفية الجامعية" و"التحضير لاختبار الذكاء الجامعي" جاهزان للاختبار الآن.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.'}};
+function renderCatalog(){
+  const root=document.getElementById('catalog'); root.innerHTML='';
+  const catalog=window.OMSAZE_T_CATALOG;
+  if(!Array.isArray(catalog)||catalog.length!==8){root.textContent='Could not load the assessment catalog.';return}
+  for(const item of catalog){
+    const card=document.createElement('article'); if(item.pilot)card.className='pilot';
+    const kicker=document.createElement('div'); kicker.className='kicker'; kicker.textContent=item.pilot?(LANG==='ar'?'أول مسار للتطوير':'First pilot track'):(LANG==='ar'?'مسار مخطط':'Planned track');
+    const title=document.createElement('h2'); title.textContent=LANG==='ar'?item.ar:item.en;
+    const subtitle=document.createElement('div'); subtitle.className='english'; subtitle.textContent=LANG==='ar'?item.en:item.ar;
+    const status=document.createElement('div'); status.className='status'; status.textContent=item.previewHref?(LANG==='ar'?'الاختبار جاهز — يتطلب تأكيد البريد والتحقق البشري':'Exam ready — email confirmation and human check required'):(item.pilot?(LANG==='ar'?'تجهيز بنك أسئلة أصلي ومراجع':'Building an original, reviewed question bank'):(LANG==='ar'?'قيد التخطيط':'Planned'));
+    let button;
+    if(item.previewHref){
+      button=document.createElement('a'); button.className='previewBtn'; button.href=item.previewHref;
+      button.textContent=LANG==='ar'?'ابدأ الاختبار':'Start exam';
+    } else {
+      button=document.createElement('button'); button.type='button'; button.disabled=true; button.className='soon';
+      button.textContent=LANG==='ar'?'قريباً! Coming soon!':'Coming soon!';
+    }
+    card.append(kicker,title,subtitle,status,button); root.append(card);
+  }
+}
+function updateLangButtons(){const en=document.getElementById('lg_en'),ar=document.getElementById('lg_ar');if(en)en.classList.toggle('on',LANG==='en');if(ar)ar.classList.toggle('on',LANG==='ar')}
+function refreshStatLabels(){const s=STAGE_LABELS[LANG]||STAGE_LABELS.en;const a=document.getElementById('lb_v'),b=document.getElementById('lb_s');if(a)a.textContent=s.visitors;if(b)b.textContent=s.submitted}
+function applyTexts(){const s=STAGE_LABELS[LANG]||STAGE_LABELS.en;document.documentElement.lang=LANG;document.documentElement.dir=LANG==='ar'?'rtl':'ltr';
+  document.getElementById('h1').textContent=s.h1;document.getElementById('h1').dir=LANG==='ar'?'rtl':'ltr';
+  document.getElementById('lede').textContent=s.lede;document.getElementById('lede').dir=LANG==='ar'?'rtl':'ltr';
+  document.getElementById('note').innerHTML=s.note;document.getElementById('note').dir=LANG==='ar'?'rtl':'ltr';
+  refreshStatLabels();updateLangButtons();renderCatalog();}
+function setPageLang(l){LANG=l;applyTexts()}
+/* ---------- staging config / visit tracking / counts ---------- */
+const STAGING_BASE=window.OMSAZE_STAGING_API_BASE||'', STAGING_KEY='sb_publishable_Xg48L8YEyp6wLSgDo4_7ww_ljIgB3H_';
+async function trackVisit(){
+  if(!STAGING_BASE)return;
+  try{
+    const r=await fetch(STAGING_BASE+'/track-visit',{method:'POST',headers:{'Content-Type':'application/json',apikey:STAGING_KEY},body:JSON.stringify({path:location.pathname})});
+    const j=await r.json();
+    const geo=document.getElementById('geoLine');
+    if(geo&&(j.city||j.country)){
+      const where=[j.city,j.country].filter(Boolean).join(', ');
+      geo.textContent=(LANG==='ar'?'تزورنا الآن من ':'Visiting from ')+where;
+    }
+  }catch(e){}
+}
+async function loadStats(){
+  refreshStatLabels();
+  if(!STAGING_BASE)return;
+  try{
+    const r=await fetch(STAGING_BASE+'/track-visit',{method:'POST',headers:{'Content-Type':'application/json',apikey:STAGING_KEY},body:JSON.stringify({action:'counts'})});
+    const j=await r.json();
+    document.getElementById('st_v').textContent=j.visitors;
+    document.getElementById('st_s').textContent=j.submitted;
+  }catch(e){}
+}
+/* ---------- admin mini-panel (OTP-gated, mohamedtahereshesh@gmail.com only) ---------- */
+function adminToken(){
+  try{const raw=sessionStorage.getItem('omsaze-admin-token');if(!raw)return null;const t=JSON.parse(raw);
+    if(t&&t.token&&t.exp>Date.now())return t.token;}catch(e){}
+  return null;
+}
+async function adminCall(body){
+  const r=await fetch(STAGING_BASE+'/payment-dashboard',{method:'POST',headers:{'Content-Type':'application/json',apikey:STAGING_KEY},body:JSON.stringify(body)});
+  const j=await r.json();if(!r.ok)throw new Error(j.error||'Request failed');return j;
+}
+function renderAdminLogin(msg){
+  const p=document.getElementById('adminPanel');
+  p.innerHTML=`<label>Admin email</label><input id="admEmail" type="email" placeholder="you@example.com">
+    <div id="admCodeWrap" style="display:none"><label>Code</label><input id="admCode" inputmode="numeric" maxlength="8"></div>
+    <button type="button" id="admGo">Request code</button>
+    <p class="err" id="admMsg">${msg||''}</p>`;
+  let requested=false;
+  document.getElementById('admGo').onclick=async()=>{
+    const email=document.getElementById('admEmail').value.trim();
+    const msgEl=document.getElementById('admMsg');
+    try{
+      if(!requested){
+        await adminCall({action:'requestAccess',email});
+        requested=true;document.getElementById('admCodeWrap').style.display='block';
+        document.getElementById('admGo').textContent='Verify code';msgEl.textContent='If that email is authorized, a code was sent.';
+      }else{
+        const code=document.getElementById('admCode').value.trim();
+        const r=await adminCall({action:'verifyAccess',email,code});
+        sessionStorage.setItem('omsaze-admin-token',JSON.stringify({token:r.adminToken,exp:Date.now()+r.expiresInSeconds*1000}));
+        renderAdminSummary();
+      }
+    }catch(e){msgEl.textContent=e.message;}
+  };
+}
+async function renderAdminSummary(){
+  const p=document.getElementById('adminPanel');
+  try{
+    const j=await adminCall({action:'data'});
+    p.innerHTML=`<p style="font-size:13px;color:#4a5568;margin:0 0 8px"><b>${j.totalVisits}</b> visitors · <b>${j.submittedExams}</b> submitted exams</p>
+      <p><a href="./payment-analytics.html">Open payment analytics →</a></p>
+      <p><a href="./legacy-exam.html">Legacy free-tier exam (development only) →</a></p>`;
+  }catch(e){
+    sessionStorage.removeItem('omsaze-admin-token');
+    renderAdminLogin('Session expired. '+e.message);
+  }
+}
+document.getElementById('adminToggle')?.addEventListener('click',()=>{
+  const p=document.getElementById('adminPanel');
+  const show=p.style.display==='none';
+  p.style.display=show?'block':'none';
+  if(show){ if(adminToken()) renderAdminSummary(); else renderAdminLogin(); }
+});
+/* ---------- init ---------- */
+applyTexts();
+trackVisit().finally(loadStats);
+</script>
+</body>
+</html>
