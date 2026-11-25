@@ -58,3 +58,13 @@ a { text-decoration-color: var(--omsaze-gold); }
 .oms-legal p { margin: 0; color: var(--oms-muted); }
 .oms-legal nav { display: flex; flex-wrap: wrap; gap: 1.25rem; }
 @media (max-width: 760px) { .oms-footer-grid { grid-template-columns: 1fr; } .oms-brand img { width: 112px; } .oms-header-inner { min-height: 72px; } }
+
+/* Visitors / Submitted counters as a dark stats band (owner's reference style). */
+#stats.card.stats { max-width: none; display: flex; gap: 0; padding: 18px 8px; margin: 8px 0 20px; border-radius: 10px;
+  background: linear-gradient(90deg, #0B1F33 0%, #102D46 55%, #123a5a 100%); box-shadow: 0 6px 20px rgba(11,31,58,.18); }
+#stats.card.stats > div { flex: 1; background: none; box-shadow: none; border-radius: 0; padding: 4px 24px; text-align: start; }
+#stats.card.stats > div + div { border-inline-start: 1px solid rgba(255,255,255,.12); }
+#stats.card.stats .ic { display: none; }
+#stats.card.stats b { font-family: Manrope, "Source Sans 3", sans-serif !important; font-size: clamp(26px, 3.2vw, 34px); font-weight: 800; line-height: 1.1; color: #fff; letter-spacing: -0.01em; }
+#stats.card.stats > div + div b { color: #4FB3FF; }
+#stats.card.stats span { display: block; margin-top: 4px; font-size: 13px; color: rgba(255,255,255,.62); }
