@@ -1,8 +1,8 @@
-import {requireStaging,stagingDb} from '../_shared/staging-db.ts';
-import {paymentTestConfig,paymentTestOutcome} from '../_shared/payment-test-contract.ts';
-import {verifyPaymobSandboxHmac} from '../_shared/paymob-sandbox-webhook.ts';
-import {certificatePdfBytes} from '../_shared/certificate.ts';
-import {deliverReportMail, computeDomainStats} from '../_shared/report-mail.ts';
+import {requireStaging,stagingDb} from './_shared/staging-db.ts';
+import {paymentTestConfig,paymentTestOutcome} from './_shared/payment-test-contract.ts';
+import {verifyPaymobSandboxHmac} from './_shared/paymob-sandbox-webhook.ts';
+import {certificatePdfBytes} from './_shared/certificate.ts';
+import {deliverReportMail, computeDomainStats} from './_shared/report-mail.ts';
 
 async function sendReportIfNewlyPaid(db: ReturnType<typeof stagingDb>, orderId: number) {
   try {
