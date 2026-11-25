@@ -87,3 +87,13 @@ body > main#app.oms-wide { max-width: 1200px !important; }
 #app .metrics:not(.blurred .metrics) .metric:nth-child(2) b { color: #4FB3FF; }
 #app .metrics:not(.blurred .metrics) .metric > span { color: rgba(255,255,255,.62); }
 @media (max-width: 560px) { #app .metrics:not(.blurred .metrics) { flex-direction: column; } #app .metrics:not(.blurred .metrics) .metric + .metric { border-inline-start: 0; border-top: 1px solid rgba(255,255,255,.12); } }
+
+/* Exam screen uses the full width: wider page, answers in two columns, wider question navigator. */
+body > main#app { max-width: 1280px !important; }
+@media (min-width: 900px) {
+  #app .examlayout { grid-template-columns: minmax(0, 1fr) 380px; gap: 24px; }
+  #app #options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+  #app #options .option { margin: 0; }
+  #app .reviewgrid.side { grid-template-columns: repeat(10, 1fr); gap: 5px; }
+  #app .reviewgrid.side button { padding: 8px 0; font-size: 12px; }
+}
