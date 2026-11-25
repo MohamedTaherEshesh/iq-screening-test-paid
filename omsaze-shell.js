@@ -57,7 +57,7 @@
 
   function mount() {
     var main = document.querySelector('main');
-    if (main && !main.id) main.id = 'app';
+    if (main && !main.id) { main.id = 'app'; main.classList.add('oms-wide'); }
     document.body.insertBefore(head, document.body.firstChild);
     document.body.appendChild(foot);
     var btn = head.querySelector('.oms-menu'), nv = head.querySelector('.oms-nav');
