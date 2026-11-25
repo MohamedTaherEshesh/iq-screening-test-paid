@@ -1,0 +1,99 @@
+/* OMSAZE corporate identity for MindProof (matches omsaze.com):
+   Manrope for headings, Source Sans 3 for text, IBM Plex Sans Arabic for Arabic,
+   OMSAZE Next Rise logo, navy headings with the gold accent.
+   The "Coming soon" gradient badge (button.soon) is intentionally left unchanged. */
+:root { --omsaze-navy: #102D46; --omsaze-gold: #D7B56D; --omsaze-link: #0078e8; }
+html, body, :root { font-family: "Source Sans 3", "Segoe UI", system-ui, Arial, sans-serif !important; }
+input, select, textarea, button:not(.soon) { font-family: inherit; }
+h1, h2, h3, .brand, .brandmark, .kicker, .eyebrow { font-family: Manrope, "Source Sans 3", system-ui, sans-serif !important; }
+h1, h2, h3 { color: var(--omsaze-navy); letter-spacing: -0.01em; }
+html[lang="ar"] body, html[dir="rtl"] body, [dir="rtl"], :lang(ar) { font-family: "IBM Plex Sans Arabic", "Source Sans 3", Tahoma, sans-serif !important; }
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, h1[dir="rtl"], h2[dir="rtl"] { font-family: "IBM Plex Sans Arabic", Tahoma, sans-serif !important; letter-spacing: normal; }
+.omsaze-logo { height: 44px; width: auto; display: block; }
+header .omsaze-logo { height: 40px; }
+.brandbar { padding-bottom: 12px; border-bottom: 3px solid var(--omsaze-gold); max-width: 220px; margin-inline: auto; }
+body > header { border-bottom: 3px solid var(--omsaze-gold) !important; }
+a { text-decoration-color: var(--omsaze-gold); }
+:focus-visible { outline: 3px solid var(--omsaze-navy); outline-offset: 3px; }
+
+/* OMSAZE site shell (omsaze-shell.js): same header, logo and footer as the main OMSAZE website. */
+.oms-header, .oms-footer { --oms-navy: #102D46; --oms-gold: #D7B56D; --oms-rule: rgba(16,45,70,.14); --oms-muted: #5b6b7b;
+  font-family: "Source Sans 3", "Segoe UI", system-ui, Arial, sans-serif !important; color: var(--oms-navy); line-height: 1.5; text-align: left; }
+.oms-header *, .oms-footer * { box-sizing: border-box; }
+.oms-wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
+.oms-header { position: relative; z-index: 50; background: #fff; border-bottom: 1px solid var(--oms-rule); }
+.oms-skip { position: absolute; left: 1rem; top: 0; transform: translateY(-200%); background: var(--oms-gold); color: var(--oms-navy); padding: .6rem 1rem; font-weight: 600; z-index: 60; }
+.oms-skip:focus { transform: none; }
+.oms-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 88px; position: relative; }
+.oms-brand img { width: 128px; height: auto; display: block; }
+.oms-nav { display: flex; align-items: center; gap: clamp(.8rem, 1.4vw, 1.4rem); }
+.oms-header .oms-nav a { color: var(--oms-navy); font-weight: 500; font-size: 1rem; text-decoration: none; padding-block: .4rem; }
+.oms-header .oms-nav a:hover { text-decoration: underline; text-decoration-color: var(--oms-gold); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.oms-header .oms-nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--oms-gold); text-decoration-thickness: 3px; text-underline-offset: 8px; }
+.oms-header .oms-nav a.oms-btn { background: var(--oms-navy); color: #fff; border: 2px solid var(--oms-navy); border-radius: 4px; padding: .5rem 1rem; font-weight: 600; }
+.oms-header .oms-nav a.oms-btn:hover { text-decoration: none; }
+.oms-menu { display: none; background: none; border: 2px solid var(--oms-navy); border-radius: 4px; padding: .45rem .9rem; font: 600 1rem "Source Sans 3", system-ui, sans-serif; color: var(--oms-navy); cursor: pointer; width: auto; margin: 0; }
+@media (max-width: 1100px) {
+  .oms-menu { display: inline-flex; }
+  .oms-nav { display: none; position: absolute; top: 100%; inset-inline: calc(-1 * clamp(16px, 4vw, 40px)); flex-direction: column; align-items: stretch; gap: 0; background: #fff; border-bottom: 1px solid var(--oms-rule); padding: .5rem clamp(16px, 4vw, 40px) 1.25rem; }
+  .oms-nav.is-open { display: flex; }
+  .oms-header .oms-nav a { padding-block: .8rem; border-bottom: 1px solid var(--oms-rule); }
+  .oms-header .oms-nav a.oms-btn { margin-top: 1rem; text-align: center; }
+}
+.oms-strip { background: #F2F5F8; border-top: 3px solid var(--oms-gold); }
+.oms-strip-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; padding-block: .6rem; font-size: .95rem; }
+.oms-crumbs { display: flex; align-items: center; gap: .5rem; }
+.oms-header .oms-crumbs a { color: var(--oms-navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--oms-gold); text-underline-offset: 4px; }
+.oms-header .oms-crumbs span { color: var(--oms-muted); }
+.oms-pill { border: 1px solid var(--oms-gold); border-radius: 999px; padding: .2rem .8rem; font-size: .9rem; color: var(--oms-navy); background: #fff; }
+.oms-footer { background: #fff; border-top: 3px solid var(--oms-gold); padding-block: 3rem 2rem; margin-top: 3rem; font-size: 1rem; }
+.oms-footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2.5rem; }
+.oms-footer-logo { width: 120px; height: auto; display: block; margin-bottom: 1rem; }
+.oms-footer h3 { font-family: Manrope, "Source Sans 3", sans-serif !important; font-size: 1rem; font-weight: 600; color: var(--oms-navy); margin: 0 0 .75rem; letter-spacing: 0; }
+.oms-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+.oms-footer p { margin: 0 0 .6rem; color: var(--oms-navy); font-size: 1rem; line-height: 1.6; }
+.oms-footer p.oms-muted { color: var(--oms-muted); font-size: .95rem; }
+.oms-footer a { color: var(--oms-navy); text-decoration: underline; text-decoration-color: var(--oms-gold); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.oms-legal { margin-top: 2.25rem; padding-top: 1.25rem; border-top: 1px solid var(--oms-rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: .95rem; }
+.oms-legal p { margin: 0; color: var(--oms-muted); }
+.oms-legal nav { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+@media (max-width: 760px) { .oms-footer-grid { grid-template-columns: 1fr; } .oms-brand img { width: 112px; } .oms-header-inner { min-height: 72px; } }
+
+/* Visitors / Submitted counters as a dark stats band (owner's reference style). */
+#stats.card.stats { max-width: none; display: flex; gap: 0; padding: 18px 8px; margin: 8px 0 20px; border-radius: 10px;
+  background: linear-gradient(90deg, #0B1F33 0%, #102D46 55%, #123a5a 100%); box-shadow: 0 6px 20px rgba(11,31,58,.18); }
+#stats.card.stats > div { flex: 1; background: none; box-shadow: none; border-radius: 0; padding: 4px 24px; text-align: start; }
+#stats.card.stats > div + div { border-inline-start: 1px solid rgba(255,255,255,.12); }
+#stats.card.stats .ic { display: none; }
+#stats.card.stats b { font-family: Manrope, "Source Sans 3", sans-serif !important; font-size: clamp(26px, 3.2vw, 34px); font-weight: 800; line-height: 1.1; color: #fff; letter-spacing: -0.01em; }
+#stats.card.stats > div + div b { color: #4FB3FF; }
+#stats.card.stats span { display: block; margin-top: 4px; font-size: 13px; color: rgba(255,255,255,.62); }
+
+/* Pay-to-reveal: blurred result preview before payment. */
+.lockedpreview { border-top: 3px solid var(--omsaze-gold); }
+.lockedpreview .blurred { filter: blur(6px); opacity: .7; user-select: none; pointer-events: none; margin: 14px 0; }
+
+/* Use the page width like the main OMSAZE website (1200px content column). */
+body > main { max-width: 1200px !important; padding-inline: clamp(16px, 4vw, 40px) !important; }
+body > main#app { max-width: 1100px !important; }
+body > main#app.oms-wide { max-width: 1200px !important; }
+
+/* Exam pages: number tiles in the same dark band style as the catalog counters. */
+#app .metrics:not(.blurred .metrics) { display: flex; gap: 0; padding: 18px 8px; border-radius: 10px; background: linear-gradient(90deg, #0B1F33 0%, #102D46 55%, #123a5a 100%); box-shadow: 0 6px 20px rgba(11,31,58,.18); }
+#app .metrics:not(.blurred .metrics) .metric { flex: 1; background: none; border: 0; box-shadow: none; border-radius: 0; padding: 4px 24px; }
+#app .metrics:not(.blurred .metrics) .metric + .metric { border-inline-start: 1px solid rgba(255,255,255,.12); }
+#app .metrics:not(.blurred .metrics) .metric b { color: #fff; font-family: Manrope, "Source Sans 3", sans-serif !important; font-size: clamp(26px, 3.2vw, 34px); font-weight: 800; }
+#app .metrics:not(.blurred .metrics) .metric b small, #app .metrics:not(.blurred .metrics) .metric b span { color: #fff; }
+#app .metrics:not(.blurred .metrics) .metric:nth-child(2) b { color: #4FB3FF; }
+#app .metrics:not(.blurred .metrics) .metric > span { color: rgba(255,255,255,.62); }
+@media (max-width: 560px) { #app .metrics:not(.blurred .metrics) { flex-direction: column; } #app .metrics:not(.blurred .metrics) .metric + .metric { border-inline-start: 0; border-top: 1px solid rgba(255,255,255,.12); } }
+
+/* Exam screen uses the full width: wider page, answers in two columns, wider question navigator. */
+body > main#app { max-width: 1280px !important; }
+@media (min-width: 900px) {
+  #app .examlayout { grid-template-columns: minmax(0, 1fr) 380px; gap: 24px; }
+  #app #options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+  #app #options .option { margin: 0; }
+  #app .reviewgrid.side { grid-template-columns: repeat(10, 1fr); gap: 5px; }
+  #app .reviewgrid.side button { padding: 8px 0; font-size: 12px; }
+}

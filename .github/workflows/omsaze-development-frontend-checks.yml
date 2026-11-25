@@ -7,6 +7,11 @@ on:
       - 'index.html'
       - 'assessments.html'
       - 'assessment-catalog.js'
+      - 'verification.html'
+      - 'verification-page.js'
+      - 'verification-config.js'
+      - 'email-verification-client.js'
+      - 'tests/email-verification-client.test.mjs'
       - 'university.html'
       - 'university-client.js'
       - 'university-config.js'
@@ -17,6 +22,11 @@ on:
       - 'index.html'
       - 'assessments.html'
       - 'assessment-catalog.js'
+      - 'verification.html'
+      - 'verification-page.js'
+      - 'verification-config.js'
+      - 'email-verification-client.js'
+      - 'tests/email-verification-client.test.mjs'
       - 'university.html'
       - 'university-client.js'
       - 'university-config.js'
@@ -39,7 +49,9 @@ jobs:
       - name: Check revised University client contract
         run: |
           node --check university-client.js
-          node --test tests/university-client.test.mjs
+          node --test tests/university-client.test.mjs tests/email-verification-client.test.mjs
+          node --check verification-page.js
+          node --check email-verification-client.js
       - name: Inspect static assessment preview and legacy site boundaries
         run: |
           python3 - <<'PY'

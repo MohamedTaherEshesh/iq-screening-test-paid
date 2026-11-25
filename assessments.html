@@ -26,16 +26,15 @@ article.pilot .status {color:#075ac2}
 button {font:inherit;border:1px solid var(--line);background:#eef2f7;color:#7c8897;border-radius:9px;padding:10px 16px;cursor:not-allowed;width:100%}
 footer {font-size:13px;color:var(--muted);line-height:1.9;margin-top:36px}
 </style>
-</head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./omsaze-brand.css"></head>
 <body>
 <main>
 <header>
-  <div class="brand">OMSAZE T — DEVELOPMENT</div>
-  <h1>منصة اختبارات متعددة المسارات</h1>
+    <h1>منصة اختبارات متعددة المسارات</h1>
   <p class="lede">تطوير OMSAZE T يشمل ثمانية أنواع من اختبارات التفكير والمهارات المعرفية. البداية بمسار التحضير لاختبار الذكاء الجامعي، وبعد مراجعة الأسئلة واختبار النظام يمكن تفعيل المسارات تدريجيًا.</p>
 </header>
 <div class="note"><strong>نسخة تطوير غير منشورة.</strong> لا يوجد أي اختبار متاح للبدء من هذه الصفحة حاليًا. نرفض تكرار السؤال نفسه بتغيير الأرقام أو الكلمات فقط، ونشترط مراجعة الأفكار وطرق الحل قبل اعتمادها.</div>
-<p><a href="./university.html" style="display:inline-block;background:#126f58;color:white;padding:14px 20px;border-radius:9px;text-decoration:none">معاينة University الجديدة: 70 سؤالًا · 7 مجالات · 105 دقائق (توقيت تجريبي)</a></p>
+<p><a href="./verification.html" style="display:inline-block;background:#126f58;color:white;padding:14px 20px;border-radius:9px;text-decoration:none">تأكيد الإيميل قبل الامتحان</a></p>
 <section class="grid" id="catalog" aria-label="أنواع الاختبارات"></section>
 <footer>OMSAZE T — Catalog preview. هذه الصفحة لا ترتبط بقاعدة بيانات Production أو بوابة دفع، ولا تعرض إجابات أو أسئلة محمية.</footer>
 </main>
@@ -63,14 +62,41 @@ footer {font-size:13px;color:var(--muted);line-height:1.9;margin-top:36px}
     const status = document.createElement("div");
     status.className = "status";
     status.textContent = item.pilot ? "تجهيز بنك أسئلة أصلي ومراجع" : "قيد التخطيط";
-    const button = document.createElement("button");
-    button.type = "button";
-    button.disabled = true;
-    button.textContent = "غير متاح الآن";
+   let button;
+if (item.previewHref) {
+  button = document.createElement("a");
+  button.href = item.previewHref;
+  button.textContent = "معاينة النسخة التجريبية";
+  button.style.display = "block";
+  button.style.textAlign = "center";
+  button.style.textDecoration = "none";
+  button.style.border = "1px solid var(--blue)";
+  button.style.background = "#eaf2ff";
+  button.style.color = "var(--blue)";
+  button.style.borderRadius = "9px";
+  button.style.padding = "10px 16px";
+  button.style.fontWeight = "700";
+} else {
+  button = document.createElement("button");
+  button.type = "button";
+  button.disabled = true;
+  button.innerHTML = "قريباً! Coming soon!";
+  button.style.fontSize = "15px";
+  button.style.fontWeight = "800";
+  button.style.letterSpacing = "0.3px";
+  button.style.color = "#ffffff";
+  button.style.background = "linear-gradient(90deg, #e8453c 0%, #2ea043 50%, #3b82f6 100%)";
+  button.style.border = "none";
+  button.style.borderRadius = "9px";
+  button.style.padding = "11px 16px";
+  button.style.textAlign = "center";
+  button.style.boxShadow = "0 2px 10px rgba(59,130,246,0.35)";
+}
     card.append(kicker,title,subtitle,status,button);
     root.append(card);
   }
 })();
 </script>
+<script src="./omsaze-shell.js" data-label="Catalog preview · Development"></script>
 </body>
 </html>
