@@ -1,12 +1,11 @@
 // OMSAZE corporate identity for the PDF report and certificate (matches omsaze.com):
 // Manrope for headings, Source Sans 3 for text, OMSAZE Next Rise logo, navy and gold.
-// Fonts, logo and the owner's signature are served by the MindProof site; if any fetch fails the
-// PDF still renders with Helvetica and the embedded fallback logo, and without a signature image.
+// Fonts, logo and both signatures are embedded in brand-assets.ts, so the PDFs never depend on a
+// network fetch. The Helvetica and fallback-logo path below is only a last resort if decoding fails.
 import fontkit from 'npm:@pdf-lib/fontkit@1.1.1';
 import { StandardFonts, rgb } from 'npm:pdf-lib@1.17.1';
 import { OMSAZE_LOGO_PNG_BASE64 } from './brand.ts';
-
-const ASSET_BASE = 'https://staging.omsaze.com/';
+import * as A from './brand-assets.ts';
 
 export const OMS = {
   NAVY: rgb(16 / 255, 45 / 255, 70 / 255),
@@ -21,26 +20,24 @@ export const OMS = {
 
 export const SIGNER = { name: 'Mohamed Taher Eshesh', title: 'Founder & CEO - OMSAZE', titleAr: 'المؤسس والرئيس التنفيذي - OMSAZE' };
 
-async function asset(path: string): Promise<Uint8Array | null> {
+function bytesOf(b64: string): Uint8Array | null {
   try {
-    const r = await fetch(ASSET_BASE + path, { signal: AbortSignal.timeout(5000) });
-    if (!r.ok) return null;
-    const b = new Uint8Array(await r.arrayBuffer());
-    return b.length > 64 ? b : null;
+    const bin = atob(b64);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out.length > 64 ? out : null;
   } catch { return null; }
 }
 
 export async function loadBrand(pdf: any) {
   pdf.registerFontkit(fontkit);
-  const [reg, semi, disp, xbold, logo, sigAr, sigEn] = await Promise.all([
-    asset('assets/fonts/SourceSans3-Regular.ttf'),
-    asset('assets/fonts/SourceSans3-SemiBold.ttf'),
-    asset('assets/fonts/Manrope-Bold.ttf'),
-    asset('assets/fonts/Manrope-ExtraBold.ttf'),
-    asset('omsaze-logo.png'),
-    asset('assets/signature-ar.png'),
-    asset('assets/signature-en.png'),
-  ]);
+  const reg = bytesOf(A.FONT_SOURCE_REGULAR_B64);
+  const semi = bytesOf(A.FONT_SOURCE_SEMIBOLD_B64);
+  const disp = bytesOf(A.FONT_MANROPE_BOLD_B64);
+  const xbold = bytesOf(A.FONT_MANROPE_EXTRABOLD_B64);
+  const logo = bytesOf(A.OMSAZE_SITE_LOGO_B64);
+  const sigAr = bytesOf(A.SIG_AR_B64);
+  const sigEn = bytesOf(A.SIG_EN_B64);
   const embed = async (bytes: Uint8Array | null, fallback: string) => {
     if (bytes) { try { return await pdf.embedFont(bytes, { subset: true }); } catch { /* fall back */ } }
     return await pdf.embedFont(fallback);
