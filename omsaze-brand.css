@@ -15,3 +15,46 @@ header .omsaze-logo { height: 40px; }
 body > header { border-bottom: 3px solid var(--omsaze-gold) !important; }
 a { text-decoration-color: var(--omsaze-gold); }
 :focus-visible { outline: 3px solid var(--omsaze-navy); outline-offset: 3px; }
+
+/* OMSAZE site shell (omsaze-shell.js): same header, logo and footer as the main OMSAZE website. */
+.oms-header, .oms-footer { --oms-navy: #102D46; --oms-gold: #D7B56D; --oms-rule: rgba(16,45,70,.14); --oms-muted: #5b6b7b;
+  font-family: "Source Sans 3", "Segoe UI", system-ui, Arial, sans-serif !important; color: var(--oms-navy); line-height: 1.5; text-align: left; }
+.oms-header *, .oms-footer * { box-sizing: border-box; }
+.oms-wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
+.oms-header { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid var(--oms-rule); }
+.oms-skip { position: absolute; left: 1rem; top: 0; transform: translateY(-200%); background: var(--oms-gold); color: var(--oms-navy); padding: .6rem 1rem; font-weight: 600; z-index: 60; }
+.oms-skip:focus { transform: none; }
+.oms-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 88px; position: relative; }
+.oms-brand img { width: 128px; height: auto; display: block; }
+.oms-nav { display: flex; align-items: center; gap: clamp(.8rem, 1.4vw, 1.4rem); }
+.oms-header .oms-nav a { color: var(--oms-navy); font-weight: 500; font-size: 1rem; text-decoration: none; padding-block: .4rem; }
+.oms-header .oms-nav a:hover { text-decoration: underline; text-decoration-color: var(--oms-gold); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.oms-header .oms-nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--oms-gold); text-decoration-thickness: 3px; text-underline-offset: 8px; }
+.oms-header .oms-nav a.oms-btn { background: var(--oms-navy); color: #fff; border: 2px solid var(--oms-navy); border-radius: 4px; padding: .5rem 1rem; font-weight: 600; }
+.oms-header .oms-nav a.oms-btn:hover { text-decoration: none; }
+.oms-menu { display: none; background: none; border: 2px solid var(--oms-navy); border-radius: 4px; padding: .45rem .9rem; font: 600 1rem "Source Sans 3", system-ui, sans-serif; color: var(--oms-navy); cursor: pointer; width: auto; margin: 0; }
+@media (max-width: 1100px) {
+  .oms-menu { display: inline-flex; }
+  .oms-nav { display: none; position: absolute; top: 100%; inset-inline: calc(-1 * clamp(16px, 4vw, 40px)); flex-direction: column; align-items: stretch; gap: 0; background: #fff; border-bottom: 1px solid var(--oms-rule); padding: .5rem clamp(16px, 4vw, 40px) 1.25rem; }
+  .oms-nav.is-open { display: flex; }
+  .oms-header .oms-nav a { padding-block: .8rem; border-bottom: 1px solid var(--oms-rule); }
+  .oms-header .oms-nav a.oms-btn { margin-top: 1rem; text-align: center; }
+}
+.oms-strip { background: #F2F5F8; border-top: 3px solid var(--oms-gold); }
+.oms-strip-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; padding-block: .6rem; font-size: .95rem; }
+.oms-crumbs { display: flex; align-items: center; gap: .5rem; }
+.oms-header .oms-crumbs a { color: var(--oms-navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--oms-gold); text-underline-offset: 4px; }
+.oms-header .oms-crumbs span { color: var(--oms-muted); }
+.oms-pill { border: 1px solid var(--oms-gold); border-radius: 999px; padding: .2rem .8rem; font-size: .9rem; color: var(--oms-navy); background: #fff; }
+.oms-footer { background: #fff; border-top: 3px solid var(--oms-gold); padding-block: 3rem 2rem; margin-top: 3rem; font-size: 1rem; }
+.oms-footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2.5rem; }
+.oms-footer-logo { width: 120px; height: auto; display: block; margin-bottom: 1rem; }
+.oms-footer h3 { font-family: Manrope, "Source Sans 3", sans-serif !important; font-size: 1rem; font-weight: 600; color: var(--oms-navy); margin: 0 0 .75rem; letter-spacing: 0; }
+.oms-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+.oms-footer p { margin: 0 0 .6rem; color: var(--oms-navy); font-size: 1rem; line-height: 1.6; }
+.oms-footer p.oms-muted { color: var(--oms-muted); font-size: .95rem; }
+.oms-footer a { color: var(--oms-navy); text-decoration: underline; text-decoration-color: var(--oms-gold); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.oms-legal { margin-top: 2.25rem; padding-top: 1.25rem; border-top: 1px solid var(--oms-rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: .95rem; }
+.oms-legal p { margin: 0; color: var(--oms-muted); }
+.oms-legal nav { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+@media (max-width: 760px) { .oms-footer-grid { grid-template-columns: 1fr; } .oms-brand img { width: 112px; } .oms-header-inner { min-height: 72px; } }
