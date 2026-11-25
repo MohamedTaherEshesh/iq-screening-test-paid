@@ -148,9 +148,6 @@ async function reportPdfBytes(d: ReportMail): Promise<Uint8Array> {
   function header(page: any, eyebrow: string) {
     page.drawImage(logoImg, { x: MARGIN, y: PAGE_H - 44, width: logoDims.width, height: logoDims.height });
     page.drawText(eyebrow, { x: MARGIN, y: PAGE_H - 62, size: 8.5, font: bold, color: OMS.GOLD_DARK });
-    const testOnly = 'TEST ONLY';
-    const w = bold.widthOfTextAtSize(testOnly, 9);
-    page.drawText(testOnly, { x: PAGE_W - MARGIN - w, y: PAGE_H - 50, size: 9, font: bold, color: rgb(0.278, 0.325, 0.4) });
   }
   function footer(page: any, pageLabel: string) {
     page.drawLine({ start: { x: MARGIN, y: 56 }, end: { x: PAGE_W - MARGIN, y: 56 }, thickness: 0.6, color: GRAY_LINE });
