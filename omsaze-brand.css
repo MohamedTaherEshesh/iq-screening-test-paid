@@ -68,3 +68,7 @@ a { text-decoration-color: var(--omsaze-gold); }
 #stats.card.stats b { font-family: Manrope, "Source Sans 3", sans-serif !important; font-size: clamp(26px, 3.2vw, 34px); font-weight: 800; line-height: 1.1; color: #fff; letter-spacing: -0.01em; }
 #stats.card.stats > div + div b { color: #4FB3FF; }
 #stats.card.stats span { display: block; margin-top: 4px; font-size: 13px; color: rgba(255,255,255,.62); }
+
+/* Pay-to-reveal: blurred result preview before payment. */
+.lockedpreview { border-top: 3px solid var(--omsaze-gold); }
+.lockedpreview .blurred { filter: blur(6px); opacity: .7; user-select: none; pointer-events: none; margin: 14px 0; }
