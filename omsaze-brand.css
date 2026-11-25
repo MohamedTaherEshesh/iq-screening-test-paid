@@ -21,7 +21,7 @@ a { text-decoration-color: var(--omsaze-gold); }
   font-family: "Source Sans 3", "Segoe UI", system-ui, Arial, sans-serif !important; color: var(--oms-navy); line-height: 1.5; text-align: left; }
 .oms-header *, .oms-footer * { box-sizing: border-box; }
 .oms-wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
-.oms-header { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid var(--oms-rule); }
+.oms-header { position: relative; z-index: 50; background: #fff; border-bottom: 1px solid var(--oms-rule); }
 .oms-skip { position: absolute; left: 1rem; top: 0; transform: translateY(-200%); background: var(--oms-gold); color: var(--oms-navy); padding: .6rem 1rem; font-weight: 600; z-index: 60; }
 .oms-skip:focus { transform: none; }
 .oms-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 88px; position: relative; }
