@@ -13,7 +13,7 @@ function ageOk(birth){const b=new Date(birth+"T00:00:00");if(isNaN(b))return fal
 function shuffleArr(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 async function loadHumanCheck(){human.busy=true;try{const d=await client.issueHumanCheck();human={challengeId:d.challengeId,a:d.a,b:d.b,token:null,busy:false,options:null}}catch{human.busy=false}renderHumanCheck()}
 function updateSendState(){const b=document.getElementById('sendCode');if(b)b.disabled=!human.token||!document.getElementById('ack')?.checked}
-function dotsSvg(n){const c=Math.max(0,Math.min(n,20));let s='';for(let i=0;i<c;i++){s+=`<circle cx="${7+(i%5)*9}" cy="${7+Math.floor(i/5)*9}" r="3" fill="#0070F2"/>`}return `<svg width="52" height="36" viewBox="0 0 52 36" aria-hidden="true">${s}</svg>`}
+function dotsSvg(n){const c=Math.max(0,Math.min(n,20));let s='';for(let i=0;i<c;i++){s+=`<circle cx="${7+(i%5)*9}" cy="${7+Math.floor(i/5)*9}" r="3" fill="#102D46"/>`}return `<svg width="52" height="36" viewBox="0 0 52 36" aria-hidden="true">${s}</svg>`}
 function renderHumanCheck(){const box=document.getElementById('humanBox');if(!box)return;if(human.token){box.innerHTML='<div class="success">✓ Human check passed.</div>';return}
  const correct=human.a+human.b;
  if(!human.options){const set=new Set([correct]);let guard=0;while(set.size<6&&guard<50){guard++;const d=correct+(Math.floor(Math.random()*9)-4);if(d>=0&&d<=24)set.add(d)}human.options=shuffleArr([...set])}

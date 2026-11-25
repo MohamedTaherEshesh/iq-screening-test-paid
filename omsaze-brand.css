@@ -77,3 +77,13 @@ a { text-decoration-color: var(--omsaze-gold); }
 body > main { max-width: 1200px !important; padding-inline: clamp(16px, 4vw, 40px) !important; }
 body > main#app { max-width: 1100px !important; }
 body > main#app.oms-wide { max-width: 1200px !important; }
+
+/* Exam pages: number tiles in the same dark band style as the catalog counters. */
+#app .metrics:not(.blurred .metrics) { display: flex; gap: 0; padding: 18px 8px; border-radius: 10px; background: linear-gradient(90deg, #0B1F33 0%, #102D46 55%, #123a5a 100%); box-shadow: 0 6px 20px rgba(11,31,58,.18); }
+#app .metrics:not(.blurred .metrics) .metric { flex: 1; background: none; border: 0; box-shadow: none; border-radius: 0; padding: 4px 24px; }
+#app .metrics:not(.blurred .metrics) .metric + .metric { border-inline-start: 1px solid rgba(255,255,255,.12); }
+#app .metrics:not(.blurred .metrics) .metric b { color: #fff; font-family: Manrope, "Source Sans 3", sans-serif !important; font-size: clamp(26px, 3.2vw, 34px); font-weight: 800; }
+#app .metrics:not(.blurred .metrics) .metric b small, #app .metrics:not(.blurred .metrics) .metric b span { color: #fff; }
+#app .metrics:not(.blurred .metrics) .metric:nth-child(2) b { color: #4FB3FF; }
+#app .metrics:not(.blurred .metrics) .metric > span { color: rgba(255,255,255,.62); }
+@media (max-width: 560px) { #app .metrics:not(.blurred .metrics) { flex-direction: column; } #app .metrics:not(.blurred .metrics) .metric + .metric { border-inline-start: 0; border-top: 1px solid rgba(255,255,255,.12); } }
