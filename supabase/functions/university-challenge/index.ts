@@ -185,6 +185,17 @@ Deno.serve(async (req) => {
       const nowMs = Date.now();
       const age = ageYearsOf(candidateBirthdate, nowMs);
       if (!Number.isFinite(age) || age < 5 || age > 100) return reply({error:'Age must be between 5 and 100 years.'}, 400);
+      // OMS-MND-261126-16: age rule per level (owner 2026-11-26): Junior exams ages 10 to 17 only; all other exams 18 and over.
+      // The database enforces the same rule (trigger trg_exam_age_rule).
+      const whole = Math.floor(age);
+      if (EXAM_TAG.startsWith('junior-')) {
+        if (whole < 10 || whole > 17) return reply({error:'Junior exams are for ages 10 to 17. If you are 18 or over, choose a Universities, Manager, Senior Manager or C-Level exam.'}, 400);
+      } else if (whole < 18) {
+        return reply({error:'This exam is for ages 18 and over. Under 18? Please choose a Junior exam.'}, 400);
+      }
+      // OMS-MND-261126-16: gender is required for every exam taker (analytics only; never used for scoring or question selection).
+      const candidateGender = b.candidateGender === 'male' || b.candidateGender === 'female' ? b.candidateGender : '';
+      if (!candidateGender) return reply({error:'Select your gender.'}, 400);
       // Optional pilot demographics only - never used for scoring, access control, or question selection.
       const candidateCountry = cleanOptionalText(b.candidateCountry, 64);
       const candidateCity = cleanOptionalText(b.candidateCity, 80);
@@ -254,6 +265,7 @@ Deno.serve(async (req) => {
           language,
           candidate_name: candidateName,
           candidate_birthdate: candidateBirthdate,
+          candidate_gender: candidateGender,
           candidate_country: candidateCountry,
           candidate_city: candidateCity,
           item_codes: itemCodes,

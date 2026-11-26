@@ -89,7 +89,7 @@ async function emailsById(sb: ReturnType<typeof stagingDb>, ids: Set<string>): P
 }
 
 async function loadData(sb: ReturnType<typeof stagingDb>) {
-  const [pay, sessions, visits, results, prices, corp, corpReq, corpPrices, corpBal, corpLedger] = await Promise.all([
+  const [pay, sessions, visits, results, prices, genders, corp, corpReq, corpPrices, corpBal, corpLedger] = await Promise.all([
     sb.from('exam_payments')
       .select('id,candidate_id,test_id,state,paymob_order_id,transaction_id,amount_cents,usd_cents,fx_rate,created_at,updated_at,report_emailed_at')
       .order('created_at', { ascending: false }).limit(MAX_ROWS),
@@ -104,6 +104,8 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     // OMS-MND-261126-06: Price_<ExamName> variables with full history.
     sb.from('exam_price_history').select('id,variable_name,exam_tag,currency,amount_cents,valid_from,valid_to,changed_by,note')
       .order('valid_from', { ascending: false }).limit(1000),
+    // OMS-MND-261126-16: gender per result (separate query so the page still loads before the DB change).
+    sb.from('exam_results').select('session_id,candidate_gender').limit(MAX_ROWS),
     // OMS-MND-261126-12/-13: corporate accounts, requested exams, company prices, seat balances and ledger.
     sb.from('corporate_accounts').select('*') /* '*' so it works before and after OMS-MND-261126-14 adds columns */
       .order('created_at', { ascending: false }).limit(MAX_ROWS),
@@ -117,6 +119,8 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
   const byTest = new Map<string, any>();
   for (const s of sessions.data ?? []) byTest.set(s.id, s);
   const emails = await emailsById(sb, new Set([...(pay.data ?? []), ...(results.data ?? [])].map((p: any) => p.candidate_id)));
+  const genderBy = new Map<string, string>();
+  if (!genders.error) for (const g of genders.data ?? []) if (g.candidate_gender) genderBy.set(g.session_id, g.candidate_gender);
   const payByTest = new Map<string, any>();
   for (const p of pay.data ?? []) payByTest.set(p.test_id, p);
 
@@ -140,7 +144,7 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
   }));
 
   const resultRows = (results.data ?? []).map((r: any) => ({
-    id: r.session_id, at: r.submitted_at ?? r.started_at, started_at: r.started_at, exam: r.exam_tag, lang: r.language,
+    id: r.session_id, gender: genderBy.get(r.session_id) ?? null, at: r.submitted_at ?? r.started_at, started_at: r.started_at, exam: r.exam_tag, lang: r.language,
     name: r.candidate_name, email: emails.get(r.candidate_id) ?? null, country: r.candidate_country, city: r.candidate_city, age: r.candidate_age,
     total: r.total_items, answered: r.answered, correct: r.correct, percent: r.percent_correct == null ? null : Number(r.percent_correct),
     domains: r.per_domain ?? {}, timed_out: !!r.timed_out, duration_s: r.duration_seconds, limit_s: r.time_limit_seconds,
@@ -155,7 +159,7 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     corporateAvailable: !corp.error && !corpReq.error && !corpPrices.error && !corpBal.error && !corpLedger.error,
     corporate: corp.error ? [] : (corp.data ?? []).map((c: any) => ({
       id: c.id, ref: c.reference, org_type: c.org_type ?? null, company: c.company_name, reg_no: c.registration_no, tax_no: c.tax_no ?? null, address: c.address ?? null, website: c.website ?? null, billing_email: c.billing_email ?? null, country: c.country, city: c.city, sector: c.sector,
-      employees: c.employees, contact: c.contact_name, title: c.contact_title, email: c.email, phone: c.phone, notes: c.notes, lang: c.language,
+      employees: c.employees, male_count: c.male_count ?? null, female_count: c.female_count ?? null, contact: c.contact_name, title: c.contact_title, email: c.email, phone: c.phone, notes: c.notes, lang: c.language,
       status: c.status, status_at: c.status_changed_at, status_note: c.status_note, at: c.created_at,
       requests: (corpReq.data ?? []).filter((r: any) => r.company_id === c.id).map((r: any) => ({ exam: r.exam_tag, seats: r.seats_requested })),
       balances: ((corpBal.data ?? []) as any[]).filter((b) => b.company_id === c.id).map((b) => ({ exam: b.exam_tag, granted: b.granted, used: b.used, balance: b.balance })),
