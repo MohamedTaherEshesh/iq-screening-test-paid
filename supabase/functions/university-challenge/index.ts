@@ -190,11 +190,19 @@ Deno.serve(async (req) => {
       const candidateCity = cleanOptionalText(b.candidateCity, 80);
 
       const promptCol = language === 'ar' ? 'prompt_ar' : 'prompt_en';
-      // OMS-MND-261126-03: questions this candidate already received in earlier exams (finished or not)
-      // are used only when a section has run out of unseen approved questions.
+      // OMS-MND-261126-03: questions this candidate already received in ANY earlier exam (IQ Preparation or
+      // Cognitive Skills, finished or not), and questions with the same idea fingerprint,
+      // are never issued again.
       const { data: pastSessions } = await sb.from('university_challenge_sessions')
-        .select('item_codes').eq('candidate_id', candidateId).eq('exam_tag', EXAM_TAG);
+        .select('item_codes').eq('candidate_id', candidateId);
       const seen = new Set<string>((pastSessions ?? []).flatMap((p: any) => Array.isArray(p.item_codes) ? p.item_codes : []));
+      const seenIdeas = new Set<string>();
+      const seenList = [...seen];
+      for (let i = 0; i < seenList.length; i += 300) {
+        const { data: fps } = await sb.from('question_bank').select('idea_fingerprint').in('legacy_id', seenList.slice(i, i + 300));
+        (fps ?? []).forEach((f: any) => { if (f.idea_fingerprint) seenIdeas.add(f.idea_fingerprint); });
+      }
+      const wasSeen = (q: any) => seen.has(q.legacy_id) || (!!q.idea_fingerprint && seenIdeas.has(q.idea_fingerprint));
       const selectedByDomain: Record<string, any[]> = {};
       for (const domain of DOMAINS) {
         // legacy_id doubles as this session's item code, so rows without one
@@ -202,7 +210,7 @@ Deno.serve(async (req) => {
         // otherwise two different questions collapse to the same "null" code,
         // corrupting both the 70-unique-item invariant and session resume.
         const { data: pool, error: poolErr } = await sb.from('question_bank')
-          .select('legacy_id, domain, correct_index, options_en, options_ar, prompt_en, prompt_ar, visual_grid')
+          .select('legacy_id, domain, correct_index, options_en, options_ar, prompt_en, prompt_ar, visual_grid, idea_fingerprint')
           .eq('status', 'reviewed_approved')
           .eq('domain', domain)
           .contains('exam_tags', [EXAM_TAG])
@@ -212,9 +220,15 @@ Deno.serve(async (req) => {
         if (!pool || pool.length < PER_DOMAIN) {
           return reply({error: `Insufficient approved ${language} content for domain ${domain}: ${pool?.length ?? 0} available, ${PER_DOMAIN} required`}, 503);
         }
-        const unseen = shuffle(pool.filter((q: any) => !seen.has(q.legacy_id)));
-        const reused = shuffle(pool.filter((q: any) => seen.has(q.legacy_id)));
-        selectedByDomain[domain] = [...unseen, ...reused].slice(0, PER_DOMAIN);
+        // Owner rule 2026-11-26: no repeats at all. If a section has fewer than 10 questions this candidate
+        // has never seen, no new exam is issued (the page already says so) instead of reusing questions.
+        const unseen = shuffle(pool.filter((q: any) => !wasSeen(q)));
+        if (unseen.length < PER_DOMAIN) {
+          return reply({error: language === 'ar'
+            ? 'لا توجد أسئلة جديدة كافية لك الآن. ستتوفر امتحانات جديدة مع إضافة أسئلة جديدة إلى البنك.'
+            : 'There are not enough new questions for you right now. New exams will open as new questions are added.'}, 409);
+        }
+        selectedByDomain[domain] = unseen.slice(0, PER_DOMAIN);
       }
       const allSelected = shuffle(DOMAINS.flatMap((d) => selectedByDomain[d]));
       const itemCodes = allSelected.map((q) => q.legacy_id);

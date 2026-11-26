@@ -70,7 +70,7 @@ export async function certificatePdfBytes(d: CertData): Promise<Uint8Array> {
   const logoDims = B.logo.scale(44 / B.logo.height);
   const logoY = H2 - inset - 30 - logoDims.height;
   page.drawImage(B.logo, { x: inset + 36, y: logoY, width: logoDims.width, height: logoDims.height });
-  page.drawText(t('MINDPROOF  ·  DIGITAL LABS', 'مايندبروف  ·  OMSAZE Digital Labs'), { x: inset + 36 + logoDims.width + 14, y: logoY + logoDims.height / 2 - 3, size: 9.5, font: B.bold, color: OMS.GOLD_DARK });
+  page.drawText('MINDPROOF  ·  DIGITAL LABS', { x: inset + 36 + logoDims.width + 14, y: logoY + logoDims.height / 2 - 3, size: 9.5, font: B.bold, color: OMS.GOLD_DARK });
 
   let y = H2 - inset - 130;
   centerText(t('Certificate of Completion', 'شهادة إتمام'), y, 34, B.displayX, OMS.NAVY);
