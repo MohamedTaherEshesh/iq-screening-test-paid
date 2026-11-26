@@ -1,7 +1,8 @@
-import {requireVerifiedEmailStart, requireVerifiedSession, EmailVerificationRequired} from '../_shared/verified-email-gate.ts';
-import {requireStaging, stagingDb} from '../_shared/staging-db.ts';
-import {isKnownStagingOrigin} from '../_shared/staging-origins.ts';
-import {verifyChallengeTestToken} from '../_shared/university-challenge-test-access.ts';
+import {requireVerifiedEmailStart, requireVerifiedSession, EmailVerificationRequired} from './_shared/verified-email-gate.ts';
+import {requireStaging, stagingDb} from './_shared/staging-db.ts';
+import {isKnownStagingOrigin} from './_shared/staging-origins.ts';
+import {verifyChallengeTestToken} from './_shared/university-challenge-test-access.ts';
+import {optionOrder, shuffledOptions, shownCorrectIndex} from './_shared/option-order.ts';
 
 const KNOWN_EXAM_TAGS = ['university-cognitive-skills', 'university-iq-preparation'] as const;
 type ExamTag = typeof KNOWN_EXAM_TAGS[number];
@@ -54,14 +55,20 @@ async function visibleResult(sb: ReturnType<typeof stagingDb>, testId: string, c
 
 async function buildQuestionsFor(sb: ReturnType<typeof stagingDb>, existing: Record<string, any>, language: string) {
   const { data: items, error: itemsErr } = await sb.from('question_bank')
-    .select('legacy_id, domain, options_en, options_ar, prompt_en, prompt_ar, visual_grid')
+    .select('legacy_id, domain, correct_index, options_en, options_ar, prompt_en, prompt_ar, visual_grid')
     .in('legacy_id', existing.item_codes);
   if (itemsErr || !items) return null;
   const byCode = new Map(items.map((it: any) => [it.legacy_id, it]));
+  // OMS-MND-261126-03: sessions created before option shuffling stored the bank's answer positions.
+  // If every stored key equals the bank key, the session is unshuffled and keeps the bank order on resume.
+  const codes = existing.item_codes as string[];
+  const key = (existing.answer_key ?? []) as number[];
+  const shuffled = codes.some((c, i) => key[i] !== (byCode.get(c) as any)?.correct_index);
   return (existing.item_codes as string[]).map((code: string) => {
     const it: any = byCode.get(code);
     const prompt = language === 'ar' ? it?.prompt_ar : it?.prompt_en;
-    const options = language === 'ar' ? it?.options_ar : it?.options_en;
+    const bankOptions = language === 'ar' ? it?.options_ar : it?.options_en;
+    const options = shuffled ? shuffledOptions(bankOptions, optionOrder(existing.id, code, bankOptions?.length ?? 4)) : bankOptions;
     return {itemCode: code, domain: it?.domain, difficulty: 4, prompt, options, grid: it?.visual_grid ?? undefined};
   });
 }
@@ -183,6 +190,11 @@ Deno.serve(async (req) => {
       const candidateCity = cleanOptionalText(b.candidateCity, 80);
 
       const promptCol = language === 'ar' ? 'prompt_ar' : 'prompt_en';
+      // OMS-MND-261126-03: questions this candidate already received in earlier exams (finished or not)
+      // are used only when a section has run out of unseen approved questions.
+      const { data: pastSessions } = await sb.from('university_challenge_sessions')
+        .select('item_codes').eq('candidate_id', candidateId).eq('exam_tag', EXAM_TAG);
+      const seen = new Set<string>((pastSessions ?? []).flatMap((p: any) => Array.isArray(p.item_codes) ? p.item_codes : []));
       const selectedByDomain: Record<string, any[]> = {};
       for (const domain of DOMAINS) {
         // legacy_id doubles as this session's item code, so rows without one
@@ -200,12 +212,17 @@ Deno.serve(async (req) => {
         if (!pool || pool.length < PER_DOMAIN) {
           return reply({error: `Insufficient approved ${language} content for domain ${domain}: ${pool?.length ?? 0} available, ${PER_DOMAIN} required`}, 503);
         }
-        selectedByDomain[domain] = shuffle(pool).slice(0, PER_DOMAIN);
+        const unseen = shuffle(pool.filter((q: any) => !seen.has(q.legacy_id)));
+        const reused = shuffle(pool.filter((q: any) => seen.has(q.legacy_id)));
+        selectedByDomain[domain] = [...unseen, ...reused].slice(0, PER_DOMAIN);
       }
       const allSelected = shuffle(DOMAINS.flatMap((d) => selectedByDomain[d]));
       const itemCodes = allSelected.map((q) => q.legacy_id);
       const domainsArr = allSelected.map((q) => q.domain);
-      const answerKey = allSelected.map((q) => q.correct_index);
+      // Session id is created here so the option order (seeded by it) is known before saving the answer key.
+      const sessionId = crypto.randomUUID();
+      const orders = allSelected.map((q) => optionOrder(sessionId, q.legacy_id, (language === 'ar' ? q.options_ar : q.options_en)?.length ?? 4));
+      const answerKey = allSelected.map((q, i) => shownCorrectIndex(q.correct_index, orders[i]));
       const expiresAt = new Date(nowMs + POLICY.durationSeconds * 1000).toISOString();
       const answersInit = new Array(POLICY.questionCount).fill(null);
 
@@ -215,6 +232,8 @@ Deno.serve(async (req) => {
 
       const { data: inserted, error: insertErr } = await sb.from('university_challenge_sessions')
         .insert({
+          id: sessionId,
+          started_at: new Date(nowMs).toISOString(),
           candidate_id: candidateId,
           email_verification_id: emailVerificationId,
           exam_tag: EXAM_TAG,
@@ -238,7 +257,7 @@ Deno.serve(async (req) => {
         domain: q.domain,
         difficulty: 4,
         prompt: language === 'ar' ? q.prompt_ar : q.prompt_en,
-        options: language === 'ar' ? q.options_ar : q.options_en,
+        options: shuffledOptions(language === 'ar' ? q.options_ar : q.options_en, orders[allSelected.indexOf(q)]),
         grid: q.visual_grid ?? undefined,
       }));
 
