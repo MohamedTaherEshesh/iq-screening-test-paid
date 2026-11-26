@@ -5,9 +5,11 @@ import { PDFDocument } from 'npm:pdf-lib@1.17.1';
 import { winAnsiSafe } from './brand.ts';
 import { loadBrand, OMS, SIGNER } from './omsaze-pdf-brand.ts';
 import { hasArabic, loadArabicFonts, mirrorPage } from './rtl-pdf.ts';
+import qrcode from 'npm:qrcode-generator@1.4.4';
 
 // lang 'ar' gives an Arabic, right-to-left certificate (OMS-MND-261126-01). English stays the default.
-export type CertData = { name: string; date: string; correct: number; total: number; pctl: number; iq: number; lang?: 'en' | 'ar' };
+// verifyCode/verifyUrl (OMS-MND-261126-04) add a QR code that opens the public verification page.
+export type CertData = { name: string; date: string; correct: number; total: number; pctl: number; iq: number; lang?: 'en' | 'ar'; verifyCode?: string; verifyUrl?: string };
 
 function wrapText(text: string, maxWidth: number, size: number, f: any): string[] {
   const words = text.split(' ');
@@ -71,6 +73,25 @@ export async function certificatePdfBytes(d: CertData): Promise<Uint8Array> {
   const logoY = H2 - inset - 30 - logoDims.height;
   page.drawImage(B.logo, { x: inset + 36, y: logoY, width: logoDims.width, height: logoDims.height });
   page.drawText('MINDPROOF  ·  DIGITAL LABS', { x: inset + 36 + logoDims.width + 14, y: logoY + logoDims.height / 2 - 3, size: 9.5, font: B.bold, color: OMS.GOLD_DARK });
+
+  // Verification QR (OMS-MND-261126-04). Drawn on the raw page, never mirrored, so it always scans.
+  // English: top right. Arabic: top left (the logo is on the right).
+  if (d.verifyUrl && d.verifyCode && /^https:\/\//.test(d.verifyUrl)) {
+    const qr = qrcode(0, 'M'); qr.addData(d.verifyUrl); qr.make();
+    const n = qr.getModuleCount(), size = 64, cell = size / n;
+    const qx = ar ? inset + 36 : W2 - inset - 36 - size;
+    const qy = H2 - inset - 22 - size;
+    rawPage.drawRectangle({ x: qx - 4, y: qy - 4, width: size + 8, height: size + 8, color: OMS.WHITE });
+    for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+      if (qr.isDark(r, c)) rawPage.drawRectangle({ x: qx + c * cell, y: qy + size - (r + 1) * cell, width: cell + 0.05, height: cell + 0.05, color: OMS.NAVY });
+    }
+    const codeW = brand.font.widthOfTextAtSize(d.verifyCode, 6.5);
+    rawPage.drawText(d.verifyCode, { x: qx + (size - codeW) / 2, y: qy - 11, size: 6.5, font: brand.font, color: OMS.INK });
+    const label = t('Scan to verify', 'امسح للتحقق');
+    const lw = B.font.widthOfTextAtSize(label, 7);
+    const enX = W2 - inset - 36 - size + (size - lw) / 2; // mirrored to the left on Arabic pages
+    page.drawText(label, { x: enX, y: qy - 21, size: 7, font: B.font, color: OMS.MUTED });
+  }
 
   let y = H2 - inset - 130;
   centerText(t('Certificate of Completion', 'شهادة إتمام'), y, 34, B.displayX, OMS.NAVY);

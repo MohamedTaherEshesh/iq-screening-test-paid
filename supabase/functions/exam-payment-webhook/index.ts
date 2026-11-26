@@ -2,6 +2,7 @@ import {requireStaging,stagingDb} from './_shared/staging-db.ts';
 import {paymentTestConfig,paymentTestOutcome} from './_shared/payment-test-contract.ts';
 import {verifyPaymobSandboxHmac} from './_shared/paymob-sandbox-webhook.ts';
 import {certificatePdfBytes} from './_shared/certificate.ts';
+import {certificateVerification} from './_shared/certificate-verify.ts';
 import {deliverReportMail, computeDomainStats} from './_shared/report-mail.ts';
 
 async function sendReportIfNewlyPaid(db: ReturnType<typeof stagingDb>, orderId: number) {
@@ -32,7 +33,8 @@ async function sendReportIfNewlyPaid(db: ReturnType<typeof stagingDb>, orderId: 
     const name = (session.candidate_name as string) || email;
     const lang = session.language === 'ar' ? 'ar' as const : 'en' as const;
 
-    const certBytes = await certificatePdfBytes({name, date: new Date().toISOString().slice(0,10), correct, total, pctl: 0, iq: 0, lang});
+    const v = await certificateVerification(db, String(payment.test_id), session);
+    const certBytes = await certificatePdfBytes({name, date: v.date, correct, total, pctl: 0, iq: 0, lang, verifyCode: v.code, verifyUrl: v.url});
     await deliverReportMail({
       email, name, runId: String(payment.test_id), correct, total, attempted, skipped,
       submittedAt: (session.submitted_at as string) || (session.started_at as string) || new Date().toISOString(),

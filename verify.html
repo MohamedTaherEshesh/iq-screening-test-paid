@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#102D46">
+<title>Verify a certificate | OMSAZE MindProof</title>
+<!-- OMS-MND-261126-04: public certificate verification. Shows only name, exam, score, exam date, issue date,
+     valid-until and status. The lookup runs in the database (verify_certificate) and returns nothing else. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./omsaze-brand.css">
+<style>
+:root{--navy:#102D46;--gold:#9A7A35;--muted:#667085;--line:#dfe6ee;--ok:#0f7b4c;--bad:#b42318;--warn:#9a6700}
+*{box-sizing:border-box}body{margin:0;background:#f2f4f7;color:var(--navy);font-family:"Source Sans 3","IBM Plex Sans Arabic",system-ui,"Segoe UI",Tahoma,Arial,sans-serif;font-size:16.5px}
+[dir=rtl] body,[dir=rtl] main{font-family:"IBM Plex Sans Arabic","Source Sans 3",Tahoma,Arial,sans-serif}
+main{max-width:760px;margin:auto;padding:40px 16px 70px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.eyebrow{font-size:13px;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase;margin:0}
+h1{font-family:Manrope,"IBM Plex Sans Arabic",sans-serif;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:10px 0 8px}
+p{color:var(--muted);line-height:1.7}
+.langbtn{font:inherit;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 14px;color:var(--navy);cursor:pointer}
+form{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+input{flex:1 1 240px;min-width:0;width:100%;font:inherit;font-size:18px;letter-spacing:1px;padding:12px 14px;border:1px solid #c9d1df;border-radius:10px;direction:ltr;text-transform:uppercase}
+button.go{font:inherit;font-weight:700;background:var(--navy);color:#fff;border:0;border-radius:10px;padding:12px 22px;cursor:pointer}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;margin:18px 0}
+.status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:7px 14px;border-radius:30px}
+.status.valid{background:#e7f6ee;color:var(--ok)}.status.expired{background:#fff4d6;color:var(--warn)}.status.revoked,.status.not_found{background:#fdecea;color:var(--bad)}
+.name{font-family:Manrope,"IBM Plex Sans Arabic",sans-serif;font-size:28px;font-weight:800;margin:16px 0 4px;overflow-wrap:anywhere}
+dl{display:grid;grid-template-columns:minmax(120px,max-content) 1fr;gap:10px 18px;margin:18px 0 0}
+dt{color:var(--muted);font-size:14.5px}dd{margin:0;font-weight:600}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.fine{font-size:13.5px}
+@media(max-width:520px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
+</style>
+</head>
+<body>
+<main id="app">
+  <div class="top"><p class="eyebrow" id="eyebrow">OMSAZE MindProof</p><button class="langbtn" id="lang" type="button">العربية</button></div>
+  <h1 id="title">Verify a certificate</h1>
+  <p id="lead">Enter the code printed under the QR code on the certificate, or scan the QR code with your phone.</p>
+  <form id="f" novalidate><label class="sr" for="code" hidden>Certificate code</label><input id="code" autocomplete="off" spellcheck="false" maxlength="24" placeholder="MP-XXXX-XXXX-XXXX"><button class="go" id="go" type="submit">Verify</button></form>
+  <div id="out" role="status" aria-live="polite"></div>
+  <p class="fine" id="privacy">This page shows only what is printed on the certificate. It never shows email, birth date, country, answers or payment details.</p>
+</main>
+<script>
+(function () {
+  'use strict';
+  var API = 'https://cbklbucvidcutshhmwjy.supabase.co/rest/v1/rpc/verify_certificate';
+  var KEY = 'sb_publishable_Xg48L8YEyp6wLSgDo4_7ww_ljIgB3H_';
+  var EXAMS = {
+    'university-iq-preparation': ['University IQ Preparation', 'التحضير لاختبار الذكاء الجامعي'],
+    'university-cognitive-skills': ['University Cognitive Skills', 'المهارات المعرفية الجامعية']
+  };
+  var T = {
+    title: ['Verify a certificate', 'التحقق من شهادة'],
+    lead: ['Enter the code printed under the QR code on the certificate, or scan the QR code with your phone.', 'أدخل الرمز المطبوع تحت رمز QR في الشهادة، أو امسح رمز QR بهاتفك.'],
+    go: ['Verify', 'تحقق'], lang: ['العربية', 'English'], checking: ['Checking…', 'جار التحقق…'],
+    privacy: ['This page shows only what is printed on the certificate. It never shows email, birth date, country, answers or payment details.', 'تعرض هذه الصفحة فقط ما هو مطبوع على الشهادة. لا تعرض أبدا البريد الإلكتروني أو تاريخ الميلاد أو الدولة أو الإجابات أو بيانات الدفع.'],
+    valid: ['✓ Valid certificate', '✓ شهادة صالحة'], expired: ['Expired certificate', 'شهادة منتهية الصلاحية'],
+    revoked: ['✕ Revoked certificate', '✕ شهادة ملغاة'], not_found: ['✕ No certificate with this code', '✕ لا توجد شهادة بهذا الرمز'],
+    revokedText: ['This certificate was cancelled by OMSAZE and is no longer valid.', 'ألغت OMSAZE هذه الشهادة ولم تعد صالحة.'],
+    notFoundText: ['Check the code and try again. Codes look like MP-XXXX-XXXX-XXXX.', 'تأكد من الرمز وحاول مرة أخرى. شكل الرمز: MP-XXXX-XXXX-XXXX.'],
+    error: ['The verification service is not reachable right now. Please try again in a minute.', 'خدمة التحقق غير متاحة الآن. حاول مرة أخرى بعد دقيقة.'],
+    exam: ['Assessment', 'الاختبار'], score: ['Score', 'الدرجة'], examDate: ['Exam date', 'تاريخ الاختبار'],
+    issued: ['Issued', 'تاريخ الإصدار'], validUntil: ['Valid until', 'صالحة حتى'], code: ['Certificate code', 'رمز الشهادة'],
+    note: ['Completion record issued by OMSAZE Digital Labs. Not a standardized IQ score, professional qualification or accredited credential.', 'سجل إتمام صادر عن OMSAZE Digital Labs. ليس درجة ذكاء معيارية ولا مؤهلا مهنيا ولا شهادة معتمدة.']
+  };
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var params = new URLSearchParams(location.search);
+  var ar = params.get('lang') === 'ar' || (!params.get('lang') && /^ar\b/i.test(navigator.language || ''));
+  var last = null;
+  function t(k) { return T[k][ar ? 1 : 0]; }
+  function paint() {
+    document.documentElement.lang = ar ? 'ar' : 'en'; document.documentElement.dir = ar ? 'rtl' : 'ltr';
+    ['title', 'lead', 'privacy'].forEach(function (k) { $(k).textContent = t(k); });
+    $('go').textContent = t('go'); $('lang').textContent = t('lang');
+    if (last) show(last);
+  }
+  function show(d) {
+    last = d;
+    var s = d.status in { valid: 1, expired: 1, revoked: 1 } ? d.status : 'not_found';
+    var h = '<div class="card"><span class="status ' + s + '">' + esc(t(s)) + '</span>';
+    if (s === 'valid' || s === 'expired') {
+      var exam = EXAMS[d.exam] ? EXAMS[d.exam][ar ? 1 : 0] : String(d.exam || '').replace(/-/g, ' ');
+      h += '<div class="name">' + esc(d.name || '-') + '</div><dl>' +
+        '<dt>' + t('exam') + '</dt><dd>' + esc(exam) + '</dd>' +
+        '<dt>' + t('score') + '</dt><dd class="ltr">' + esc(d.correct) + ' / ' + esc(d.total) + (d.percent != null ? ' (' + esc(Math.round(d.percent)) + '%)' : '') + '</dd>' +
+        '<dt>' + t('examDate') + '</dt><dd class="ltr">' + esc(d.exam_date) + '</dd>' +
+        '<dt>' + t('issued') + '</dt><dd class="ltr">' + esc(d.issued_on) + '</dd>' +
+        '<dt>' + t('validUntil') + '</dt><dd class="ltr">' + esc(d.valid_until) + '</dd>' +
+        '<dt>' + t('code') + '</dt><dd class="ltr">' + esc(d.code) + '</dd></dl>' +
+        '<p class="fine">' + t('note') + '</p>';
+    } else if (s === 'revoked') {
+      h += '<p>' + t('revokedText') + '</p><dl><dt>' + t('code') + '</dt><dd class="ltr">' + esc(d.code) + '</dd></dl>';
+    } else {
+      h += '<p>' + t('notFoundText') + '</p>';
+    }
+    $('out').innerHTML = h + '</div>';
+  }
+  function check(code) {
+    code = String(code || '').trim();
+    if (!code) return;
+    try { history.replaceState(null, '', '?c=' + encodeURIComponent(code.toUpperCase()) + (ar ? '&lang=ar' : '')); } catch (e) {}
+    $('out').innerHTML = '<div class="card"><p>' + t('checking') + '</p></div>'; last = null;
+    fetch(API, { method: 'POST', headers: { 'content-type': 'application/json', apikey: KEY }, body: JSON.stringify({ p_code: code }), cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('http'); return r.json(); })
+      .then(show)
+      .catch(function () { last = null; $('out').innerHTML = '<div class="card"><p>' + t('error') + '</p></div>'; });
+  }
+  $('lang').addEventListener('click', function () { ar = !ar; paint(); });
+  $('f').addEventListener('submit', function (e) { e.preventDefault(); check($('code').value); });
+  paint();
+  var c = params.get('c');
+  if (c) { $('code').value = c; check(c); }
+})();
+</script>
+<script src="./omsaze-shell.js" data-label="Certificate verification"></script>
+</body>
+</html>
