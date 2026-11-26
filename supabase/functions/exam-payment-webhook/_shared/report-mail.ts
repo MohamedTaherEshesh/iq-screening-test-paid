@@ -5,6 +5,7 @@ import { normalizeEmail } from './email-verification.ts';
 import { safeFileName, isoDateUtc, winAnsiSafe } from './brand.ts';
 import { loadBrand, OMS, SIGNER } from './omsaze-pdf-brand.ts';
 import { hasArabic, loadArabicFonts, mirrorPage } from './rtl-pdf.ts';
+import { examName } from './exam-names.ts';
 
 export type DomainStat = { domain: string; correct: number; attempted: number; skipped: number; total: number };
 
@@ -78,6 +79,8 @@ export type ReportMail = {
   certificateBytes: Uint8Array;
   // 'ar' gives an Arabic report and email; file names stay ASCII (OMS-MND-261126-01). English is the default.
   lang?: 'en' | 'ar';
+  // OMS-MND-261126-08: exam ID, used only to print the exam's display name.
+  examTag?: string | null;
 };
 
 function fmtDate(iso: string): string {
@@ -203,6 +206,8 @@ async function reportPdfBytes(d: ReportMail): Promise<Uint8Array> {
     y -= 26;
     page.drawText(name, { x: MARGIN, y, size: 13, font: nameFont, color: NAVY });
     y -= 16;
+    page.drawText(t(`Assessment: ${examName(d.examTag, 'en')}`, `الاختبار: ${examName(d.examTag, 'ar')}`), { x: MARGIN, y, size: 9.5, font: bold, color: NAVY });
+    y -= 14;
     page.drawText(t(`Saved submission: ${fmtDate(d.submittedAt)}`, `تاريخ التسليم: ${fmtDate(d.submittedAt)}`), { x: MARGIN, y, size: 9.5, font, color: MUTED });
     y -= 30;
 
@@ -416,7 +421,7 @@ function reportSummaryHtml(d: ReportMail): string {
   if (d.lang === 'ar') {
     return `<div dir="rtl" lang="ar" style="font-family:Tahoma,Arial,sans-serif;color:#1D2939;max-width:560px;text-align:right">
   <p>مرحبا ${esc(d.name)}،</p>
-  <p>شكرا لإتمامك اختبار التدريب من OMSAZE. عدد إجاباتك الصحيحة: <b dir="ltr">${esc(d.correct)} / ${esc(d.total)}</b>.</p>
+  <p>شكرا لإتمامك اختبار التدريب من OMSAZE: <b>${esc(examName(d.examTag, 'ar'))}</b>. عدد إجاباتك الصحيحة: <b dir="ltr">${esc(d.correct)} / ${esc(d.total)}</b>.</p>
   <p>تجد مرفقا بهذه الرسالة ملفين PDF: تقرير التدريب الكامل، ويشمل النظرة العامة وخريطة الأداء وتفاصيل المجالات وخطة التدريب، وشهادة الإتمام.</p>
   <p style="color:#667085;font-size:12px">هذه محاولة تدريب تقنية ببنك أسئلة تجريبي. ليست اختبار ذكاء معتمدا ولا ترتيبا مئينيا ولا قرار نجاح أو رسوب ولا شهادة معتمدة.</p>
   <div dir="ltr">${sigs}</div>
@@ -424,7 +429,7 @@ function reportSummaryHtml(d: ReportMail): string {
   }
   return `<div style="font-family:Arial,sans-serif;color:#1D2939;max-width:560px">
   <p>Hi ${esc(d.name)},</p>
-  <p>Thanks for completing the OMSAZE practice test. Your saved draft-key agreement: <b>${esc(d.correct)} / ${esc(d.total)}</b>.</p>
+  <p>Thanks for completing the OMSAZE practice test: <b>${esc(examName(d.examTag, 'en'))}</b>. Your saved draft-key agreement: <b>${esc(d.correct)} / ${esc(d.total)}</b>.</p>
   <p>Your full practice report (profile overview, domain performance map, domain breakdown and practice plan) and your completion certificate are both attached to this email as PDF files.</p>
   <p style="color:#667085;font-size:12px">This is a technical practice run with an unapproved draft question bank. It is not a validated IQ assessment, percentile, pass/fail decision, or accredited credential.</p>
   <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:18px;border-top:2px solid #D7B56D;padding-top:12px"><tr>
@@ -482,7 +487,7 @@ async function resendSend(subject: string, html: string, recipient: string, cert
 export async function deliverReportMail(d: ReportMail): Promise<void> {
   requireStaging();
   const recipient = normalizeEmail(d.email);
-  const subject = d.lang === 'ar' ? 'OMSAZE — تقرير التدريب وشهادة الإتمام' : 'OMSAZE — Your practice report and certificate';
+  const subject = d.lang === 'ar' ? `OMSAZE — تقرير التدريب وشهادة الإتمام — ${examName(d.examTag, 'ar')}` : `OMSAZE — Your ${examName(d.examTag, 'en')} report and certificate`;
   const html = reportSummaryHtml(d);
   const reportBytes = await reportPdfBytes(d);
   const stamp = isoDateUtc();

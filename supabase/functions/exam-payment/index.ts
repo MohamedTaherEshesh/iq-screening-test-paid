@@ -112,7 +112,7 @@ Deno.serve(async (req) => {
       if (!isUuid(b.testId)) return reply({error:'Invalid test reference'}, 400);
       const { data: payment } = await db.from('exam_payments').select('state').eq('test_id', b.testId).eq('candidate_id', candidateId).maybeSingle();
       if (!payment || payment.state !== 'paid') return reply({error:'Payment has not been confirmed yet. The certificate is not available.'}, 403);
-      const { data: session } = await db.from('university_challenge_sessions').select('candidate_name,result,submitted,language,submitted_at,started_at').eq('id', b.testId).eq('candidate_id', candidateId).maybeSingle();
+      const { data: session } = await db.from('university_challenge_sessions').select('candidate_name,result,submitted,language,submitted_at,started_at,exam_tag').eq('id', b.testId).eq('candidate_id', candidateId).maybeSingle();
       if (!session || !session.submitted || !session.result) return reply({error:'Exam result not found.'}, 404);
       const r = session.result as Record<string, unknown>;
       const correct = Number(r.correct);
@@ -123,7 +123,7 @@ Deno.serve(async (req) => {
       let bytes: Uint8Array;
       try {
         const v = await certificateVerification(db, b.testId as string, session);
-        bytes = await certificatePdfBytes({name, date: v.date, correct, total, pctl: 0, iq: 0, lang, verifyCode: v.code, verifyUrl: v.url});
+        bytes = await certificatePdfBytes({name, date: v.date, correct, total, pctl: 0, iq: 0, lang, verifyCode: v.code, verifyUrl: v.url, examTag: session.exam_tag as string});
       } catch { return reply({error:'Could not generate certificate.'}, 500); }
       const filename = `OMSAZE-${safeFileName(name)}-${isoDateUtc()}-Certificate.pdf`;
       return new Response(bytes, {status:200, headers:{'content-type':'application/pdf','content-disposition':`attachment; filename="${filename.replace(/"/g,'')}"`,'cache-control':'no-store','vary':'origin',...cors}});
@@ -134,7 +134,7 @@ Deno.serve(async (req) => {
       const { data: payment } = await db.from('exam_payments').select('id,state').eq('test_id', b.testId).eq('candidate_id', candidateId).maybeSingle();
       if (!payment || payment.state !== 'paid') return reply({error:'Payment has not been confirmed yet. The report cannot be emailed.'}, 403);
       const { data: session } = await db.from('university_challenge_sessions')
-        .select('candidate_name,result,submitted,answers,domains,answer_key,submitted_at,started_at,language')
+        .select('candidate_name,result,submitted,answers,domains,answer_key,submitted_at,started_at,language,exam_tag')
         .eq('id', b.testId).eq('candidate_id', candidateId).maybeSingle();
       if (!session || !session.submitted || !session.result) return reply({error:'Exam result not found.'}, 404);
       const r = session.result as Record<string, unknown>;
@@ -152,13 +152,13 @@ Deno.serve(async (req) => {
       let certBytes: Uint8Array;
       try {
         const v = await certificateVerification(db, b.testId as string, session);
-        certBytes = await certificatePdfBytes({name, date: v.date, correct, total, pctl: 0, iq: 0, lang, verifyCode: v.code, verifyUrl: v.url});
+        certBytes = await certificatePdfBytes({name, date: v.date, correct, total, pctl: 0, iq: 0, lang, verifyCode: v.code, verifyUrl: v.url, examTag: session.exam_tag as string});
       } catch { return reply({error:'Could not generate certificate.'}, 500); }
       try {
         await deliverReportMail({
           email, name, runId: String(b.testId), correct, total, attempted, skipped,
           submittedAt: (session.submitted_at as string) || (session.started_at as string) || new Date().toISOString(),
-          domainStats, certificateBytes: certBytes, lang,
+          domainStats, certificateBytes: certBytes, lang, examTag: session.exam_tag as string,
         });
       } catch (e) {
         console.error('report email failed', e instanceof Error ? e.message : 'unknown');

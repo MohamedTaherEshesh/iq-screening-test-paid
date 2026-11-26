@@ -6,10 +6,11 @@ import { winAnsiSafe } from './brand.ts';
 import { loadBrand, OMS, SIGNER } from './omsaze-pdf-brand.ts';
 import { hasArabic, loadArabicFonts, mirrorPage } from './rtl-pdf.ts';
 import qrcode from 'npm:qrcode-generator@1.4.4';
+import { examName } from './exam-names.ts';
 
 // lang 'ar' gives an Arabic, right-to-left certificate (OMS-MND-261126-01). English stays the default.
 // verifyCode/verifyUrl (OMS-MND-261126-04) add a QR code that opens the public verification page.
-export type CertData = { name: string; date: string; correct: number; total: number; pctl: number; iq: number; lang?: 'en' | 'ar'; verifyCode?: string; verifyUrl?: string };
+export type CertData = { name: string; date: string; correct: number; total: number; pctl: number; iq: number; lang?: 'en' | 'ar'; verifyCode?: string; verifyUrl?: string; examTag?: string | null };
 
 function wrapText(text: string, maxWidth: number, size: number, f: any): string[] {
   const words = text.split(' ');
@@ -102,7 +103,7 @@ export async function certificatePdfBytes(d: CertData): Promise<Uint8Array> {
   const nameW = nameFont.widthOfTextAtSize(name, 27);
   page.drawLine({ start: { x: (W2 - Math.min(nameW + 40, 520)) / 2, y: y - 9 }, end: { x: (W2 + Math.min(nameW + 40, 520)) / 2, y: y - 9 }, thickness: 1.2, color: OMS.GOLD });
   y -= 32;
-  y = centerParagraph(t(`who completed the Cognitive Screening Test on ${date}, answering ${C} of ${N} questions correctly.`, `وذلك بإتمام اختبار الفحص المعرفي بتاريخ ${date}، بإجابة صحيحة عن ${C} من أصل ${N} سؤالا.`), y, 560, 13, B.font, OMS.INK, 18) - 16;
+  y = centerParagraph(t(`who completed the ${examName(d.examTag, 'en')} assessment on ${date}, answering ${C} of ${N} questions correctly.`, `وذلك بإتمام تقييم ${examName(d.examTag, 'ar')} بتاريخ ${date}، بإجابة صحيحة عن ${C} من أصل ${N} سؤالا.`), y, 560, 13, B.font, OMS.INK, 18) - 16;
 
   // Score box
   const boxW = 190, boxH = 56;
