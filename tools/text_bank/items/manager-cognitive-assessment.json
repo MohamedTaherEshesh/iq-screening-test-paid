@@ -1,0 +1,1406 @@
+[
+ {
+  "id": "T-MAN-MCA-0001",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-cog-candid-opposite",
+  "prompt_en": "\"The manager gave a candid assessment of the project.\" Which word is most nearly the OPPOSITE of 'candid'?",
+  "options_en": [
+   "honest",
+   "evasive",
+   "detailed",
+   "brief"
+  ],
+  "prompt_ar": "\"قدّم المدير تقييمًا صريحًا للمشروع.\" أي كلمة هي الأقرب إلى عكس معنى 'صريح'؟",
+  "options_ar": [
+   "أمين",
+   "مراوغ",
+   "مفصل",
+   "مختصر"
+  ],
+  "answer": 1,
+  "explain_en": "Candid means open and direct; evasive means avoiding a direct answer.",
+  "explain_ar": "الصريح هو الواضح المباشر، والمراوغ هو من يتهرب من الإجابة المباشرة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0002",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-cog-odd-word-finance",
+  "prompt_en": "Which word does not belong with the others?",
+  "options_en": [
+   "budget",
+   "holiday",
+   "forecast",
+   "invoice"
+  ],
+  "prompt_ar": "أي كلمة لا تنتمي إلى المجموعة؟",
+  "options_ar": [
+   "ميزانية",
+   "إجازة",
+   "توقعات مالية",
+   "فاتورة"
+  ],
+  "answer": 1,
+  "explain_en": "The other three are financial documents or figures.",
+  "explain_ar": "الكلمات الثلاث الأخرى مستندات أو أرقام مالية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0003",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-cog-analogy-deadline",
+  "prompt_en": "Deadline is to project as ______ is to journey.",
+  "options_en": [
+   "passenger",
+   "road",
+   "ticket",
+   "arrival time"
+  ],
+  "prompt_ar": "الموعد النهائي بالنسبة للمشروع مثل ______ بالنسبة للرحلة.",
+  "options_ar": [
+   "الراكب",
+   "الطريق",
+   "التذكرة",
+   "موعد الوصول"
+  ],
+  "answer": 3,
+  "explain_en": "A deadline is when a project must end; an arrival time is when a journey must end.",
+  "explain_ar": "الموعد النهائي هو وقت انتهاء المشروع، وموعد الوصول هو وقت انتهاء الرحلة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0004",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-cog-not-every-delay",
+  "prompt_en": "\"Not every delay was avoidable.\" What does this sentence mean?",
+  "options_en": [
+   "Some delays could not have been avoided.",
+   "No delay could have been avoided.",
+   "Every delay could have been avoided.",
+   "There were no delays."
+  ],
+  "prompt_ar": "\"ليس كل تأخير كان من الممكن تجنبه.\" ماذا تعني هذه الجملة؟",
+  "options_ar": [
+   "بعض التأخيرات لم يكن من الممكن تجنبها.",
+   "لا يوجد تأخير كان يمكن تجنبه.",
+   "كل تأخير كان يمكن تجنبه.",
+   "لم تحدث أي تأخيرات."
+  ],
+  "answer": 0,
+  "explain_en": "'Not every' means at least some were unavoidable, not all.",
+  "explain_ar": "'ليس كل' تعني أن بعضها على الأقل لم يكن ممكن تجنبه، وليس كلها.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0005",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-cog-inconclusive-fill",
+  "prompt_en": "\"The data were ______, so the team could not reach a firm conclusion.\" Which word fits best?",
+  "options_en": [
+   "decisive",
+   "accurate",
+   "published",
+   "inconclusive"
+  ],
+  "prompt_ar": "\"كانت البيانات ______، لذلك لم يتمكن الفريق من الوصول إلى نتيجة قاطعة.\" أي كلمة تناسب أكثر؟",
+  "options_ar": [
+   "حاسمة",
+   "دقيقة",
+   "منشورة",
+   "غير حاسمة"
+  ],
+  "answer": 3,
+  "explain_en": "Only 'inconclusive' explains why no firm conclusion was possible.",
+  "explain_ar": "كلمة 'غير حاسمة' وحدها تفسر عدم الوصول لنتيجة قاطعة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0006",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-cog-tool-summary",
+  "prompt_en": "\"Although the new tool saves time, staff need two weeks of training before they can use it well.\" Which is the best summary?",
+  "options_en": [
+   "The tool wastes time.",
+   "The tool saves time, but only after staff are trained.",
+   "Training is not needed.",
+   "Staff already use the tool well."
+  ],
+  "prompt_ar": "\"مع أن الأداة الجديدة توفر الوقت، يحتاج الموظفون إلى أسبوعين من التدريب قبل أن يستخدموها جيدًا.\" ما أفضل تلخيص؟",
+  "options_ar": [
+   "الأداة تضيع الوقت.",
+   "الأداة توفر الوقت، لكن بعد تدريب الموظفين.",
+   "التدريب غير مطلوب.",
+   "الموظفون يستخدمون الأداة جيدًا بالفعل."
+  ],
+  "answer": 1,
+  "explain_en": "It keeps both points: the benefit and the training condition.",
+  "explain_ar": "يحافظ على النقطتين: الفائدة وشرط التدريب.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0007",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "mgr-cog-not-untrue",
+  "prompt_en": "\"It is not untrue that the plan was submitted late.\" What does the speaker mean?",
+  "options_en": [
+   "The plan was submitted late.",
+   "The plan was submitted on time.",
+   "The plan was never submitted.",
+   "Nobody knows when the plan was submitted."
+  ],
+  "prompt_ar": "\"ليس من غير الصحيح أن الخطة قُدمت متأخرة.\" ماذا يقصد المتحدث؟",
+  "options_ar": [
+   "الخطة قُدمت متأخرة.",
+   "الخطة قُدمت في موعدها.",
+   "الخطة لم تُقدم أبدًا.",
+   "لا أحد يعرف متى قُدمت الخطة."
+  ],
+  "answer": 0,
+  "explain_en": "'Not untrue' is a double negative meaning 'true'.",
+  "explain_ar": "'ليس من غير الصحيح' نفي مزدوج يعني 'صحيح'.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0008",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-cog-mitigate-synonym",
+  "prompt_en": "\"The new controls will mitigate the risk.\" Which word is closest in meaning to 'mitigate'?",
+  "options_en": [
+   "reduce",
+   "remove completely",
+   "ignore",
+   "measure"
+  ],
+  "prompt_ar": "\"الضوابط الجديدة ستُخفف من المخاطر.\" أي كلمة أقرب معنى إلى 'تُخفف'؟",
+  "options_ar": [
+   "تُقلل",
+   "تُزيل تمامًا",
+   "تتجاهل",
+   "تقيس"
+  ],
+  "answer": 0,
+  "explain_en": "Mitigate means to make less severe, not to remove entirely.",
+  "explain_ar": "التخفيف يعني جعل الشيء أقل حدة، وليس إزالته تمامًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0009",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-cog-email-today-action",
+  "prompt_en": "A client email: \"Thanks for the new catalogue. Please confirm by end of today whether the shipment leaves on Tuesday. Next month we may want to discuss prices.\" What must you act on today?",
+  "options_en": [
+   "Send a thank-you for the catalogue.",
+   "Confirm whether the shipment leaves on Tuesday.",
+   "Prepare a new price list.",
+   "Book a pricing meeting next month."
+  ],
+  "prompt_ar": "بريد من عميل: \"شكرًا على الكتالوج الجديد. يرجى التأكيد قبل نهاية اليوم هل الشحنة ستخرج يوم الثلاثاء. الشهر القادم قد نرغب في مناقشة الأسعار.\" ما الذي يجب أن تتصرف فيه اليوم؟",
+  "options_ar": [
+   "إرسال شكر على الكتالوج.",
+   "تأكيد هل الشحنة ستخرج يوم الثلاثاء.",
+   "إعداد قائمة أسعار جديدة.",
+   "حجز اجتماع أسعار الشهر القادم."
+  ],
+  "answer": 1,
+  "explain_en": "Only the shipment confirmation has a deadline of today.",
+  "explain_ar": "تأكيد الشحنة هو الوحيد المطلوب قبل نهاية اليوم.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0010",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-form-routing",
+  "prompt_en": "Instruction: \"Send the form to HR, not to your manager, unless your manager is also your HR partner.\" Laila's manager is not her HR partner. Where should she send the form?",
+  "options_en": [
+   "To her manager",
+   "To both HR and her manager",
+   "To nobody until her manager decides",
+   "To HR"
+  ],
+  "prompt_ar": "تعليمات: \"أرسل النموذج إلى الموارد البشرية وليس إلى مديرك، إلا إذا كان مديرك هو نفسه شريك الموارد البشرية لك.\" مدير ليلى ليس شريك الموارد البشرية لها. أين ترسل النموذج؟",
+  "options_ar": [
+   "إلى مديرها",
+   "إلى الموارد البشرية ومديرها معًا",
+   "لا ترسله حتى يقرر مديرها",
+   "إلى الموارد البشرية"
+  ],
+  "answer": 3,
+  "explain_en": "The exception does not apply, so the main rule (send to HR) does.",
+  "explain_ar": "الاستثناء لا ينطبق، فتُطبق القاعدة الأساسية (الإرسال للموارد البشرية).",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0011",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-job-ad-required-preferred",
+  "prompt_en": "A job advert says: \"Required: 5 years of project experience. Preferred: Arabic speaker.\" A candidate has 6 years of project experience and does not speak Arabic. Which is correct?",
+  "options_en": [
+   "The candidate does not meet the requirement.",
+   "The candidate meets both the requirement and the preference.",
+   "The candidate meets the requirement but not the preference.",
+   "The candidate cannot apply."
+  ],
+  "prompt_ar": "إعلان وظيفة يقول: \"مطلوب: خبرة 5 سنوات في إدارة المشاريع. يُفضل: يتحدث العربية.\" مرشح لديه 6 سنوات خبرة ولا يتحدث العربية. أي عبارة صحيحة؟",
+  "options_ar": [
+   "المرشح لا يحقق المطلوب.",
+   "المرشح يحقق المطلوب والمفضل معًا.",
+   "المرشح يحقق المطلوب لكن لا يحقق المفضل.",
+   "المرشح لا يمكنه التقديم."
+  ],
+  "answer": 2,
+  "explain_en": "'Required' is met (6 ≥ 5); 'preferred' is a plus, not a condition.",
+  "explain_ar": "المطلوب متحقق (6 ≥ 5)، والمفضل ميزة إضافية وليس شرطًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0012",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-cog-present-if-final",
+  "prompt_en": "Meeting notes: \"Ahmed will present to the board only if the numbers are final by Monday.\" The numbers were finalised on Tuesday. Based on the agreement, what follows?",
+  "options_en": [
+   "Ahmed will present on Tuesday.",
+   "The board meeting is cancelled.",
+   "Ahmed is not due to present under this agreement.",
+   "Ahmed must finalise the numbers again."
+  ],
+  "prompt_ar": "محضر اجتماع: \"سيعرض أحمد على مجلس الإدارة فقط إذا كانت الأرقام نهائية قبل يوم الاثنين.\" الأرقام أصبحت نهائية يوم الثلاثاء. بناء على الاتفاق، ماذا يترتب؟",
+  "options_ar": [
+   "أحمد سيعرض يوم الثلاثاء.",
+   "اجتماع المجلس أُلغي.",
+   "أحمد غير مطلوب منه العرض وفق هذا الاتفاق.",
+   "يجب على أحمد إعادة اعتماد الأرقام."
+  ],
+  "answer": 2,
+  "explain_en": "'Only if' makes Monday a necessary condition, and it was not met.",
+  "explain_ar": "'فقط إذا' تجعل يوم الاثنين شرطًا لازمًا، وهو لم يتحقق.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0013",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-cog-tone-reassuring",
+  "prompt_en": "A company message reads: \"We appreciate your patience. Our team is fixing the issue now and we will update you by 5 pm.\" How would you describe its tone?",
+  "options_en": [
+   "Reassuring and accountable",
+   "Angry and defensive",
+   "Casual and joking",
+   "Vague and dismissive"
+  ],
+  "prompt_ar": "رسالة من شركة: \"نقدّر صبركم. فريقنا يعمل على حل المشكلة الآن وسنوافيكم بالتحديث قبل الساعة 5 مساءً.\" كيف تصف نبرة الرسالة؟",
+  "options_ar": [
+   "مطمئنة وتتحمل المسؤولية",
+   "غاضبة ودفاعية",
+   "عفوية ومازحة",
+   "غامضة ومستخفة"
+  ],
+  "answer": 0,
+  "explain_en": "It thanks the reader, owns the fix and commits to a time.",
+  "explain_ar": "تشكر القارئ، وتتحمل مسؤولية الحل، وتلتزم بموعد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0014",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-cog-short-version-misread",
+  "prompt_en": "A manager asked: \"Send me the short version.\" The employee sent a 20-page report, and the manager was frustrated. What most likely went wrong?",
+  "options_en": [
+   "The manager did not want any report.",
+   "The report had wrong numbers.",
+   "The employee sent it too early.",
+   "'Short version' was not defined, and the employee did not check what was meant."
+  ],
+  "prompt_ar": "طلب مدير: \"أرسل لي النسخة المختصرة.\" أرسل الموظف تقريرًا من 20 صفحة فانزعج المدير. ما الخطأ الأرجح؟",
+  "options_ar": [
+   "المدير لم يكن يريد أي تقرير.",
+   "التقرير فيه أرقام خطأ.",
+   "الموظف أرسله مبكرًا جدًا.",
+   "'النسخة المختصرة' لم تُحدد، والموظف لم يتأكد من المقصود."
+  ],
+  "answer": 3,
+  "explain_en": "Nothing suggests wrong numbers or timing; the gap is an unclear request that was not clarified.",
+  "explain_ar": "لا شيء يشير إلى أرقام خطأ أو توقيت، المشكلة طلب غير واضح لم يُستوضح.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0015",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-status-one-line",
+  "prompt_en": "Project facts: on schedule; one risk — the vendor may be one week late; action — a backup vendor has been contacted. Which one-line update for leadership is best?",
+  "options_en": [
+   "On track; risk of a one-week vendor delay, backup vendor already contacted.",
+   "Everything is fine.",
+   "The vendor is late and the project will fail.",
+   "We contacted another vendor."
+  ],
+  "prompt_ar": "حقائق المشروع: في موعده، وخطر واحد هو أن المورد قد يتأخر أسبوعًا، والإجراء: تم التواصل مع مورد بديل. أي تحديث في سطر واحد للإدارة هو الأفضل؟",
+  "options_ar": [
+   "في الموعد، مع خطر تأخر المورد أسبوعًا، وتم التواصل مع مورد بديل.",
+   "كل شيء على ما يرام.",
+   "المورد متأخر والمشروع سيفشل.",
+   "تواصلنا مع مورد آخر."
+  ],
+  "answer": 0,
+  "explain_en": "It gives status, risk and action accurately in one line.",
+  "explain_ar": "يذكر الحالة والخطر والإجراء بدقة في سطر واحد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0016",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-cog-presentation-feedback",
+  "prompt_en": "Feedback after a presentation: \"Strong on data, but light on what you want us to decide.\" What should the presenter add next time?",
+  "options_en": [
+   "More charts",
+   "A longer introduction",
+   "A clear statement of the decision being requested",
+   "Fewer numbers"
+  ],
+  "prompt_ar": "ملاحظة بعد عرض تقديمي: \"قوي في البيانات، لكنه ضعيف في توضيح ما تريد منا أن نقرره.\" ماذا يضيف المقدّم في المرة القادمة؟",
+  "options_ar": [
+   "رسومًا بيانية أكثر",
+   "مقدمة أطول",
+   "عبارة واضحة بالقرار المطلوب",
+   "أرقامًا أقل"
+  ],
+  "answer": 2,
+  "explain_en": "The data were fine; the missing part was the decision request.",
+  "explain_ar": "البيانات كانت جيدة، والناقص هو توضيح القرار المطلوب.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0017",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-leave-emergency",
+  "prompt_en": "Policy: \"Leave requests need two weeks' notice, except in emergencies.\" An employee asks for leave tomorrow because of a family emergency. What does the policy say?",
+  "options_en": [
+   "The request must be refused.",
+   "The employee must wait two weeks.",
+   "The two-week notice does not apply to this request.",
+   "Only half a day can be given."
+  ],
+  "prompt_ar": "سياسة: \"طلبات الإجازة تحتاج إشعارًا قبل أسبوعين، إلا في حالات الطوارئ.\" موظف طلب إجازة غدًا بسبب طارئ عائلي. ماذا تقول السياسة؟",
+  "options_ar": [
+   "يجب رفض الطلب.",
+   "يجب أن ينتظر الموظف أسبوعين.",
+   "شرط الإشعار قبل أسبوعين لا ينطبق على هذا الطلب.",
+   "يمكن منحه نصف يوم فقط."
+  ],
+  "answer": 2,
+  "explain_en": "Emergencies are the stated exception to the notice rule.",
+  "explain_ar": "حالات الطوارئ هي الاستثناء المذكور من شرط الإشعار.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0018",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-cog-closed-office-urgent",
+  "prompt_en": "Notice: \"The office is closed on Thursday. Urgent requests should be made to the duty manager by phone.\" A client sent an urgent email on Thursday and got no reply. According to the notice, what should the client have done?",
+  "options_en": [
+   "Sent a second email",
+   "Waited until Sunday",
+   "Phoned the duty manager",
+   "Visited the office"
+  ],
+  "prompt_ar": "إعلان: \"المكتب مغلق يوم الخميس. الطلبات العاجلة تكون عبر الاتصال هاتفيًا بالمدير المناوب.\" عميل أرسل بريدًا عاجلًا يوم الخميس ولم يتلق ردًا. حسب الإعلان، ماذا كان يجب أن يفعل؟",
+  "options_ar": [
+   "إرسال بريد ثانٍ",
+   "الانتظار حتى الأحد",
+   "الاتصال هاتفيًا بالمدير المناوب",
+   "زيارة المكتب"
+  ],
+  "answer": 2,
+  "explain_en": "The notice names a phone call to the duty manager as the channel for urgent requests.",
+  "explain_ar": "الإعلان يحدد الاتصال بالمدير المناوب كقناة للطلبات العاجلة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0019",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-complaint-real-issue",
+  "prompt_en": "A customer writes: \"Your engineer was polite and fixed the machine, but he arrived four hours after the time you gave me, and I lost a morning of work.\" Which reply addresses the actual complaint?",
+  "options_en": [
+   "Thanks for praising the engineer",
+   "An explanation of how the machine was fixed",
+   "A discount on the next machine purchase only",
+   "An apology for the late arrival and a change to how visit times are confirmed"
+  ],
+  "prompt_ar": "عميل يكتب: \"الفني كان مهذبًا وأصلح الجهاز، لكنه وصل بعد الموعد الذي أعطيتموه لي بأربع ساعات، وخسرت صباح عمل كامل.\" أي رد يعالج الشكوى الفعلية؟",
+  "options_ar": [
+   "شكر على مدح الفني",
+   "شرح طريقة إصلاح الجهاز",
+   "خصم على شراء الجهاز القادم فقط",
+   "اعتذار عن التأخير وتغيير طريقة تأكيد مواعيد الزيارة"
+  ],
+  "answer": 3,
+  "explain_en": "The complaint is the late arrival, not the repair or the engineer's manner.",
+  "explain_ar": "الشكوى عن التأخير، وليست عن الإصلاح أو أسلوب الفني.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0020",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-cog-cafe-mornings",
+  "prompt_en": "A café is empty in the mornings and full in the evenings. There is no budget for advertising. Which idea uses what the café already has, at no extra cost, to fill the mornings?",
+  "options_en": [
+   "Offer the space to local remote workers in the morning with a minimum purchase.",
+   "Run a TV advert.",
+   "Renovate the seating area.",
+   "Close in the mornings."
+  ],
+  "prompt_ar": "مقهى فارغ صباحًا وممتلئ مساءً، ولا توجد ميزانية للإعلان. أي فكرة تستخدم ما يملكه المقهى بالفعل، بدون تكلفة إضافية، لملء فترة الصباح؟",
+  "options_ar": [
+   "إتاحة المكان صباحًا لمن يعملون عن بُعد مقابل حد أدنى للشراء.",
+   "عمل إعلان تلفزيوني.",
+   "تجديد منطقة الجلوس.",
+   "الإغلاق صباحًا."
+  ],
+  "answer": 0,
+  "explain_en": "It turns idle space into revenue with no spend; the others cost money or do not fill the mornings.",
+  "explain_ar": "تحول المساحة غير المستغلة إلى دخل بدون إنفاق، والباقي مكلف أو لا يملأ الصباح.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0021",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-fabric-scraps",
+  "prompt_en": "A clothing factory throws away large amounts of fabric offcuts. Management wants new revenue without buying new machines. Which idea best meets this?",
+  "options_en": [
+   "Sell sorted offcut packs to craft and hobby shops.",
+   "Buy machines to start a new product line.",
+   "Lower the price of the main products.",
+   "Send the offcuts to landfill faster."
+  ],
+  "prompt_ar": "مصنع ملابس يتخلص من كميات كبيرة من بقايا القماش. الإدارة تريد دخلًا جديدًا بدون شراء ماكينات جديدة. أي فكرة تحقق ذلك أفضل؟",
+  "options_ar": [
+   "بيع عبوات من بقايا القماش المصنفة لمحلات الحرف والهوايات.",
+   "شراء ماكينات لخط إنتاج جديد.",
+   "خفض سعر المنتجات الأساسية.",
+   "التخلص من البقايا بشكل أسرع."
+  ],
+  "answer": 0,
+  "explain_en": "It turns waste into revenue with no new equipment.",
+  "explain_ar": "تحول المخلفات إلى دخل بدون معدات جديدة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0022",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-clinic-queue",
+  "prompt_en": "A clinic has long queues at reception every morning. It cannot hire more staff. Which idea best shortens the queue without new staff?",
+  "options_en": [
+   "Hire two more receptionists.",
+   "Let patients check in by text message before they arrive.",
+   "Build a bigger waiting room.",
+   "Open one hour later."
+  ],
+  "prompt_ar": "عيادة فيها طوابير طويلة عند الاستقبال كل صباح، ولا يمكنها تعيين موظفين جدد. أي فكرة تقلل الطابور بدون موظفين جدد؟",
+  "options_ar": [
+   "تعيين موظفي استقبال إضافيين.",
+   "السماح للمرضى بتسجيل الحضور برسالة نصية قبل الوصول.",
+   "بناء صالة انتظار أكبر.",
+   "الفتح متأخرًا ساعة."
+  ],
+  "answer": 1,
+  "explain_en": "It moves work out of the queue without staff; a bigger room only hides the queue.",
+  "explain_ar": "تنقل جزءًا من العمل خارج الطابور بدون موظفين، والصالة الأكبر تخفي الطابور فقط.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0023",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-cog-zero-training-budget",
+  "prompt_en": "A team must learn a new reporting tool, but the training budget this year is zero. Two team members already know the tool well. Which idea fits best?",
+  "options_en": [
+   "Short peer sessions led by the two team members",
+   "An external paid course",
+   "Buy a book for each person",
+   "Wait for next year's budget"
+  ],
+  "prompt_ar": "فريق يجب أن يتعلم أداة تقارير جديدة، لكن ميزانية التدريب هذا العام صفر. اثنان من الفريق يعرفان الأداة جيدًا. أي فكرة أنسب؟",
+  "options_ar": [
+   "جلسات قصيرة يقدمها الزميلان للفريق",
+   "دورة خارجية مدفوعة",
+   "شراء كتاب لكل شخص",
+   "انتظار ميزانية العام القادم"
+  ],
+  "answer": 0,
+  "explain_en": "It uses existing expertise at no cost and does not delay learning.",
+  "explain_ar": "تستخدم الخبرة الموجودة بدون تكلفة ولا تؤخر التعلم.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0024",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-cog-survey-response",
+  "prompt_en": "Few employees answer the yearly engagement survey. Many say \"nothing changes anyway.\" Which idea is most likely to raise responses without forcing anyone?",
+  "options_en": [
+   "Make the survey mandatory with penalties.",
+   "Publish what changed after the last survey before launching the new one.",
+   "Make the survey twice as long.",
+   "Run the survey only every three years."
+  ],
+  "prompt_ar": "قلة من الموظفين يجيبون على استبيان الارتباط السنوي، وكثيرون يقولون \"لا شيء يتغير على أي حال\". أي فكرة أرجح لزيادة المشاركة بدون إجبار؟",
+  "options_ar": [
+   "جعل الاستبيان إلزاميًا مع عقوبات.",
+   "نشر ما تغير بعد الاستبيان السابق قبل إطلاق الجديد.",
+   "مضاعفة طول الاستبيان.",
+   "إجراء الاستبيان كل ثلاث سنوات فقط."
+  ],
+  "answer": 1,
+  "explain_en": "It answers the stated reason for low response: people do not see results.",
+  "explain_ar": "تعالج السبب المذكور لضعف المشاركة: الناس لا يرون نتيجة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0025",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-idle-vans",
+  "prompt_en": "A delivery company's vans sit idle every afternoon after morning deliveries. Which idea creates new revenue from what already exists?",
+  "options_en": [
+   "Offer afternoon same-day delivery to local shops.",
+   "Sell half of the vans.",
+   "Repaint the vans with a new logo.",
+   "Hire more morning drivers."
+  ],
+  "prompt_ar": "شاحنات شركة توصيل تبقى متوقفة كل يوم بعد الظهر بعد انتهاء توصيلات الصباح. أي فكرة تحقق دخلًا جديدًا مما هو موجود بالفعل؟",
+  "options_ar": [
+   "تقديم خدمة توصيل في نفس اليوم للمحلات المحلية بعد الظهر.",
+   "بيع نصف الشاحنات.",
+   "إعادة طلاء الشاحنات بشعار جديد.",
+   "تعيين سائقين إضافيين للصباح."
+  ],
+  "answer": 0,
+  "explain_en": "It uses idle vans and drivers to earn more.",
+  "explain_ar": "تستغل الشاحنات والسائقين في وقت الفراغ لتحقيق دخل إضافي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0026",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-cog-hotel-weekends",
+  "prompt_en": "A hotel beside a conference centre is full on weekdays and nearly empty at weekends. Which idea best fills weekends using the hotel's existing strengths?",
+  "options_en": [
+   "Close the hotel at weekends",
+   "Raise weekend prices",
+   "Add weekday staff",
+   "Weekend packages for families and teams attending local sports and cultural events, using the meeting rooms"
+  ],
+  "prompt_ar": "فندق بجوار مركز مؤتمرات ممتلئ أيام الأسبوع وشبه فارغ في العطلات. أي فكرة تملأ العطلات باستخدام نقاط قوة الفندق الحالية؟",
+  "options_ar": [
+   "إغلاق الفندق في العطلات",
+   "رفع أسعار العطلات",
+   "زيادة موظفي أيام الأسبوع",
+   "باقات عطلة للعائلات والفرق المشاركة في الفعاليات الرياضية والثقافية المحلية، مع استخدام قاعات الاجتماعات"
+  ],
+  "answer": 3,
+  "explain_en": "It targets a new weekend market and reuses idle meeting rooms.",
+  "explain_ar": "تستهدف سوقًا جديدًا في العطلات وتستغل القاعات غير المستخدمة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0027",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-ghost-bookings",
+  "prompt_en": "Meeting rooms are always fully booked, yet many sit empty because people do not show up. Which idea fixes this best without building new rooms?",
+  "options_en": [
+   "Release a booking automatically if no one checks in within 10 minutes.",
+   "Build two more rooms.",
+   "Ban meetings on Mondays.",
+   "Allow bookings only one month ahead."
+  ],
+  "prompt_ar": "قاعات الاجتماعات محجوزة دائمًا، لكن كثيرًا منها يبقى فارغًا لأن الحاجزين لا يحضرون. أي فكرة تحل المشكلة بدون بناء قاعات جديدة؟",
+  "options_ar": [
+   "إلغاء الحجز تلقائيًا إذا لم يسجل أحد حضوره خلال 10 دقائق.",
+   "بناء قاعتين إضافيتين.",
+   "منع الاجتماعات يوم الاثنين.",
+   "السماح بالحجز قبل شهر فقط."
+  ],
+  "answer": 0,
+  "explain_en": "It targets the real cause (no-shows) and frees rooms at no building cost.",
+  "explain_ar": "تعالج السبب الحقيقي (عدم الحضور) وتحرر القاعات بدون تكلفة بناء.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0028",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-cog-card-sort-switch",
+  "prompt_en": "Cards: red square, blue circle, red circle, blue square. You first sorted them by colour. The rule now changes: sort by shape. Under the new rule, which card goes with the red square?",
+  "options_en": [
+   "Red circle",
+   "Blue square",
+   "Blue circle",
+   "None of the cards"
+  ],
+  "prompt_ar": "بطاقات: مربع أحمر، دائرة زرقاء، دائرة حمراء، مربع أزرق. رتبتها أولًا حسب اللون. القاعدة تغيرت الآن: الترتيب حسب الشكل. حسب القاعدة الجديدة، أي بطاقة تُوضع مع المربع الأحمر؟",
+  "options_ar": [
+   "الدائرة الحمراء",
+   "المربع الأزرق",
+   "الدائرة الزرقاء",
+   "لا توجد بطاقة"
+  ],
+  "answer": 1,
+  "explain_en": "By shape, squares go together: the blue square.",
+  "explain_ar": "حسب الشكل، المربعات معًا: المربع الأزرق.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0029",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-cog-alternate-plus3-minus1",
+  "prompt_en": "The rule alternates: add 3, then subtract 1. Sequence: 5, 8, 7, 10, 9, ... What comes next?",
+  "options_en": [
+   "8",
+   "12",
+   "11",
+   "13"
+  ],
+  "prompt_ar": "القاعدة تتبادل: أضف 3، ثم اطرح 1. المتتالية: 5، 8، 7، 10، 9، ... ما الرقم التالي؟",
+  "options_ar": [
+   "8",
+   "12",
+   "11",
+   "13"
+  ],
+  "answer": 1,
+  "explain_en": "After subtracting 1 (10 → 9), the next step adds 3: 12.",
+  "explain_ar": "بعد طرح 1 (10 ← 9) تأتي إضافة 3: 12.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "9+3"
+ },
+ {
+  "id": "T-MAN-MCA-0030",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-cog-survey-step-order",
+  "prompt_en": "Steps to run a staff survey: (1) analyse the results, (2) write the questions, (3) test with five people, (4) send to everyone. What is the correct order?",
+  "options_en": [
+   "2, 4, 3, 1",
+   "2, 3, 4, 1",
+   "3, 2, 4, 1",
+   "1, 2, 3, 4"
+  ],
+  "prompt_ar": "خطوات تنفيذ استبيان للموظفين: (1) تحليل النتائج، (2) كتابة الأسئلة، (3) تجربته على خمسة أشخاص، (4) إرساله للجميع. ما الترتيب الصحيح؟",
+  "options_ar": [
+   "2، 4، 3، 1",
+   "2، 3، 4، 1",
+   "3، 2، 4، 1",
+   "1، 2، 3، 4"
+  ],
+  "answer": 1,
+  "explain_en": "Write, test, send, then analyse.",
+  "explain_ar": "كتابة، ثم تجربة، ثم إرسال، ثم تحليل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0031",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-cog-deadline-moved-plan",
+  "prompt_en": "Plan: Monday draft, Tuesday review, Wednesday revise, Thursday submit. The deadline moves to the end of Wednesday. Review takes a full day and must happen before revising. Which new plan works?",
+  "options_en": [
+   "Monday draft and review, Tuesday revise, Thursday submit",
+   "Monday review, Tuesday draft, Wednesday submit",
+   "Monday draft, Tuesday revise, Wednesday review and submit",
+   "Monday draft, Tuesday review, Wednesday revise and submit"
+  ],
+  "prompt_ar": "الخطة: الاثنين مسودة، الثلاثاء مراجعة، الأربعاء تعديل، الخميس تسليم. الموعد النهائي أصبح نهاية يوم الأربعاء. المراجعة تحتاج يومًا كاملًا ويجب أن تسبق التعديل. أي خطة جديدة تصلح؟",
+  "options_ar": [
+   "الاثنين مسودة ومراجعة، الثلاثاء تعديل، الخميس تسليم",
+   "الاثنين مراجعة، الثلاثاء مسودة، الأربعاء تسليم",
+   "الاثنين مسودة، الثلاثاء تعديل، الأربعاء مراجعة وتسليم",
+   "الاثنين مسودة، الثلاثاء مراجعة، الأربعاء تعديل وتسليم"
+  ],
+  "answer": 3,
+  "explain_en": "It keeps a full review day before revising and submits by Wednesday.",
+  "explain_ar": "تحافظ على يوم مراجعة كامل قبل التعديل وتسلم يوم الأربعاء.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0032",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-cog-even-half-odd-plus5",
+  "prompt_en": "Rule: if a number is even, halve it; if it is odd, add 5. Starting at 12 you get 12, 6, 3, 8, ... What comes next?",
+  "options_en": [
+   "13",
+   "4",
+   "16",
+   "3"
+  ],
+  "prompt_ar": "القاعدة: إذا كان الرقم زوجيًا اقسمه على 2، وإذا كان فرديًا أضف 5. بدءًا من 12 نحصل على 12، 6، 3، 8، ... ما الرقم التالي؟",
+  "options_ar": [
+   "13",
+   "4",
+   "16",
+   "3"
+  ],
+  "answer": 1,
+  "explain_en": "8 is even, so halve it: 4.",
+  "explain_ar": "8 زوجي، فنقسمه على 2: 4.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "8/2"
+ },
+ {
+  "id": "T-MAN-MCA-0033",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-cog-resort-by-amount",
+  "prompt_en": "Orders are listed by date: 1 May SAR 500; 2 May SAR 350; 3 May SAR 200. The rule changes: sort by amount, highest first. Which order is second?",
+  "options_en": [
+   "1 May",
+   "2 May",
+   "3 May",
+   "It does not change"
+  ],
+  "prompt_ar": "الطلبات مرتبة حسب التاريخ: 1 مايو 500 ريال، 2 مايو 350 ريالًا، 3 مايو 200 ريال. تغيرت القاعدة: الترتيب حسب المبلغ من الأعلى. أي طلب يأتي ثانيًا؟",
+  "options_ar": [
+   "طلب 1 مايو",
+   "طلب 2 مايو",
+   "طلب 3 مايو",
+   "لا يتغير شيء"
+  ],
+  "answer": 1,
+  "explain_en": "By amount: 500, 350, 200; second is 350 (2 May).",
+  "explain_ar": "حسب المبلغ: 500، 350، 200، والثاني 350 (2 مايو).",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0034",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "mgr-cog-road-closed-route",
+  "prompt_en": "Your usual route goes through B, which is closed today. Travel times: A–C 20 min, C–D 25 min, A–E 10 min, E–D 40 min, C–E 5 min. What is the fastest way from A to D?",
+  "options_en": [
+   "45 minutes, via C",
+   "50 minutes, via E",
+   "35 minutes, via C then E",
+   "40 minutes, via E then C"
+  ],
+  "prompt_ar": "طريقك المعتاد يمر بالنقطة B وهي مغلقة اليوم. أزمنة السفر: A–C عشرون دقيقة، C–D خمس وعشرون دقيقة، A–E عشر دقائق، E–D أربعون دقيقة، C–E خمس دقائق. ما أسرع طريق من A إلى D؟",
+  "options_ar": [
+   "45 دقيقة، عبر C",
+   "50 دقيقة، عبر E",
+   "35 دقيقة، عبر C ثم E",
+   "40 دقيقة، عبر E ثم C"
+  ],
+  "answer": 3,
+  "explain_en": "A–E–C–D = 10 + 5 + 25 = 40, faster than A–C–D (45) and A–E–D (50).",
+  "explain_ar": "A–E–C–D = 10 + 5 + 25 = 40، أسرع من A–C–D (45) وA–E–D (50).",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "10+5+25"
+ },
+ {
+  "id": "T-MAN-MCA-0035",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "mgr-cog-paint-dry-furniture",
+  "prompt_en": "Painting a room takes 4 hours and the paint must dry 12 hours before furniture goes in, which takes 2 hours. Work happens only between 08:00 and 17:00; drying continues overnight. Painting starts Monday at 08:00. When is the furniture in place at the earliest?",
+  "options_en": [
+   "Monday 14:00",
+   "Tuesday 02:00",
+   "Tuesday 14:00",
+   "Tuesday 10:00"
+  ],
+  "prompt_ar": "دهان غرفة يستغرق 4 ساعات، ويجب أن يجف الدهان 12 ساعة قبل إدخال الأثاث الذي يستغرق ساعتين. العمل فقط من 08:00 إلى 17:00، والجفاف يستمر ليلًا. بدأ الدهان يوم الاثنين الساعة 08:00. متى يكون الأثاث في مكانه في أقرب وقت؟",
+  "options_ar": [
+   "الاثنين 14:00",
+   "الثلاثاء 02:00",
+   "الثلاثاء 14:00",
+   "الثلاثاء 10:00"
+  ],
+  "answer": 3,
+  "explain_en": "Paint ends 12:00 Monday, dry by 00:00; work restarts 08:00 Tuesday, furniture done 10:00.",
+  "explain_ar": "الدهان ينتهي 12:00 الاثنين، ويجف عند 00:00، والعمل يبدأ 08:00 الثلاثاء، فينتهي الأثاث 10:00.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0036",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-cog-reversed-key-rule",
+  "prompt_en": "In a task you press LEFT for words in CAPITALS and RIGHT for words in lowercase. Then the rule is reversed. After the change, what do you press for the word \"REPORT\"?",
+  "options_en": [
+   "RIGHT",
+   "LEFT",
+   "Both keys",
+   "No key"
+  ],
+  "prompt_ar": "في مهمة تضغط يسار للكلمات المكتوبة بحروف كبيرة ويمين للكلمات بحروف صغيرة. ثم انعكست القاعدة. بعد التغيير، ماذا تضغط للكلمة \"REPORT\"؟",
+  "options_ar": [
+   "يمين",
+   "يسار",
+   "المفتاحين معًا",
+   "لا شيء"
+  ],
+  "answer": 0,
+  "explain_en": "Capitals were LEFT; after reversal they are RIGHT.",
+  "explain_ar": "الحروف الكبيرة كانت يسار، وبعد الانعكاس أصبحت يمين.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0037",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "mgr-cog-double-then-minus5",
+  "prompt_en": "A sequence doubles each step: 2, 4, 8, 16. After 16 the rule changes to subtract 5 each step. What is the first number after 16?",
+  "options_en": [
+   "32",
+   "21",
+   "11",
+   "6"
+  ],
+  "prompt_ar": "متتالية تتضاعف في كل خطوة: 2، 4، 8، 16. بعد 16 تتغير القاعدة إلى طرح 5 في كل خطوة. ما أول رقم بعد 16؟",
+  "options_ar": [
+   "32",
+   "21",
+   "11",
+   "6"
+  ],
+  "answer": 2,
+  "explain_en": "Apply the new rule: 16 − 5 = 11.",
+  "explain_ar": "نطبق القاعدة الجديدة: 16 − 5 = 11.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "16-5"
+ },
+ {
+  "id": "T-MAN-MCA-0038",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-supplier-outage",
+  "prompt_en": "Your main supplier cannot deliver for three weeks. Current stock lasts one week. What is the best plan?",
+  "options_en": [
+   "Wait for the main supplier.",
+   "Stop all sales for three weeks.",
+   "Use a backup supplier for the gap and serve key customers first.",
+   "Double prices so stock lasts longer."
+  ],
+  "prompt_ar": "المورد الرئيسي لا يستطيع التوريد لمدة ثلاثة أسابيع، والمخزون الحالي يكفي أسبوعًا واحدًا. ما أفضل خطة؟",
+  "options_ar": [
+   "انتظار المورد الرئيسي.",
+   "إيقاف كل المبيعات ثلاثة أسابيع.",
+   "الاستعانة بمورد بديل لسد الفجوة وخدمة العملاء الرئيسيين أولًا.",
+   "مضاعفة الأسعار ليطول المخزون."
+  ],
+  "answer": 2,
+  "explain_en": "It covers the two-week gap and protects the most important customers.",
+  "explain_ar": "تغطي فجوة الأسبوعين وتحمي أهم العملاء.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0039",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-midproject-cut",
+  "prompt_en": "Halfway through a project, the budget is cut by 30%. The end date stays the same. What is the best response?",
+  "options_en": [
+   "Keep the full scope and hope for more money.",
+   "Stop the project.",
+   "Re-prioritise and deliver the core features first.",
+   "Cut quality testing to save money."
+  ],
+  "prompt_ar": "في منتصف مشروع، تم خفض الميزانية 30% مع بقاء موعد الانتهاء كما هو. ما أفضل تصرف؟",
+  "options_ar": [
+   "الإبقاء على النطاق كاملًا وانتظار تمويل إضافي.",
+   "إيقاف المشروع.",
+   "إعادة ترتيب الأولويات وتسليم الخصائص الأساسية أولًا.",
+   "إلغاء اختبارات الجودة لتوفير المال."
+  ],
+  "answer": 2,
+  "explain_en": "It adapts the scope to the new budget without dropping quality.",
+  "explain_ar": "تكيّف النطاق مع الميزانية الجديدة دون التضحية بالجودة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0040",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-cog-office-closed-week",
+  "prompt_en": "The office closes suddenly for one week for repairs. What is the best way to keep work going?",
+  "options_en": [
+   "Cancel all work for the week.",
+   "Wait for the office to reopen.",
+   "Ask everyone to work from the car park.",
+   "Move meetings online and reassign tasks that need the office."
+  ],
+  "prompt_ar": "أُغلق المكتب فجأة لمدة أسبوع للصيانة. ما أفضل طريقة لاستمرار العمل؟",
+  "options_ar": [
+   "إلغاء العمل طوال الأسبوع.",
+   "انتظار إعادة فتح المكتب.",
+   "طلب العمل من موقف السيارات.",
+   "نقل الاجتماعات أونلاين وإعادة توزيع المهام التي تحتاج المكتب."
+  ],
+  "answer": 3,
+  "explain_en": "It adapts the way of working and handles tasks that truly need the office.",
+  "explain_ar": "تغير طريقة العمل وتتعامل مع المهام التي تحتاج المكتب فعلًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0041",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-cog-consent-law-sales",
+  "prompt_en": "A new law says customers must give consent before receiving sales calls. Your sales plan relied on calling people without prior contact. What is the best adaptation?",
+  "options_en": [
+   "Keep calling and pay fines if needed.",
+   "Stop selling.",
+   "Switch to channels where customers opt in first, such as web forms and events.",
+   "Call only in the evening."
+  ],
+  "prompt_ar": "قانون جديد يشترط موافقة العملاء قبل تلقي مكالمات البيع. خطة مبيعاتك كانت تعتمد على الاتصال بأشخاص بدون تواصل سابق. ما أفضل تكيف؟",
+  "options_ar": [
+   "الاستمرار في الاتصال ودفع الغرامات عند اللزوم.",
+   "إيقاف البيع.",
+   "التحول إلى قنوات يوافق فيها العميل أولًا، مثل نماذج الموقع والفعاليات.",
+   "الاتصال مساءً فقط."
+  ],
+  "answer": 2,
+  "explain_en": "It meets the new rule and keeps generating sales.",
+  "explain_ar": "تلتزم بالقانون الجديد وتستمر في تحقيق المبيعات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0042",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-key-person-leaves",
+  "prompt_en": "A key team member resigns in the middle of a project and leaves in two weeks. What should you do first?",
+  "options_en": [
+   "Pretend nothing changed.",
+   "Cancel the project.",
+   "Ask them to keep working after they leave without pay.",
+   "Plan a handover: document their knowledge and reassign their tasks."
+  ],
+  "prompt_ar": "عضو أساسي في الفريق استقال في منتصف المشروع وسيغادر بعد أسبوعين. ماذا تفعل أولًا؟",
+  "options_ar": [
+   "أتصرف وكأن شيئًا لم يتغير.",
+   "ألغي المشروع.",
+   "أطلب منه الاستمرار بعد مغادرته بدون أجر.",
+   "أخطط للتسليم: توثيق معرفته وإعادة توزيع مهامه."
+  ],
+  "answer": 3,
+  "explain_en": "The two weeks are best used to transfer knowledge and work.",
+  "explain_ar": "أفضل استخدام للأسبوعين هو نقل المعرفة والمهام.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0043",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-cog-pilot-dislikes-feature",
+  "prompt_en": "Pilot users dislike a feature your team spent three months building. What is the best response?",
+  "options_en": [
+   "Launch it unchanged because of the time invested.",
+   "Remove the feature without asking why.",
+   "Find out what users dislike and test changes based on their feedback.",
+   "Find new users who might like it."
+  ],
+  "prompt_ar": "مستخدمو التجربة لم تعجبهم خاصية قضى فريقك ثلاثة أشهر في بنائها. ما أفضل تصرف؟",
+  "options_ar": [
+   "إطلاقها كما هي بسبب الوقت المستثمر.",
+   "حذفها دون معرفة السبب.",
+   "معرفة ما لا يعجب المستخدمين واختبار تعديلات بناء على ملاحظاتهم.",
+   "البحث عن مستخدمين آخرين قد تعجبهم."
+  ],
+  "answer": 2,
+  "explain_en": "Past effort should not decide; user evidence should shape the next step.",
+  "explain_ar": "الجهد السابق لا يجب أن يحدد القرار، ورأي المستخدمين هو ما يوجه الخطوة التالية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0044",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-office-move-order",
+  "prompt_en": "An office move has four steps: (1) move people and equipment, (2) confirm the new site, (3) tell staff the move date, (4) set up IT at the new site. What is the best order?",
+  "options_en": [
+   "3, 2, 4, 1",
+   "2, 4, 3, 1",
+   "2, 1, 4, 3",
+   "4, 2, 3, 1"
+  ],
+  "prompt_ar": "نقل مكتب له أربع خطوات: (1) نقل الأشخاص والمعدات، (2) تأكيد الموقع الجديد، (3) إبلاغ الموظفين بموعد النقل، (4) تجهيز تقنية المعلومات في الموقع الجديد. ما الترتيب الأفضل؟",
+  "options_ar": [
+   "3، 2، 4، 1",
+   "2، 4، 3، 1",
+   "2، 1، 4، 3",
+   "4، 2، 3، 1"
+  ],
+  "answer": 1,
+  "explain_en": "Confirm the site, set up IT so the date is certain, announce it, then move.",
+  "explain_ar": "تأكيد الموقع، ثم تجهيز التقنية ليصبح الموعد مؤكدًا، ثم الإعلان، ثم النقل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0045",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-cog-weekly-reports-same-budget",
+  "prompt_en": "A key client now wants weekly reports instead of monthly, with no increase in fees. Each report takes a day to prepare by hand. What is the best way to adapt?",
+  "options_en": [
+   "Refuse the request.",
+   "Send the monthly report four times.",
+   "Automate the report so weekly delivery costs about the same effort.",
+   "Work weekends to prepare them by hand."
+  ],
+  "prompt_ar": "عميل رئيسي يريد الآن تقارير أسبوعية بدلًا من شهرية بدون زيادة في الأتعاب. كل تقرير يستغرق يومًا لإعداده يدويًا. ما أفضل طريقة للتكيف؟",
+  "options_ar": [
+   "رفض الطلب.",
+   "إرسال التقرير الشهري أربع مرات.",
+   "أتمتة التقرير حتى يصبح الأسبوعي بنفس الجهد تقريبًا.",
+   "العمل في العطلات لإعدادها يدويًا."
+  ],
+  "answer": 2,
+  "explain_en": "It meets the new need without quadrupling the effort.",
+  "explain_ar": "تلبي الطلب الجديد دون مضاعفة الجهد أربع مرات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0046",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-cog-colliding-deadlines",
+  "prompt_en": "Two of your deadlines now fall on the same day, and you cannot finish both well. What should you do?",
+  "options_en": [
+   "Do both badly to meet the date.",
+   "Tell both stakeholders early and agree a new order or date.",
+   "Finish one and say nothing about the other.",
+   "Wait and see what happens."
+  ],
+  "prompt_ar": "موعدان نهائيان لديك أصبحا في نفس اليوم، ولا تستطيع إنهاءهما بجودة. ماذا تفعل؟",
+  "options_ar": [
+   "أنجز الاثنين بجودة ضعيفة للالتزام بالموعد.",
+   "أبلغ الطرفين مبكرًا وأتفق على ترتيب أو موعد جديد.",
+   "أنهي واحدًا ولا أذكر الآخر.",
+   "أنتظر لأرى ما سيحدث."
+  ],
+  "answer": 1,
+  "explain_en": "Early, open re-planning lets stakeholders decide with full information.",
+  "explain_ar": "إعادة التخطيط المبكرة والصريحة تسمح للأطراف بالقرار بمعلومات كاملة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0047",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-audience-older",
+  "prompt_en": "New market research shows your target customers are about 15 years older than the campaign assumed. The campaign launches next month. What is the best step?",
+  "options_en": [
+   "Revise the message and channels to suit the actual audience.",
+   "Launch as planned.",
+   "Cancel the campaign.",
+   "Change the product's price only."
+  ],
+  "prompt_ar": "بحث سوق جديد يوضح أن العملاء المستهدفين أكبر بحوالي 15 سنة مما افترضته الحملة. الحملة تنطلق الشهر القادم. ما أفضل خطوة؟",
+  "options_ar": [
+   "تعديل الرسالة والقنوات لتناسب الجمهور الحقيقي.",
+   "الإطلاق كما هو مخطط.",
+   "إلغاء الحملة.",
+   "تغيير سعر المنتج فقط."
+  ],
+  "answer": 0,
+  "explain_en": "New facts about the audience should change the message and channels.",
+  "explain_ar": "الحقائق الجديدة عن الجمهور يجب أن تغير الرسالة والقنوات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0048",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-cog-crm-down",
+  "prompt_en": "The customer system (CRM) is down for the whole day. Calls keep coming in. What is the best way to keep working?",
+  "options_en": [
+   "Stop answering calls.",
+   "Ask customers to call tomorrow.",
+   "Keep notes in memory only.",
+   "Record calls in a shared sheet and enter them into the CRM later."
+  ],
+  "prompt_ar": "نظام العملاء (CRM) متوقف طوال اليوم، والمكالمات مستمرة. ما أفضل طريقة لاستمرار العمل؟",
+  "options_ar": [
+   "التوقف عن الرد على المكالمات.",
+   "طلب الاتصال من العملاء غدًا.",
+   "الاعتماد على الذاكرة فقط.",
+   "تسجيل المكالمات في جدول مشترك وإدخالها في النظام لاحقًا."
+  ],
+  "answer": 3,
+  "explain_en": "It keeps service going and preserves the data.",
+  "explain_ar": "تحافظ على الخدمة وعلى البيانات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0049",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-cog-hiring-order",
+  "prompt_en": "To hire a new analyst: (1) interview candidates, (2) get the budget approved, (3) post the job advert, (4) write the job description. What is the correct order?",
+  "options_en": [
+   "2, 4, 3, 1",
+   "4, 3, 2, 1",
+   "3, 4, 2, 1",
+   "4, 2, 1, 3"
+  ],
+  "prompt_ar": "لتعيين محلل جديد: (1) مقابلة المرشحين، (2) اعتماد الميزانية، (3) نشر إعلان الوظيفة، (4) كتابة الوصف الوظيفي. ما الترتيب الصحيح؟",
+  "options_ar": [
+   "2، 4، 3، 1",
+   "4، 3، 2، 1",
+   "3، 4، 2، 1",
+   "4، 2، 1، 3"
+  ],
+  "answer": 0,
+  "explain_en": "No advert before budget and description; interviews come last.",
+  "explain_ar": "لا إعلان قبل الميزانية والوصف، والمقابلات في النهاية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MCA-0050",
+  "exam": "manager-cognitive-assessment",
+  "level": "manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-cog-recover-late-design",
+  "prompt_en": "Design finished 3 days late. Build takes 10 days and testing 5 days, and the end date cannot move. Parts of the build are finished at different times. What is the best way to recover the 3 days?",
+  "options_en": [
+   "Skip testing.",
+   "Ask the client to accept a late date anyway.",
+   "Start testing finished parts while the rest is still being built.",
+   "Restart the design."
+  ],
+  "prompt_ar": "انتهى التصميم متأخرًا 3 أيام. البناء يستغرق 10 أيام والاختبار 5 أيام، وموعد الانتهاء لا يمكن تغييره. أجزاء البناء تنتهي في أوقات مختلفة. ما أفضل طريقة لتعويض الأيام الثلاثة؟",
+  "options_ar": [
+   "إلغاء الاختبار.",
+   "مطالبة العميل بقبول التأخير على أي حال.",
+   "بدء اختبار الأجزاء المنتهية بينما يستمر بناء الباقي.",
+   "إعادة التصميم من البداية."
+  ],
+  "answer": 2,
+  "explain_en": "Overlapping test with build recovers time without dropping quality or moving the date.",
+  "explain_ar": "تداخل الاختبار مع البناء يعوض الوقت دون التضحية بالجودة أو تغيير الموعد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ }
+]

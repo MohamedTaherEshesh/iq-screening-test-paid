@@ -1,0 +1,1412 @@
+[
+ {
+  "id": "T-MAN-MRS-0001",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-mp-ontime-redefined",
+  "prompt_en": "Report note: \"Our supplier's on-time rate improved this quarter, but only because we changed the definition of 'on time' from up to 2 days late to up to 5 days late.\" Which statement is best supported by the note?",
+  "options_en": [
+   "The supplier's deliveries became faster this quarter.",
+   "The reported improvement may not mean deliveries actually got faster.",
+   "The supplier now delivers 5 days late on every order.",
+   "Changing the definition was a mistake by the buyer."
+  ],
+  "prompt_ar": "ملاحظة في تقرير: \"نسبة التسليم في الموعد عند المورد تحسنت هذا الربع، لكن السبب الوحيد أننا غيّرنا تعريف 'في الموعد' من تأخير حتى يومين إلى تأخير حتى 5 أيام.\" أي عبارة تدعمها الملاحظة أكثر؟",
+  "options_ar": [
+   "تسليمات المورد أصبحت أسرع هذا الربع.",
+   "التحسن المعلن قد لا يعني أن التسليم أصبح أسرع فعلًا.",
+   "المورد يتأخر الآن 5 أيام في كل طلب.",
+   "تغيير التعريف كان خطأ من المشتري."
+  ],
+  "answer": 1,
+  "explain_en": "The rate rose only because the threshold widened, so the number alone does not show faster delivery.",
+  "explain_ar": "النسبة ارتفعت فقط لأن حد التعريف اتسع، فالرقم وحده لا يثبت أن التسليم أسرع.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0002",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-mp-provisional-meaning",
+  "prompt_en": "\"The plan is deliberately provisional, so the team should expect it to change after the pilot.\" In this sentence, 'provisional' is closest in meaning to:",
+  "options_en": [
+   "final and binding",
+   "expensive to run",
+   "kept confidential",
+   "temporary and open to change"
+  ],
+  "prompt_ar": "\"الخطة مبدئية عن قصد، لذلك على الفريق أن يتوقع تغييرها بعد التجربة.\" كلمة 'مبدئية' في هذه الجملة أقرب معنى إلى:",
+  "options_ar": [
+   "نهائية وملزمة",
+   "مكلفة في التنفيذ",
+   "سرية",
+   "مؤقتة وقابلة للتعديل"
+  ],
+  "answer": 3,
+  "explain_en": "The second half of the sentence says the plan will change, which matches 'temporary and open to change'.",
+  "explain_ar": "باقي الجملة يقول إن الخطة ستتغير، وهذا معنى 'مؤقتة وقابلة للتعديل'.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0003",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-mp-overtime-memo",
+  "prompt_en": "Memo: \"Overtime costs rose 18% in Q3. Most of the increase came from two sites that lost senior staff in July. Hiring at those sites is now complete, and training ends in October.\" What is the main implication of the memo?",
+  "options_en": [
+   "Overtime will keep rising at every site.",
+   "The overtime increase is probably temporary and linked to the staffing gap.",
+   "Senior staff are the main cause of overtime.",
+   "The training programme should be cancelled."
+  ],
+  "prompt_ar": "مذكرة: \"ارتفعت تكلفة العمل الإضافي 18% في الربع الثالث. معظم الزيادة جاءت من موقعين فقدا موظفين كبارًا في يوليو. التعيين في الموقعين اكتمل، والتدريب ينتهي في أكتوبر.\" ما الاستنتاج الرئيسي من المذكرة؟",
+  "options_ar": [
+   "العمل الإضافي سيستمر في الارتفاع في كل المواقع.",
+   "زيادة العمل الإضافي غالبًا مؤقتة ومرتبطة بنقص الموظفين.",
+   "الموظفون الكبار هم السبب الرئيسي للعمل الإضافي.",
+   "يجب إلغاء برنامج التدريب."
+  ],
+  "answer": 1,
+  "explain_en": "The rise is tied to two sites with vacancies that are now filled, so it is likely to ease after training.",
+  "explain_ar": "الزيادة مرتبطة بموقعين فيهما شواغر تم سدها، فالمتوقع أن تقل بعد التدريب.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0004",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-mp-clear-commitment",
+  "prompt_en": "Which reply states a commitment with a clear owner, action and deadline?",
+  "options_en": [
+   "Sara will send the revised budget to Finance by Thursday at 3 pm.",
+   "We will look into the budget soon.",
+   "The budget should be revised as needed.",
+   "Someone from the team will follow up this week."
+  ],
+  "prompt_ar": "أي رد يحدد التزامًا له مسؤول واضح وعمل محدد وموعد نهائي؟",
+  "options_ar": [
+   "سارة سترسل الميزانية المعدلة إلى المالية يوم الخميس الساعة 3 عصرًا.",
+   "سننظر في الميزانية قريبًا.",
+   "يجب تعديل الميزانية حسب الحاجة.",
+   "شخص من الفريق سيتابع هذا الأسبوع."
+  ],
+  "answer": 0,
+  "explain_en": "Only this reply names who (Sara), what (send the revised budget) and when (Thursday 3 pm).",
+  "explain_ar": "هذا الرد وحده يحدد من (سارة) وماذا (إرسال الميزانية المعدلة) ومتى (الخميس 3 عصرًا).",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0005",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-mp-excel-invoices",
+  "prompt_en": "A client writes: \"I have been with you for six years. The new portal is faster, but I can no longer download invoices in Excel, which my accountant needs every month.\" What is the client's core request?",
+  "options_en": [
+   "Return to the old portal completely.",
+   "Bring back the Excel download for invoices.",
+   "Make the portal even faster.",
+   "Give a loyalty discount."
+  ],
+  "prompt_ar": "عميل يكتب: \"أنا معكم منذ ست سنوات. البوابة الجديدة أسرع، لكني لم أعد أستطيع تنزيل الفواتير بصيغة Excel، ومحاسبي يحتاجها كل شهر.\" ما الطلب الأساسي للعميل؟",
+  "options_ar": [
+   "الرجوع إلى البوابة القديمة بالكامل.",
+   "إعادة إمكانية تنزيل الفواتير بصيغة Excel.",
+   "جعل البوابة أسرع.",
+   "خصم على الولاء."
+  ],
+  "answer": 1,
+  "explain_en": "The client praises the speed; the only problem stated is the missing Excel export.",
+  "explain_ar": "العميل يمدح السرعة، والمشكلة الوحيدة المذكورة هي غياب التنزيل بصيغة Excel.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0006",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-conditional-delay",
+  "prompt_en": "Meeting minutes: \"Marketing agreed to delay the launch only if Sales confirm that the key accounts accept the new date.\" What has actually been decided?",
+  "options_en": [
+   "The launch is delayed.",
+   "The launch will go ahead on the original date.",
+   "The delay depends on Sales confirming that key accounts accept the new date.",
+   "Sales decided to delay the launch."
+  ],
+  "prompt_ar": "محضر اجتماع: \"وافق التسويق على تأجيل الإطلاق فقط إذا أكد فريق المبيعات أن الحسابات الرئيسية تقبل الموعد الجديد.\" ما الذي تقرر فعلًا؟",
+  "options_ar": [
+   "تم تأجيل الإطلاق.",
+   "الإطلاق سيتم في موعده الأصلي.",
+   "التأجيل مشروط بتأكيد المبيعات أن الحسابات الرئيسية تقبل الموعد الجديد.",
+   "فريق المبيعات قرر تأجيل الإطلاق."
+  ],
+  "answer": 2,
+  "explain_en": "The agreement is conditional; nothing is final until Sales confirm.",
+  "explain_ar": "الموافقة مشروطة، ولا شيء نهائي قبل تأكيد المبيعات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0007",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-expense-approval",
+  "prompt_en": "Policy: \"Expenses above SAR 5,000 need director approval. Expenses above SAR 20,000 also need CFO approval.\" An employee submits an expense of SAR 12,000. Who must approve it?",
+  "options_en": [
+   "No one",
+   "The CFO only",
+   "The director only",
+   "Both the director and the CFO"
+  ],
+  "prompt_ar": "سياسة: \"المصروفات فوق 5,000 ريال تحتاج موافقة المدير. والمصروفات فوق 20,000 ريال تحتاج أيضًا موافقة المدير المالي.\" موظف قدّم مصروفًا بقيمة 12,000 ريال. من يجب أن يوافق؟",
+  "options_ar": [
+   "لا أحد",
+   "المدير المالي فقط",
+   "المدير فقط",
+   "المدير والمدير المالي معًا"
+  ],
+  "answer": 2,
+  "explain_en": "12,000 is above 5,000 but not above 20,000, so only the director's approval is needed.",
+  "explain_ar": "12,000 أكبر من 5,000 لكنها ليست أكبر من 20,000، فيكفي موافقة المدير.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0008",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-termination-clause",
+  "prompt_en": "Contract clause: \"The supplier may end this contract with 60 days' notice, except during the first 12 months, when ending it requires the agreement of both parties.\" In month 8 the supplier wants to leave now. Which is correct?",
+  "options_en": [
+   "The supplier can end it by giving 60 days' notice.",
+   "The supplier can end it immediately.",
+   "The supplier needs the buyer's agreement to end the contract now.",
+   "The supplier can end it if it pays a penalty."
+  ],
+  "prompt_ar": "بند في عقد: \"يجوز للمورد إنهاء هذا العقد بإشعار مدته 60 يومًا، إلا خلال أول 12 شهرًا، حيث يتطلب الإنهاء موافقة الطرفين.\" في الشهر الثامن يريد المورد الخروج الآن. أي عبارة صحيحة؟",
+  "options_ar": [
+   "المورد يستطيع الإنهاء بإشعار 60 يومًا.",
+   "المورد يستطيع الإنهاء فورًا.",
+   "المورد يحتاج موافقة المشتري لإنهاء العقد الآن.",
+   "المورد يستطيع الإنهاء إذا دفع غرامة."
+  ],
+  "answer": 2,
+  "explain_en": "Month 8 is inside the first 12 months, when only mutual agreement can end the contract; no penalty route is mentioned.",
+  "explain_ar": "الشهر الثامن داخل أول 12 شهرًا، وفيها لا ينتهي العقد إلا بموافقة الطرفين، ولا يوجد ذكر لغرامة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0009",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-buried-recommendation",
+  "prompt_en": "Feedback on a report: \"The analysis is thorough, but the recommendation is on page 14, and the board only reads the first two pages.\" What revision best answers this feedback?",
+  "options_en": [
+   "Cut the whole report to two pages.",
+   "Put the recommendation and its main reasons on the first page.",
+   "Remove the data appendix.",
+   "Add more detail to page 14."
+  ],
+  "prompt_ar": "ملاحظة على تقرير: \"التحليل شامل، لكن التوصية في الصفحة 14، ومجلس الإدارة يقرأ أول صفحتين فقط.\" أي تعديل يعالج الملاحظة أفضل؟",
+  "options_ar": [
+   "اختصار التقرير كله إلى صفحتين.",
+   "وضع التوصية وأهم أسبابها في الصفحة الأولى.",
+   "حذف ملحق البيانات.",
+   "إضافة تفاصيل أكثر للصفحة 14."
+  ],
+  "answer": 1,
+  "explain_en": "The problem is where the recommendation sits, not the analysis; moving it forward fixes that and keeps the detail.",
+  "explain_ar": "المشكلة في مكان التوصية وليس في التحليل، ونقلها للبداية يحل ذلك ويحافظ على التفاصيل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0010",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-professional-rewrite",
+  "prompt_en": "A team member wrote to a client: \"As we told you before, the delay is your fault.\" Which rewrite keeps the facts but is the most professional?",
+  "options_en": [
+   "\"We are sorry for everything.\"",
+   "\"The delay followed the approval received on 3 May; to recover the date we need sign-off by Friday.\"",
+   "\"You always approve late.\"",
+   "\"We are not responsible for anything.\""
+  ],
+  "prompt_ar": "كتب أحد أعضاء الفريق لعميل: \"كما قلنا لكم من قبل، التأخير خطؤكم.\" أي صياغة تحافظ على الحقائق وتكون الأكثر مهنية؟",
+  "options_ar": [
+   "\"نعتذر عن كل شيء.\"",
+   "\"التأخير جاء بعد الموافقة التي وصلت في 3 مايو، ولاستعادة الموعد نحتاج الاعتماد قبل الجمعة.\"",
+   "\"أنتم دائمًا توافقون متأخرًا.\"",
+   "\"لسنا مسؤولين عن أي شيء.\""
+  ],
+  "answer": 1,
+  "explain_en": "It states the fact (late approval) without blame and gives a clear next step.",
+  "explain_ar": "تذكر الحقيقة (موافقة متأخرة) بدون لوم وتحدد الخطوة التالية بوضوح.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0011",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-remote-policy-scope",
+  "prompt_en": "Announcement: \"From 1 March, roles that do not need on-site equipment may work remotely two days a week, with the line manager's approval.\" A lab technician who uses on-site equipment every day asks for two remote days. Which is correct?",
+  "options_en": [
+   "The technician gets two remote days automatically.",
+   "The technician can work remotely if the line manager approves.",
+   "The technician can work remotely only after 1 March.",
+   "The policy does not cover this role."
+  ],
+  "prompt_ar": "إعلان: \"اعتبارًا من 1 مارس، الوظائف التي لا تحتاج معدات في الموقع يمكنها العمل عن بُعد يومين في الأسبوع بموافقة المدير المباشر.\" فني مختبر يستخدم معدات الموقع يوميًا طلب يومين عن بُعد. أي عبارة صحيحة؟",
+  "options_ar": [
+   "الفني يحصل على يومين عن بُعد تلقائيًا.",
+   "الفني يمكنه العمل عن بُعد إذا وافق المدير المباشر.",
+   "الفني يمكنه العمل عن بُعد بعد 1 مارس فقط.",
+   "السياسة لا تشمل هذه الوظيفة."
+  ],
+  "answer": 3,
+  "explain_en": "The policy applies only to roles without on-site equipment, so manager approval or the date do not matter here.",
+  "explain_ar": "السياسة تخص الوظائف التي لا تحتاج معدات في الموقع فقط، فموافقة المدير أو التاريخ لا يغيران شيئًا هنا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0012",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "numerical",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-mp-person-days",
+  "prompt_en": "A team of 6 people produces 480 reports in 8 days. At the same rate per person, how many reports will 9 people produce in 10 days?",
+  "options_en": [
+   "720",
+   "900",
+   "810",
+   "1,080"
+  ],
+  "prompt_ar": "فريق من 6 أشخاص ينتج 480 تقريرًا في 8 أيام. بنفس المعدل لكل شخص، كم تقريرًا ينتج 9 أشخاص في 10 أيام؟",
+  "options_ar": [
+   "720",
+   "900",
+   "810",
+   "1,080"
+  ],
+  "answer": 1,
+  "explain_en": "480 / (6 × 8) = 10 reports per person-day; 9 × 10 × 10 = 900.",
+  "explain_ar": "480 ÷ (6 × 8) = 10 تقارير لكل شخص في اليوم، و9 × 10 × 10 = 900.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "480/(6*8)*9*10"
+ },
+ {
+  "id": "T-MAN-MRS-0013",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "numerical",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-mp-up-down-20",
+  "prompt_en": "A price is raised by 20% and later reduced by 20%. What is the overall change from the original price?",
+  "options_en": [
+   "0%",
+   "-2%",
+   "+4%",
+   "-4%"
+  ],
+  "prompt_ar": "رُفع سعر بنسبة 20% ثم خُفض لاحقًا بنسبة 20%. ما التغير الكلي مقارنة بالسعر الأصلي؟",
+  "options_ar": [
+   "0%",
+   "-2%",
+   "+4%",
+   "-4%"
+  ],
+  "answer": 3,
+  "explain_en": "1.20 × 0.80 = 0.96, a 4% fall.",
+  "explain_ar": "1.20 × 0.80 = 0.96، أي انخفاض 4%.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "(1.2*0.8-1)*100"
+ },
+ {
+  "id": "T-MAN-MRS-0014",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "numerical",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "mgr-mp-growth-pct",
+  "prompt_en": "Revenue grew from SAR 2.5 million to SAR 3.2 million. What is the percentage growth?",
+  "options_en": [
+   "28%",
+   "22%",
+   "70%",
+   "32%"
+  ],
+  "prompt_ar": "نمت الإيرادات من 2.5 مليون ريال إلى 3.2 مليون ريال. ما نسبة النمو؟",
+  "options_ar": [
+   "28%",
+   "22%",
+   "70%",
+   "32%"
+  ],
+  "answer": 0,
+  "explain_en": "(3.2 − 2.5) / 2.5 = 0.28.",
+  "explain_ar": "(3.2 − 2.5) ÷ 2.5 = 0.28.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "(3.2/2.5-1)*100"
+ },
+ {
+  "id": "T-MAN-MRS-0015",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-budget-run-rate",
+  "prompt_en": "A department's annual budget is SAR 1,200,000. After 7 of 12 months it has spent SAR 780,000 at a steady monthly rate. If spending continues at the same rate, by about how much will it exceed the budget?",
+  "options_en": [
+   "About SAR 80 thousand",
+   "About SAR 420 thousand",
+   "About SAR 57 thousand",
+   "About SAR 137 thousand"
+  ],
+  "prompt_ar": "الميزانية السنوية لإدارة 1,200,000 ريال. بعد 7 من 12 شهرًا صرفت 780,000 ريال بمعدل شهري ثابت. إذا استمر الصرف بنفس المعدل، بكم تقريبًا ستتجاوز الميزانية؟",
+  "options_ar": [
+   "حوالي 80 ألف ريال",
+   "حوالي 420 ألف ريال",
+   "حوالي 57 ألف ريال",
+   "حوالي 137 ألف ريال"
+  ],
+  "answer": 3,
+  "explain_en": "780,000 / 7 × 12 ≈ 1,337,143; minus 1,200,000 ≈ 137,000.",
+  "explain_ar": "780,000 ÷ 7 × 12 ≈ 1,337,143، ناقص 1,200,000 ≈ 137,000.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "round((780000/7*12-1200000)/1000)"
+ },
+ {
+  "id": "T-MAN-MRS-0016",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-mp-agency-fee",
+  "prompt_en": "To fill a role with a first-year salary of SAR 240,000, an agency charges 18% of that salary. An in-house recruiter would cost SAR 30,000 for the same hire. How much more does the agency cost?",
+  "options_en": [
+   "SAR 13,200",
+   "SAR 43,200",
+   "SAR 18,000",
+   "SAR 12,000"
+  ],
+  "prompt_ar": "لشغل وظيفة راتبها في السنة الأولى 240,000 ريال، تطلب وكالة توظيف 18% من الراتب. التوظيف الداخلي يكلف 30,000 ريال لنفس الوظيفة. بكم تزيد تكلفة الوكالة؟",
+  "options_ar": [
+   "13,200 ريال",
+   "43,200 ريال",
+   "18,000 ريال",
+   "12,000 ريال"
+  ],
+  "answer": 0,
+  "explain_en": "0.18 × 240,000 = 43,200; 43,200 − 30,000 = 13,200.",
+  "explain_ar": "0.18 × 240,000 = 43,200، و43,200 − 30,000 = 13,200.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "0.18*240000-30000"
+ },
+ {
+  "id": "T-MAN-MRS-0017",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-break-even",
+  "prompt_en": "A product sells for SAR 50 per unit with a variable cost of SAR 30 per unit. Fixed costs are SAR 40,000 per month. How many units must be sold each month to break even?",
+  "options_en": [
+   "800",
+   "1,333",
+   "2,000",
+   "4,000"
+  ],
+  "prompt_ar": "منتج يباع بسعر 50 ريالًا للوحدة وتكلفته المتغيرة 30 ريالًا للوحدة. التكاليف الثابتة 40,000 ريال شهريًا. كم وحدة يجب بيعها شهريًا لتحقيق التعادل؟",
+  "options_ar": [
+   "800",
+   "1,333",
+   "2,000",
+   "4,000"
+  ],
+  "answer": 2,
+  "explain_en": "Each unit contributes 50 − 30 = 20; 40,000 / 20 = 2,000.",
+  "explain_ar": "كل وحدة تساهم بـ 50 − 30 = 20، و40,000 ÷ 20 = 2,000.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "40000/(50-30)"
+ },
+ {
+  "id": "T-MAN-MRS-0018",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-weighted-supplier",
+  "prompt_en": "Suppliers are scored on price (50% weight), quality (30%) and delivery (20%). Supplier X scores 70 on price, 90 on quality and 80 on delivery. What is its weighted score?",
+  "options_en": [
+   "80",
+   "76",
+   "82",
+   "78"
+  ],
+  "prompt_ar": "يتم تقييم الموردين على السعر (وزن 50%) والجودة (30%) والتسليم (20%). المورد X حصل على 70 في السعر و90 في الجودة و80 في التسليم. ما درجته الموزونة؟",
+  "options_ar": [
+   "80",
+   "76",
+   "82",
+   "78"
+  ],
+  "answer": 3,
+  "explain_en": "0.5 × 70 + 0.3 × 90 + 0.2 × 80 = 35 + 27 + 16 = 78.",
+  "explain_ar": "0.5 × 70 + 0.3 × 90 + 0.2 × 80 = 35 + 27 + 16 = 78.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "0.5*70+0.3*90+0.2*80"
+ },
+ {
+  "id": "T-MAN-MRS-0019",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-turnover-avg",
+  "prompt_en": "A company started the year with 200 employees and ended with 220. During the year 21 employees left. Using average headcount, what was the turnover rate?",
+  "options_en": [
+   "10.5%",
+   "10%",
+   "9.5%",
+   "21%"
+  ],
+  "prompt_ar": "بدأت شركة السنة بـ 200 موظف وأنهتها بـ 220. خلال السنة غادر 21 موظفًا. باستخدام متوسط عدد الموظفين، ما معدل دوران الموظفين؟",
+  "options_ar": [
+   "10.5%",
+   "10%",
+   "9.5%",
+   "21%"
+  ],
+  "answer": 1,
+  "explain_en": "Average headcount = (200 + 220) / 2 = 210; 21 / 210 = 10%.",
+  "explain_ar": "متوسط العدد = (200 + 220) ÷ 2 = 210، و21 ÷ 210 = 10%.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "21/((200+220)/2)*100"
+ },
+ {
+  "id": "T-MAN-MRS-0020",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "logical",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-mp-modus-tollens-review",
+  "prompt_en": "Every project that goes over budget is reviewed by the committee. Project K was not reviewed by the committee. What must be true?",
+  "options_en": [
+   "Project K did not go over budget.",
+   "Project K finished under budget.",
+   "Project K was cancelled.",
+   "The committee reviews only over-budget projects."
+  ],
+  "prompt_ar": "كل مشروع يتجاوز الميزانية تراجعه اللجنة. المشروع K لم تراجعه اللجنة. ما الذي يجب أن يكون صحيحًا؟",
+  "options_ar": [
+   "المشروع K لم يتجاوز الميزانية.",
+   "المشروع K انتهى بأقل من الميزانية.",
+   "المشروع K تم إلغاؤه.",
+   "اللجنة تراجع المشاريع المتجاوزة فقط."
+  ],
+  "answer": 0,
+  "explain_en": "If it had gone over budget it would have been reviewed; it could still be exactly on budget, so 'under budget' is not certain.",
+  "explain_ar": "لو تجاوز الميزانية لراجعته اللجنة، وقد يكون على الميزانية بالضبط، فعبارة 'أقل من الميزانية' غير مؤكدة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0021",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "logical",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-mp-meeting-order",
+  "prompt_en": "Four meetings are scheduled. A is before B. C is after B. D is before A. Which order is certain?",
+  "options_en": [
+   "A, D, B, C",
+   "D, B, A, C",
+   "D, A, B, C",
+   "A, B, D, C"
+  ],
+  "prompt_ar": "أربعة اجتماعات مجدولة. A قبل B. وC بعد B. وD قبل A. أي ترتيب مؤكد؟",
+  "options_ar": [
+   "A، D، B، C",
+   "D، B، A، C",
+   "D، A، B، C",
+   "A، B، D، C"
+  ],
+  "answer": 2,
+  "explain_en": "D comes before A, A before B, and B before C, which gives one order only.",
+  "explain_ar": "D قبل A، وA قبل B، وB قبل C، وهذا يعطي ترتيبًا واحدًا فقط.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0022",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "logical",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-mp-sales-ranking",
+  "prompt_en": "Five managers are ranked by sales. Hana sold more than Omar. Lina sold less than Omar. Sami sold more than Hana. Youssef sold less than Lina. Who is third?",
+  "options_en": [
+   "Hana",
+   "Lina",
+   "Omar",
+   "Sami"
+  ],
+  "prompt_ar": "خمسة مديرين مرتبون حسب المبيعات. هناء باعت أكثر من عمر. لينا باعت أقل من عمر. سامي باع أكثر من هناء. يوسف باع أقل من لينا. من في المركز الثالث؟",
+  "options_ar": [
+   "هناء",
+   "لينا",
+   "عمر",
+   "سامي"
+  ],
+  "answer": 2,
+  "explain_en": "Order from highest: Sami, Hana, Omar, Lina, Youssef.",
+  "explain_ar": "الترتيب من الأعلى: سامي، هناء، عمر، لينا، يوسف.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0023",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "logical",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "mgr-mp-bonus-affirming-consequent",
+  "prompt_en": "The CFO said: \"If the audit is clean, the bonus will be paid.\" The bonus was paid. What can be concluded about the audit?",
+  "options_en": [
+   "The audit was clean.",
+   "Nothing certain; the bonus could have been paid for another reason.",
+   "The audit was not clean.",
+   "The CFO broke the rule."
+  ],
+  "prompt_ar": "قال المدير المالي: \"إذا كانت المراجعة سليمة، ستُصرف المكافأة.\" وصُرفت المكافأة. ماذا نستنتج عن المراجعة؟",
+  "options_ar": [
+   "المراجعة كانت سليمة.",
+   "لا شيء مؤكد، فقد تُصرف المكافأة لسبب آخر.",
+   "المراجعة لم تكن سليمة.",
+   "المدير المالي خالف القاعدة."
+  ],
+  "answer": 1,
+  "explain_en": "The rule says a clean audit leads to a bonus; it does not say a bonus only follows a clean audit.",
+  "explain_ar": "القاعدة تقول إن المراجعة السليمة تؤدي للمكافأة، ولا تقول إن المكافأة لا تُصرف إلا بعد مراجعة سليمة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0024",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-room-schedule",
+  "prompt_en": "A room is free from 9:00 to 12:00. Finance needs 90 minutes, Sales 60 minutes and HR 30 minutes. Finance must finish before Sales starts, and HR must start right after Sales ends. Which order works?",
+  "options_en": [
+   "Finance, Sales, HR",
+   "HR, Finance, Sales",
+   "Sales, HR, Finance",
+   "Finance, HR, Sales"
+  ],
+  "prompt_ar": "قاعة متاحة من 9:00 إلى 12:00. المالية تحتاج 90 دقيقة، والمبيعات 60 دقيقة، والموارد البشرية 30 دقيقة. يجب أن تنتهي المالية قبل بداية المبيعات، وأن تبدأ الموارد البشرية مباشرة بعد انتهاء المبيعات. أي ترتيب يصلح؟",
+  "options_ar": [
+   "المالية، المبيعات، الموارد البشرية",
+   "الموارد البشرية، المالية، المبيعات",
+   "المبيعات، الموارد البشرية، المالية",
+   "المالية، الموارد البشرية، المبيعات"
+  ],
+  "answer": 0,
+  "explain_en": "Finance must be before Sales and HR right after Sales, so the only valid order is Finance, Sales, HR (exactly 3 hours).",
+  "explain_ar": "المالية قبل المبيعات، والموارد البشرية بعد المبيعات مباشرة، فالترتيب الوحيد الصحيح: المالية ثم المبيعات ثم الموارد البشرية (3 ساعات بالضبط).",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0025",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-approval-chain-days",
+  "prompt_en": "A purchase needs IT review, then Legal review. Each review takes one full working day and starts the morning after the previous step ends. The working week is Sunday to Thursday. The request reaches IT on Thursday morning. When is Legal review finished?",
+  "options_en": [
+   "Sunday",
+   "Thursday",
+   "Monday",
+   "Saturday"
+  ],
+  "prompt_ar": "طلب شراء يحتاج مراجعة تقنية المعلومات ثم مراجعة الشؤون القانونية. كل مراجعة تستغرق يوم عمل كامل وتبدأ صباح اليوم التالي لانتهاء الخطوة السابقة. أسبوع العمل من الأحد إلى الخميس. وصل الطلب لتقنية المعلومات صباح الخميس. متى تنتهي المراجعة القانونية؟",
+  "options_ar": [
+   "الأحد",
+   "الخميس",
+   "الاثنين",
+   "السبت"
+  ],
+  "answer": 0,
+  "explain_en": "IT finishes Thursday; the next working morning is Sunday, and Legal finishes that day.",
+  "explain_ar": "تقنية المعلومات تنتهي الخميس، وصباح العمل التالي هو الأحد، فتنتهي القانونية في نفس اليوم.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0026",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-task-assignment",
+  "prompt_en": "Three tasks (audit, report, training) go to Amal, Badr and Carla, one each. Amal does not do the audit or the training. Badr does the report or the audit. Carla does not do the report. Who does the audit?",
+  "options_en": [
+   "Badr",
+   "Amal",
+   "Carla",
+   "It cannot be determined"
+  ],
+  "prompt_ar": "ثلاث مهام (مراجعة، تقرير، تدريب) توزع على أمل وبدر وكارلا، مهمة لكل واحد. أمل لا تقوم بالمراجعة ولا بالتدريب. بدر يقوم بالتقرير أو المراجعة. كارلا لا تقوم بالتقرير. من يقوم بالمراجعة؟",
+  "options_ar": [
+   "بدر",
+   "أمل",
+   "كارلا",
+   "لا يمكن التحديد"
+  ],
+  "answer": 0,
+  "explain_en": "Amal must do the report, so Badr does the audit and Carla the training.",
+  "explain_ar": "أمل لا بد أن تقوم بالتقرير، فيقوم بدر بالمراجعة وكارلا بالتدريب.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0027",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-server-room-escort",
+  "prompt_en": "Rule: staff at level 3 or higher may enter the server room. Contractors may enter only when escorted by level 4 staff. Rana is a contractor escorted by a level 3 manager. Can Rana enter?",
+  "options_en": [
+   "No, the escort must be level 4.",
+   "Yes, because she is escorted.",
+   "Yes, because her escort is level 3.",
+   "Only with IT approval."
+  ],
+  "prompt_ar": "القاعدة: الموظفون من المستوى 3 فأعلى يمكنهم دخول غرفة الخوادم. المقاولون لا يدخلون إلا برفقة موظف من المستوى 4. رنا مقاولة يرافقها مدير من المستوى 3. هل تستطيع رنا الدخول؟",
+  "options_ar": [
+   "لا، المرافق يجب أن يكون من المستوى 4.",
+   "نعم، لأنها مع مرافق.",
+   "نعم، لأن مرافقها من المستوى 3.",
+   "فقط بموافقة تقنية المعلومات."
+  ],
+  "answer": 0,
+  "explain_en": "The contractor rule requires a level 4 escort; IT approval is not part of the rule.",
+  "explain_ar": "قاعدة المقاولين تشترط مرافقًا من المستوى 4، وموافقة تقنية المعلومات ليست جزءًا من القاعدة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0028",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-mp-critical-path",
+  "prompt_en": "Task A takes 3 days. Tasks B (4 days) and C (6 days) can start only after A and can run at the same time. Task D (2 days) starts only after both B and C finish. What is the shortest total duration?",
+  "options_en": [
+   "15 days",
+   "9 days",
+   "13 days",
+   "11 days"
+  ],
+  "prompt_ar": "المهمة A تستغرق 3 أيام. المهمتان B (4 أيام) وC (6 أيام) تبدآن بعد A فقط ويمكن تنفيذهما في نفس الوقت. المهمة D (يومان) تبدأ بعد انتهاء B وC معًا. ما أقصر مدة كلية؟",
+  "options_ar": [
+   "15 يومًا",
+   "9 أيام",
+   "13 يومًا",
+   "11 يومًا"
+  ],
+  "answer": 3,
+  "explain_en": "3 + the longer of B and C (6) + 2 = 11.",
+  "explain_ar": "3 + الأطول بين B وC (6) + 2 = 11.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "3+max(4,6)+2"
+ },
+ {
+  "id": "T-MAN-MRS-0029",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-discount-rules",
+  "prompt_en": "Discount rules: orders over SAR 10,000 get 5%. Customers with a contract get 3%. Only the larger single discount applies, never both. A contract customer places an order of SAR 12,000. Which discount applies?",
+  "options_en": [
+   "3%",
+   "8%",
+   "5%",
+   "No discount"
+  ],
+  "prompt_ar": "قواعد الخصم: الطلبات فوق 10,000 ريال تحصل على 5%. العملاء أصحاب العقود يحصلون على 3%. يطبق الخصم الأكبر فقط ولا يُجمع الخصمان. عميل لديه عقد قدّم طلبًا بـ 12,000 ريال. أي خصم يطبق؟",
+  "options_ar": [
+   "3%",
+   "8%",
+   "5%",
+   "لا يوجد خصم"
+  ],
+  "answer": 2,
+  "explain_en": "Both rules apply, but only the larger one (5%) is used.",
+  "explain_ar": "القاعدتان تنطبقان، لكن يطبق الأكبر فقط (5%).",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0030",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-mp-ad-campaign-weaken",
+  "prompt_en": "\"Sales rose in the month after we launched the new ad campaign, so the campaign caused the increase.\" Which fact would most weaken this claim?",
+  "options_en": [
+   "The main competitor closed its local stores in the same month.",
+   "The campaign cost more than planned.",
+   "Some customers did not see the ads.",
+   "Sales also rose last year."
+  ],
+  "prompt_ar": "\"ارتفعت المبيعات في الشهر التالي لإطلاق الحملة الإعلانية الجديدة، إذن الحملة هي سبب الزيادة.\" أي حقيقة تُضعف هذا الادعاء أكثر؟",
+  "options_ar": [
+   "المنافس الرئيسي أغلق متاجره المحلية في نفس الشهر.",
+   "الحملة تكلفت أكثر من المخطط.",
+   "بعض العملاء لم يروا الإعلانات.",
+   "المبيعات ارتفعت أيضًا في العام الماضي."
+  ],
+  "answer": 0,
+  "explain_en": "It gives another cause for the same rise at the same time.",
+  "explain_ar": "تقدم سببًا آخر لنفس الزيادة في نفس الوقت.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0031",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-mp-callcentre-assumption",
+  "prompt_en": "\"We should move the call centre to City X because wages there are 30% lower.\" Which assumption does this argument depend on?",
+  "options_en": [
+   "Lower productivity or quality in City X will not cancel out the wage savings.",
+   "City X has more call centres than other cities.",
+   "Wages in City X will fall further.",
+   "Customers prefer agents from City X."
+  ],
+  "prompt_ar": "\"يجب نقل مركز الاتصال إلى المدينة X لأن الأجور هناك أقل بنسبة 30%.\" على أي افتراض تعتمد هذه الحجة؟",
+  "options_ar": [
+   "أي انخفاض في الإنتاجية أو الجودة في المدينة X لن يلغي توفير الأجور.",
+   "المدينة X فيها مراكز اتصال أكثر من غيرها.",
+   "الأجور في المدينة X ستنخفض أكثر.",
+   "العملاء يفضلون موظفين من المدينة X."
+  ],
+  "answer": 0,
+  "explain_en": "If quality or output dropped enough, lower wages would not make the move worth it.",
+  "explain_ar": "لو انخفضت الجودة أو الإنتاجية بدرجة كافية، فلن يكون انخفاض الأجور مبررًا للنقل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0032",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-mp-test-training-effect",
+  "prompt_en": "A manager claims: \"The new training reduced data-entry errors.\" Which evidence would test this claim best?",
+  "options_en": [
+   "The number of staff who liked the training",
+   "Error rates of trained staff after the training only",
+   "The cost of the training per person",
+   "Error rates of trained staff compared with similar untrained staff over the same period"
+  ],
+  "prompt_ar": "مدير يقول: \"التدريب الجديد قلل أخطاء إدخال البيانات.\" أي دليل يختبر هذا الادعاء أفضل؟",
+  "options_ar": [
+   "عدد الموظفين الذين أعجبهم التدريب",
+   "نسبة أخطاء المتدربين بعد التدريب فقط",
+   "تكلفة التدريب لكل شخص",
+   "مقارنة نسبة أخطاء المتدربين بموظفين مشابهين لم يتدربوا في نفس الفترة"
+  ],
+  "answer": 3,
+  "explain_en": "A comparison group over the same period separates the training effect from other changes.",
+  "explain_ar": "مجموعة مقارنة في نفس الفترة تفصل أثر التدريب عن أي تغيرات أخرى.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0033",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "mgr-mp-survivor-survey",
+  "prompt_en": "\"Our customers are happy: 90% of current customers rated us 'satisfied' in this year's survey.\" What is the main weakness of this conclusion?",
+  "options_en": [
+   "90% is too high to be believable.",
+   "The survey was done this year.",
+   "It ignores customers who already left, who may have been unhappy.",
+   "Satisfaction cannot be measured."
+  ],
+  "prompt_ar": "\"عملاؤنا راضون: 90% من العملاء الحاليين قيّمونا 'راضٍ' في استبيان هذا العام.\" ما نقطة الضعف الرئيسية في هذا الاستنتاج؟",
+  "options_ar": [
+   "نسبة 90% أعلى من أن تُصدق.",
+   "الاستبيان أُجري هذا العام.",
+   "يتجاهل العملاء الذين غادروا بالفعل، وقد يكونون غير راضين.",
+   "الرضا لا يمكن قياسه."
+  ],
+  "answer": 2,
+  "explain_en": "Only customers who stayed were asked, so the result leaves out the people most likely to be unhappy.",
+  "explain_ar": "الاستبيان شمل من بقي فقط، فأغفل الأشخاص الأكثر احتمالًا لعدم الرضا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0034",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-mp-complaint-rate",
+  "prompt_en": "Branch A had 40 complaints from 8,000 customers. Branch B had 30 complaints from 3,000 customers. Which conclusion is supported?",
+  "options_en": [
+   "Branch A has the higher complaint rate.",
+   "Branch B has the higher complaint rate.",
+   "Both branches have the same complaint rate.",
+   "Branch A serves customers worse because it has more complaints."
+  ],
+  "prompt_ar": "الفرع A تلقى 40 شكوى من 8,000 عميل. الفرع B تلقى 30 شكوى من 3,000 عميل. أي استنتاج مدعوم؟",
+  "options_ar": [
+   "الفرع A نسبة الشكاوى فيه أعلى.",
+   "الفرع B نسبة الشكاوى فيه أعلى.",
+   "نسبة الشكاوى متساوية في الفرعين.",
+   "الفرع A يخدم العملاء أسوأ لأن شكاواه أكثر."
+  ],
+  "answer": 1,
+  "explain_en": "A: 40/8,000 = 0.5%. B: 30/3,000 = 1%.",
+  "explain_ar": "A: 40 ÷ 8,000 = 0.5%. وB: 30 ÷ 3,000 = 1%.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0035",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-routing-root-cause",
+  "prompt_en": "Delivery delays rose in March. Facts: new routing software went live on 1 March; the drivers did not change; volume was flat; the delays happened only on routes with more than 15 stops. What is the most likely cause?",
+  "options_en": [
+   "The new software plans long routes poorly.",
+   "The drivers became less careful.",
+   "Order volume grew too fast.",
+   "Customers changed their addresses."
+  ],
+  "prompt_ar": "زادت تأخيرات التوصيل في مارس. الحقائق: برنامج تخطيط المسارات الجديد بدأ في 1 مارس، والسائقون لم يتغيروا، والحجم ثابت، والتأخير حدث فقط في المسارات التي فيها أكثر من 15 نقطة توقف. ما السبب الأرجح؟",
+  "options_ar": [
+   "البرنامج الجديد يخطط المسارات الطويلة بشكل سيئ.",
+   "السائقون أصبحوا أقل حرصًا.",
+   "حجم الطلبات زاد بسرعة كبيرة.",
+   "العملاء غيروا عناوينهم."
+  ],
+  "answer": 0,
+  "explain_en": "The only change is the software, and the delays sit on the long, complex routes.",
+  "explain_ar": "التغيير الوحيد هو البرنامج، والتأخير في المسارات الطويلة والمعقدة فقط.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0036",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-onboarding-churn",
+  "prompt_en": "A subscription service sees more cancellations. 70% of people who cancel do so in their first two months. The welcome onboarding call was removed in January. What is the best next step to test a cause?",
+  "options_en": [
+   "Raise prices for new customers.",
+   "Survey long-term customers only.",
+   "Bring back every old feature.",
+   "Compare early cancellations for customers who joined before and after January."
+  ],
+  "prompt_ar": "خدمة اشتراك تلاحظ زيادة الإلغاءات. 70% ممن يلغون يفعلون ذلك في أول شهرين. وتم إلغاء مكالمة الترحيب والتعريف في يناير. ما أفضل خطوة تالية لاختبار السبب؟",
+  "options_ar": [
+   "رفع الأسعار للعملاء الجدد.",
+   "استبيان العملاء القدامى فقط.",
+   "إعادة كل الخصائص القديمة.",
+   "مقارنة الإلغاء المبكر بين العملاء الذين انضموا قبل يناير وبعده."
+  ],
+  "answer": 3,
+  "explain_en": "Comparing cohorts before and after the change tests whether removing the call raised early cancellations.",
+  "explain_ar": "مقارنة الشرائح قبل التغيير وبعده تختبر هل إلغاء المكالمة زاد الإلغاء المبكر.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0037",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-aht-repeat-calls",
+  "prompt_en": "In a support centre, average call time fell by 20% this quarter, but repeat calls from the same customers rose by 35%. What is the best interpretation?",
+  "options_en": [
+   "Agents became more efficient with no downside.",
+   "Customers are calling about new products.",
+   "Agents may be ending calls before problems are solved.",
+   "The phone system is recording times wrongly."
+  ],
+  "prompt_ar": "في مركز دعم، انخفض متوسط مدة المكالمة 20% هذا الربع، لكن المكالمات المتكررة من نفس العملاء زادت 35%. ما أفضل تفسير؟",
+  "options_ar": [
+   "الموظفون أصبحوا أكثر كفاءة دون أي أثر سلبي.",
+   "العملاء يتصلون بخصوص منتجات جديدة.",
+   "قد يكون الموظفون ينهون المكالمات قبل حل المشكلة.",
+   "نظام الهاتف يسجل الأوقات خطأ."
+  ],
+  "answer": 2,
+  "explain_en": "Shorter calls plus more repeat calls points to unresolved issues, not real efficiency.",
+  "explain_ar": "مكالمات أقصر مع تكرار أكثر تعني مشاكل لم تُحل، وليس كفاءة حقيقية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0038",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-pilot-selection-bias",
+  "prompt_en": "Self-checkout was piloted in three stores, chosen because they are the newest and busiest. Sales there rose 12%. The team wants to roll it out to all 40 stores. What is the main concern?",
+  "options_en": [
+   "12% is too small to matter.",
+   "Three stores are too many for a pilot.",
+   "Self-checkout always lowers sales.",
+   "The pilot stores are not typical, so the result may not repeat elsewhere."
+  ],
+  "prompt_ar": "تمت تجربة الدفع الذاتي في ثلاثة متاجر اختيرت لأنها الأحدث والأكثر ازدحامًا. ارتفعت المبيعات فيها 12%. الفريق يريد التعميم على 40 متجرًا. ما القلق الرئيسي؟",
+  "options_ar": [
+   "12% نسبة صغيرة لا تهم.",
+   "ثلاثة متاجر عدد كبير على تجربة.",
+   "الدفع الذاتي يقلل المبيعات دائمًا.",
+   "متاجر التجربة غير ممثلة، فقد لا تتكرر النتيجة في غيرها."
+  ],
+  "answer": 3,
+  "explain_en": "The pilot stores were picked for being unusual, so they may not represent the other 37.",
+  "explain_ar": "متاجر التجربة اختيرت لأنها غير عادية، فقد لا تمثل الـ 37 الباقية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0039",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-maintenance-cut",
+  "prompt_en": "Cutting the maintenance budget saved 15% this year, but machine breakdowns rose sharply in the last quarter. To judge whether the cut was a good decision, which information is needed most?",
+  "options_en": [
+   "The cost of the extra downtime and repairs compared with the savings",
+   "The number of maintenance staff last year",
+   "The brand of the machines",
+   "How the savings were announced"
+  ],
+  "prompt_ar": "خفض ميزانية الصيانة وفّر 15% هذا العام، لكن أعطال الماكينات زادت بشدة في الربع الأخير. لتقييم هل كان الخفض قرارًا جيدًا، ما المعلومة الأهم؟",
+  "options_ar": [
+   "تكلفة التوقف والإصلاحات الإضافية مقارنة بالتوفير",
+   "عدد موظفي الصيانة العام الماضي",
+   "ماركة الماكينات",
+   "طريقة الإعلان عن التوفير"
+  ],
+  "answer": 0,
+  "explain_en": "The decision is good only if savings exceed the extra cost it caused.",
+  "explain_ar": "القرار جيد فقط إذا كان التوفير أكبر من التكلفة الإضافية التي سببها.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0040",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-mp-record-revenue-lower-margin",
+  "prompt_en": "Sales reports record revenue this year. Finance reports that profit margin fell. Both reports are accurate. Which explanation fits both?",
+  "options_en": [
+   "Revenue was counted twice.",
+   "Margin and revenue always move together.",
+   "Finance used last year's numbers.",
+   "Costs grew faster than revenue."
+  ],
+  "prompt_ar": "المبيعات تعلن إيرادات قياسية هذا العام. والمالية تعلن أن هامش الربح انخفض. التقريران صحيحان. أي تفسير يتفق مع الاثنين؟",
+  "options_ar": [
+   "الإيرادات حُسبت مرتين.",
+   "الهامش والإيرادات يتحركان دائمًا معًا.",
+   "المالية استخدمت أرقام العام الماضي.",
+   "التكاليف زادت أسرع من الإيرادات."
+  ],
+  "answer": 3,
+  "explain_en": "Margin is profit divided by revenue; it falls when costs rise faster than revenue.",
+  "explain_ar": "الهامش هو الربح مقسومًا على الإيرادات، وينخفض إذا زادت التكاليف أسرع من الإيرادات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0041",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-mp-error-after-approval",
+  "prompt_en": "Two hours before a deadline, you find a significant error in a figure your director has already approved. What should you do first?",
+  "options_en": [
+   "Submit as approved, since the director signed it.",
+   "Correct it quietly without telling anyone.",
+   "Ask for a one-week extension without explaining why.",
+   "Tell the director now, with the corrected figure and its impact."
+  ],
+  "prompt_ar": "قبل الموعد النهائي بساعتين، اكتشفت خطأ مهمًا في رقم سبق أن اعتمده مديرك. ماذا تفعل أولًا؟",
+  "options_ar": [
+   "أقدمه كما اعتُمد لأن المدير وقّع عليه.",
+   "أصححه دون إبلاغ أحد.",
+   "أطلب تمديدًا لأسبوع دون توضيح السبب.",
+   "أبلغ المدير فورًا بالرقم الصحيح وأثره."
+  ],
+  "answer": 3,
+  "explain_en": "The approver must know about a material change before submission; hiding or ignoring it creates bigger risk.",
+  "explain_ar": "من اعتمد الرقم يجب أن يعرف بأي تغيير مهم قبل التقديم، وإخفاء الخطأ أو تجاهله يزيد المخاطر.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0042",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "mgr-mp-priority-legal-complaint",
+  "prompt_en": "You have four items today: a client complaint that may lead to legal action, the weekly status report, planning the team lunch, and a strategy draft due next week. Which should you handle first?",
+  "options_en": [
+   "The weekly status report",
+   "The client complaint",
+   "The team lunch",
+   "The strategy draft"
+  ],
+  "prompt_ar": "أمامك اليوم أربعة أمور: شكوى عميل قد تتحول إلى قضية، وتقرير الحالة الأسبوعي، وتنظيم غداء الفريق، ومسودة استراتيجية مطلوبة الأسبوع القادم. بماذا تبدأ؟",
+  "options_ar": [
+   "تقرير الحالة الأسبوعي",
+   "شكوى العميل",
+   "غداء الفريق",
+   "مسودة الاستراتيجية"
+  ],
+  "answer": 1,
+  "explain_en": "It is both urgent and high-impact; the others can wait or have later deadlines.",
+  "explain_ar": "هي عاجلة وتأثيرها كبير، والباقي يمكن تأجيله أو موعده لاحق.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0043",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 4,
+  "idea": "mgr-mp-supplier-gift-tender",
+  "prompt_en": "During a tender you are evaluating, one bidder offers you a gift worth SAR 3,000. What is the best response?",
+  "options_en": [
+   "Accept it but give the bidder no extra points.",
+   "Decline the gift and report the offer as company policy requires.",
+   "Accept it after the tender ends.",
+   "Share the gift with the evaluation team."
+  ],
+  "prompt_ar": "أثناء مناقصة تقوم بتقييمها، عرض عليك أحد المتقدمين هدية قيمتها 3,000 ريال. ما أفضل تصرف؟",
+  "options_ar": [
+   "أقبلها لكن لا أعطي المتقدم أي نقاط إضافية.",
+   "أرفض الهدية وأبلغ عن العرض حسب سياسة الشركة.",
+   "أقبلها بعد انتهاء المناقصة.",
+   "أوزع الهدية على فريق التقييم."
+  ],
+  "answer": 1,
+  "explain_en": "Accepting in any form creates a conflict of interest; declining and reporting protects the process.",
+  "explain_ar": "القبول بأي شكل يخلق تعارض مصالح، والرفض مع الإبلاغ يحمي نزاهة المناقصة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0044",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "mgr-mp-critical-vendor-references",
+  "prompt_en": "You must choose a vendor for a system the business cannot run without. Vendor P has verified references from similar clients. Vendor Q is 2% cheaper and has no references. Which choice is best?",
+  "options_en": [
+   "Vendor Q, because it is cheaper",
+   "Vendor P, because the system is critical and the saving is small",
+   "Split the work between both vendors",
+   "Delay the choice until a third vendor appears"
+  ],
+  "prompt_ar": "يجب أن تختار موردًا لنظام لا يمكن للشركة العمل بدونه. المورد P لديه مراجع موثقة من عملاء مشابهين. المورد Q أرخص بنسبة 2% وليس لديه مراجع. ما الاختيار الأفضل؟",
+  "options_ar": [
+   "المورد Q، لأنه أرخص",
+   "المورد P، لأن النظام حرج والتوفير صغير",
+   "تقسيم العمل بين الموردين",
+   "تأجيل القرار حتى يظهر مورد ثالث"
+  ],
+  "answer": 1,
+  "explain_en": "For a critical system, proven delivery outweighs a 2% saving.",
+  "explain_ar": "في نظام حرج، الخبرة المثبتة أهم من توفير 2%.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0045",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-budget-cut-hiring",
+  "prompt_en": "Your team's budget is cut by 10%. You must keep service levels. Two critical roles are vacant, and three non-critical roles are also open. Which plan best meets the cut and protects service?",
+  "options_en": [
+   "Freeze all five roles.",
+   "Cut every activity by exactly 10%.",
+   "Fill the two critical roles and freeze the three non-critical ones.",
+   "Fill all five roles and cut training to zero."
+  ],
+  "prompt_ar": "تم خفض ميزانية فريقك 10%، ويجب الحفاظ على مستوى الخدمة. هناك وظيفتان حرجتان شاغرتان، وثلاث وظائف غير حرجة مفتوحة أيضًا. أي خطة تحقق الخفض وتحمي الخدمة؟",
+  "options_ar": [
+   "تجميد الوظائف الخمس.",
+   "خفض كل نشاط بنسبة 10% بالضبط.",
+   "تعيين الوظيفتين الحرجتين وتجميد الثلاث غير الحرجة.",
+   "تعيين الوظائف الخمس وإلغاء التدريب تمامًا."
+  ],
+  "answer": 2,
+  "explain_en": "Targeted cuts protect service; freezing critical roles or cutting evenly damages it.",
+  "explain_ar": "الخفض الموجه يحمي الخدمة، أما تجميد الوظائف الحرجة أو الخفض المتساوي فيضر بها.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0046",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-double-charge-launch",
+  "prompt_en": "A product launch is two weeks away. Testing finds a bug that double-charges about 2% of card payments. The rest of the product works. What is the best decision?",
+  "options_en": [
+   "Launch on time and refund customers later.",
+   "Launch without the affected payment option, or delay it, until the bug is fixed.",
+   "Launch on time and say nothing.",
+   "Cancel the whole product."
+  ],
+  "prompt_ar": "باقي أسبوعان على إطلاق منتج. الاختبارات كشفت خطأ يخصم مرتين من حوالي 2% من مدفوعات البطاقات. باقي المنتج يعمل. ما القرار الأفضل؟",
+  "options_ar": [
+   "الإطلاق في موعده واسترداد المبالغ للعملاء لاحقًا.",
+   "الإطلاق بدون وسيلة الدفع المتأثرة، أو تأجيلها، حتى يُصلح الخطأ.",
+   "الإطلاق في موعده دون إخبار أحد.",
+   "إلغاء المنتج بالكامل."
+  ],
+  "answer": 1,
+  "explain_en": "Knowingly overcharging customers is unacceptable; isolating the faulty part keeps the rest of the launch.",
+  "explain_ar": "الخصم الزائد عن علم غير مقبول، وعزل الجزء المعيب يحافظ على باقي الإطلاق.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0047",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-expected-value-choice",
+  "prompt_en": "Option A gives a guaranteed profit of SAR 200 thousand. Option B has a 60% chance of SAR 400 thousand profit and a 40% chance of a SAR 50 thousand loss. The company can easily absorb a 50 thousand loss. What is the expected value of the better option, in thousands?",
+  "options_en": [
+   "200 (Option A)",
+   "240 (Option B)",
+   "220 (Option B)",
+   "175 (Option B)"
+  ],
+  "prompt_ar": "الخيار A يعطي ربحًا مضمونًا 200 ألف ريال. الخيار B فيه احتمال 60% لربح 400 ألف ريال واحتمال 40% لخسارة 50 ألف ريال. الشركة تتحمل خسارة 50 ألفًا بسهولة. ما القيمة المتوقعة للخيار الأفضل بالآلاف؟",
+  "options_ar": [
+   "200 (الخيار A)",
+   "240 (الخيار B)",
+   "220 (الخيار B)",
+   "175 (الخيار B)"
+  ],
+  "answer": 2,
+  "explain_en": "B = 0.6 × 400 − 0.4 × 50 = 220, which beats A's 200.",
+  "explain_ar": "B = 0.6 × 400 − 0.4 × 50 = 220، وهي أعلى من 200 للخيار A.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "0.6*400-0.4*50"
+ },
+ {
+  "id": "T-MAN-MRS-0048",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "mgr-mp-strong-performer-drop",
+  "prompt_en": "A previously strong employee has missed several deadlines over the past month. What should you do first?",
+  "options_en": [
+   "Have a private conversation to understand what has changed.",
+   "Issue a formal written warning.",
+   "Move their work to others without telling them.",
+   "Wait for the annual review."
+  ],
+  "prompt_ar": "موظف كان أداؤه قويًا تأخر في عدة مواعيد خلال الشهر الماضي. ماذا تفعل أولًا؟",
+  "options_ar": [
+   "أتحدث معه على انفراد لأفهم ما الذي تغير.",
+   "أصدر إنذارًا كتابيًا رسميًا.",
+   "أنقل عمله لآخرين دون إخباره.",
+   "أنتظر التقييم السنوي."
+  ],
+  "answer": 0,
+  "explain_en": "A sudden change in a strong performer calls for understanding the cause before any formal step.",
+  "explain_ar": "التغير المفاجئ في أداء موظف قوي يتطلب فهم السبب قبل أي إجراء رسمي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0049",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 4,
+  "idea": "mgr-mp-shared-resource-conflict",
+  "prompt_en": "Two departments both ask for the only data analyst for the same two weeks. What is the best way to decide?",
+  "options_en": [
+   "Give the analyst to whoever asked first.",
+   "Split each day half and half.",
+   "Decide using agreed business priorities and impact, and explain the decision to both.",
+   "Let the two department heads argue it out."
+  ],
+  "prompt_ar": "إدارتان تطلبان محلل البيانات الوحيد لنفس الأسبوعين. ما أفضل طريقة لاتخاذ القرار؟",
+  "options_ar": [
+   "أعطي المحلل لمن طلب أولًا.",
+   "أقسم كل يوم نصفين.",
+   "أقرر حسب أولويات العمل المتفق عليها وحجم الأثر، وأشرح القرار للطرفين.",
+   "أترك رئيسي الإدارتين يتجادلان حتى يتفقا."
+  ],
+  "answer": 2,
+  "explain_en": "A transparent, priority-based decision is fair and defensible; the others ignore impact.",
+  "explain_ar": "القرار الشفاف المبني على الأولويات عادل ويمكن الدفاع عنه، أما البقية فتتجاهل الأثر.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-MAN-MRS-0050",
+  "exam": "manager-reasoning-score",
+  "level": "manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "mgr-mp-team-credit-conflict",
+  "prompt_en": "Two senior team members are in open conflict over who deserves credit for a successful project, and it is affecting the team. What is the best action?",
+  "options_en": [
+   "Give credit to the more senior of the two.",
+   "Ignore it until it stops.",
+   "Remove both from the next project.",
+   "Meet both, clarify each person's contribution, and agree how credit is shared in future."
+  ],
+  "prompt_ar": "عضوان كبيران في الفريق في خلاف علني حول من يستحق الفضل في مشروع ناجح، والخلاف يؤثر على الفريق. ما أفضل تصرف؟",
+  "options_ar": [
+   "أعطي الفضل للأقدم منهما.",
+   "أتجاهل الأمر حتى ينتهي.",
+   "أستبعدهما من المشروع القادم.",
+   "أجتمع بهما، وأوضح مساهمة كل منهما، ونتفق على طريقة تقاسم الفضل مستقبلًا."
+  ],
+  "answer": 3,
+  "explain_en": "It addresses the facts and sets a rule for the future without punishing or ignoring.",
+  "explain_ar": "يعالج الحقائق ويضع قاعدة للمستقبل دون عقاب أو تجاهل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ }
+]

@@ -1,0 +1,115 @@
+{
+ "manager-reasoning-score": {
+  "level": "Manager",
+  "sub": "MindProof",
+  "band": [
+   4,
+   6
+  ],
+  "cells": {
+   "verbal|1": 4,
+   "verbal|2": 7,
+   "numerical|1": 3,
+   "numerical|2": 5,
+   "logical|1": 4,
+   "logical|2": 6,
+   "analytical|1": 5,
+   "analytical|2": 6,
+   "decision|1": 4,
+   "decision|2": 6
+  }
+ },
+ "manager-cognitive-assessment": {
+  "level": "Manager",
+  "sub": "Cognitive",
+  "band": [
+   4,
+   6
+  ],
+  "cells": {
+   "verbal|1": 8,
+   "verbal|2": 11,
+   "creativity|2": 8,
+   "flexibility|1": 10,
+   "flexibility|2": 13
+  }
+ },
+ "senior-manager-reasoning-score": {
+  "level": "Senior Manager",
+  "sub": "MindProof",
+  "band": [
+   5,
+   8
+  ],
+  "cells": {
+   "verbal|1": 3,
+   "verbal|2": 5,
+   "numerical|1": 1,
+   "numerical|2": 4,
+   "logical|1": 3,
+   "logical|2": 8,
+   "analytical|1": 2,
+   "analytical|2": 6,
+   "decision|1": 5,
+   "decision|2": 13
+  }
+ },
+ "senior-manager-cognitive-assessment": {
+  "level": "Senior Manager",
+  "sub": "Cognitive",
+  "band": [
+   5,
+   8
+  ],
+  "cells": {
+   "verbal|1": 5,
+   "verbal|2": 13,
+   "creativity|2": 7,
+   "flexibility|1": 4,
+   "flexibility|2": 12,
+   "flexibility|12": 9
+  }
+ },
+ "c-level-reasoning-score": {
+  "level": "C-Level",
+  "sub": "MindProof",
+  "band": [
+   7,
+   10
+  ],
+  "cells": {
+   "verbal|1": 1,
+   "verbal|2": 2,
+   "verbal|3": 3,
+   "numerical|1": 1,
+   "numerical|2": 2,
+   "numerical|3": 3,
+   "logical|1": 1,
+   "logical|2": 2,
+   "logical|3": 5,
+   "analytical|1": 1,
+   "analytical|2": 2,
+   "analytical|3": 5,
+   "decision|1": 3,
+   "decision|2": 7,
+   "decision|3": 12
+  }
+ },
+ "c-level-cognitive-assessment": {
+  "level": "C-Level",
+  "sub": "Cognitive",
+  "band": [
+   7,
+   10
+  ],
+  "cells": {
+   "verbal|1": 3,
+   "verbal|2": 4,
+   "verbal|3": 11,
+   "creativity|2": 8,
+   "flexibility|1": 4,
+   "flexibility|2": 8,
+   "flexibility|12": 12
+  }
+ }
+}
