@@ -5,7 +5,8 @@ import {requireVerifiedSession, EmailVerificationRequired} from './_shared/payme
 import {requireStaging, stagingDb} from './_shared/staging-db.ts';
 import {isKnownStagingOrigin} from './_shared/staging-origins.ts';
 import {paymentTestConfig, createPaymentTestIntention} from './_shared/payment-test-contract.ts';
-import {currentSignedPrice, verifyPriceQuote} from './_shared/usd-egp-price.ts';
+import {currentSignedPrice, verifyPriceQuote, currentExamPrice, PriceChanged, DEFAULT_EXAM_TAG} from './_shared/usd-egp-price.ts';
+import {certificateVerification} from './_shared/certificate-verify.ts';
 import {isUuid, resolveVerificationSecret} from './_shared/email-verification.ts';
 import {certificatePdfBytes} from './_shared/certificate.ts';
 import {deliverReportMail, computeDomainStats} from './_shared/report-mail.ts';
@@ -51,8 +52,16 @@ Deno.serve(async (req) => {
 
     const db = stagingDb();
 
+    // Exam of a finished session owned by this candidate (OMS-MND-261126-06: each exam has its own price).
+    const examTagOf = async (testId: unknown): Promise<string|null> => {
+      if (!isUuid(testId)) return null;
+      const { data } = await db.from('university_challenge_sessions').select('exam_tag').eq('id', testId).eq('candidate_id', candidateId).maybeSingle();
+      return (data?.exam_tag as string) || null;
+    };
+
     if (b.action === 'quote') {
-      try { return reply({price: await currentSignedPrice(db)}, 200); }
+      const examTag = (await examTagOf(b.testId)) ?? DEFAULT_EXAM_TAG;
+      try { return reply({price: await currentSignedPrice(db, examTag)}, 200); }
       catch { return reply({error:'The live USD→EGP conversion quote is unavailable right now.'}, 503); }
     }
 
@@ -69,8 +78,14 @@ Deno.serve(async (req) => {
       if (!isUuid(b.testId)) return reply({error:'Invalid test reference'}, 400);
       const config = paymentTestConfig();
       if (!config.enabled || !config.configured) return reply({error:'Payment is not configured. No checkout was created.', code:'SANDBOX_NOT_CONFIGURED'}, 503);
-      let quote; try { quote = await verifyPriceQuote(b.price, await resolveVerificationSecret()); }
-      catch { return reply({error:'Refresh the conversion quote and try again.', code:'QUOTE_REFRESH_REQUIRED'}, 409); }
+      const examTag = await examTagOf(b.testId);
+      if (!examTag) return reply({error:'This exam session is not eligible for payment (not found, not yours, or not finished yet).'}, 409);
+      let quote;
+      try { quote = await verifyPriceQuote(b.price, await resolveVerificationSecret(), await currentExamPrice(db, examTag), examTag); }
+      catch (e) {
+        if (e instanceof PriceChanged) return reply({error: e.message, code:'PRICE_CHANGED'}, 409);
+        return reply({error:'Refresh the conversion quote and try again.', code:'QUOTE_REFRESH_REQUIRED'}, 409);
+      }
 
       const { data: reserved, error: reserveError } = await db.rpc('reserve_exam_payment', {p_test_id: b.testId, p_candidate: candidateId, p_quote: quote});
       if (reserveError || !reserved) return reply({error:'This exam session is not eligible for payment (not found, not yours, or not finished yet).'}, 409);
@@ -97,7 +112,7 @@ Deno.serve(async (req) => {
       if (!isUuid(b.testId)) return reply({error:'Invalid test reference'}, 400);
       const { data: payment } = await db.from('exam_payments').select('state').eq('test_id', b.testId).eq('candidate_id', candidateId).maybeSingle();
       if (!payment || payment.state !== 'paid') return reply({error:'Payment has not been confirmed yet. The certificate is not available.'}, 403);
-      const { data: session } = await db.from('university_challenge_sessions').select('candidate_name,result,submitted,language').eq('id', b.testId).eq('candidate_id', candidateId).maybeSingle();
+      const { data: session } = await db.from('university_challenge_sessions').select('candidate_name,result,submitted,language,submitted_at,started_at').eq('id', b.testId).eq('candidate_id', candidateId).maybeSingle();
       if (!session || !session.submitted || !session.result) return reply({error:'Exam result not found.'}, 404);
       const r = session.result as Record<string, unknown>;
       const correct = Number(r.correct);
@@ -107,7 +122,8 @@ Deno.serve(async (req) => {
       const lang = session.language === 'ar' ? 'ar' as const : 'en' as const;
       let bytes: Uint8Array;
       try {
-        bytes = await certificatePdfBytes({name, date: new Date().toISOString().slice(0,10), correct, total, pctl: 0, iq: 0, lang});
+        const v = await certificateVerification(db, b.testId as string, session);
+        bytes = await certificatePdfBytes({name, date: v.date, correct, total, pctl: 0, iq: 0, lang, verifyCode: v.code, verifyUrl: v.url});
       } catch { return reply({error:'Could not generate certificate.'}, 500); }
       const filename = `OMSAZE-${safeFileName(name)}-${isoDateUtc()}-Certificate.pdf`;
       return new Response(bytes, {status:200, headers:{'content-type':'application/pdf','content-disposition':`attachment; filename="${filename.replace(/"/g,'')}"`,'cache-control':'no-store','vary':'origin',...cors}});
@@ -135,7 +151,8 @@ Deno.serve(async (req) => {
       const lang = session.language === 'ar' ? 'ar' as const : 'en' as const;
       let certBytes: Uint8Array;
       try {
-        certBytes = await certificatePdfBytes({name, date: new Date().toISOString().slice(0,10), correct, total, pctl: 0, iq: 0, lang});
+        const v = await certificateVerification(db, b.testId as string, session);
+        certBytes = await certificatePdfBytes({name, date: v.date, correct, total, pctl: 0, iq: 0, lang, verifyCode: v.code, verifyUrl: v.url});
       } catch { return reply({error:'Could not generate certificate.'}, 500); }
       try {
         await deliverReportMail({
