@@ -105,7 +105,7 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     sb.from('exam_price_history').select('id,variable_name,exam_tag,currency,amount_cents,valid_from,valid_to,changed_by,note')
       .order('valid_from', { ascending: false }).limit(1000),
     // OMS-MND-261126-12/-13: corporate accounts, requested exams, company prices, seat balances and ledger.
-    sb.from('corporate_accounts').select('id,reference,company_name,registration_no,country,city,sector,employees,contact_name,contact_title,email,phone,notes,language,status,status_changed_at,status_note,created_at')
+    sb.from('corporate_accounts').select('*') /* '*' so it works before and after OMS-MND-261126-14 adds columns */
       .order('created_at', { ascending: false }).limit(MAX_ROWS),
     sb.from('corporate_exam_requests').select('company_id,exam_tag,seats_requested').limit(MAX_ROWS * 4),
     sb.from('corporate_price_history').select('id,company_id,exam_tag,amount_cents,valid_from,valid_to,changed_by,note').order('valid_from', { ascending: false }).limit(2000),
@@ -154,7 +154,7 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     pricesAvailable: !prices.error,
     corporateAvailable: !corp.error && !corpReq.error && !corpPrices.error && !corpBal.error && !corpLedger.error,
     corporate: corp.error ? [] : (corp.data ?? []).map((c: any) => ({
-      id: c.id, ref: c.reference, company: c.company_name, reg_no: c.registration_no, country: c.country, city: c.city, sector: c.sector,
+      id: c.id, ref: c.reference, org_type: c.org_type ?? null, company: c.company_name, reg_no: c.registration_no, tax_no: c.tax_no ?? null, address: c.address ?? null, website: c.website ?? null, billing_email: c.billing_email ?? null, country: c.country, city: c.city, sector: c.sector,
       employees: c.employees, contact: c.contact_name, title: c.contact_title, email: c.email, phone: c.phone, notes: c.notes, lang: c.language,
       status: c.status, status_at: c.status_changed_at, status_note: c.status_note, at: c.created_at,
       requests: (corpReq.data ?? []).filter((r: any) => r.company_id === c.id).map((r: any) => ({ exam: r.exam_tag, seats: r.seats_requested })),

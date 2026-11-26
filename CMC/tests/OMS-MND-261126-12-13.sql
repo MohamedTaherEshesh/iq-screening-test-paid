@@ -1,20 +1,20 @@
 -- Test script OMS-MND-261126-12 / -13. Runs inside a transaction and ROLLS BACK: leaves no data behind.
+-- Updated for OMS-MND-261126-14: registrations carry org_type; choosing exams at registration is optional (old T3d removed).
 begin;
 do $$
 declare r jsonb; cid uuid; ok boolean; p record; b record;
 begin
   -- T1 anon can register a company with 2 exams
   set local role anon;
-  r := public.corporate_register('{"company_name":"Test Co CMC","registration_no":"CR-1","country":"eg","city":"Cairo","employees":"51-200","contact_name":"HR Lead","email":"HR@TestCo.example","phone":"+20 100 000 0000","consent":"yes","language":"ar","exams":[{"exam":"university-iq-preparation","seats":25},{"exam":"university-cognitive-skills","seats":10}]}');
+  r := public.corporate_register('{"org_type":"company","company_name":"Test Co CMC","registration_no":"CR-1","country":"eg","city":"Cairo","employees":"51-200","contact_name":"HR Lead","email":"HR@TestCo.example","phone":"+20 100 000 0000","consent":"yes","language":"ar","exams":[{"exam":"university-iq-preparation","seats":25},{"exam":"university-cognitive-skills","seats":10}]}');
   assert r->>'reference' like 'CORP-%' and (r->>'seats')::int = 35, 'T1 register';
   -- T2 same email again is refused
-  begin perform public.corporate_register('{"company_name":"Dup","country":"EG","contact_name":"Xx","email":"hr@testco.example","phone":"+201000000000","consent":"yes","exams":[{"exam":"university-iq-preparation","seats":1}]}'); ok := false;
+  begin perform public.corporate_register('{"org_type":"company","company_name":"Dup","country":"EG","contact_name":"Xx","email":"hr@testco.example","phone":"+201000000000","consent":"yes","exams":[{"exam":"university-iq-preparation","seats":1}]}'); ok := false;
   exception when others then ok := sqlerrm = 'email_registered'; end; assert ok, 'T2 duplicate email';
   -- T3 unknown exam, bad email, no consent, no exam are refused and leave nothing
-  begin perform public.corporate_register('{"company_name":"Bad","country":"EG","contact_name":"Xx","email":"a@b.co","phone":"+201000000000","consent":"yes","exams":[{"exam":"nope","seats":1}]}'); ok := false; exception when others then ok := sqlerrm = 'unknown_exam'; end; assert ok, 'T3a unknown exam';
-  begin perform public.corporate_register('{"company_name":"Bad","country":"EG","contact_name":"Xx","email":"not-an-email","phone":"+201000000000","consent":"yes","exams":[{"exam":"university-iq-preparation","seats":1}]}'); ok := false; exception when others then ok := sqlerrm = 'invalid_fields'; end; assert ok, 'T3b bad email';
-  begin perform public.corporate_register('{"company_name":"Bad","country":"EG","contact_name":"Xx","email":"c@d.co","phone":"+201000000000","exams":[{"exam":"university-iq-preparation","seats":1}]}'); ok := false; exception when others then ok := sqlerrm = 'consent_required'; end; assert ok, 'T3c consent';
-  begin perform public.corporate_register('{"company_name":"Bad","country":"EG","contact_name":"Xx","email":"e@f.co","phone":"+201000000000","consent":"yes","exams":[]}'); ok := false; exception when others then ok := sqlerrm = 'choose_exam'; end; assert ok, 'T3d no exam';
+  begin perform public.corporate_register('{"org_type":"company","company_name":"Bad","country":"EG","contact_name":"Xx","email":"a@b.co","phone":"+201000000000","consent":"yes","exams":[{"exam":"nope","seats":1}]}'); ok := false; exception when others then ok := sqlerrm = 'unknown_exam'; end; assert ok, 'T3a unknown exam';
+  begin perform public.corporate_register('{"org_type":"company","company_name":"Bad","country":"EG","contact_name":"Xx","email":"not-an-email","phone":"+201000000000","consent":"yes","exams":[{"exam":"university-iq-preparation","seats":1}]}'); ok := false; exception when others then ok := sqlerrm = 'invalid_fields'; end; assert ok, 'T3b bad email';
+  begin perform public.corporate_register('{"org_type":"company","company_name":"Bad","country":"EG","contact_name":"Xx","email":"c@d.co","phone":"+201000000000","exams":[{"exam":"university-iq-preparation","seats":1}]}'); ok := false; exception when others then ok := sqlerrm = 'consent_required'; end; assert ok, 'T3c consent';
   -- T4 anon cannot read tables or call admin functions
   begin perform 1 from public.corporate_accounts; ok := false; exception when insufficient_privilege then ok := true; end; assert ok, 'T4a read refused';
   begin perform public.set_corporate_price(gen_random_uuid(), 'x', 100, 'x'); ok := false; exception when insufficient_privilege then ok := true; end; assert ok, 'T4b admin fn refused';
