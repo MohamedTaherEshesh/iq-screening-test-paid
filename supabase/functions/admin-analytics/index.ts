@@ -1,8 +1,9 @@
 // OMS-MND-261125-06: owner-only analytics for the OMSAZE admin page (dev/preview/omsaze.com /admin.html).
 //
 // Security model
-// - Only the owner email can sign in. Sign-in = one-time code emailed by Supabase Auth (possession)
+// - Only the owner email can sign in. Sign-in = one-time code emailed by this function (possession)
 //   plus, when the ADMIN_DASHBOARD_PASSCODE secret is set, a passcode (knowledge). Both checked here, server side.
+//   The code is bound to a signed 10-minute challenge, so no database table is needed.
 // - A successful sign-in returns a signed token valid for 30 minutes (HMAC, server secret). Every data call checks it.
 // - Only the OMSAZE site origins may call this from a browser. Responses are never cached.
 // - Answer keys, scores and payment-card data are never returned.
@@ -12,10 +13,12 @@
 //   npx supabase functions deploy admin-analytics --project-ref cbklbucvidcutshhmwjy --no-verify-jwt
 import { stagingDb, requireStaging, timingSafeEqual } from './_shared/staging-db.ts';
 import { resolveVerificationSecret, verificationHash } from './_shared/email-verification.ts';
+import { sendAdminCode } from './_shared/admin-mail.ts';
 
 const ADMIN_EMAIL = 'mohamedtahereshesh@gmail.com';
 const TOKEN_SCOPE = 'omsaze-admin-analytics';
 const TOKEN_TTL_SECONDS = 30 * 60;
+const CODE_TTL_SECONDS = 10 * 60;
 const MAX_ROWS = 5000;
 const ALLOWED_ORIGINS = new Set([
   'https://dev.omsaze.com',
@@ -42,6 +45,23 @@ async function tokenOk(raw: string | null, secret: string): Promise<boolean> {
     const p = JSON.parse(unb64(encoded));
     return p?.v === 1 && p.scope === TOKEN_SCOPE && p.email === ADMIN_EMAIL && Number.isSafeInteger(p.exp) && p.exp * 1000 > Date.now();
   } catch { return false; }
+}
+
+async function newChallenge(secret: string): Promise<{ challenge: string; code: string }> {
+  const encoded = b64(JSON.stringify({ v: 1, scope: 'admin-otp', n: crypto.randomUUID(), exp: Math.floor(Date.now() / 1000) + CODE_TTL_SECONDS }));
+  const challenge = encoded + '.' + await verificationHash(secret, 'admin-otp-challenge', encoded);
+  return { challenge, code: await codeFor(secret, challenge) };
+}
+async function codeFor(secret: string, challenge: string): Promise<string> {
+  const h = await verificationHash(secret, 'admin-otp-code', challenge);
+  return String(parseInt(h.slice(0, 12), 16) % 1000000).padStart(6, '0');
+}
+async function challengeOk(raw: string, secret: string): Promise<boolean> {
+  if (!raw || raw.length > 400) return false;
+  const [encoded, sig, ...extra] = raw.split('.');
+  if (extra.length || !encoded || !sig) return false;
+  if (!timingSafeEqual(sig, await verificationHash(secret, 'admin-otp-challenge', encoded))) return false;
+  try { const p = JSON.parse(unb64(encoded)); return p?.v === 1 && p.scope === 'admin-otp' && Number.isSafeInteger(p.exp) && p.exp * 1000 > Date.now(); } catch { return false; }
 }
 
 function ageAt(birth: string | null, at: string): number | null {
@@ -143,19 +163,22 @@ Deno.serve(async (req: Request) => {
 
     if (body.action === 'requestAccess') {
       const email = String(body.email ?? '').trim().toLowerCase();
-      // Same answer either way so the page never confirms which address is the owner's.
-      if (email === ADMIN_EMAIL) await sb.auth.signInWithOtp({ email, options: { shouldCreateUser: true } });
-      return reply({ requested: true });
+      const { challenge, code } = await newChallenge(secret);
+      if (email !== ADMIN_EMAIL) { await sleep(600); return reply({ requested: true, challenge }); } // same shape: never confirms the owner address
+      let sent = false;
+      try { sent = await sendAdminCode(ADMIN_EMAIL, code); } catch (e) { console.error('admin-analytics send code failed:', e instanceof Error ? e.message : 'unknown'); }
+      if (!sent) return reply({ error: 'The code email could not be sent. Please try again in a minute.' }, 502);
+      return reply({ requested: true, challenge });
     }
 
     if (body.action === 'verifyAccess') {
       const email = String(body.email ?? '').trim().toLowerCase();
-      const code = String(body.code ?? '');
+      const code = String(body.code ?? '').trim();
+      const challenge = String(body.challenge ?? '');
       const given = String(body.passcode ?? '');
       const passOk = passcode.length < 8 || timingSafeEqual(given, passcode);
-      if (email !== ADMIN_EMAIL || !/^\d{6,8}$/.test(code)) { await sleep(800); return reply({ error: 'Incorrect code or passcode.' }, 401); }
-      const { data, error } = await sb.auth.verifyOtp({ email, token: code, type: 'email' });
-      if (error || data.user?.email?.toLowerCase() !== ADMIN_EMAIL || !passOk) { await sleep(800); return reply({ error: 'Incorrect code or passcode.' }, 401); }
+      const ok = email === ADMIN_EMAIL && /^\d{6}$/.test(code) && await challengeOk(challenge, secret) && timingSafeEqual(code, await codeFor(secret, challenge)) && passOk;
+      if (!ok) { await sleep(900); return reply({ error: 'Incorrect code or passcode.' }, 401); }
       return reply({ adminToken: await signToken(secret), expiresInSeconds: TOKEN_TTL_SECONDS });
     }
 
