@@ -97,16 +97,17 @@ Deno.serve(async (req) => {
       if (!isUuid(b.testId)) return reply({error:'Invalid test reference'}, 400);
       const { data: payment } = await db.from('exam_payments').select('state').eq('test_id', b.testId).eq('candidate_id', candidateId).maybeSingle();
       if (!payment || payment.state !== 'paid') return reply({error:'Payment has not been confirmed yet. The certificate is not available.'}, 403);
-      const { data: session } = await db.from('university_challenge_sessions').select('candidate_name,result,submitted').eq('id', b.testId).eq('candidate_id', candidateId).maybeSingle();
+      const { data: session } = await db.from('university_challenge_sessions').select('candidate_name,result,submitted,language').eq('id', b.testId).eq('candidate_id', candidateId).maybeSingle();
       if (!session || !session.submitted || !session.result) return reply({error:'Exam result not found.'}, 404);
       const r = session.result as Record<string, unknown>;
       const correct = Number(r.correct);
       const total = 70;
       if (!Number.isInteger(correct) || correct < 0 || correct > total) return reply({error:'Score unavailable for certificate.'}, 500);
       const name = (session.candidate_name as string) || email;
+      const lang = session.language === 'ar' ? 'ar' as const : 'en' as const;
       let bytes: Uint8Array;
       try {
-        bytes = await certificatePdfBytes({name, date: new Date().toISOString().slice(0,10), correct, total, pctl: 0, iq: 0});
+        bytes = await certificatePdfBytes({name, date: new Date().toISOString().slice(0,10), correct, total, pctl: 0, iq: 0, lang});
       } catch { return reply({error:'Could not generate certificate.'}, 500); }
       const filename = `OMSAZE-${safeFileName(name)}-${isoDateUtc()}-Certificate.pdf`;
       return new Response(bytes, {status:200, headers:{'content-type':'application/pdf','content-disposition':`attachment; filename="${filename.replace(/"/g,'')}"`,'cache-control':'no-store','vary':'origin',...cors}});
@@ -117,7 +118,7 @@ Deno.serve(async (req) => {
       const { data: payment } = await db.from('exam_payments').select('id,state').eq('test_id', b.testId).eq('candidate_id', candidateId).maybeSingle();
       if (!payment || payment.state !== 'paid') return reply({error:'Payment has not been confirmed yet. The report cannot be emailed.'}, 403);
       const { data: session } = await db.from('university_challenge_sessions')
-        .select('candidate_name,result,submitted,answers,domains,answer_key,submitted_at,started_at')
+        .select('candidate_name,result,submitted,answers,domains,answer_key,submitted_at,started_at,language')
         .eq('id', b.testId).eq('candidate_id', candidateId).maybeSingle();
       if (!session || !session.submitted || !session.result) return reply({error:'Exam result not found.'}, 404);
       const r = session.result as Record<string, unknown>;
@@ -131,15 +132,16 @@ Deno.serve(async (req) => {
       const attempted = domainStats.reduce((s, x) => s + x.attempted, 0);
       const skipped = total - attempted;
       const name = (session.candidate_name as string) || email;
+      const lang = session.language === 'ar' ? 'ar' as const : 'en' as const;
       let certBytes: Uint8Array;
       try {
-        certBytes = await certificatePdfBytes({name, date: new Date().toISOString().slice(0,10), correct, total, pctl: 0, iq: 0});
+        certBytes = await certificatePdfBytes({name, date: new Date().toISOString().slice(0,10), correct, total, pctl: 0, iq: 0, lang});
       } catch { return reply({error:'Could not generate certificate.'}, 500); }
       try {
         await deliverReportMail({
           email, name, runId: String(b.testId), correct, total, attempted, skipped,
           submittedAt: (session.submitted_at as string) || (session.started_at as string) || new Date().toISOString(),
-          domainStats, certificateBytes: certBytes,
+          domainStats, certificateBytes: certBytes, lang,
         });
       } catch (e) {
         console.error('report email failed', e instanceof Error ? e.message : 'unknown');

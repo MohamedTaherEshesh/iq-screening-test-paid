@@ -16,7 +16,7 @@ async function sendReportIfNewlyPaid(db: ReturnType<typeof stagingDb>, orderId: 
     const email = user.email.toLowerCase();
 
     const { data: session } = await db.from('university_challenge_sessions')
-      .select('candidate_name,result,submitted,answers,domains,answer_key,submitted_at,started_at')
+      .select('candidate_name,result,submitted,answers,domains,answer_key,submitted_at,started_at,language')
       .eq('id', payment.test_id).maybeSingle();
     if (!session || !session.submitted || !session.result) return;
     const r = session.result as Record<string, unknown>;
@@ -30,12 +30,13 @@ async function sendReportIfNewlyPaid(db: ReturnType<typeof stagingDb>, orderId: 
     const attempted = domainStats.reduce((s, x) => s + x.attempted, 0);
     const skipped = total - attempted;
     const name = (session.candidate_name as string) || email;
+    const lang = session.language === 'ar' ? 'ar' as const : 'en' as const;
 
-    const certBytes = await certificatePdfBytes({name, date: new Date().toISOString().slice(0,10), correct, total, pctl: 0, iq: 0});
+    const certBytes = await certificatePdfBytes({name, date: new Date().toISOString().slice(0,10), correct, total, pctl: 0, iq: 0, lang});
     await deliverReportMail({
       email, name, runId: String(payment.test_id), correct, total, attempted, skipped,
       submittedAt: (session.submitted_at as string) || (session.started_at as string) || new Date().toISOString(),
-      domainStats, certificateBytes: certBytes,
+      domainStats, certificateBytes: certBytes, lang,
     });
     await db.from('exam_payments').update({report_emailed_at: new Date().toISOString()}).eq('id', payment.id);
   } catch (e) {

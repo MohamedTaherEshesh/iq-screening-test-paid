@@ -63,7 +63,7 @@ footer{font-size:13px;color:var(--muted);line-height:1.9;margin-top:40px;max-wid
 <script src="./assessment-catalog.js"></script>
 <script>
 "use strict";
-let LANG='ar';
+let LANG='ar';try{const saved=localStorage.getItem('omsaze-lang');if(saved==='en'||saved==='ar')LANG=saved}catch{}
 const STAGE_LABELS={en:{visitors:'Total Visitors',submitted:'Total Submitted',h1:'Choose an assessment',lede:'OMSAZE is developing eight types of reasoning and cognitive-skills assessments. Pick one below — the ready tracks start right away once you confirm your email and pass the human check.',note:'<strong>University Cognitive Skills and University IQ Preparation are available now.</strong> Every exam begins with email confirmation and a human check before any question is shown. No answers or protected questions are ever shown here.'},
   ar:{visitors:'إجمالي الزوار',submitted:'إجمالي من أنهوا الاختبار',h1:'اختر الاختبار',lede:'OMSAZE تطوّر ثمانية أنواع من اختبارات التفكير والمهارات المعرفية. اختر اختبارًا أدناه؛ المسارات الجاهزة تبدأ فورًا بعد تأكيد بريدك الإلكتروني واجتياز التحقق البشري.',note:'<strong>مساران "المهارات المعرفية الجامعية" و"التحضير لاختبار الذكاء الجامعي" جاهزان للاختبار الآن.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.'}};
 function renderCatalog(){
@@ -78,7 +78,7 @@ function renderCatalog(){
     const status=document.createElement('div'); status.className='status'; status.textContent=item.previewHref?(LANG==='ar'?'الاختبار جاهز — يتطلب تأكيد البريد والتحقق البشري':'Exam ready — email confirmation and human check required'):(item.pilot?(LANG==='ar'?'تجهيز بنك أسئلة أصلي ومراجع':'Building an original, reviewed question bank'):(LANG==='ar'?'قيد التخطيط':'Planned'));
     let button;
     if(item.previewHref){
-      button=document.createElement('a'); button.className='previewBtn'; button.href=item.previewHref;
+      button=document.createElement('a'); button.className='previewBtn'; button.href=item.previewHref+(item.previewHref.includes('?')?'&':'?')+'lang='+LANG;
       button.textContent=LANG==='ar'?'ابدأ الاختبار':'Start exam';
     } else {
       button=document.createElement('button'); button.type='button'; button.disabled=true; button.className='soon';
@@ -94,7 +94,7 @@ function applyTexts(){const s=STAGE_LABELS[LANG]||STAGE_LABELS.en;document.docum
   document.getElementById('lede').textContent=s.lede;document.getElementById('lede').dir=LANG==='ar'?'rtl':'ltr';
   document.getElementById('note').innerHTML=s.note;document.getElementById('note').dir=LANG==='ar'?'rtl':'ltr';
   refreshStatLabels();updateLangButtons();renderCatalog();}
-function setPageLang(l){LANG=l;applyTexts()}
+function setPageLang(l){LANG=l;try{localStorage.setItem('omsaze-lang',l)}catch{}applyTexts()}
 /* ---------- staging config / visit tracking / counts ---------- */
 const STAGING_BASE=window.OMSAZE_STAGING_API_BASE||'', STAGING_KEY='sb_publishable_Xg48L8YEyp6wLSgDo4_7ww_ljIgB3H_';
 async function trackVisit(){

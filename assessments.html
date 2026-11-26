@@ -65,7 +65,7 @@ footer {font-size:13px;color:var(--muted);line-height:1.9;margin-top:36px}
    let button;
 if (item.previewHref) {
   button = document.createElement("a");
-  button.href = item.previewHref;
+  button.href = item.previewHref + (item.previewHref.includes("?") ? "&" : "?") + "lang=ar";
   button.textContent = "معاينة النسخة التجريبية";
   button.style.display = "block";
   button.style.textAlign = "center";
