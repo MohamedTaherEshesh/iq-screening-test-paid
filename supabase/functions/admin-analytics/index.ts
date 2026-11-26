@@ -8,6 +8,7 @@
 // - Only the OMSAZE site origins may call this from a browser. Responses are never cached.
 // - Answer keys and payment-card data are never returned. Scores are returned from exam_results (OMS-MND-261126-05).
 // - setPrice (OMS-MND-261126-06) changes a Price_<ExamName> variable; it needs a valid admin token.
+// - setCorporateStatus / setCorporatePrice / grantSeats (OMS-MND-261126-12/-13) manage corporate accounts; admin token required.
 // - Self-contained: everything it imports is in ./_shared.
 //
 // Deploy (owner, from C:\Users\DELL\iq-screening-test-paid after `git pull`):
@@ -88,7 +89,7 @@ async function emailsById(sb: ReturnType<typeof stagingDb>, ids: Set<string>): P
 }
 
 async function loadData(sb: ReturnType<typeof stagingDb>) {
-  const [pay, sessions, visits, results, prices] = await Promise.all([
+  const [pay, sessions, visits, results, prices, corp, corpReq, corpPrices, corpBal, corpLedger] = await Promise.all([
     sb.from('exam_payments')
       .select('id,candidate_id,test_id,state,paymob_order_id,transaction_id,amount_cents,usd_cents,fx_rate,created_at,updated_at,report_emailed_at')
       .order('created_at', { ascending: false }).limit(MAX_ROWS),
@@ -103,6 +104,13 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     // OMS-MND-261126-06: Price_<ExamName> variables with full history.
     sb.from('exam_price_history').select('id,variable_name,exam_tag,currency,amount_cents,valid_from,valid_to,changed_by,note')
       .order('valid_from', { ascending: false }).limit(1000),
+    // OMS-MND-261126-12/-13: corporate accounts, requested exams, company prices, seat balances and ledger.
+    sb.from('corporate_accounts').select('id,reference,company_name,registration_no,country,city,sector,employees,contact_name,contact_title,email,phone,notes,language,status,status_changed_at,status_note,created_at')
+      .order('created_at', { ascending: false }).limit(MAX_ROWS),
+    sb.from('corporate_exam_requests').select('company_id,exam_tag,seats_requested').limit(MAX_ROWS * 4),
+    sb.from('corporate_price_history').select('id,company_id,exam_tag,amount_cents,valid_from,valid_to,changed_by,note').order('valid_from', { ascending: false }).limit(2000),
+    sb.rpc('corporate_balances'),
+    sb.from('corporate_seat_ledger').select('id,company_id,exam_tag,seats,kind,unit_usd_cents,price_source,note,created_by,created_at').order('created_at', { ascending: false }).limit(2000),
   ]);
   if (pay.error || sessions.error) throw new Error('data unavailable');
 
@@ -144,6 +152,16 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     payments, exams, results: resultRows, resultsAvailable: !results.error,
     prices: (prices.data ?? []).map((p: any) => ({ id: p.id, variable: p.variable_name, exam: p.exam_tag, currency: p.currency, usd: p.amount_cents / 100, from: p.valid_from, to: p.valid_to, by: p.changed_by, note: p.note })),
     pricesAvailable: !prices.error,
+    corporateAvailable: !corp.error && !corpReq.error && !corpPrices.error && !corpBal.error && !corpLedger.error,
+    corporate: corp.error ? [] : (corp.data ?? []).map((c: any) => ({
+      id: c.id, ref: c.reference, company: c.company_name, reg_no: c.registration_no, country: c.country, city: c.city, sector: c.sector,
+      employees: c.employees, contact: c.contact_name, title: c.contact_title, email: c.email, phone: c.phone, notes: c.notes, lang: c.language,
+      status: c.status, status_at: c.status_changed_at, status_note: c.status_note, at: c.created_at,
+      requests: (corpReq.data ?? []).filter((r: any) => r.company_id === c.id).map((r: any) => ({ exam: r.exam_tag, seats: r.seats_requested })),
+      balances: ((corpBal.data ?? []) as any[]).filter((b) => b.company_id === c.id).map((b) => ({ exam: b.exam_tag, granted: b.granted, used: b.used, balance: b.balance })),
+      prices: (corpPrices.data ?? []).filter((p: any) => p.company_id === c.id).map((p: any) => ({ id: p.id, exam: p.exam_tag, usd: p.amount_cents / 100, from: p.valid_from, to: p.valid_to, by: p.changed_by, note: p.note })),
+      ledger: (corpLedger.data ?? []).filter((l: any) => l.company_id === c.id).map((l: any) => ({ exam: l.exam_tag, seats: l.seats, kind: l.kind, unit_usd: l.unit_usd_cents == null ? null : l.unit_usd_cents / 100, source: l.price_source, note: l.note, by: l.created_by, at: l.created_at })),
+    })),
     visits: (visits.data ?? []).map((v: any) => ({ at: v.created_at, path: v.path, country: v.country })),
     notes: {
       environment: 'MindProof staging (Paymob sandbox). There is no separate production database yet.',
@@ -219,6 +237,42 @@ Deno.serve(async (req: Request) => {
       const note = String(body.note ?? '').slice(0, 300);
       const { data, error } = await sb.rpc('set_exam_price', { p_exam_tag: exam, p_amount_cents: cents, p_changed_by: ADMIN_EMAIL, p_note: note || null });
       if (error) return reply({ error: /Unknown exam/.test(error.message) ? 'Unknown exam.' : 'The price could not be saved.' }, 400);
+      return reply({ ok: true, result: data });
+    }
+
+    // OMS-MND-261126-12/-13: corporate accounts (status, company price, seats). Admin token required.
+    if (body.action === 'setCorporateStatus' || body.action === 'setCorporatePrice' || body.action === 'grantSeats') {
+      if (!await tokenOk(req.headers.get('x-omsaze-admin-token'), secret)) return reply({ error: 'Sign-in required or expired.' }, 401);
+      const company = String(body.company ?? '');
+      if (!/^[0-9a-f-]{36}$/.test(company)) return reply({ error: 'Unknown company.' }, 400);
+      const note = String(body.note ?? '').slice(0, 300) || null;
+      if (body.action === 'setCorporateStatus') {
+        const status = String(body.status ?? '');
+        if (!['pending', 'active', 'suspended', 'rejected'].includes(status)) return reply({ error: 'Unknown status.' }, 400);
+        const { data, error } = await sb.rpc('set_corporate_status', { p_company: company, p_status: status, p_changed_by: ADMIN_EMAIL, p_note: note });
+        if (error) return reply({ error: 'The status could not be saved.' }, 400);
+        return reply({ ok: true, result: data });
+      }
+      const exam = String(body.exam ?? '');
+      if (!/^[a-z0-9-]{3,80}$/.test(exam)) return reply({ error: 'Unknown exam.' }, 400);
+      if (body.action === 'setCorporatePrice') {
+        let cents: number | null = null;
+        if (body.usd !== null) {
+          const usd = Number(body.usd);
+          cents = Math.round(usd * 100);
+          if (!Number.isFinite(usd) || Math.abs(usd * 100 - cents) > 1e-6 || cents < 100 || cents > 100000) return reply({ error: 'Enter a price between 1 and 1000 USD, with at most 2 decimals.' }, 400);
+        }
+        const { data, error } = await sb.rpc('set_corporate_price', { p_company: company, p_exam_tag: exam, p_amount_cents: cents, p_changed_by: ADMIN_EMAIL, p_note: note });
+        if (error) return reply({ error: /Unknown/.test(error.message) ? 'Unknown company or exam.' : 'The price could not be saved.' }, 400);
+        return reply({ ok: true, result: data });
+      }
+      const seats = Number(body.seats);
+      if (!Number.isInteger(seats) || seats === 0 || Math.abs(seats) > 10000) return reply({ error: 'Seats must be a whole number between -10000 and 10000, not 0.' }, 400);
+      const { data, error } = await sb.rpc('grant_corporate_seats', { p_company: company, p_exam_tag: exam, p_seats: seats, p_changed_by: ADMIN_EMAIL, p_note: note });
+      if (error) {
+        const m = error.message ?? '';
+        return reply({ error: /not active/.test(m) ? 'Activate the company first.' : /below zero/.test(m) ? 'The balance cannot go below zero.' : 'The seats could not be saved.' }, 400);
+      }
       return reply({ ok: true, result: data });
     }
 
