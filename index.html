@@ -62,6 +62,10 @@ footer{font-size:13px;color:var(--muted);line-height:1.9;margin-top:40px;max-wid
 <script src="./staging-config.js"></script>
 <script src="./assessment-catalog.js"></script>
 <script>
+async function demoStatus(exam){try{const a=JSON.parse(sessionStorage.getItem('omsaze-email-verification')||'null');if(!a||!a.proof||!a.session||!a.session.access_token)return null;
+  const r=await fetch('https://cbklbucvidcutshhmwjy.supabase.co/rest/v1/rpc/demo_status',{method:'POST',headers:{'content-type':'application/json',apikey:'sb_publishable_Xg48L8YEyp6wLSgDo4_7ww_ljIgB3H_',authorization:'Bearer '+a.session.access_token},body:JSON.stringify({p_exam_tag:exam})});
+  return r.ok?await r.json():null}catch(e){return null}}
+
 "use strict";
 let LANG='ar';try{const saved=localStorage.getItem('omsaze-lang');if(saved==='en'||saved==='ar')LANG=saved}catch{}
 const STAGE_LABELS={en:{visitors:'Total Visitors',submitted:'Total Submitted',h1:'Choose an assessment',lede:'OMSAZE is developing eight types of reasoning and cognitive-skills assessments. Pick one below — the ready tracks start right away once you confirm your email and pass the human check.',note:'<strong>University Cognitive Skills and MindProof Reasoning Score are available now.</strong> Every exam begins with email confirmation and a human check before any question is shown. No answers or protected questions are ever shown here.'},
@@ -80,11 +84,10 @@ function renderCatalog(){
     if(item.previewHref){
       button=document.createElement('a'); button.className='previewBtn'; button.href=item.previewHref+(item.previewHref.includes('?')?'&':'?')+'lang='+LANG;
       button.textContent=LANG==='ar'?'ابدأ الاختبار':'Start exam';
-      // OMS-MND-261126-09: Demo button (5 questions, at most 2 demos per person on this browser, no result saved).
-      var used=0;try{const r=JSON.parse(localStorage.getItem('omsaze-demo-'+item.id)||'null');if(r&&Date.now()-r.t<86400000)used=r.n|0}catch{}
-      const demo=document.createElement(used>=2?'button':'a');demo.className='previewBtn demoBtn';
-      if(used>=2){demo.type='button';demo.disabled=true;demo.textContent=LANG==='ar'?'تم استخدام التجربتين':'Both demos used'}
-      else{demo.href='./demo.html?exam='+encodeURIComponent(item.id)+'&lang='+LANG;demo.textContent=(LANG==='ar'?'تجربة مجانية ٥ أسئلة':'Free demo · 5 questions')+' ('+(LANG==='ar'?'متبقي ':'')+(2-used)+(LANG==='ar'?'':' left')+')'}
+      // OMS-MND-261126-10: Demo button. The 2-demo limit is enforced in the database per verified email; this only shows it.
+      const demo=document.createElement('a');demo.className='previewBtn demoBtn';demo.href='./demo.html?exam='+encodeURIComponent(item.id)+'&lang='+LANG;
+      demo.textContent=LANG==='ar'?'تجربة مجانية ٥ أسئلة':'Free demo · 5 questions';
+      demoStatus(item.id).then(function(st){if(!st)return;if(st.remaining<=0){const b=document.createElement('button');b.type='button';b.className=demo.className;b.disabled=true;b.textContent=LANG==='ar'?'تم استخدام التجربتين':'Both demos used';demo.replaceWith(b)}else demo.textContent+=' ('+(LANG==='ar'?'متبقي '+st.remaining:st.remaining+' left')+')'});
       extra=demo;
     } else {
       button=document.createElement('button'); button.type='button'; button.disabled=true; button.className='soon';
