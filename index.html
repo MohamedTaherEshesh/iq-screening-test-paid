@@ -42,7 +42,14 @@ button.soon{font-size:15px;font-weight:800;letter-spacing:.3px;color:#ffffff;bac
 .card button{background:var(--blue);color:#fff;border:0;border-radius:8px;padding:10px 18px;font-size:14px;cursor:pointer;margin-top:8px}
 .err{color:#c0392b;font-size:14px;margin-top:6px;min-height:16px}
 footer{font-size:13px;color:var(--muted);line-height:1.9;margin-top:40px;max-width:1060px;margin-inline:auto}
-.demoBtn{display:block;width:100%;margin-top:8px;font:inherit;background:#fff!important;border-style:dashed!important}.demoBtn:disabled{opacity:.5;cursor:not-allowed}</style>
+.demoBtn{display:block;width:100%;margin-top:8px;font:inherit;background:#fff!important;border-style:dashed!important}.demoBtn:disabled{opacity:.5;cursor:not-allowed}.levelHead{grid-column:1/-1;display:flex;align-items:baseline;gap:12px;margin:18px 0 -4px;border-bottom:2px solid var(--line);padding-bottom:6px}.levelHead h3{margin:0;font-size:20px}.levelHead .age{font-size:13px;font-weight:700;color:#8a6a1f;background:#fbf4e4;border-radius:999px;padding:3px 10px}
+article{position:relative}article:focus{outline:3px solid rgba(194,155,64,.6)}
+.infoBtn{align-self:flex-start;background:none;border:0;padding:0;color:var(--blue);font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;text-decoration:underline dotted}
+.tip{display:none;position:absolute;inset-inline:12px;top:calc(100% - 14px);z-index:5;background:#102D46;color:#fff;font-size:14px;line-height:1.7;padding:12px 14px;border-radius:10px;box-shadow:0 10px 26px rgba(11,31,58,.25)}
+@media (hover:hover){article:hover .tip{display:block}}article:focus-within .tip,article.showTip .tip{display:block}
+.guide{max-width:1060px;margin:34px auto 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}.guide h2{margin:0 0 12px}.guide .types{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:16px}.guide .types div{background:#F2F5F8;border-radius:12px;padding:12px 14px}.guide .types h3{margin:0 0 6px;font-size:16px}.guide .types p{margin:0;font-size:14px;line-height:1.7}
+.guideWrap{overflow-x:auto}.guide table{width:100%;border-collapse:collapse;font-size:14px}.guide th,.guide td{border-top:1px solid var(--line);padding:9px 8px;text-align:start;vertical-align:top;line-height:1.6}.guide thead th{font-size:12.5px;color:var(--muted);text-transform:uppercase}.guide .muted{color:var(--muted);font-size:13.5px}
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./omsaze-brand.css"></head>
 <body>
 <main>
@@ -55,6 +62,7 @@ footer{font-size:13px;color:var(--muted);line-height:1.9;margin-top:40px;max-wid
 </header>
 <div class="note" id="note" dir="rtl"><strong>مسارا "المهارات المعرفية الجامعية" و"مؤشر MindProof للاستدلال" متاحان الآن.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.</div>
 <section class="grid" id="catalog" aria-label="أنواع الاختبارات"></section>
+<section class="guide" id="levelGuide" aria-label="Level guide"></section>
 <p style="text-align:center;margin:18px 0 0"><button type="button" id="adminToggle" style="font-size:11px;padding:5px 10px;opacity:.55;background:#e7ecf5;color:#1d2433;border:0;border-radius:8px;cursor:pointer">Admin</button></p>
 <div class="card" id="adminPanel" style="display:none;max-width:420px"></div>
 <footer>OMSAZE — Assessment catalog. This page lists the available assessment types and routes you to each one's own sign-in, human-check and exam flow. It does not itself collect answers or process payments.</footer>
@@ -68,33 +76,56 @@ async function demoStatus(exam){try{const a=JSON.parse(sessionStorage.getItem('o
 
 "use strict";
 let LANG='ar';try{const saved=localStorage.getItem('omsaze-lang');if(saved==='en'||saved==='ar')LANG=saved}catch{}
-const STAGE_LABELS={en:{visitors:'Total Visitors',submitted:'Total Submitted',h1:'Choose an assessment',lede:'OMSAZE is developing eight types of reasoning and cognitive-skills assessments. Pick one below — the ready tracks start right away once you confirm your email and pass the human check.',note:'<strong>University Cognitive Skills and MindProof Reasoning Score are available now.</strong> Every exam begins with email confirmation and a human check before any question is shown. No answers or protected questions are ever shown here.'},
-  ar:{visitors:'إجمالي الزوار',submitted:'إجمالي من أنهوا الاختبار',h1:'اختر الاختبار',lede:'OMSAZE تطوّر ثمانية أنواع من اختبارات التفكير والمهارات المعرفية. اختر اختبارًا أدناه؛ المسارات الجاهزة تبدأ فورًا بعد تأكيد بريدك الإلكتروني واجتياز التحقق البشري.',note:'<strong>مساران "المهارات المعرفية الجامعية" و"مؤشر MindProof للاستدلال" جاهزان للاختبار الآن.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.'}};
+const STAGE_LABELS={en:{visitors:'Total Visitors',submitted:'Total Submitted',h1:'Choose an assessment',lede:'Ten MindProof exams in five levels, from Junior (age 10 to 17) to C-Level. Each level has two exams: MindProof Reasoning Score (how you reason, one index score) and Cognitive Assessment (your profile of cognitive skills). Hover over or tap an exam to read what it measures.',note:'<strong>Cognitive Assessment for Universities and MindProof Reasoning Score for Universities are available now.</strong> Every exam begins with email confirmation and a human check before any question is shown. No answers or protected questions are ever shown here.'},
+  ar:{visitors:'إجمالي الزوار',submitted:'إجمالي من أنهوا الاختبار',h1:'اختر الاختبار',lede:'عشرة امتحانات MindProof في خمسة مستويات، من الناشئين (10 إلى 17 سنة) حتى الإدارة العليا. لكل مستوى امتحانان: مؤشر MindProof للاستدلال (طريقة تفكيرك، درجة واحدة) والتقييم المعرفي (ملف مهاراتك المعرفية). مرّر الماوس على الامتحان أو المسه لتقرأ ما يقيسه.',note:'<strong>"التقييم المعرفي للجامعات" و"مؤشر MindProof للاستدلال للجامعات" متاحان الآن.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.'}};
 function renderCatalog(){
   const root=document.getElementById('catalog'); root.innerHTML='';
-  const catalog=window.OMSAZE_T_CATALOG;
-  if(!Array.isArray(catalog)||catalog.length!==8){root.textContent='Could not load the assessment catalog.';return}
-  for(const item of catalog){
-    const card=document.createElement('article'); if(item.pilot)card.className='pilot';
-    const kicker=document.createElement('div'); kicker.className='kicker'; kicker.textContent=item.pilot?(LANG==='ar'?'متاح الآن':'Available now'):(LANG==='ar'?'مسار مخطط':'Planned track');
-    const title=document.createElement('h2'); title.textContent=LANG==='ar'?item.ar:item.en;
-    const subtitle=document.createElement('div'); subtitle.className='english'; subtitle.textContent=LANG==='ar'?item.en:item.ar;
-    const status=document.createElement('div'); status.className='status'; status.textContent=item.previewHref?(LANG==='ar'?'الاختبار جاهز — يتطلب تأكيد البريد والتحقق البشري':'Exam ready — email confirmation and human check required'):(item.pilot?(LANG==='ar'?'تجهيز بنك أسئلة أصلي ومراجع':'Building an original, reviewed question bank'):(LANG==='ar'?'قيد التخطيط':'Planned'));
+  const catalog=window.OMSAZE_T_CATALOG, levels=window.OMSAZE_T_LEVELS||[];
+  if(!Array.isArray(catalog)||catalog.length!==10){root.textContent='Could not load the assessment catalog.';return}
+  const AR=LANG==='ar';
+  for(const lv of levels){
+    // OMS-MND-261126-15: one row per level with its age rule.
+    const head=document.createElement('div');head.className='levelHead';
+    const h=document.createElement('h3');h.textContent=AR?lv.ar:lv.en;
+    const age=document.createElement('span');age.className='age';age.textContent=AR?lv.ageAr:lv.ageEn;
+    head.append(h,age);root.append(head);
+  for(const item of catalog.filter(x=>x.level===lv.id)){
+    const card=document.createElement('article'); if(item.pilot)card.className='pilot'; card.tabIndex=0;
+    const kicker=document.createElement('div'); kicker.className='kicker'; kicker.textContent=(item.type==='mrs'?(AR?'استدلال · درجة واحدة':'Reasoning · one index score'):(AR?'مهارات معرفية · ملف مهارات':'Cognitive skills · skill profile'))+' · '+(item.pilot?(AR?'متاح الآن':'Available now'):(AR?'قريبًا':'Coming soon'));
+    const title=document.createElement('h2'); title.textContent=AR?item.ar:item.en;
+    const subtitle=document.createElement('div'); subtitle.className='english'; subtitle.textContent=AR?item.en:item.ar;
+    // Short summary: shown on hover or keyboard focus (desktop) and with the info button (touch).
+    const info=document.createElement('button');info.type='button';info.className='infoBtn';info.setAttribute('aria-expanded','false');info.textContent=AR?'ⓘ ما الذي يقيسه؟':'ⓘ What does it measure?';
+    const tip=document.createElement('div');tip.className='tip';tip.setAttribute('role','note');tip.textContent=AR?item.summaryAr:item.summaryEn;
+    info.addEventListener('click',function(e){e.stopPropagation();const open=card.classList.toggle('showTip');info.setAttribute('aria-expanded',String(open))});
+    const status=document.createElement('div'); status.className='status'; status.textContent=item.previewHref?(AR?'الاختبار جاهز — يتطلب تأكيد البريد والتحقق البشري':'Exam ready — email confirmation and human check required'):(AR?'نبني بنك أسئلة أصلي ومراجع لهذا المستوى':'Building an original, reviewed question bank for this level');
     let button, extra=null;
     if(item.previewHref){
       button=document.createElement('a'); button.className='previewBtn'; button.href=item.previewHref+(item.previewHref.includes('?')?'&':'?')+'lang='+LANG;
-      button.textContent=LANG==='ar'?'ابدأ الاختبار':'Start exam';
+      button.textContent=AR?'ابدأ الاختبار':'Start exam';
       // OMS-MND-261126-10: Demo button. The 2-demo limit is enforced in the database per verified email; this only shows it.
       const demo=document.createElement('a');demo.className='previewBtn demoBtn';demo.href='./demo.html?exam='+encodeURIComponent(item.id)+'&lang='+LANG;
-      demo.textContent=LANG==='ar'?'تجربة مجانية ٥ أسئلة':'Free demo · 5 questions';
-      demoStatus(item.id).then(function(st){if(!st)return;if(st.remaining<=0){const b=document.createElement('button');b.type='button';b.className=demo.className;b.disabled=true;b.textContent=LANG==='ar'?'تم استخدام التجربتين':'Both demos used';demo.replaceWith(b)}else demo.textContent+=' ('+(LANG==='ar'?'متبقي '+st.remaining:st.remaining+' left')+')'});
+      demo.textContent=AR?'تجربة مجانية ٥ أسئلة':'Free demo · 5 questions';
+      demoStatus(item.id).then(function(st){if(!st)return;if(st.remaining<=0){const b=document.createElement('button');b.type='button';b.className=demo.className;b.disabled=true;b.textContent=AR?'تم استخدام التجربتين':'Both demos used';demo.replaceWith(b)}else demo.textContent+=' ('+(AR?'متبقي '+st.remaining:st.remaining+' left')+')'});
       extra=demo;
     } else {
       button=document.createElement('button'); button.type='button'; button.disabled=true; button.className='soon';
-      button.textContent=LANG==='ar'?'قريباً! Coming soon!':'Coming soon!';
+      button.textContent=AR?'قريباً! Coming soon!':'Coming soon!';
     }
-    card.append(kicker,title,subtitle,status,button);if(extra)card.append(extra); root.append(card);
-  }
+    card.append(kicker,title,subtitle,info,tip,status,button);if(extra)card.append(extra); root.append(card);
+  }}
+  renderGuide();
+}
+// OMS-MND-261126-15: level guide (the manual for each level).
+function renderGuide(){
+  const g=document.getElementById('levelGuide');if(!g)return;const AR=LANG==='ar',L=window.OMSAZE_T_LEVELS||[],T=window.OMSAZE_T_TYPES||{};
+  const esc=v=>String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  g.dir=AR?'rtl':'ltr';
+  g.innerHTML='<h2>'+(AR?'دليل المستويات':'Level guide')+'</h2>'+
+    '<div class="types">'+['mrs','ca'].map(k=>T[k]?'<div><h3>'+esc(AR?T[k].ar:T[k].en)+'</h3><p>'+esc(AR?T[k].sumAr:T[k].sumEn)+'</p></div>':'').join('')+'</div>'+
+    '<div class="guideWrap"><table><thead><tr><th>'+(AR?'المستوى':'Level')+'</th><th>'+(AR?'من يتقدم':'Who can take it')+'</th><th>'+(AR?'المحتوى':'Content')+'</th><th>'+(AR?'الصعوبة':'Difficulty')+'</th></tr></thead><tbody>'+
+    L.map(l=>'<tr><th scope="row">'+esc(AR?l.ar:l.en)+'</th><td>'+esc(AR?l.ageAr:l.ageEn)+'</td><td>'+esc(AR?l.focusAr:l.focusEn)+'</td><td>'+esc(AR?l.difficultyAr:l.difficultyEn)+'</td></tr>').join('')+
+    '</tbody></table></div><p class="muted">'+(AR?'الناشئون من 10 إلى 17 سنة فقط. من عمره 18 سنة فأكثر يمكنه دخول الجامعات أو المديرين أو كبار المديرين أو الإدارة العليا.':'Junior is for ages 10 to 17 only. Anyone aged 18 or over can take Universities, Manager, Senior Manager or C-Level.')+'</p>';
 }
 function updateLangButtons(){const en=document.getElementById('lg_en'),ar=document.getElementById('lg_ar');if(en)en.classList.toggle('on',LANG==='en');if(ar)ar.classList.toggle('on',LANG==='ar')}
 function refreshStatLabels(){const s=STAGE_LABELS[LANG]||STAGE_LABELS.en;const a=document.getElementById('lb_v'),b=document.getElementById('lb_s');if(a)a.textContent=s.visitors;if(b)b.textContent=s.submitted}

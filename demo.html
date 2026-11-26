@@ -71,8 +71,8 @@ p{color:var(--muted);line-height:1.7}
   };
   var params = new URLSearchParams(location.search);
   var ar = params.get('lang') === 'ar' || (!params.get('lang') && /^ar\b/i.test(navigator.language || ''));
-  var EXAMS = { 'university-iq-preparation': ['MindProof Reasoning Score', 'مؤشر MindProof للاستدلال', './iq-prep.html'],
-                'university-cognitive-skills': ['University Cognitive Skills', 'المهارات المعرفية الجامعية', './university.html'] };
+  var EXAMS = { 'university-iq-preparation': ['MindProof Reasoning Score for Universities', 'مؤشر MindProof للاستدلال للجامعات', './iq-prep.html'],
+                'university-cognitive-skills': ['Cognitive Assessment for Universities', 'التقييم المعرفي للجامعات', './university.html'] };
   var exam = EXAMS[params.get('exam')] ? params.get('exam') : 'university-iq-preparation';
   var cfg = window.OMSAZE_ADVANCED70_CONFIG || {}, REST = String(cfg.apiBase || '').replace('/functions/v1', '');
   var SKEY = 'omsaze-email-verification';
