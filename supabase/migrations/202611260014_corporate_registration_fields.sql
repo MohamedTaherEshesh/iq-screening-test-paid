@@ -1,5 +1,5 @@
 -- OMS-MND-261126-14  Corporate registration form: basic company data needed before any offer.
--- NOT APPLIED. Needs the owner's words "موافق على قاعدة البيانات".
+-- APPLIED to omsaze-staging 2026-11-26 18:25Z (owner approval 18:21Z).
 -- Adds 6 optional/required columns to corporate_accounts and replaces corporate_register so that:
 --   * organisation type (company / non-profit organisation / government authority / education) is required,
 --   * tax number, address, website, billing email are stored,
