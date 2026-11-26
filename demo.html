@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#102D46">
+<title>Free demo | OMSAZE MindProof</title>
+<!-- OMS-MND-261126-09: free 10-question demo. No sign-in, no payment, no certificate, nothing is saved.
+     The 10 questions are written only for this demo; they are NOT taken from the exam question bank,
+     so real exam items stay private. Everything runs in the browser; no network call is made. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./omsaze-brand.css">
+<style>
+:root{--navy:#102D46;--gold:#9A7A35;--muted:#667085;--line:#dfe6ee;--ok:#0f7b4c;--bad:#b42318;--soft:#eef2f9}
+*{box-sizing:border-box}body{margin:0;background:#f2f4f7;color:var(--navy);font-family:"Source Sans 3","IBM Plex Sans Arabic",system-ui,"Segoe UI",Tahoma,Arial,sans-serif;font-size:16.5px}
+[dir=rtl] main{font-family:"IBM Plex Sans Arabic","Source Sans 3",Tahoma,Arial,sans-serif}
+main{max-width:780px;margin:auto;padding:36px 16px 70px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.eyebrow{font-size:13px;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase;margin:0}
+h1{font-family:Manrope,"IBM Plex Sans Arabic",sans-serif;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:10px 0 8px}
+p{color:var(--muted);line-height:1.7}
+.btn{font:inherit;font-weight:700;background:var(--navy);color:#fff;border:0;border-radius:10px;padding:12px 22px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.langbtn{font:inherit;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 14px;color:var(--navy);cursor:pointer}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;margin:18px 0}
+.meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.bar{height:6px;background:var(--soft);border-radius:6px;margin:10px 0 18px;overflow:hidden}.bar i{display:block;height:100%;background:var(--gold)}
+.tag{display:inline-block;background:var(--soft);border-radius:20px;padding:4px 12px;font-size:13px;font-weight:600}
+.q{font-size:19px;font-weight:600;line-height:1.6;margin:14px 0 6px}
+.note{font-size:14px;color:var(--muted);margin:0 0 10px}
+.opts{display:grid;gap:10px;margin:16px 0}
+.opt{font:inherit;text-align:start;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:13px 16px;cursor:pointer;color:var(--navy)}
+.opt:hover{border-color:#9fb0c6}.opt[aria-pressed=true]{border-color:var(--navy);background:#f4f7fb;font-weight:600}
+.opt.right{border-color:var(--ok);background:#e7f6ee}.opt.wrong{border-color:var(--bad);background:#fdecea}
+.ltr{direction:ltr;unicode-bidi:isolate;text-align:left}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-top:8px}
+.score{font-family:Manrope,sans-serif;font-size:46px;font-weight:800;margin:6px 0}
+.review li{margin:0 0 14px;line-height:1.6}.ok{color:var(--ok);font-weight:700}.no{color:var(--bad);font-weight:700}
+.fine{font-size:13.5px}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+(function () {
+  'use strict';
+  // Each item: domain [en, ar], question [en, ar], options [[en, ar]...], answer index, explanation [en, ar].
+  // englishOnly items keep the English text in Arabic mode (owner rule: English-ability questions are not translated).
+  var Q = [
+    { d: ['Numerical', 'الاستدلال العددي'],
+      q: ['A shirt costs 80. Its price goes up by 25%, then down by 20%. What is the new price?', 'سعر قميص 80. زاد السعر 25% ثم انخفض 20%. كم السعر الجديد؟'],
+      o: [['76', '76'], ['80', '80'], ['84', '84'], ['88', '88']], a: 1,
+      e: ['80 × 1.25 = 100, then 100 × 0.80 = 80.', '80 × 1.25 = 100، ثم 100 × 0.80 = 80.'] },
+    { d: ['Numerical', 'الاستدلال العددي'],
+      q: ['What comes next? 3, 6, 11, 18, 27, …', 'ما الرقم التالي؟ 3، 6، 11، 18، 27، …'],
+      o: [['36', '36'], ['38', '38'], ['40', '40'], ['42', '42']], a: 1,
+      e: ['The gaps are 3, 5, 7, 9, so the next gap is 11: 27 + 11 = 38.', 'الفروق 3 و5 و7 و9، فالفرق التالي 11: 27 + 11 = 38.'] },
+    { d: ['Logical', 'الاستدلال المنطقي'],
+      q: ['All roses are flowers. Some flowers fade quickly. Which statement MUST be true?', 'كل الورود زهور. بعض الزهور تذبل بسرعة. أي عبارة يجب أن تكون صحيحة؟'],
+      o: [['Some roses fade quickly', 'بعض الورود تذبل بسرعة'], ['All flowers are roses', 'كل الزهور ورود'], ['No rose fades quickly', 'لا توجد وردة تذبل بسرعة'], ['None of these must be true', 'لا شيء مما سبق صحيح بالضرورة']], a: 3,
+      e: ['The flowers that fade quickly may or may not be roses, so none of the first three statements is guaranteed.', 'الزهور التي تذبل بسرعة قد تكون ورودا وقد لا تكون، فلا شيء من العبارات الثلاث الأولى مؤكد.'] },
+    { d: ['Logical', 'الاستدلال المنطقي'],
+      q: ['If it rains, the ground gets wet. The ground is not wet. What follows?', 'إذا أمطرت، تبتل الأرض. الأرض ليست مبتلة. ما النتيجة؟'],
+      o: [['It rained', 'أمطرت'], ['It did not rain', 'لم تمطر'], ['It will rain soon', 'ستمطر قريبا'], ['Nothing can be concluded', 'لا يمكن استنتاج شيء']], a: 1,
+      e: ['If rain always makes the ground wet, a dry ground means it did not rain.', 'إذا كان المطر يبلل الأرض دائما، فالأرض الجافة تعني أنها لم تمطر.'] },
+    { d: ['Analytical', 'الاستدلال التحليلي'],
+      q: ['Ali, Sara and Omar sit in a row of three seats. Sara is not at either end. Omar sits to the left of Ali. Who sits at the left end?', 'علي وسارة وعمر يجلسون في صف من ثلاثة مقاعد. سارة ليست في أي طرف. عمر يجلس على يسار علي. من يجلس في الطرف الأيسر؟'],
+      o: [['Ali', 'علي'], ['Sara', 'سارة'], ['Omar', 'عمر'], ['Cannot be determined', 'لا يمكن التحديد']], a: 2,
+      e: ['Sara must be in the middle, so Omar and Ali take the ends. Omar is left of Ali, so Omar is at the left end.', 'سارة في الوسط، فعمر وعلي في الطرفين. وعمر على يسار علي، إذن عمر في الطرف الأيسر.'] },
+    { d: ['Spatial', 'التخيل المكاني'],
+      q: ['On a standard die, opposite faces always add up to 7. Which number is opposite the 2?', 'في حجر النرد العادي، مجموع كل وجهين متقابلين 7. ما الرقم المقابل للرقم 2؟'],
+      o: [['3', '3'], ['4', '4'], ['5', '5'], ['6', '6']], a: 2,
+      e: ['7 − 2 = 5.', '7 − 2 = 5.'] },
+    { d: ['Visual', 'الاستدلال البصري'],
+      q: ['Which shape comes next?  ▲ ■ ● ▲ ■ ● ▲ …', 'ما الشكل التالي؟  ▲ ■ ● ▲ ■ ● ▲ …'],
+      o: [['▲', '▲'], ['■', '■'], ['●', '●'], ['◆', '◆']], a: 1,
+      e: ['The pattern repeats triangle, square, circle. After a triangle comes a square.', 'النمط يتكرر: مثلث ثم مربع ثم دائرة. بعد المثلث يأتي المربع.'] },
+    { d: ['Linguistic', 'الاستدلال اللغوي'], englishOnly: true,
+      q: ['Choose the word closest in meaning to BRIEF.', 'Choose the word closest in meaning to BRIEF.'],
+      o: [['Short', 'Short'], ['Bright', 'Bright'], ['Heavy', 'Heavy'], ['Calm', 'Calm']], a: 0,
+      e: ['"Brief" means short in time or length.', 'كلمة Brief تعني قصير في الوقت أو الطول.'] },
+    { d: ['Creative problem solving', 'حل المشكلات الإبداعي'],
+      q: ['What can you hold in your left hand but never in your right hand?', 'ما الشيء الذي يمكنك أن تمسكه بيدك اليسرى ولا يمكنك أبدا أن تمسكه بيدك اليمنى؟'],
+      o: [['A coin', 'عملة معدنية'], ['Your right elbow', 'كوعك الأيمن'], ['A pen', 'قلم'], ['A key', 'مفتاح']], a: 1,
+      e: ['Your right hand cannot hold its own elbow, but your left hand can.', 'يدك اليمنى لا تستطيع أن تمسك كوعها، أما اليسرى فتستطيع.'] },
+    { d: ['Critical thinking', 'التفكير النقدي'],
+      q: ['Ice cream sales and swimming accidents both rise in summer. What is the best explanation?', 'تزيد مبيعات الآيس كريم وحوادث السباحة معا في الصيف. ما أفضل تفسير؟'],
+      o: [['Ice cream causes accidents', 'الآيس كريم يسبب الحوادث'], ['Accidents make people buy ice cream', 'الحوادث تجعل الناس يشترون الآيس كريم'], ['Hot weather increases both', 'الطقس الحار يزيد الاثنين'], ['It is pure chance', 'مجرد صدفة']], a: 2,
+      e: ['A third factor, hot weather, drives both. Two things rising together does not mean one causes the other.', 'عامل ثالث هو الطقس الحار يرفع الاثنين. ارتفاع شيئين معا لا يعني أن أحدهما سبب الآخر.'] }
+  ];
+  var T = {
+    eyebrow: ['OMSAZE MindProof · Free demo', 'OMSAZE MindProof · تجربة مجانية'],
+    title: ['Try 10 sample questions', 'جرّب 10 أسئلة نموذجية'],
+    lead: ['A short, free preview of the question styles used in MindProof assessments. No sign-in, no payment and no certificate. Nothing you answer is saved or sent anywhere.', 'معاينة قصيرة ومجانية لأنواع الأسئلة في اختبارات MindProof. بدون تسجيل وبدون دفع وبدون شهادة. لا يتم حفظ إجاباتك أو إرسالها إلى أي مكان.'],
+    start: ['Start the demo', 'ابدأ التجربة'], lang: ['العربية', 'English'],
+    of: ['Question {n} of {t}', 'السؤال {n} من {t}'], next: ['Next', 'التالي'], back: ['Back', 'السابق'], finish: ['See my result', 'اعرض نتيجتي'],
+    enOnly: ['', 'هذا السؤال لقياس مهارة اللغة الإنجليزية، لذلك يظهر بالإنجليزية.'],
+    result: ['Your demo result', 'نتيجة التجربة'], correct: ['correct', 'إجابات صحيحة'],
+    resultNote: ['This demo is for practice only. It is not a score, percentile or certificate. The full assessments have 70 questions in 7 areas.', 'هذه التجربة للتدريب فقط، وليست درجة ولا ترتيبا مئينيا ولا شهادة. الاختبارات الكاملة فيها 70 سؤالا في 7 مجالات.'],
+    review: ['Answers and explanations', 'الإجابات والشرح'], yours: ['Your answer', 'إجابتك'], right: ['Correct answer', 'الإجابة الصحيحة'], skipped: ['Not answered', 'لم تتم الإجابة'],
+    again: ['Try again', 'أعد التجربة'], full: ['See the full assessments', 'شاهد الاختبارات الكاملة']
+  };
+  var params = new URLSearchParams(location.search);
+  var ar = params.get('lang') === 'ar' || (!params.get('lang') && /^ar\b/i.test(navigator.language || ''));
+  var i = -1, ans = new Array(Q.length).fill(null);
+  var L = function () { return ar ? 1 : 0; };
+  var t = function (k) { return T[k][L()]; };
+  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var app = document.getElementById('app');
+  function head() {
+    return '<div class="top"><p class="eyebrow">' + esc(t('eyebrow')) + '</p><button class="langbtn" id="lang" type="button">' + esc(t('lang')) + '</button></div>';
+  }
+  function render() {
+    document.documentElement.lang = ar ? 'ar' : 'en'; document.documentElement.dir = ar ? 'rtl' : 'ltr';
+    var h = head();
+    if (i < 0) {
+      h += '<h1>' + esc(t('title')) + '</h1><p>' + esc(t('lead')) + '</p><button class="btn" id="start" type="button">' + esc(t('start')) + '</button>';
+    } else if (i < Q.length) {
+      var q = Q[i], en = q.englishOnly, li = en ? 0 : L();
+      h += '<div class="card"><div class="meta"><span>' + esc(t('of').replace('{n}', i + 1).replace('{t}', Q.length)) + '</span><span class="tag">' + esc(q.d[L()]) + '</span></div>' +
+        '<div class="bar"><i style="width:' + Math.round((i + 1) * 100 / Q.length) + '%"></i></div>' +
+        (en && ar ? '<p class="note">' + esc(t('enOnly')) + '</p>' : '') +
+        '<div class="q' + (en ? ' ltr' : '') + '">' + esc(q.q[li]) + '</div><div class="opts' + (en ? ' ltr' : '') + '">';
+      q.o.forEach(function (o, k) { h += '<button class="opt" type="button" data-k="' + k + '" aria-pressed="' + (ans[i] === k) + '">' + esc(o[li]) + '</button>'; });
+      h += '</div><div class="row"><button class="btn ghost" id="back" type="button"' + (i === 0 ? ' disabled' : '') + '>' + esc(t('back')) + '</button>' +
+        '<button class="btn" id="next" type="button"' + (ans[i] === null ? ' disabled' : '') + '>' + esc(i === Q.length - 1 ? t('finish') : t('next')) + '</button></div></div>';
+    } else {
+      var c = ans.filter(function (a, k) { return a === Q[k].a; }).length;
+      h += '<div class="card"><h1>' + esc(t('result')) + '</h1><div class="score ltr">' + c + ' / ' + Q.length + '</div><p>' + esc(t('correct')) + '</p><p class="fine">' + esc(t('resultNote')) + '</p>' +
+        '<div class="row"><button class="btn ghost" id="again" type="button">' + esc(t('again')) + '</button><a class="btn" href="./index.html?lang=' + (ar ? 'ar' : 'en') + '">' + esc(t('full')) + '</a></div></div>' +
+        '<div class="card"><h2>' + esc(t('review')) + '</h2><ol class="review">';
+      Q.forEach(function (q, k) {
+        var li = q.englishOnly ? 0 : L(), ok = ans[k] === q.a;
+        h += '<li><b' + (q.englishOnly ? ' class="ltr"' : '') + '>' + esc(q.q[li]) + '</b><br>' +
+          '<span class="' + (ok ? 'ok' : 'no') + '">' + (ok ? '✓ ' : '✕ ') + esc(t('yours')) + ': ' + esc(ans[k] === null ? t('skipped') : q.o[ans[k]][li]) + '</span>' +
+          (ok ? '' : '<br>' + esc(t('right')) + ': <b>' + esc(q.o[q.a][li]) + '</b>') + '<br>' + esc(q.e[L()]) + '</li>';
+      });
+      h += '</ol></div>';
+    }
+    app.innerHTML = h;
+    bind();
+  }
+  function bind() {
+    var on = function (id, f) { var el = document.getElementById(id); if (el) el.addEventListener('click', f); };
+    on('lang', function () { ar = !ar; render(); });
+    on('start', function () { i = 0; render(); });
+    on('back', function () { if (i > 0) { i--; render(); } });
+    on('next', function () { if (ans[i] !== null) { i++; render(); window.scrollTo(0, 0); } });
+    on('again', function () { ans = new Array(Q.length).fill(null); i = 0; render(); });
+    Array.prototype.forEach.call(document.querySelectorAll('.opt'), function (b) {
+      b.addEventListener('click', function () { ans[i] = Number(b.getAttribute('data-k')); render(); });
+    });
+  }
+  render();
+})();
+</script>
+<script src="./omsaze-shell.js" data-label="Free demo"></script>
+</body>
+</html>

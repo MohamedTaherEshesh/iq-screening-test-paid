@@ -54,6 +54,7 @@ footer{font-size:13px;color:var(--muted);line-height:1.9;margin-top:40px;max-wid
   <p class="lede" id="lede" dir="rtl">OMSAZE تطوّر ثمانية أنواع من اختبارات التفكير والمهارات المعرفية. اختر اختبارًا أدناه؛ المسارات الجاهزة تبدأ فورًا بعد تأكيد بريدك الإلكتروني واجتياز التحقق البشري.</p>
 </header>
 <div class="note" id="note" dir="rtl"><strong>مسارا "المهارات المعرفية الجامعية" و"مؤشر MindProof للاستدلال" متاحان الآن.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.</div>
+<p style="margin:0 0 22px"><a class="previewBtn" id="demoLink" href="./demo.html?lang=ar" style="display:inline-block">جرّب 10 أسئلة مجانًا — بدون تسجيل</a></p><!-- OMS-MND-261126-09 free demo link -->
 <section class="grid" id="catalog" aria-label="أنواع الاختبارات"></section>
 <p style="text-align:center;margin:18px 0 0"><button type="button" id="adminToggle" style="font-size:11px;padding:5px 10px;opacity:.55;background:#e7ecf5;color:#1d2433;border:0;border-radius:8px;cursor:pointer">Admin</button></p>
 <div class="card" id="adminPanel" style="display:none;max-width:420px"></div>
@@ -89,7 +90,7 @@ function renderCatalog(){
 }
 function updateLangButtons(){const en=document.getElementById('lg_en'),ar=document.getElementById('lg_ar');if(en)en.classList.toggle('on',LANG==='en');if(ar)ar.classList.toggle('on',LANG==='ar')}
 function refreshStatLabels(){const s=STAGE_LABELS[LANG]||STAGE_LABELS.en;const a=document.getElementById('lb_v'),b=document.getElementById('lb_s');if(a)a.textContent=s.visitors;if(b)b.textContent=s.submitted}
-function applyTexts(){const s=STAGE_LABELS[LANG]||STAGE_LABELS.en;document.documentElement.lang=LANG;document.documentElement.dir=LANG==='ar'?'rtl':'ltr';
+function applyTexts(){const s=STAGE_LABELS[LANG]||STAGE_LABELS.en;{const d=document.getElementById('demoLink');if(d){d.href='./demo.html?lang='+LANG;d.textContent=LANG==='ar'?'جرّب 10 أسئلة مجانًا — بدون تسجيل':'Try 10 free sample questions — no sign-in';}}document.documentElement.lang=LANG;document.documentElement.dir=LANG==='ar'?'rtl':'ltr';
   document.getElementById('h1').textContent=s.h1;document.getElementById('h1').dir=LANG==='ar'?'rtl':'ltr';
   document.getElementById('lede').textContent=s.lede;document.getElementById('lede').dir=LANG==='ar'?'rtl':'ltr';
   document.getElementById('note').innerHTML=s.note;document.getElementById('note').dir=LANG==='ar'?'rtl':'ltr';
