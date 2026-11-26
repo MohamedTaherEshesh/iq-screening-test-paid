@@ -6,7 +6,9 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#102D46">
 <title>Free demo | OMSAZE MindProof</title>
-<!-- OMS-MND-261126-09: free 10-question demo. No sign-in, no payment, no certificate, nothing is saved.
+<!-- OMS-MND-261126-09 (owner revision 16:38Z): Demo button per exam. 5 questions per demo, at most 2 demos per
+     person on this browser (counter in localStorage, resets after 24 hours), final score only, no certificate,
+     no payment, nothing sent to the server.
      The 10 questions are written only for this demo; they are NOT taken from the exam question bank,
      so real exam items stay private. Everything runs in the browser; no network call is made. -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,19 +95,31 @@ p{color:var(--muted);line-height:1.7}
   ];
   var T = {
     eyebrow: ['OMSAZE MindProof · Free demo', 'OMSAZE MindProof · تجربة مجانية'],
-    title: ['Try 10 sample questions', 'جرّب 10 أسئلة نموذجية'],
-    lead: ['A short, free preview of the question styles used in MindProof assessments. No sign-in, no payment and no certificate. Nothing you answer is saved or sent anywhere.', 'معاينة قصيرة ومجانية لأنواع الأسئلة في اختبارات MindProof. بدون تسجيل وبدون دفع وبدون شهادة. لا يتم حفظ إجاباتك أو إرسالها إلى أي مكان.'],
+    title: ['Free demo: 5 questions', 'تجربة مجانية: 5 أسئلة'],
+    lead: ['5 sample questions in the same style as the real exam. No sign-in, no payment and no certificate. Nothing you answer is saved or sent anywhere. You can take the demo up to 2 times.', '5 أسئلة نموذجية بنفس شكل الاختبار الحقيقي. بدون تسجيل وبدون دفع وبدون شهادة. لا يتم حفظ إجاباتك أو إرسالها إلى أي مكان. يمكنك أداء التجربة مرتين بحد أقصى.'],
+    left: ['Demos left: {n} of 2', 'التجارب المتبقية: {n} من 2'],
+    usedUp: ['You have used both free demos. Start the full exam when you are ready.', 'لقد استخدمت التجربتين المجانيتين. ابدأ الاختبار الكامل عندما تكون جاهزا.'],
+    examName: ['Exam: {e}', 'الاختبار: {e}'],
     start: ['Start the demo', 'ابدأ التجربة'], lang: ['العربية', 'English'],
     of: ['Question {n} of {t}', 'السؤال {n} من {t}'], next: ['Next', 'التالي'], back: ['Back', 'السابق'], finish: ['See my result', 'اعرض نتيجتي'],
     enOnly: ['', 'هذا السؤال لقياس مهارة اللغة الإنجليزية، لذلك يظهر بالإنجليزية.'],
     result: ['Your demo result', 'نتيجة التجربة'], correct: ['correct', 'إجابات صحيحة'],
-    resultNote: ['This demo is for practice only. It is not a score, percentile or certificate. The full assessments have 70 questions in 7 areas.', 'هذه التجربة للتدريب فقط، وليست درجة ولا ترتيبا مئينيا ولا شهادة. الاختبارات الكاملة فيها 70 سؤالا في 7 مجالات.'],
+    resultNote: ['Final demo score. This is practice only: no certificate, no percentile, nothing saved. The full exam has 70 questions in 7 areas.', 'النتيجة النهائية للتجربة. للتدريب فقط: بدون شهادة ولا ترتيب مئيني، ولا يتم حفظ شيء. الاختبار الكامل فيه 70 سؤالا في 7 مجالات.'],
     review: ['Answers and explanations', 'الإجابات والشرح'], yours: ['Your answer', 'إجابتك'], right: ['Correct answer', 'الإجابة الصحيحة'], skipped: ['Not answered', 'لم تتم الإجابة'],
-    again: ['Try again', 'أعد التجربة'], full: ['See the full assessments', 'شاهد الاختبارات الكاملة']
+    again: ['Second demo', 'التجربة الثانية'], full: ['Start the full exam', 'ابدأ الاختبار الكامل'], back2: ['Back to exams', 'العودة للاختبارات']
   };
   var params = new URLSearchParams(location.search);
   var ar = params.get('lang') === 'ar' || (!params.get('lang') && /^ar\b/i.test(navigator.language || ''));
-  var i = -1, ans = new Array(Q.length).fill(null);
+  var EXAMS = { 'university-iq-preparation': ['MindProof Reasoning Score', 'مؤشر MindProof للاستدلال', './iq-prep.html'],
+                'university-cognitive-skills': ['University Cognitive Skills', 'المهارات المعرفية الجامعية', './university.html'] };
+  var exam = EXAMS[params.get('exam')] ? params.get('exam') : 'university-iq-preparation';
+  var KEY = 'omsaze-demo-' + exam, MAX = 2, N = 5, DAY = 86400000;
+  function used() { try { var r = JSON.parse(localStorage.getItem(KEY) || 'null'); return r && Date.now() - r.t < DAY ? (r.n | 0) : 0; } catch (e) { return 0; } }
+  function markUsed() { try { var r = JSON.parse(localStorage.getItem(KEY) || 'null'); var fresh = r && Date.now() - r.t < DAY; localStorage.setItem(KEY, JSON.stringify({ n: (fresh ? r.n | 0 : 0) + 1, t: fresh ? r.t : Date.now() })); } catch (e) {} }
+  // Demo 1 and demo 2 use different questions; each set mixes the question types.
+  var ALL = Q, SETS = [[0, 2, 4, 6, 8], [1, 3, 5, 7, 9]];
+  var i = -1, ans = [];
+  function begin() { var u = used(); if (u >= MAX) { render(); return; } Q = SETS[u % 2].map(function (k) { return ALL[k]; }); markUsed(); ans = new Array(N).fill(null); i = 0; render(); }
   var L = function () { return ar ? 1 : 0; };
   var t = function (k) { return T[k][L()]; };
   var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
@@ -117,7 +131,10 @@ p{color:var(--muted);line-height:1.7}
     document.documentElement.lang = ar ? 'ar' : 'en'; document.documentElement.dir = ar ? 'rtl' : 'ltr';
     var h = head();
     if (i < 0) {
-      h += '<h1>' + esc(t('title')) + '</h1><p>' + esc(t('lead')) + '</p><button class="btn" id="start" type="button">' + esc(t('start')) + '</button>';
+      var u = used();
+      h += '<h1>' + esc(t('title')) + '</h1><p><span class="tag">' + esc(t('examName').replace('{e}', EXAMS[exam][L()])) + '</span></p><p>' + esc(t('lead')) + '</p>';
+      if (u >= MAX) h += '<div class="card"><p>' + esc(t('usedUp')) + '</p><a class="btn" href="' + EXAMS[exam][2] + '?lang=' + (ar ? 'ar' : 'en') + '">' + esc(t('full')) + '</a></div>';
+      else h += '<p class="fine">' + esc(t('left').replace('{n}', MAX - u)) + '</p><button class="btn" id="start" type="button">' + esc(t('start')) + '</button>';
     } else if (i < Q.length) {
       var q = Q[i], en = q.englishOnly, li = en ? 0 : L();
       h += '<div class="card"><div class="meta"><span>' + esc(t('of').replace('{n}', i + 1).replace('{t}', Q.length)) + '</span><span class="tag">' + esc(q.d[L()]) + '</span></div>' +
@@ -128,17 +145,11 @@ p{color:var(--muted);line-height:1.7}
       h += '</div><div class="row"><button class="btn ghost" id="back" type="button"' + (i === 0 ? ' disabled' : '') + '>' + esc(t('back')) + '</button>' +
         '<button class="btn" id="next" type="button"' + (ans[i] === null ? ' disabled' : '') + '>' + esc(i === Q.length - 1 ? t('finish') : t('next')) + '</button></div></div>';
     } else {
-      var c = ans.filter(function (a, k) { return a === Q[k].a; }).length;
+      var c = ans.filter(function (a, k) { return a === Q[k].a; }).length, left = MAX - used();
       h += '<div class="card"><h1>' + esc(t('result')) + '</h1><div class="score ltr">' + c + ' / ' + Q.length + '</div><p>' + esc(t('correct')) + '</p><p class="fine">' + esc(t('resultNote')) + '</p>' +
-        '<div class="row"><button class="btn ghost" id="again" type="button">' + esc(t('again')) + '</button><a class="btn" href="./index.html?lang=' + (ar ? 'ar' : 'en') + '">' + esc(t('full')) + '</a></div></div>' +
-        '<div class="card"><h2>' + esc(t('review')) + '</h2><ol class="review">';
-      Q.forEach(function (q, k) {
-        var li = q.englishOnly ? 0 : L(), ok = ans[k] === q.a;
-        h += '<li><b' + (q.englishOnly ? ' class="ltr"' : '') + '>' + esc(q.q[li]) + '</b><br>' +
-          '<span class="' + (ok ? 'ok' : 'no') + '">' + (ok ? '✓ ' : '✕ ') + esc(t('yours')) + ': ' + esc(ans[k] === null ? t('skipped') : q.o[ans[k]][li]) + '</span>' +
-          (ok ? '' : '<br>' + esc(t('right')) + ': <b>' + esc(q.o[q.a][li]) + '</b>') + '<br>' + esc(q.e[L()]) + '</li>';
-      });
-      h += '</ol></div>';
+        '<p class="fine">' + esc(t('left').replace('{n}', left)) + '</p><div class="row">' +
+        (left > 0 ? '<button class="btn ghost" id="again" type="button">' + esc(t('again')) + '</button>' : '<a class="btn ghost" href="./index.html?lang=' + (ar ? 'ar' : 'en') + '">' + esc(t('back2')) + '</a>') +
+        '<a class="btn" href="' + EXAMS[exam][2] + '?lang=' + (ar ? 'ar' : 'en') + '">' + esc(t('full')) + '</a></div></div>';
     }
     app.innerHTML = h;
     bind();
@@ -146,10 +157,10 @@ p{color:var(--muted);line-height:1.7}
   function bind() {
     var on = function (id, f) { var el = document.getElementById(id); if (el) el.addEventListener('click', f); };
     on('lang', function () { ar = !ar; render(); });
-    on('start', function () { i = 0; render(); });
+    on('start', begin);
     on('back', function () { if (i > 0) { i--; render(); } });
     on('next', function () { if (ans[i] !== null) { i++; render(); window.scrollTo(0, 0); } });
-    on('again', function () { ans = new Array(Q.length).fill(null); i = 0; render(); });
+    on('again', begin);
     Array.prototype.forEach.call(document.querySelectorAll('.opt'), function (b) {
       b.addEventListener('click', function () { ans[i] = Number(b.getAttribute('data-k')); render(); });
     });
@@ -157,6 +168,6 @@ p{color:var(--muted);line-height:1.7}
   render();
 })();
 </script>
-<script src="./omsaze-shell.js" data-label="Free demo"></script>
+<script src="./omsaze-shell.js" data-label="Demo"></script>
 </body>
 </html>
