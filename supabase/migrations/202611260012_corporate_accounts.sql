@@ -1,6 +1,6 @@
 -- OMS-MND-261126-12  Corporate accounts: company registration, requested exams, seat balance (ledger)
 -- OMS-MND-261126-13  Per-company exam prices with history (same rule as Price_<ExamName>: new price opens, old price closes)
--- NOT APPLIED. Needs the owner's words "موافق على قاعدة البيانات" and the backup step at the top of the RUN file.
+-- APPLIED to omsaze-staging 2026-11-26 18:15Z (owner approval 18:12Z) as migration oms_mnd_261126_12_13_corporate_accounts.
 -- Adds 4 tables + 8 functions. Does NOT touch exam_payments, exam_results, exam_price_history, question_bank or demo tables.
 -- Rollback: supabase/migrations/202611260012_rollback.sql
 begin;
