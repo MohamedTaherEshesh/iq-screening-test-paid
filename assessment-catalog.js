@@ -2,11 +2,13 @@
 // OMS-MND-261126-15: 5 levels x 2 exam types = 10 exams. Exam IDs of the 2 live exams are unchanged.
 //   MindProof Reasoning Score (MRS) = reasoning and problem solving: one index score, timed, used for selection.
 //   Cognitive Assessment (CA)       = profile of cognitive skills: a score per skill, used for development.
+// OMS-MND-261126-17: Junior is HIDDEN (hidden: true) until the legal position for minors is settled.
+//   To bring it back, delete "hidden: true" from the junior level. Nothing else is removed.
 // Age rule: Junior 10 to 17 (under 18). Universities, Manager, Senior Manager and C-Level: 18 and over.
 (function (w) {
   "use strict";
   const LEVELS = [
-    { id: "junior", en: "Junior", ar: "الناشئون", ageEn: "Age 10 to 17", ageAr: "من 10 إلى 17 سنة", minAge: 10, maxAge: 17,
+    { id: "junior", hidden: true, en: "Junior", ar: "الناشئون", ageEn: "Age 10 to 17", ageAr: "من 10 إلى 17 سنة", minAge: 10, maxAge: 17,
       focusEn: "School-age students. Everyday and school situations, simple language, no workplace content. Never shares questions with the University level.",
       focusAr: "طلاب المدارس. مواقف يومية ومدرسية ولغة بسيطة ولا محتوى عن العمل. لا يشارك أي سؤال مع مستوى الجامعات.",
       difficultyEn: "Foundation", difficultyAr: "تأسيسي" },
@@ -41,8 +43,9 @@
     "university-mrs": { id: "university-iq-preparation", previewHref: "./iq-prep.html", questionCount: 70, durationSeconds: 6300, domains: 7 },
     "university-ca": { id: "university-cognitive-skills", previewHref: "./university.html", questionCount: 70, durationSeconds: 6300, domains: 7 }
   };
+  const SHOWN = LEVELS.filter(function (l) { return !l.hidden; });
   const items = [];
-  LEVELS.forEach(function (lv) {
+  SHOWN.forEach(function (lv) {
     ["mrs", "ca"].forEach(function (t) {
       const live = LIVE[lv.id + "-" + t];
       const ty = TYPES[t], ln = LEVEL_NAME[lv.id];
@@ -58,7 +61,7 @@
       }, live || {}));
     });
   });
-  w.OMSAZE_T_LEVELS = Object.freeze(LEVELS.map(function (l) { return Object.freeze(l); }));
+  w.OMSAZE_T_LEVELS = Object.freeze(SHOWN.map(function (l) { return Object.freeze(l); }));
   w.OMSAZE_T_TYPES = Object.freeze(TYPES);
   w.OMSAZE_T_CATALOG = Object.freeze(items.map(function (item) {
     return Object.freeze(Object.assign({}, item, { enabled: false, status: item.pilot ? "pilot-in-development" : "planned" }));

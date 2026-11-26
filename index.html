@@ -76,12 +76,12 @@ async function demoStatus(exam){try{const a=JSON.parse(sessionStorage.getItem('o
 
 "use strict";
 let LANG='ar';try{const saved=localStorage.getItem('omsaze-lang');if(saved==='en'||saved==='ar')LANG=saved}catch{}
-const STAGE_LABELS={en:{visitors:'Total Visitors',submitted:'Total Submitted',h1:'Choose an assessment',lede:'Ten MindProof exams in five levels, from Junior (age 10 to 17) to C-Level. Each level has two exams: MindProof Reasoning Score (how you reason, one index score) and Cognitive Assessment (your profile of cognitive skills). Hover over or tap an exam to read what it measures.',note:'<strong>Cognitive Assessment for Universities and MindProof Reasoning Score for Universities are available now.</strong> Every exam begins with email confirmation and a human check before any question is shown. No answers or protected questions are ever shown here.'},
-  ar:{visitors:'إجمالي الزوار',submitted:'إجمالي من أنهوا الاختبار',h1:'اختر الاختبار',lede:'عشرة امتحانات MindProof في خمسة مستويات، من الناشئين (10 إلى 17 سنة) حتى الإدارة العليا. لكل مستوى امتحانان: مؤشر MindProof للاستدلال (طريقة تفكيرك، درجة واحدة) والتقييم المعرفي (ملف مهاراتك المعرفية). مرّر الماوس على الامتحان أو المسه لتقرأ ما يقيسه.',note:'<strong>"التقييم المعرفي للجامعات" و"مؤشر MindProof للاستدلال للجامعات" متاحان الآن.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.'}};
+const STAGE_LABELS={en:{visitors:'Total Visitors',submitted:'Total Submitted',h1:'Choose an assessment',lede:'Eight MindProof exams in four levels, from Universities to C-Level, for ages 18 and over. Each level has two exams: MindProof Reasoning Score (how you reason, one index score) and Cognitive Assessment (your profile of cognitive skills). Hover over or tap an exam to read what it measures.',note:'<strong>Cognitive Assessment for Universities and MindProof Reasoning Score for Universities are available now.</strong> Every exam begins with email confirmation and a human check before any question is shown. No answers or protected questions are ever shown here.'},
+  ar:{visitors:'إجمالي الزوار',submitted:'إجمالي من أنهوا الاختبار',h1:'اختر الاختبار',lede:'ثمانية امتحانات MindProof في أربعة مستويات، من الجامعات حتى الإدارة العليا، لمن عمره 18 سنة فأكثر. لكل مستوى امتحانان: مؤشر MindProof للاستدلال (طريقة تفكيرك، درجة واحدة) والتقييم المعرفي (ملف مهاراتك المعرفية). مرّر الماوس على الامتحان أو المسه لتقرأ ما يقيسه.',note:'<strong>"التقييم المعرفي للجامعات" و"مؤشر MindProof للاستدلال للجامعات" متاحان الآن.</strong> كل اختبار يبدأ بتأكيد البريد الإلكتروني والتحقق البشري قبل عرض أي سؤال، ولا تُعرض أي إجابات أو أسئلة محمية هنا.'}};
 function renderCatalog(){
   const root=document.getElementById('catalog'); root.innerHTML='';
   const catalog=window.OMSAZE_T_CATALOG, levels=window.OMSAZE_T_LEVELS||[];
-  if(!Array.isArray(catalog)||catalog.length!==10){root.textContent='Could not load the assessment catalog.';return}
+  if(!Array.isArray(catalog)||catalog.length<1){root.textContent='Could not load the assessment catalog.';return}
   const AR=LANG==='ar';
   for(const lv of levels){
     // OMS-MND-261126-15: one row per level with its age rule.
@@ -125,7 +125,7 @@ function renderGuide(){
     '<div class="types">'+['mrs','ca'].map(k=>T[k]?'<div><h3>'+esc(AR?T[k].ar:T[k].en)+'</h3><p>'+esc(AR?T[k].sumAr:T[k].sumEn)+'</p></div>':'').join('')+'</div>'+
     '<div class="guideWrap"><table><thead><tr><th>'+(AR?'المستوى':'Level')+'</th><th>'+(AR?'من يتقدم':'Who can take it')+'</th><th>'+(AR?'المحتوى':'Content')+'</th><th>'+(AR?'الصعوبة':'Difficulty')+'</th></tr></thead><tbody>'+
     L.map(l=>'<tr><th scope="row">'+esc(AR?l.ar:l.en)+'</th><td>'+esc(AR?l.ageAr:l.ageEn)+'</td><td>'+esc(AR?l.focusAr:l.focusEn)+'</td><td>'+esc(AR?l.difficultyAr:l.difficultyEn)+'</td></tr>').join('')+
-    '</tbody></table></div><p class="muted">'+(AR?'الناشئون من 10 إلى 17 سنة فقط. من عمره 18 سنة فأكثر يمكنه دخول الجامعات أو المديرين أو كبار المديرين أو الإدارة العليا.':'Junior is for ages 10 to 17 only. Anyone aged 18 or over can take Universities, Manager, Senior Manager or C-Level.')+'</p>';
+    '</tbody></table></div><p class="muted">'+(AR?'كل الامتحانات لمن عمره 18 سنة فأكثر.':'All exams are for ages 18 and over.')+'</p>';
 }
 function updateLangButtons(){const en=document.getElementById('lg_en'),ar=document.getElementById('lg_ar');if(en)en.classList.toggle('on',LANG==='en');if(ar)ar.classList.toggle('on',LANG==='ar')}
 function refreshStatLabels(){const s=STAGE_LABELS[LANG]||STAGE_LABELS.en;const a=document.getElementById('lb_v'),b=document.getElementById('lb_s');if(a)a.textContent=s.visitors;if(b)b.textContent=s.submitted}

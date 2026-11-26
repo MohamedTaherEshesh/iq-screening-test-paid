@@ -44,7 +44,7 @@ footer {font-size:13px;color:var(--muted);line-height:1.9;margin-top:36px}
   "use strict";
   const root = document.getElementById("catalog");
   const catalog = window.OMSAZE_T_CATALOG;
-  if (!Array.isArray(catalog) || catalog.length !== 10) {
+  if (!Array.isArray(catalog) || catalog.length < 1) {
     root.textContent = "تعذر تحميل قائمة الاختبارات التجريبية.";
     return;
   }
