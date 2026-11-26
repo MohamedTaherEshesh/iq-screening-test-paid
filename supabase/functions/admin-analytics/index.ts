@@ -6,7 +6,8 @@
 //   The code is bound to a signed 10-minute challenge, so no database table is needed.
 // - A successful sign-in returns a signed token valid for 30 minutes (HMAC, server secret). Every data call checks it.
 // - Only the OMSAZE site origins may call this from a browser. Responses are never cached.
-// - Answer keys, scores and payment-card data are never returned.
+// - Answer keys and payment-card data are never returned. Scores are returned from exam_results (OMS-MND-261126-05).
+// - setPrice (OMS-MND-261126-06) changes a Price_<ExamName> variable; it needs a valid admin token.
 // - Self-contained: everything it imports is in ./_shared.
 //
 // Deploy (owner, from C:\Users\DELL\iq-screening-test-paid after `git pull`):
@@ -87,7 +88,7 @@ async function emailsById(sb: ReturnType<typeof stagingDb>, ids: Set<string>): P
 }
 
 async function loadData(sb: ReturnType<typeof stagingDb>) {
-  const [pay, sessions, visits] = await Promise.all([
+  const [pay, sessions, visits, results, prices] = await Promise.all([
     sb.from('exam_payments')
       .select('id,candidate_id,test_id,state,paymob_order_id,transaction_id,amount_cents,usd_cents,fx_rate,created_at,updated_at,report_emailed_at')
       .order('created_at', { ascending: false }).limit(MAX_ROWS),
@@ -95,12 +96,21 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
       .select('id,exam_tag,language,candidate_name,candidate_birthdate,candidate_country,candidate_city,submitted,started_at,submitted_at')
       .order('started_at', { ascending: false }).limit(MAX_ROWS),
     sb.from('site_visits').select('created_at,path,country').order('created_at', { ascending: false }).limit(MAX_ROWS * 4),
+    // OMS-MND-261126-05/-07/-04: permanent result records (score, domains, duration, certificate status).
+    sb.from('exam_results')
+      .select('session_id,candidate_id,exam_tag,language,candidate_name,candidate_country,candidate_city,candidate_age,started_at,submitted_at,total_items,answered,correct,percent_correct,per_domain,timed_out,duration_seconds,time_limit_seconds,verification_code,certificate_status,certificate_issued_at,certificate_valid_until')
+      .order('submitted_at', { ascending: false }).limit(MAX_ROWS),
+    // OMS-MND-261126-06: Price_<ExamName> variables with full history.
+    sb.from('exam_price_history').select('id,variable_name,exam_tag,currency,amount_cents,valid_from,valid_to,changed_by,note')
+      .order('valid_from', { ascending: false }).limit(1000),
   ]);
   if (pay.error || sessions.error) throw new Error('data unavailable');
 
   const byTest = new Map<string, any>();
   for (const s of sessions.data ?? []) byTest.set(s.id, s);
-  const emails = await emailsById(sb, new Set((pay.data ?? []).map((p: any) => p.candidate_id)));
+  const emails = await emailsById(sb, new Set([...(pay.data ?? []), ...(results.data ?? [])].map((p: any) => p.candidate_id)));
+  const payByTest = new Map<string, any>();
+  for (const p of pay.data ?? []) payByTest.set(p.test_id, p);
 
   const payments = (pay.data ?? []).map((p: any) => {
     const s = byTest.get(p.test_id) ?? {};
@@ -121,8 +131,19 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     at: s.started_at, exam: s.exam_tag, submitted: !!s.submitted, country: s.candidate_country ?? null,
   }));
 
+  const resultRows = (results.data ?? []).map((r: any) => ({
+    id: r.session_id, at: r.submitted_at ?? r.started_at, started_at: r.started_at, exam: r.exam_tag, lang: r.language,
+    name: r.candidate_name, email: emails.get(r.candidate_id) ?? null, country: r.candidate_country, city: r.candidate_city, age: r.candidate_age,
+    total: r.total_items, answered: r.answered, correct: r.correct, percent: r.percent_correct == null ? null : Number(r.percent_correct),
+    domains: r.per_domain ?? {}, timed_out: !!r.timed_out, duration_s: r.duration_seconds, limit_s: r.time_limit_seconds,
+    cert_code: r.verification_code, cert_status: r.certificate_status, cert_issued: r.certificate_issued_at, cert_valid_until: r.certificate_valid_until,
+    payment: payByTest.get(r.session_id)?.state ?? null,
+  }));
+
   return {
-    payments, exams,
+    payments, exams, results: resultRows, resultsAvailable: !results.error,
+    prices: (prices.data ?? []).map((p: any) => ({ id: p.id, variable: p.variable_name, exam: p.exam_tag, currency: p.currency, usd: p.amount_cents / 100, from: p.valid_from, to: p.valid_to, by: p.changed_by, note: p.note })),
+    pricesAvailable: !prices.error,
     visits: (visits.data ?? []).map((v: any) => ({ at: v.created_at, path: v.path, country: v.country })),
     notes: {
       environment: 'MindProof staging (Paymob sandbox). There is no separate production database yet.',
@@ -185,6 +206,20 @@ Deno.serve(async (req: Request) => {
     if (body.action === 'data') {
       if (!await tokenOk(req.headers.get('x-omsaze-admin-token'), secret)) return reply({ error: 'Sign-in required or expired.' }, 401);
       return reply(await loadData(sb));
+    }
+
+    // OMS-MND-261126-06: change an exam price. Old row closes at the change time, new row opens at the same time.
+    if (body.action === 'setPrice') {
+      if (!await tokenOk(req.headers.get('x-omsaze-admin-token'), secret)) return reply({ error: 'Sign-in required or expired.' }, 401);
+      const exam = String(body.exam ?? '');
+      const usd = Number(body.usd);
+      const cents = Math.round(usd * 100);
+      if (!/^[a-z0-9-]{3,80}$/.test(exam)) return reply({ error: 'Unknown exam.' }, 400);
+      if (!Number.isFinite(usd) || Math.abs(usd * 100 - cents) > 1e-6 || cents < 100 || cents > 100000) return reply({ error: 'Enter a price between 1 and 1000 USD, with at most 2 decimals.' }, 400);
+      const note = String(body.note ?? '').slice(0, 300);
+      const { data, error } = await sb.rpc('set_exam_price', { p_exam_tag: exam, p_amount_cents: cents, p_changed_by: ADMIN_EMAIL, p_note: note || null });
+      if (error) return reply({ error: /Unknown exam/.test(error.message) ? 'Unknown exam.' : 'The price could not be saved.' }, 400);
+      return reply({ ok: true, result: data });
     }
 
     return reply({ error: 'Unknown action' }, 400);
