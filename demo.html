@@ -58,16 +58,16 @@ p{color:var(--muted);line-height:1.7}
     lead: ['5 sample questions in the same style as the real exam. No payment and no certificate. Each verified email can take the demo up to 2 times per exam.', '5 أسئلة نموذجية بنفس شكل الاختبار الحقيقي. بدون دفع وبدون شهادة. كل بريد إلكتروني موثق له تجربتان بحد أقصى لكل اختبار.'],
     left: ['Demos left: {n} of 2', 'التجارب المتبقية: {n} من 2'],
     usedUp: ['You have used both free demos for this exam. Start the full exam when you are ready.', 'لقد استخدمت التجربتين المجانيتين لهذا الاختبار. ابدأ الاختبار الكامل عندما تكون جاهزا.'],
-    signIn: ['To take the demo, first verify your email on the exam page (the same step as the real exam). Then come back to the exams list and press Demo.', 'لأداء التجربة، وثّق بريدك الإلكتروني أولا من صفحة الاختبار (نفس خطوة الاختبار الحقيقي). ثم ارجع لقائمة الاختبارات واضغط زر التجربة.'],
+    signIn: ['To take the demo, first verify your email (the same step as the real exam). You will come straight back to the demo.', 'لأداء التجربة، وثّق بريدك الإلكتروني أولا (نفس خطوة الاختبار الحقيقي). بعدها ترجع للتجربة مباشرة.'],
     verify: ['Verify my email', 'توثيق البريد الإلكتروني'],
     examName: ['Exam: {e}', 'الاختبار: {e}'],
     start: ['Start the demo', 'ابدأ التجربة'], lang: ['العربية', 'English'], loading: ['Loading…', 'جار التحميل…'],
     of: ['Question {n} of {t}', 'السؤال {n} من {t}'], next: ['Next', 'التالي'], back: ['Back', 'السابق'], finish: ['See my result', 'اعرض نتيجتي'],
     enOnly: ['', 'هذا السؤال لقياس مهارة اللغة الإنجليزية، لذلك يظهر بالإنجليزية.'],
     result: ['Your demo result', 'نتيجة التجربة'], correct: ['correct', 'إجابات صحيحة'],
-    resultNote: ['Final demo score. This is practice only: no certificate and no percentile. The full exam has 70 questions in 7 areas.', 'النتيجة النهائية للتجربة. للتدريب فقط: بدون شهادة ولا ترتيب مئيني. الاختبار الكامل فيه 70 سؤالا في 7 مجالات.'],
+    resultNote: ['Final demo score. Practice only: no payment, no certificate.', 'النتيجة النهائية للتجربة. للتدريب فقط: بدون دفع وبدون شهادة.'],
     error: ['Something went wrong. Please try again.', 'حدث خطأ. حاول مرة أخرى.'],
-    again: ['Second demo', 'التجربة الثانية'], full: ['Start the full exam', 'ابدأ الاختبار الكامل'], back2: ['Back to exams', 'العودة للاختبارات']
+    ok: ['OK', 'حسنا'], back2: ['Back to exams', 'العودة للاختبارات']
   };
   var params = new URLSearchParams(location.search);
   var ar = params.get('lang') === 'ar' || (!params.get('lang') && /^ar\b/i.test(navigator.language || ''));
@@ -112,17 +112,18 @@ p{color:var(--muted);line-height:1.7}
   function head() {
     return '<div class="top"><p class="eyebrow">' + esc(t('eyebrow')) + '</p><button class="langbtn" id="lang" type="button">' + esc(t('lang')) + '</button></div>';
   }
-  function fullLink(cls) { return '<a class="btn' + (cls || '') + '" href="' + EXAMS[exam][2] + '?lang=' + (ar ? 'ar' : 'en') + '">' + esc(t('full')) + '</a>'; }
+  // OMS-MND-261127-01: the demo ends with OK, which returns to the first demo page. No link into the full exam or payment.
+  function homeLink(label) { return '<a class="btn" href="./index.html">' + esc(label) + '</a>'; }
   function render() {
     document.documentElement.lang = ar ? 'ar' : 'en'; document.documentElement.dir = ar ? 'rtl' : 'ltr';
     var h = head();
     if (state === 'signin') {
       h += '<h1>' + esc(t('title')) + '</h1><p><span class="tag">' + esc(t('examName').replace('{e}', EXAMS[exam][L()])) + '</span></p><div class="card"><p>' + esc(t('signIn')) + '</p>' +
-        '<a class="btn" href="' + EXAMS[exam][2] + '?lang=' + (ar ? 'ar' : 'en') + '">' + esc(t('verify')) + '</a></div>';
+        '<a class="btn" href="' + EXAMS[exam][2] + '?lang=' + (ar ? 'ar' : 'en') + '&demo=' + encodeURIComponent(exam) + '">' + esc(t('verify')) + '</a></div>';
     } else if (state === 'intro') {
       h += '<h1>' + esc(t('title')) + '</h1><p><span class="tag">' + esc(t('examName').replace('{e}', EXAMS[exam][L()])) + '</span></p><p>' + esc(t('lead')) + '</p>';
       if (!status) h += '<p class="fine">' + esc(t('loading')) + '</p>';
-      else if (status.remaining <= 0) h += '<div class="card"><p>' + esc(t('usedUp')) + '</p>' + fullLink() + '</div>';
+      else if (status.remaining <= 0) h += '<div class="card"><p>' + esc(t('usedUp')) + '</p>' + homeLink(t('back2')) + '</div>';
       else h += '<p class="fine">' + esc(t('left').replace('{n}', status.remaining)) + '</p><button class="btn" id="start" type="button"' + (busy ? ' disabled' : '') + '>' + esc(busy ? t('loading') : t('start')) + '</button>';
     } else if (state === 'quiz') {
       var q = Q[i], en = q.englishOnly, li = en ? 0 : L();
@@ -136,9 +137,7 @@ p{color:var(--muted);line-height:1.7}
     } else {
       var left = status ? status.remaining : 0;
       h += '<div class="card"><h1>' + esc(t('result')) + '</h1><div class="score ltr">' + res.score + ' / ' + res.total + '</div><p>' + esc(t('correct')) + '</p><p class="fine">' + esc(t('resultNote')) + '</p>' +
-        '<p class="fine">' + esc(t('left').replace('{n}', left)) + '</p><div class="row">' +
-        (left > 0 ? '<button class="btn ghost" id="again" type="button">' + esc(t('again')) + '</button>' : '<a class="btn ghost" href="./index.html?lang=' + (ar ? 'ar' : 'en') + '">' + esc(t('back2')) + '</a>') +
-        fullLink() + '</div></div>';
+        '<p class="fine">' + esc(t('left').replace('{n}', left)) + '</p><div class="row">' + '<a class="btn" href="./demo.html?exam=' + encodeURIComponent(exam) + '&lang=' + (ar ? 'ar' : 'en') + '">' + esc(t('ok')) + '</a>' + '</div></div>';
     }
     if (err) h += '<p class="note" role="alert">' + esc(err) + '</p>';
     app.innerHTML = h;
@@ -148,7 +147,6 @@ p{color:var(--muted);line-height:1.7}
     var on = function (id, f) { var el = document.getElementById(id); if (el) el.addEventListener('click', f); };
     on('lang', function () { ar = !ar; render(); });
     on('start', begin);
-    on('again', begin);
     on('back', function () { if (i > 0) { i--; render(); } });
     on('next', function () { if (ans[i] === null) return; if (i < Q.length - 1) { i++; render(); window.scrollTo(0, 0); } else submit(); });
     Array.prototype.forEach.call(document.querySelectorAll('.opt'), function (b) {
