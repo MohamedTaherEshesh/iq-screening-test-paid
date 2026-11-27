@@ -207,6 +207,9 @@ Deno.serve(async (req) => {
       const { data: pastSessions } = await sb.from('university_challenge_sessions')
         .select('item_codes').eq('candidate_id', candidateId);
       const seen = new Set<string>((pastSessions ?? []).flatMap((p: any) => Array.isArray(p.item_codes) ? p.item_codes : []));
+      // OMS-MND-261127-21: questions this person already got in a free demo are not issued again in the real exam.
+      const { data: demoRuns } = await sb.from('demo_runs').select('item_ids').eq('user_id', candidateId);
+      (demoRuns ?? []).forEach((d: any) => (Array.isArray(d.item_ids) ? d.item_ids : []).forEach((c: string) => seen.add(c)));
       const seenIdeas = new Set<string>();
       const seenList = [...seen];
       for (let i = 0; i < seenList.length; i += 300) {
