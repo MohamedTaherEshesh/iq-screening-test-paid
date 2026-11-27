@@ -79,12 +79,12 @@ export async function certificatePdfBytes(d: CertData): Promise<Uint8Array> {
   // English: top right. Arabic: top left (the logo is on the right).
   if (d.verifyUrl && d.verifyCode && /^https:\/\//.test(d.verifyUrl)) {
     const qr = qrcode(0, 'M'); qr.addData(d.verifyUrl); qr.make();
-    const n = qr.getModuleCount(), size = 64, cell = size / n;
+    const n = qr.getModuleCount(), size = 78, cell = size / (n + 8);
     const qx = ar ? inset + 36 : W2 - inset - 36 - size;
     const qy = H2 - inset - 22 - size;
     rawPage.drawRectangle({ x: qx - 4, y: qy - 4, width: size + 8, height: size + 8, color: OMS.WHITE });
     for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
-      if (qr.isDark(r, c)) rawPage.drawRectangle({ x: qx + c * cell, y: qy + size - (r + 1) * cell, width: cell + 0.05, height: cell + 0.05, color: OMS.NAVY });
+      if (qr.isDark(r, c)) rawPage.drawRectangle({ x: qx + (c + 4) * cell, y: qy + size - (r + 5) * cell, width: cell + 0.02, height: cell + 0.02, color: OMS.NAVY });
     }
     const codeW = brand.font.widthOfTextAtSize(d.verifyCode, 6.5);
     rawPage.drawText(d.verifyCode, { x: qx + (size - codeW) / 2, y: qy - 11, size: 6.5, font: brand.font, color: OMS.INK });
@@ -116,19 +116,15 @@ export async function certificatePdfBytes(d: CertData): Promise<Uint8Array> {
   const footY = inset + 40;
   const sigMaxW = 170, sigMaxH = 62;
   const leftX = inset + 40, rightX = W2 - inset - 40 - 230;
-  const sig1 = ar ? B.signatureAr : B.signatureEn, sig2 = ar ? B.signatureEn : B.signatureAr;
+  const sig1 = ar ? B.signatureAr : B.signatureEn;
   if (sig1) {
     const dim = fitBox(sig1, sigMaxW, sigMaxH);
     page.drawImage(sig1, { x: leftX + (230 - dim.width) / 2, y: footY + 30, width: dim.width, height: dim.height });
   }
   page.drawLine({ start: { x: leftX, y: footY + 28 }, end: { x: leftX + 230, y: footY + 28 }, thickness: 0.7, color: OMS.NAVY });
-  page.drawText(SIGNER.name, { x: leftX, y: footY + 13, size: 11, font: B.bold, color: OMS.NAVY });
+  page.drawText(t(SIGNER.name, 'محمد طاهر عشعش'), { x: leftX, y: footY + 13, size: 11, font: B.bold, color: OMS.NAVY });
   page.drawText(t(SIGNER.title, SIGNER.titleAr), { x: leftX, y: footY + 1, size: 9, font: B.font, color: OMS.MUTED });
 
-  if (sig2) {
-    const dim = fitBox(sig2, sigMaxW, sigMaxH);
-    page.drawImage(sig2, { x: rightX + (230 - dim.width) / 2, y: footY + 30, width: dim.width, height: dim.height });
-  }
   page.drawLine({ start: { x: rightX, y: footY + 28 }, end: { x: rightX + 230, y: footY + 28 }, thickness: 0.7, color: OMS.NAVY });
   page.drawText('OMSAZE', { x: rightX, y: footY + 13, size: 11, font: B.bold, color: OMS.NAVY });
   page.drawText('Digital Labs', { x: rightX, y: footY + 1, size: 9, font: B.font, color: OMS.MUTED });
