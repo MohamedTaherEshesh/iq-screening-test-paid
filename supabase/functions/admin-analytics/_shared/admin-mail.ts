@@ -42,17 +42,17 @@ export async function sendCompanyMail(to: string, kind: CompanyMailKind, o: { co
   const ar = o.lang === 'ar';
   const T: Record<CompanyMailKind, [string, string, string, string]> = {
     received: ['OMSAZE: we received your company registration', 'OMSAZE: استلمنا تسجيل شركتكم',
-      `We received the registration of ${o.company} (reference ${o.reference}). This email (${to}) is the company admin: only it can sign in for this company. We will review the registration and email you within 2 working days.`,
-      `استلمنا تسجيل ${o.company} (المرجع ${o.reference}). هذا البريد (${to}) هو مسؤول الشركة، وهو وحده يستطيع الدخول باسم الشركة. سنراجع التسجيل ونراسلكم خلال يومي عمل.`],
+      `We received the registration of ${o.company}. Your company code is ${o.reference}: keep it, you need it to sign in. This email (${to}) is the company admin. We will review the registration and email you within 2 working days.`,
+      `استلمنا تسجيل ${o.company}. كود الشركة هو ${o.reference}: احتفظ به، ستحتاجه للدخول. هذا البريد (${to}) هو مسؤول الشركة. سنراجع التسجيل ونراسلكم خلال يومي عمل.`],
     approved: ['Your OMSAZE registration is approved: select the service you are looking for', 'تم قبول تسجيل شركتكم لدى OMSAZE: اختر الخدمة التي تحتاجها',
-      `The registration of ${o.company} (reference ${o.reference}) is approved. Open the service request page, sign in with this email and the code we send you, and select the service you are looking for. You can come back and send a new request any time.`,
-      `تم قبول تسجيل ${o.company} (المرجع ${o.reference}). افتح صفحة طلب الخدمات، وادخل بهذا البريد والرمز الذي نرسله لك، ثم اختر الخدمة التي تحتاجها. يمكنك العودة وإرسال طلب جديد في أي وقت.`],
+      `The registration of ${o.company} is approved. Open the service request page, enter your company code ${o.reference}, then this email, and the verification code we send you. Then select the service you are looking for. You can come back and send a new request any time.`,
+      `تم قبول تسجيل ${o.company}. افتح صفحة طلب الخدمات، واكتب كود الشركة ${o.reference} ثم هذا البريد ثم رمز التحقق الذي نرسله لك، واختر الخدمة التي تحتاجها. يمكنك العودة وإرسال طلب جديد في أي وقت.`],
     code: [`OMSAZE company sign-in code: ${o.code}`, `رمز دخول الشركة من OMSAZE: ${o.code}`,
       `Your sign-in code for ${o.company} is ${o.code}. It expires in 10 minutes. If you did not ask for it, ignore this email.`,
       `رمز الدخول الخاص بـ ${o.company} هو ${o.code}. ينتهي خلال 10 دقائق. إذا لم تطلبه تجاهل هذه الرسالة.`],
-    admin_changed: ['OMSAZE: you are now the company admin', 'OMSAZE: أصبحت مسؤول الشركة',
-      `At your company's request, this email is now the admin of ${o.company} (reference ${o.reference}) on OMSAZE. Sign in on the service request page with this email.`,
-      `بناءً على طلب شركتكم، أصبح هذا البريد مسؤول ${o.company} (المرجع ${o.reference}) لدى OMSAZE. ادخل على صفحة طلب الخدمات بهذا البريد.`],
+    admin_changed: ['OMSAZE: you are now a company admin', 'OMSAZE: أصبحت مسؤولًا عن الشركة',
+      `At your company's request, this email is now an admin of ${o.company} on OMSAZE. Sign in on the service request page with company code ${o.reference} and this email.`,
+      `بناءً على طلب شركتكم، أصبح هذا البريد مسؤولًا عن ${o.company} لدى OMSAZE. ادخل على صفحة طلب الخدمات بكود الشركة ${o.reference} وهذا البريد.`],
   };
   const [sEn, sAr, bEn, bAr] = T[kind];
   const subject = ar ? sAr : sEn, intro = ar ? bAr : bEn;

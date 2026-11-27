@@ -93,7 +93,7 @@ async function emailsById(sb: ReturnType<typeof stagingDb>, ids: Set<string>): P
 }
 
 async function loadData(sb: ReturnType<typeof stagingDb>) {
-  const [pay, sessions, visits, results, prices, genders, corp, corpReq, corpPrices, corpBal, corpLedger, svcReq, svcLines, svcBal] = await Promise.all([
+  const [pay, sessions, visits, results, prices, genders, corp, corpReq, corpPrices, corpBal, corpLedger, svcReq, svcLines, corpAdmins, svcBal] = await Promise.all([
     sb.from('exam_payments')
       .select('id,candidate_id,test_id,state,paymob_order_id,transaction_id,amount_cents,usd_cents,fx_rate,created_at,updated_at,report_emailed_at')
       .order('created_at', { ascending: false }).limit(MAX_ROWS),
@@ -121,6 +121,7 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     sb.from('corporate_service_requests').select('*').order('created_at', { ascending: false }).limit(MAX_ROWS),
     sb.from('corporate_service_request_lines').select('request_id,item_code,quantity').limit(MAX_ROWS * 4),
     // OMS-MND-261127-07: balance per paid request (empty before that DB change).
+    sb.from('corporate_admins').select('company_id,email,created_at').is('removed_at', null).limit(MAX_ROWS),
     sb.from('corporate_request_balances').select('request_id,item_code,granted,used,booked,actual_balance,available_balance,state,valid_until').limit(MAX_ROWS * 4),
   ]);
   if (pay.error || sessions.error) throw new Error('data unavailable');
@@ -174,6 +175,7 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
       requests: (corpReq.data ?? []).filter((r: any) => r.company_id === c.id).map((r: any) => ({ exam: r.exam_tag, seats: r.seats_requested })),
       balances: ((corpBal.data ?? []) as any[]).filter((b) => b.company_id === c.id).map((b) => ({ exam: b.exam_tag, granted: b.granted, used: b.used, balance: b.balance })),
       prices: (corpPrices.data ?? []).filter((p: any) => p.company_id === c.id).map((p: any) => ({ id: p.id, exam: p.exam_tag, usd: p.amount_cents / 100, from: p.valid_from, to: p.valid_to, by: p.changed_by, note: p.note })),
+      admins: corpAdmins.error ? [] : ((corpAdmins.data ?? []) as any[]).filter((a) => a.company_id === c.id).map((a) => ({ email: a.email, at: a.created_at })),
       services: svcReq.error ? [] : (svcReq.data ?? []).filter((r: any) => r.company_id === c.id).map((r: any) => ({
         ref: r.reference, service: r.service_code, year: r.request_year, total: r.total_qty, notes: r.notes, status: r.status, status_at: r.status_changed_at, at: r.created_at,
         paid_at: r.paid_at ?? null, valid_until: r.valid_until ?? null, usd: r.amount_usd_cents == null ? null : r.amount_usd_cents / 100, payment_ref: r.payment_ref ?? null,
@@ -222,7 +224,7 @@ Deno.serve(async (req: Request) => {
 
     // OMS-MND-261127-04: public company actions. Same answers whatever happens, so they never reveal registered emails.
     const mailCompany = async (d: any, kind: CompanyMailKind): Promise<boolean> => {
-      try { return await sendCompanyMail(d.email, kind, { company: d.company_name, contact: d.contact_name, reference: d.reference, lang: d.language ?? 'en', code: d.code, link: origin + '/services.html?email=' + encodeURIComponent(d.email) }); }
+      try { return await sendCompanyMail(d.email, kind, { company: d.company_name, contact: d.contact_name, reference: d.reference, lang: d.language ?? 'en', code: d.code, link: origin + '/services.html?code=' + encodeURIComponent(d.reference) }); }
       catch (e) { console.error('admin-analytics company mail failed:', e instanceof Error ? e.message : 'unknown'); return false; }
     };
     if (body.action === 'companyRegistered') {
@@ -234,9 +236,9 @@ Deno.serve(async (req: Request) => {
       return reply({ ok: true });
     }
     if (body.action === 'companyRequestCode') {
-      const email = String(body.email ?? '').trim().toLowerCase(), company = String(body.company ?? '').trim().slice(0, 200);
-      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) && email.length <= 200 && company.length >= 2) {
-        const { data, error } = await sb.rpc('corporate_request_code', { p_email: email, p_company: company });
+      const email = String(body.email ?? '').trim().toLowerCase(), code = String(body.code ?? '').trim().toUpperCase();
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) && email.length <= 200 && /^CORP-\d{6}-[0-9A-F]{5}$/.test(code)) {
+        const { data, error } = await sb.rpc('corporate_request_code', { p_code: code, p_email: email });
         if (!error && data?.code) await mailCompany(data, 'code');
       }
       await sleep(500);
@@ -285,7 +287,7 @@ Deno.serve(async (req: Request) => {
 
     // OMS-MND-261126-12/-13: corporate accounts (status, company price, seats). Admin token required.
     // OMS-MND-261127-04/-06: change a company's admin email; change a service request's status. Admin token required.
-    if (body.action === 'setCompanyEmail' || body.action === 'setServiceRequestStatus' || body.action === 'markRequestPaid') {
+    if (body.action === 'setCompanyEmail' || body.action === 'addCompanyAdmin' || body.action === 'removeCompanyAdmin' || body.action === 'setServiceRequestStatus' || body.action === 'markRequestPaid') {
       if (!await tokenOk(req.headers.get('x-omsaze-admin-token'), secret)) return reply({ error: 'Sign-in required or expired.' }, 401);
       // OMS-MND-261127-07: paid in advance -> balance per request with an end date.
       if (body.action === 'markRequestPaid') {
@@ -297,6 +299,20 @@ Deno.serve(async (req: Request) => {
         const { data, error } = await sb.rpc('corporate_mark_request_paid', { p_reference: ref, p_changed_by: ADMIN_EMAIL, p_valid_months: months, p_amount_usd_cents: cents, p_payment_ref: String(body.paymentRef ?? '').slice(0, 120) || null });
         if (error) return reply({ error: /approved first/.test(error.message ?? '') ? 'Approve the request first.' : 'The payment could not be saved.' }, 400);
         return reply({ ok: true, result: data });
+      }
+      if (body.action === 'addCompanyAdmin' || body.action === 'removeCompanyAdmin') {
+        const company = String(body.company ?? ''), email = String(body.email ?? '').trim().toLowerCase();
+        if (!/^[0-9a-f-]{36}$/.test(company)) return reply({ error: 'Unknown company.' }, 400);
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || email.length > 200) return reply({ error: 'Enter a valid email.' }, 400);
+        const add = body.action === 'addCompanyAdmin';
+        const { data, error } = await sb.rpc(add ? 'corporate_add_admin' : 'corporate_remove_admin', { p_company: company, p_email: email, p_changed_by: ADMIN_EMAIL, p_note: String(body.note ?? '').slice(0, 300) || null });
+        if (error) { const m = error.message ?? ''; return reply({ error: /Already/.test(m) ? 'This email is already an admin of this company.' : /Too many/.test(m) ? 'A company can have at most 10 extra admins.' : /Not an extra/.test(m) ? 'Only added admins can be removed. Change the registered email instead.' : 'The admin could not be saved.' }, 400); }
+        let mailed: boolean | null = null;
+        if (add) {
+          const { data: c } = await sb.from('corporate_accounts').select('company_name,contact_name,reference,language').eq('id', company).single();
+          mailed = c ? await mailCompany({ ...c, email, contact_name: email }, 'admin_changed') : false;
+        }
+        return reply({ ok: true, result: data, mailed });
       }
       if (body.action === 'setCompanyEmail') {
         const company = String(body.company ?? ''), email = String(body.email ?? '').trim().toLowerCase();
