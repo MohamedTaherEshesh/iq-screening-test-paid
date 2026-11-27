@@ -9,13 +9,17 @@
 // - Answer keys and payment-card data are never returned. Scores are returned from exam_results (OMS-MND-261126-05).
 // - setPrice (OMS-MND-261126-06) changes a Price_<ExamName> variable; it needs a valid admin token.
 // - setCorporateStatus / setCorporatePrice / grantSeats (OMS-MND-261126-12/-13) manage corporate accounts; admin token required.
+// - OMS-MND-261127-04: company admin = the registered work email. companyRegistered (public) sends the 'registration received'
+//   email once; companyRequestCode (public) emails a 6-digit sign-in code to an ACTIVE company's admin (same answer either way);
+//   activating a company emails 'approved: select the service'; setCompanyEmail (admin) changes a company's admin email.
+// - OMS-MND-261127-06: data returns service requests; setServiceRequestStatus changes one (admin token).
 // - Self-contained: everything it imports is in ./_shared.
 //
 // Deploy (owner, from C:\Users\DELL\iq-screening-test-paid after `git pull`):
 //   npx supabase functions deploy admin-analytics --project-ref cbklbucvidcutshhmwjy --no-verify-jwt
 import { stagingDb, requireStaging, timingSafeEqual } from './_shared/staging-db.ts';
 import { resolveVerificationSecret, verificationHash } from './_shared/email-verification.ts';
-import { sendAdminCode } from './_shared/admin-mail.ts';
+import { sendAdminCode, sendCompanyMail, type CompanyMailKind } from './_shared/admin-mail.ts';
 
 const ADMIN_EMAIL = 'mohamedtahereshesh@gmail.com';
 const TOKEN_SCOPE = 'omsaze-admin-analytics';
@@ -89,7 +93,7 @@ async function emailsById(sb: ReturnType<typeof stagingDb>, ids: Set<string>): P
 }
 
 async function loadData(sb: ReturnType<typeof stagingDb>) {
-  const [pay, sessions, visits, results, prices, genders, corp, corpReq, corpPrices, corpBal, corpLedger] = await Promise.all([
+  const [pay, sessions, visits, results, prices, genders, corp, corpReq, corpPrices, corpBal, corpLedger, svcReq, svcLines, svcBal] = await Promise.all([
     sb.from('exam_payments')
       .select('id,candidate_id,test_id,state,paymob_order_id,transaction_id,amount_cents,usd_cents,fx_rate,created_at,updated_at,report_emailed_at')
       .order('created_at', { ascending: false }).limit(MAX_ROWS),
@@ -113,6 +117,11 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     sb.from('corporate_price_history').select('id,company_id,exam_tag,amount_cents,valid_from,valid_to,changed_by,note').order('valid_from', { ascending: false }).limit(2000),
     sb.rpc('corporate_balances'),
     sb.from('corporate_seat_ledger').select('id,company_id,exam_tag,seats,kind,unit_usd_cents,price_source,note,created_by,created_at').order('created_at', { ascending: false }).limit(2000),
+    // OMS-MND-261127-06: service requests (separate so the page still loads before the DB change).
+    sb.from('corporate_service_requests').select('*').order('created_at', { ascending: false }).limit(MAX_ROWS),
+    sb.from('corporate_service_request_lines').select('request_id,item_code,quantity').limit(MAX_ROWS * 4),
+    // OMS-MND-261127-07: balance per paid request (empty before that DB change).
+    sb.from('corporate_request_balances').select('request_id,item_code,granted,used,booked,actual_balance,available_balance,state,valid_until').limit(MAX_ROWS * 4),
   ]);
   if (pay.error || sessions.error) throw new Error('data unavailable');
 
@@ -156,6 +165,7 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     payments, exams, results: resultRows, resultsAvailable: !results.error,
     prices: (prices.data ?? []).map((p: any) => ({ id: p.id, variable: p.variable_name, exam: p.exam_tag, currency: p.currency, usd: p.amount_cents / 100, from: p.valid_from, to: p.valid_to, by: p.changed_by, note: p.note })),
     pricesAvailable: !prices.error,
+    servicesAvailable: !svcReq.error && !svcLines.error,
     corporateAvailable: !corp.error && !corpReq.error && !corpPrices.error && !corpBal.error && !corpLedger.error,
     corporate: corp.error ? [] : (corp.data ?? []).map((c: any) => ({
       id: c.id, ref: c.reference, org_type: c.org_type ?? null, company: c.company_name, reg_no: c.registration_no, tax_no: c.tax_no ?? null, address: c.address ?? null, website: c.website ?? null, billing_email: c.billing_email ?? null, country: c.country, city: c.city, sector: c.sector,
@@ -164,6 +174,12 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
       requests: (corpReq.data ?? []).filter((r: any) => r.company_id === c.id).map((r: any) => ({ exam: r.exam_tag, seats: r.seats_requested })),
       balances: ((corpBal.data ?? []) as any[]).filter((b) => b.company_id === c.id).map((b) => ({ exam: b.exam_tag, granted: b.granted, used: b.used, balance: b.balance })),
       prices: (corpPrices.data ?? []).filter((p: any) => p.company_id === c.id).map((p: any) => ({ id: p.id, exam: p.exam_tag, usd: p.amount_cents / 100, from: p.valid_from, to: p.valid_to, by: p.changed_by, note: p.note })),
+      services: svcReq.error ? [] : (svcReq.data ?? []).filter((r: any) => r.company_id === c.id).map((r: any) => ({
+        ref: r.reference, service: r.service_code, year: r.request_year, total: r.total_qty, notes: r.notes, status: r.status, status_at: r.status_changed_at, at: r.created_at,
+        paid_at: r.paid_at ?? null, valid_until: r.valid_until ?? null, usd: r.amount_usd_cents == null ? null : r.amount_usd_cents / 100, payment_ref: r.payment_ref ?? null,
+        balance: svcBal.error ? {} : Object.fromEntries(((svcBal.data ?? []) as any[]).filter((b) => b.request_id === r.id).map((b) => [b.item_code, { granted: b.granted, used: b.used, booked: b.booked, actual: b.actual_balance, available: b.available_balance, state: b.state }])),
+        lines: Object.fromEntries(((svcLines.data ?? []) as any[]).filter((l) => l.request_id === r.id).map((l) => [l.item_code, l.quantity])),
+      })),
       ledger: (corpLedger.data ?? []).filter((l: any) => l.company_id === c.id).map((l: any) => ({ exam: l.exam_tag, seats: l.seats, kind: l.kind, unit_usd: l.unit_usd_cents == null ? null : l.unit_usd_cents / 100, source: l.price_source, note: l.note, by: l.created_by, at: l.created_at })),
     })),
     visits: (visits.data ?? []).map((v: any) => ({ at: v.created_at, path: v.path, country: v.country })),
@@ -203,6 +219,29 @@ Deno.serve(async (req: Request) => {
     const passcode = Deno.env.get('ADMIN_DASHBOARD_PASSCODE') ?? '';
 
     if (body.action === 'config') return reply({ passcodeRequired: passcode.length >= 8 });
+
+    // OMS-MND-261127-04: public company actions. Same answers whatever happens, so they never reveal registered emails.
+    const mailCompany = async (d: any, kind: CompanyMailKind): Promise<boolean> => {
+      try { return await sendCompanyMail(d.email, kind, { company: d.company_name, contact: d.contact_name, reference: d.reference, lang: d.language ?? 'en', code: d.code, link: origin + '/services.html?email=' + encodeURIComponent(d.email) }); }
+      catch (e) { console.error('admin-analytics company mail failed:', e instanceof Error ? e.message : 'unknown'); return false; }
+    };
+    if (body.action === 'companyRegistered') {
+      const ref = String(body.reference ?? '');
+      if (/^CORP-\d{6}-[0-9A-F]{5}$/.test(ref)) {
+        const { data, error } = await sb.rpc('corporate_claim_registration_notice', { p_reference: ref });
+        if (!error && data?.email) await mailCompany(data, 'received');
+      }
+      return reply({ ok: true });
+    }
+    if (body.action === 'companyRequestCode') {
+      const email = String(body.email ?? '').trim().toLowerCase();
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) && email.length <= 200) {
+        const { data, error } = await sb.rpc('corporate_request_code', { p_email: email });
+        if (!error && data?.code) await mailCompany(data, 'code');
+      }
+      await sleep(500);
+      return reply({ requested: true });
+    }
 
     if (body.action === 'requestAccess') {
       const email = String(body.email ?? '').trim().toLowerCase();
@@ -245,6 +284,38 @@ Deno.serve(async (req: Request) => {
     }
 
     // OMS-MND-261126-12/-13: corporate accounts (status, company price, seats). Admin token required.
+    // OMS-MND-261127-04/-06: change a company's admin email; change a service request's status. Admin token required.
+    if (body.action === 'setCompanyEmail' || body.action === 'setServiceRequestStatus' || body.action === 'markRequestPaid') {
+      if (!await tokenOk(req.headers.get('x-omsaze-admin-token'), secret)) return reply({ error: 'Sign-in required or expired.' }, 401);
+      // OMS-MND-261127-07: paid in advance -> balance per request with an end date.
+      if (body.action === 'markRequestPaid') {
+        const ref = String(body.reference ?? ''), months = Number(body.months ?? 12);
+        if (!/^SRQ-\d{6}-[0-9A-F]{5}$/.test(ref)) return reply({ error: 'Unknown request.' }, 400);
+        if (!Number.isInteger(months) || months < 1 || months > 36) return reply({ error: 'Validity must be 1 to 36 months.' }, 400);
+        let cents: number | null = null;
+        if (body.usd !== null && body.usd !== undefined && body.usd !== '') { const usd = Number(body.usd); cents = Math.round(usd * 100); if (!Number.isFinite(usd) || usd < 0 || cents > 100000000) return reply({ error: 'Enter the amount paid in USD.' }, 400); }
+        const { data, error } = await sb.rpc('corporate_mark_request_paid', { p_reference: ref, p_changed_by: ADMIN_EMAIL, p_valid_months: months, p_amount_usd_cents: cents, p_payment_ref: String(body.paymentRef ?? '').slice(0, 120) || null });
+        if (error) return reply({ error: /approved first/.test(error.message ?? '') ? 'Approve the request first.' : 'The payment could not be saved.' }, 400);
+        return reply({ ok: true, result: data });
+      }
+      if (body.action === 'setCompanyEmail') {
+        const company = String(body.company ?? ''), email = String(body.email ?? '').trim().toLowerCase();
+        if (!/^[0-9a-f-]{36}$/.test(company)) return reply({ error: 'Unknown company.' }, 400);
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || email.length > 200) return reply({ error: 'Enter a valid email.' }, 400);
+        const { data, error } = await sb.rpc('corporate_change_admin_email', { p_company: company, p_new_email: email, p_changed_by: ADMIN_EMAIL, p_note: String(body.note ?? '').slice(0, 300) || null });
+        if (error) { const m = error.message ?? ''; return reply({ error: /another company/.test(m) ? 'This email belongs to another company.' : /Same email/.test(m) ? 'This is already the admin email.' : 'The email could not be changed.' }, 400); }
+        const { data: c } = await sb.from('corporate_accounts').select('email,company_name,contact_name,reference,language').eq('id', company).single();
+        const mailed = c ? await mailCompany(c, 'admin_changed') : false;
+        return reply({ ok: true, result: data, mailed });
+      }
+      const ref = String(body.reference ?? ''), st = String(body.status ?? '');
+      if (!/^SRQ-\d{6}-[0-9A-F]{5}$/.test(ref)) return reply({ error: 'Unknown request.' }, 400);
+      if (!['new', 'in_process', 'approved', 'rejected', 'cancelled'].includes(st)) return reply({ error: 'Unknown status.' }, 400);
+      const { data, error } = await sb.rpc('set_service_request_status', { p_reference: ref, p_status: st, p_changed_by: ADMIN_EMAIL, p_note: String(body.note ?? '').slice(0, 300) || null });
+      if (error) return reply({ error: /is paid/.test(error.message ?? '') ? 'A paid request cannot change status.' : 'The status could not be saved.' }, 400);
+      return reply({ ok: true, result: data });
+    }
+
     if (body.action === 'setCorporateStatus' || body.action === 'setCorporatePrice' || body.action === 'grantSeats') {
       if (!await tokenOk(req.headers.get('x-omsaze-admin-token'), secret)) return reply({ error: 'Sign-in required or expired.' }, 401);
       const company = String(body.company ?? '');
@@ -255,7 +326,13 @@ Deno.serve(async (req: Request) => {
         if (!['pending', 'active', 'suspended', 'rejected'].includes(status)) return reply({ error: 'Unknown status.' }, 400);
         const { data, error } = await sb.rpc('set_corporate_status', { p_company: company, p_status: status, p_changed_by: ADMIN_EMAIL, p_note: note });
         if (error) return reply({ error: 'The status could not be saved.' }, 400);
-        return reply({ ok: true, result: data });
+        // OMS-MND-261127-04: approval emails the company admin 'select the service you are looking for'.
+        let mailed: boolean | null = null;
+        if (status === 'active') {
+          const { data: c } = await sb.from('corporate_accounts').select('email,company_name,contact_name,reference,language').eq('id', company).single();
+          mailed = c ? await mailCompany(c, 'approved') : false;
+        }
+        return reply({ ok: true, result: data, mailed });
       }
       const exam = String(body.exam ?? '');
       if (!/^[a-z0-9-]{3,80}$/.test(exam)) return reply({ error: 'Unknown exam.' }, 400);

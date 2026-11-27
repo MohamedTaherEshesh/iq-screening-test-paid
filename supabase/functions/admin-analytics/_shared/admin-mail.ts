@@ -32,3 +32,57 @@ export async function sendAdminCode(to: string, code: string): Promise<boolean> 
   }
   throw new Error('Mail provider is not configured');
 }
+
+// OMS-MND-261127-04: emails to a company admin (registration received, approved, sign-in code, admin email changed).
+const esc = (v: string) => v.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+export type CompanyMailKind = 'received' | 'approved' | 'code' | 'admin_changed';
+export async function sendCompanyMail(to: string, kind: CompanyMailKind, o: { company: string; contact: string; reference: string; lang: string; link: string; code?: string }): Promise<boolean> {
+  requireStaging();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(to) || to.length > 200) return false;
+  const ar = o.lang === 'ar';
+  const T: Record<CompanyMailKind, [string, string, string, string]> = {
+    received: ['OMSAZE: we received your company registration', 'OMSAZE: استلمنا تسجيل شركتكم',
+      `We received the registration of ${o.company} (reference ${o.reference}). This email (${to}) is the company admin: only it can sign in for this company. We will review the registration and email you within 2 working days.`,
+      `استلمنا تسجيل ${o.company} (المرجع ${o.reference}). هذا البريد (${to}) هو مسؤول الشركة، وهو وحده يستطيع الدخول باسم الشركة. سنراجع التسجيل ونراسلكم خلال يومي عمل.`],
+    approved: ['Your OMSAZE registration is approved: select the service you are looking for', 'تم قبول تسجيل شركتكم لدى OMSAZE: اختر الخدمة التي تحتاجها',
+      `The registration of ${o.company} (reference ${o.reference}) is approved. Open the service request page, sign in with this email and the code we send you, and select the service you are looking for. You can come back and send a new request any time.`,
+      `تم قبول تسجيل ${o.company} (المرجع ${o.reference}). افتح صفحة طلب الخدمات، وادخل بهذا البريد والرمز الذي نرسله لك، ثم اختر الخدمة التي تحتاجها. يمكنك العودة وإرسال طلب جديد في أي وقت.`],
+    code: [`OMSAZE company sign-in code: ${o.code}`, `رمز دخول الشركة من OMSAZE: ${o.code}`,
+      `Your sign-in code for ${o.company} is ${o.code}. It expires in 10 minutes. If you did not ask for it, ignore this email.`,
+      `رمز الدخول الخاص بـ ${o.company} هو ${o.code}. ينتهي خلال 10 دقائق. إذا لم تطلبه تجاهل هذه الرسالة.`],
+    admin_changed: ['OMSAZE: you are now the company admin', 'OMSAZE: أصبحت مسؤول الشركة',
+      `At your company's request, this email is now the admin of ${o.company} (reference ${o.reference}) on OMSAZE. Sign in on the service request page with this email.`,
+      `بناءً على طلب شركتكم، أصبح هذا البريد مسؤول ${o.company} (المرجع ${o.reference}) لدى OMSAZE. ادخل على صفحة طلب الخدمات بهذا البريد.`],
+  };
+  const [sEn, sAr, bEn, bAr] = T[kind];
+  const subject = ar ? sAr : sEn, intro = ar ? bAr : bEn;
+  const hi = ar ? `مرحبًا ${o.contact}،` : `Dear ${o.contact},`;
+  const btn = ar ? 'صفحة طلب الخدمات' : 'Service request page';
+  const sign = ar ? 'فريق خدمة عملاء OMSAZE' : 'OMSAZE Customer Service Team';
+  const big = kind === 'code' ? `<p style="font-size:30px;font-weight:700;letter-spacing:6px;margin:0 0 14px">${esc(o.code ?? '')}</p>` : '';
+  const button = kind === 'code' ? '' : `<p style="margin:22px 0"><a href="${esc(o.link)}" style="background:#102D46;color:#fff;padding:12px 20px;border-radius:6px;text-decoration:none;font-weight:700">${esc(btn)}</a></p>`;
+  const text = `${hi}\n\n${intro}\n\n${kind === 'code' ? '' : o.link + '\n\n'}${sign}`;
+  const html = `<div dir="${ar ? 'rtl' : 'ltr'}" style="font-family:Arial,sans-serif;color:#102D46;max-width:560px"><p style="font-size:13px;letter-spacing:2px;color:#9a7a35;margin:0">OMSAZE</p><p>${esc(hi)}</p><p>${esc(intro)}</p>${big}${button}<p>${esc(sign)}</p></div>`;
+  const provider = Deno.env.get('OMSAZE_VERIFICATION_PROVIDER');
+  if (provider === 'gmail') {
+    const user = (Deno.env.get('OMSAZE_GMAIL_SENDER') ?? '').trim().toLowerCase();
+    const pass = (Deno.env.get('OMSAZE_GMAIL_APP_PASSWORD') ?? '').replace(/\s/g, '');
+    if (!user || !/^[a-zA-Z0-9]{16}$/.test(pass)) throw new Error('Gmail sender is not configured');
+    const nodemailer = (await import('npm:nodemailer@10.5.0')).default;
+    const transport = nodemailer.createTransport({ host: 'smtp.gmail.com', port: 465, secure: true, auth: { user, pass }, connectionTimeout: 8000, greetingTimeout: 8000, socketTimeout: 15000, tls: { minVersion: 'TLSv1.2', rejectUnauthorized: true } });
+    try {
+      const r = await transport.sendMail({ from: { name: 'OMSAZE', address: user }, to, subject, text, html });
+      return Array.isArray(r.accepted) && r.accepted.length > 0;
+    } finally { transport.close(); }
+  }
+  if (provider === 'resend') {
+    const key = Deno.env.get('RESEND_API_KEY'), from = Deno.env.get('OMSAZE_VERIFICATION_FROM');
+    if (!key || !from) throw new Error('Resend sender is not configured');
+    const r = await fetch('https://api.resend.com/emails', {
+      method: 'POST', headers: { authorization: 'Bearer ' + key, 'content-type': 'application/json' },
+      body: JSON.stringify({ from, to: [to], subject, text, html }), signal: AbortSignal.timeout(12000),
+    });
+    return r.ok;
+  }
+  throw new Error('Mail provider is not configured');
+}
