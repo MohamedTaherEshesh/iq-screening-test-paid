@@ -221,7 +221,7 @@ Deno.serve(async (req) => {
         // otherwise two different questions collapse to the same "null" code,
         // corrupting both the 70-unique-item invariant and session resume.
         const { data: pool, error: poolErr } = await sb.from('question_bank')
-          .select('legacy_id, domain, correct_index, options_en, options_ar, prompt_en, prompt_ar, visual_grid, idea_fingerprint')
+          .select('legacy_id, domain, correct_index, options_en, options_ar, prompt_en, prompt_ar, visual_grid, idea_fingerprint, version')
           .eq('status', 'reviewed_approved')
           .eq('domain', domain)
           .contains('exam_tags', [EXAM_TAG])
@@ -277,6 +277,12 @@ Deno.serve(async (req) => {
         .select('id')
         .single();
       if (insertErr || !inserted) return reply({error:'Unable to create session'}, 503);
+      // OMS-MND-261126-18: one response-log row per question, with the question version served.
+      // Logging is best-effort: a logging failure never blocks the candidate's exam.
+      const { error: logErr } = await sb.from('exam_item_responses').insert(allSelected.map((q, i) => ({
+        session_id: inserted.id, position: i, item_code: q.legacy_id, item_version: Number.isInteger(q.version) ? q.version : 1,
+      })));
+      if (logErr) console.error('item log init failed', logErr.message);
 
       const questions = allSelected.map((q) => ({
         itemCode: q.legacy_id,
@@ -315,7 +321,26 @@ Deno.serve(async (req) => {
       answers[index as number] = answer;
       const { error: updErr } = await sb.from('university_challenge_sessions').update({answers}).eq('id', testId);
       if (updErr) return reply({saved:false}, 503);
+      const { error: logErr } = await sb.rpc('log_item_answer', {p_session: testId, p_position: index, p_answer: answer});
+      if (logErr) console.error('item answer log failed', logErr.message);
       return reply({saved:true}, 200);
+    }
+
+    if (action === 'view') {
+      // OMS-MND-261126-18: the browser reports which question is now on screen and how long the previous one was visible.
+      const testId = b.testId;
+      const okIdx = (v: unknown) => v === null || v === undefined || (Number.isInteger(v) && (v as number) >= 0 && (v as number) < POLICY.questionCount);
+      const index = b.index ?? null; const prevIndex = b.prevIndex ?? null; const prevMs = b.prevMs ?? null;
+      if (typeof testId !== 'string' || !okIdx(index) || !okIdx(prevIndex) || (prevMs !== null && (!Number.isInteger(prevMs) || (prevMs as number) < 0 || (prevMs as number) > 7200000))) {
+        return reply({error:'Invalid view request'}, 400);
+      }
+      const { data: sess } = await sb.from('university_challenge_sessions')
+        .select('id, submitted').eq('id', testId).eq('candidate_id', candidateId).maybeSingle();
+      if (!sess) return reply({error:'Session not found'}, 404);
+      if (sess.submitted) return reply({logged:false}, 200);
+      const { error: logErr } = await sb.rpc('log_item_view', {p_session: testId, p_position: index, p_prev: prevIndex, p_prev_ms: prevMs});
+      if (logErr) console.error('item view log failed', logErr.message);
+      return reply({logged: !logErr}, 200);
     }
 
     if (action === 'result') {
@@ -335,6 +360,12 @@ Deno.serve(async (req) => {
         .select('*').eq('id', testId).eq('candidate_id', candidateId).maybeSingle();
       if (sessErr || !sess) return reply({error:'Session not found'}, 404);
       if (sess.submitted && sess.result) return reply({result: await visibleResult(sb, testId, candidateId, sess.result)}, 200);
+      // OMS-MND-261126-18: visible time of the question that was on screen when the candidate finished.
+      if (Number.isInteger(b.lastIndex) && (b.lastIndex as number) >= 0 && (b.lastIndex as number) < POLICY.questionCount
+          && Number.isInteger(b.lastMs) && (b.lastMs as number) > 0 && (b.lastMs as number) <= 7200000) {
+        const { error: logErr } = await sb.rpc('log_item_view', {p_session: testId, p_position: null, p_prev: b.lastIndex, p_prev_ms: b.lastMs});
+        if (logErr) console.error('item last view log failed', logErr.message);
+      }
 
       const answers: (number|null)[] = Array.isArray(sess.answers) ? sess.answers : [];
       const answerKey: number[] = sess.answer_key;
