@@ -1,0 +1,1403 @@
+[
+ {
+  "id": "T-CLV-MCA-0001",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 8,
+  "idea": "clv-cog-equivocal",
+  "prompt_en": "\"The CEO's remarks on the merger were deliberately equivocal.\" What does 'equivocal' mean here?",
+  "options_en": [
+   "Open to more than one interpretation",
+   "Clearly in favour",
+   "Clearly against",
+   "Very brief"
+  ],
+  "prompt_ar": "\"كانت تصريحات الرئيس التنفيذي عن الاندماج حمّالة أوجه عن قصد.\" ماذا تعني 'حمّالة أوجه' هنا؟",
+  "options_ar": [
+   "تحتمل أكثر من تفسير",
+   "مؤيدة بوضوح",
+   "معارضة بوضوح",
+   "مختصرة جدًا"
+  ],
+  "answer": 0,
+  "explain_en": "Equivocal statements can be read in more than one way.",
+  "explain_ar": "العبارة حمّالة الأوجه يمكن فهمها بأكثر من طريقة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0002",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 9,
+  "idea": "clv-cog-not-inconsistent",
+  "prompt_en": "\"The pilot results are not inconsistent with our hypothesis.\" What is the most accurate reading?",
+  "options_en": [
+   "The results do not contradict the hypothesis, but they do not strongly confirm it either.",
+   "The results prove the hypothesis.",
+   "The results disprove the hypothesis.",
+   "The pilot failed."
+  ],
+  "prompt_ar": "\"نتائج التجربة لا تتعارض مع فرضيتنا.\" ما الفهم الأدق؟",
+  "options_ar": [
+   "النتائج لا تناقض الفرضية، لكنها لا تؤكدها بقوة أيضًا.",
+   "النتائج تثبت الفرضية.",
+   "النتائج تنفي الفرضية.",
+   "التجربة فشلت."
+  ],
+  "answer": 0,
+  "explain_en": "'Not inconsistent' is a cautious phrase: compatible, not proof.",
+  "explain_ar": "'لا تتعارض' عبارة حذرة: متوافقة لكنها ليست دليلًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0003",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "clv-cog-prima-facie",
+  "prompt_en": "\"There is a prima facie case that the supplier breached the contract.\" What does 'prima facie' mean here?",
+  "options_en": [
+   "Proven beyond doubt",
+   "Already decided by a court",
+   "Impossible to prove",
+   "Based on the evidence at first sight, before full examination"
+  ],
+  "prompt_ar": "\"توجد قرينة ظاهرية على أن المورد أخلّ بالعقد.\" ماذا تعني 'قرينة ظاهرية' هنا؟",
+  "options_ar": [
+   "ثابتة بلا أدنى شك",
+   "صدر فيها حكم قضائي بالفعل",
+   "مستحيلة الإثبات",
+   "بناء على الأدلة للوهلة الأولى قبل الفحص الكامل"
+  ],
+  "answer": 3,
+  "explain_en": "Prima facie means it appears so on first view, pending full review.",
+  "explain_ar": "القرينة الظاهرية تعني أن الأمر يبدو كذلك للوهلة الأولى حتى الفحص الكامل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0004",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-cog-dividend-under-review",
+  "prompt_en": "An analyst asks: \"Will you cut the dividend?\" The CFO answers: \"Our dividend policy remains under review in light of our capital needs.\" What is the most reasonable reading?",
+  "options_en": [
+   "The dividend will definitely be cut.",
+   "A cut is possible; the CFO is not committing either way.",
+   "The dividend will definitely be kept.",
+   "The dividend will be raised."
+  ],
+  "prompt_ar": "سأل محلل: \"هل ستخفضون التوزيعات؟\" فأجاب المدير المالي: \"سياسة التوزيعات ما زالت قيد المراجعة في ضوء احتياجاتنا الرأسمالية.\" ما الفهم الأكثر منطقية؟",
+  "options_ar": [
+   "التوزيعات ستُخفض بالتأكيد.",
+   "الخفض وارد، والمدير المالي لا يلتزم بأي اتجاه.",
+   "التوزيعات ستبقى بالتأكيد.",
+   "التوزيعات ستُرفع."
+  ],
+  "answer": 1,
+  "explain_en": "'Under review in light of capital needs' leaves a cut open without confirming it.",
+  "explain_ar": "'قيد المراجعة في ضوء الاحتياجات' تترك الخفض واردًا دون تأكيده.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0005",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-cog-mac-clause-industry",
+  "prompt_en": "Acquisition agreement: \"The buyer may withdraw if a material adverse change affects the target before closing, excluding changes that affect the industry as a whole.\" Before closing, an industry-wide downturn hits all firms equally. Can the buyer withdraw on this basis?",
+  "options_en": [
+   "Yes, because the change is material.",
+   "No, because industry-wide changes are excluded.",
+   "Yes, if the buyer pays a fee.",
+   "Only after closing."
+  ],
+  "prompt_ar": "اتفاقية استحواذ: \"يجوز للمشتري الانسحاب إذا حدث تغير جوهري سلبي يؤثر على الشركة المستهدفة قبل الإتمام، باستثناء التغيرات التي تؤثر على القطاع ككل.\" قبل الإتمام حدث ركود في القطاع أثر على كل الشركات بالتساوي. هل يمكن للمشتري الانسحاب على هذا الأساس؟",
+  "options_ar": [
+   "نعم، لأن التغير جوهري.",
+   "لا، لأن التغيرات على مستوى القطاع مستثناة.",
+   "نعم، إذا دفع المشتري رسومًا.",
+   "فقط بعد الإتمام."
+  ],
+  "answer": 1,
+  "explain_en": "The clause carves out industry-wide changes.",
+  "explain_ar": "البند يستثني التغيرات التي تشمل القطاع كله.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0006",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "clv-cog-post-layoff-message",
+  "prompt_en": "After a round of job cuts, the CEO writes to remaining staff. Which line best balances honesty and respect?",
+  "options_en": [
+   "\"These were hard decisions affecting colleagues we valued. Here is why we made them and what happens next.\"",
+   "\"This was a great day for efficiency.\"",
+   "\"Nothing has really changed, so please carry on.\"",
+   "\"Those who left were the weakest performers.\""
+  ],
+  "prompt_ar": "بعد جولة تخفيض وظائف، كتب الرئيس التنفيذي للموظفين الباقين. أي جملة توازن بين الصدق والاحترام أفضل؟",
+  "options_ar": [
+   "\"كانت قرارات صعبة طالت زملاء نقدّرهم. هذا سبب اتخاذها وهذا ما سيحدث بعد ذلك.\"",
+   "\"كان يومًا رائعًا للكفاءة.\"",
+   "\"لم يتغير شيء فعليًا، فاستمروا في العمل.\"",
+   "\"من غادروا كانوا الأضعف أداءً.\""
+  ],
+  "answer": 0,
+  "explain_en": "It is honest about the pain, respects those who left, and explains the next steps.",
+  "explain_ar": "صادقة في الاعتراف بالألم، وتحترم من غادروا، وتشرح الخطوات التالية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0007",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 10,
+  "idea": "clv-cog-outlook-negative",
+  "prompt_en": "A rating agency announces: \"Rating affirmed; outlook revised to negative from stable.\" What does this mean?",
+  "options_en": [
+   "The rating was downgraded today.",
+   "The rating is unchanged now, but a downgrade has become more likely.",
+   "The rating was upgraded.",
+   "The rating has been withdrawn."
+  ],
+  "prompt_ar": "وكالة تصنيف تعلن: \"تم تثبيت التصنيف، وتعديل النظرة المستقبلية من مستقرة إلى سلبية.\" ماذا يعني ذلك؟",
+  "options_ar": [
+   "التصنيف خُفض اليوم.",
+   "التصنيف لم يتغير الآن، لكن احتمال خفضه أصبح أكبر.",
+   "التصنيف رُفع.",
+   "التصنيف تم سحبه."
+  ],
+  "answer": 1,
+  "explain_en": "'Affirmed' keeps the rating; a negative outlook signals possible future downgrade.",
+  "explain_ar": "'التثبيت' يعني بقاء التصنيف، والنظرة السلبية تشير لاحتمال خفض مستقبلي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0008",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-cog-merger-staff-message",
+  "prompt_en": "You are announcing a merger to employees. Many fear for their jobs, and some decisions are not made yet. What should the first message focus on?",
+  "options_en": [
+   "Financial details of the deal for investors",
+   "Promises that no jobs will ever change",
+   "What changes and what does not for them now, what is still undecided, and when they will hear more",
+   "The history of both companies"
+  ],
+  "prompt_ar": "تعلن اندماجًا للموظفين. كثيرون يخشون على وظائفهم، وبعض القرارات لم تُتخذ بعد. على ماذا يركز أول خطاب؟",
+  "options_ar": [
+   "التفاصيل المالية للصفقة للمستثمرين",
+   "وعود بأن لا وظيفة ستتغير أبدًا",
+   "ما الذي يتغير وما الذي لا يتغير بالنسبة لهم الآن، وما الذي لم يُحسم بعد، ومتى سيعرفون أكثر",
+   "تاريخ الشركتين"
+  ],
+  "answer": 2,
+  "explain_en": "It answers their real concern honestly without promising what is not decided.",
+  "explain_ar": "يجيب عن قلقهم الحقيقي بصدق دون وعود بما لم يُحسم.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0009",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-cog-journalist-rumour",
+  "prompt_en": "A journalist asks about rumours that your company is in acquisition talks. Talks are in fact at an early stage and confidential. Which reply is best?",
+  "options_en": [
+   "\"We do not comment on market speculation.\"",
+   "\"There are absolutely no talks.\"",
+   "\"Yes, we are close to a deal.\"",
+   "\"I can't say, but expect big news soon.\""
+  ],
+  "prompt_ar": "صحفي يسأل عن شائعات بأن شركتك في محادثات استحواذ. المحادثات فعلًا في مرحلة مبكرة وسرية. أي رد هو الأفضل؟",
+  "options_ar": [
+   "\"لا نعلق على تكهنات السوق.\"",
+   "\"لا توجد أي محادثات إطلاقًا.\"",
+   "\"نعم، اقتربنا من صفقة.\"",
+   "\"لا أستطيع القول، لكن انتظروا أخبارًا كبيرة قريبًا.\""
+  ],
+  "answer": 0,
+  "explain_en": "It is truthful and keeps confidentiality; the others lie, disclose or hint.",
+  "explain_ar": "صادق ويحافظ على السرية، أما الباقي فإما كذب أو إفصاح أو تلميح.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0010",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-cog-board-paper-order",
+  "prompt_en": "You are writing a board paper seeking approval for an investment. What is the most effective order?",
+  "options_en": [
+   "Background history, data tables, then the recommendation at the end",
+   "Recommendation and ask, options considered, rationale, risks and mitigations",
+   "Risks first, then the history, then no recommendation",
+   "Data appendix only, with no recommendation"
+  ],
+  "prompt_ar": "تكتب ورقة لمجلس الإدارة لطلب الموافقة على استثمار. ما الترتيب الأكثر فاعلية؟",
+  "options_ar": [
+   "الخلفية التاريخية، ثم جداول البيانات، ثم التوصية في النهاية",
+   "التوصية والطلب، ثم الخيارات التي دُرست، ثم المبررات، ثم المخاطر وطرق معالجتها",
+   "المخاطر أولًا، ثم التاريخ، بدون توصية",
+   "ملحق البيانات فقط بدون توصية"
+  ],
+  "answer": 1,
+  "explain_en": "Boards decide faster and better when the ask comes first, followed by the reasoning.",
+  "explain_ar": "المجلس يقرر أسرع وأفضل عندما يأتي الطلب أولًا ثم المبررات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0011",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 10,
+  "idea": "clv-cog-polite-no-culture",
+  "prompt_en": "In negotiations abroad, your partner says: \"We will consider it carefully.\" In their business culture this phrase is often a polite refusal. What is the best next step?",
+  "options_en": [
+   "Treat it as a yes and start the project.",
+   "Demand an immediate yes or no.",
+   "Treat it as a likely soft no and explore their concerns before pressing for a decision.",
+   "End the relationship."
+  ],
+  "prompt_ar": "في مفاوضات خارجية قال الشريك: \"سندرس الأمر بعناية.\" وفي ثقافة أعمالهم كثيرًا ما تعني هذه العبارة رفضًا مهذبًا. ما الخطوة التالية الأفضل؟",
+  "options_ar": [
+   "اعتبارها موافقة وبدء المشروع.",
+   "المطالبة بنعم أو لا فورًا.",
+   "التعامل معها كرفض مهذب محتمل واستكشاف مخاوفهم قبل الضغط لاتخاذ قرار.",
+   "إنهاء العلاقة."
+  ],
+  "answer": 2,
+  "explain_en": "Reading the cultural meaning and exploring concerns keeps the deal alive without misreading it.",
+  "explain_ar": "فهم المعنى الثقافي واستكشاف المخاوف يبقي الصفقة ممكنة دون سوء فهم.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0012",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-cog-fatal-accident-statement",
+  "prompt_en": "A fatal accident happens at one of your sites. The cause is not yet known. Which first public statement is most appropriate?",
+  "options_en": [
+   "State that the worker made an error.",
+   "Say nothing until the investigation ends.",
+   "Express sympathy, state the known facts, describe support for families, and confirm full cooperation with the investigation.",
+   "Say the site meets all safety rules, so the company is not responsible."
+  ],
+  "prompt_ar": "وقع حادث مميت في أحد مواقعك، والسبب لم يُعرف بعد. أي بيان علني أول هو الأنسب؟",
+  "options_ar": [
+   "القول إن العامل أخطأ.",
+   "السكوت حتى انتهاء التحقيق.",
+   "التعبير عن المواساة، وذكر الحقائق المعروفة، ووصف الدعم المقدم للأسر، وتأكيد التعاون الكامل مع التحقيق.",
+   "القول إن الموقع ملتزم بكل قواعد السلامة فالشركة غير مسؤولة."
+  ],
+  "answer": 2,
+  "explain_en": "It is humane and factual, and it avoids speculating about cause or blame.",
+  "explain_ar": "إنساني ودقيق، ويتجنب التكهن بالسبب أو تحميل المسؤولية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0013",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-cog-townhall-closure-rumour",
+  "prompt_en": "At a town hall, an employee asks whether their office will close. The option is being studied but no decision has been made. What is the best answer?",
+  "options_en": [
+   "\"No, it will never close.\"",
+   "\"Yes, it will close.\"",
+   "\"We are studying options, no decision has been made, and you will hear from us first by the end of next month.\"",
+   "\"I can't discuss that.\""
+  ],
+  "prompt_ar": "في لقاء مفتوح سأل موظف هل سيُغلق مكتبه. الخيار قيد الدراسة ولم يُتخذ قرار بعد. ما أفضل إجابة؟",
+  "options_ar": [
+   "\"لا، لن يُغلق أبدًا.\"",
+   "\"نعم، سيُغلق.\"",
+   "\"ندرس الخيارات، ولم يُتخذ أي قرار، وستعرفون منا أولًا قبل نهاية الشهر القادم.\"",
+   "\"لا أستطيع مناقشة ذلك.\""
+  ],
+  "answer": 2,
+  "explain_en": "It is honest about the uncertainty and gives a commitment on timing.",
+  "explain_ar": "صادقة بشأن عدم اليقين وتلتزم بموعد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0014",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-cog-regulator-unknown-figure",
+  "prompt_en": "In a meeting, a regulator asks you for a figure you do not have on hand. What is the best reply?",
+  "options_en": [
+   "Give your best guess as if it were exact.",
+   "Change the subject.",
+   "Say the figure is confidential.",
+   "\"I don't want to give you an inaccurate number; we will send the verified figure by Thursday.\""
+  ],
+  "prompt_ar": "في اجتماع، طلب منك مسؤول بالجهة الرقابية رقمًا ليس معك الآن. ما أفضل رد؟",
+  "options_ar": [
+   "تقديم تخمينك كأنه رقم دقيق.",
+   "تغيير الموضوع.",
+   "القول إن الرقم سري.",
+   "\"لا أريد أن أعطيكم رقمًا غير دقيق، سنرسل الرقم المؤكد يوم الخميس.\""
+  ],
+  "answer": 3,
+  "explain_en": "Accuracy and a firm follow-up date protect trust with the regulator.",
+  "explain_ar": "الدقة والالتزام بموعد للمتابعة يحميان الثقة مع الجهة الرقابية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0015",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 10,
+  "idea": "clv-cog-missed-guidance-framing",
+  "prompt_en": "Results came in 8% below the guidance you gave investors. How should you present this at the investor briefing?",
+  "options_en": [
+   "Focus only on positive numbers.",
+   "Blame the market without detail.",
+   "Withdraw all guidance permanently.",
+   "Acknowledge the miss, explain the causes, set out corrective actions, and give revised guidance."
+  ],
+  "prompt_ar": "جاءت النتائج أقل بنسبة 8% من التوجيهات التي أعطيتها للمستثمرين. كيف تعرض ذلك في لقاء المستثمرين؟",
+  "options_ar": [
+   "التركيز على الأرقام الإيجابية فقط.",
+   "لوم السوق دون تفاصيل.",
+   "إلغاء كل التوجيهات نهائيًا.",
+   "الاعتراف بعدم تحقيق التوجيهات، وشرح الأسباب، وعرض الإجراءات التصحيحية، وتقديم توجيهات معدلة."
+  ],
+  "answer": 3,
+  "explain_en": "Candour with a clear plan rebuilds credibility.",
+  "explain_ar": "الصراحة مع خطة واضحة تعيد بناء المصداقية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0016",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 7,
+  "idea": "clv-cog-clear-strategy-statement",
+  "prompt_en": "Which statement is a clear strategy rather than a slogan?",
+  "options_en": [
+   "\"Win mid-sized logistics firms in the Gulf with the fastest setup, live in two weeks.\"",
+   "\"Be the best in everything we do.\"",
+   "\"Delight customers every day.\"",
+   "\"Grow through excellence and innovation.\""
+  ],
+  "prompt_ar": "أي عبارة تمثل استراتيجية واضحة وليست شعارًا؟",
+  "options_ar": [
+   "\"نكسب شركات اللوجستيات المتوسطة في الخليج بأسرع تشغيل: جاهزون خلال أسبوعين.\"",
+   "\"أن نكون الأفضل في كل ما نفعله.\"",
+   "\"إسعاد العملاء كل يوم.\"",
+   "\"النمو عبر التميز والابتكار.\""
+  ],
+  "answer": 0,
+  "explain_en": "It names where to compete and how to win; the others could fit any company.",
+  "explain_ar": "تحدد أين ننافس وكيف نفوز، والباقي يصلح لأي شركة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0017",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-cog-partner-reconsider",
+  "prompt_en": "A key partner emails: \"Given recent developments, we may need to reconsider our arrangement.\" No details are given. What is the best response?",
+  "options_en": [
+   "Reply threatening legal action.",
+   "Start replacing the partner immediately.",
+   "Ignore it until they explain further.",
+   "Call the partner's leader to understand the concerns before replying in writing."
+  ],
+  "prompt_ar": "شريك رئيسي أرسل: \"في ضوء التطورات الأخيرة، قد نحتاج لإعادة النظر في ترتيباتنا.\" دون تفاصيل. ما أفضل رد؟",
+  "options_ar": [
+   "الرد بالتهديد باتخاذ إجراء قانوني.",
+   "البدء فورًا في استبدال الشريك.",
+   "التجاهل حتى يوضحوا.",
+   "الاتصال بقائد الشريك لفهم مخاوفه قبل الرد كتابيًا."
+  ],
+  "answer": 3,
+  "explain_en": "An ambiguous signal from a key partner calls for a direct conversation first.",
+  "explain_ar": "الإشارة الغامضة من شريك رئيسي تتطلب حديثًا مباشرًا أولًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0018",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-cog-analyst-views-summary",
+  "prompt_en": "Analyst A rates your shares 'buy' on growth. Analyst B rates them 'hold', saying the upside is limited by the current price. Analyst C rates them 'sell' because the valuation is high. Which summary for the board is accurate?",
+  "options_en": [
+   "All analysts recommend buying.",
+   "All analysts think the business is weak.",
+   "Views are mixed; the main concern is valuation rather than the business.",
+   "Analysts agree the shares are cheap."
+  ],
+  "prompt_ar": "المحلل A يوصي بـ'شراء' أسهمكم بسبب النمو. المحلل B يوصي بـ'احتفاظ' ويقول إن الصعود محدود بالسعر الحالي. المحلل C يوصي بـ'بيع' لأن التقييم مرتفع. أي ملخص للمجلس دقيق؟",
+  "options_ar": [
+   "كل المحللين يوصون بالشراء.",
+   "كل المحللين يرون النشاط ضعيفًا.",
+   "الآراء متباينة، والقلق الرئيسي من التقييم وليس من النشاط نفسه.",
+   "المحللون متفقون على أن السهم رخيص."
+  ],
+  "answer": 2,
+  "explain_en": "B and C both point to price/valuation; none criticises the business itself.",
+  "explain_ar": "B وC يشيران للسعر والتقييم، ولا أحد ينتقد النشاط نفسه.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0019",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-cog-datacentre-night-capacity",
+  "prompt_en": "Your data centre runs near full in the day but is 70% idle at night. Which idea creates value from what you already own?",
+  "options_en": [
+   "Build a second data centre.",
+   "Sell night-time computing capacity to research institutes and analytics firms.",
+   "Switch off the data centre at night permanently.",
+   "Raise daytime prices for internal users."
+  ],
+  "prompt_ar": "مركز بياناتك يعمل بطاقة شبه كاملة نهارًا لكنه غير مستغل بنسبة 70% ليلًا. أي فكرة تخلق قيمة مما تملكه بالفعل؟",
+  "options_ar": [
+   "بناء مركز بيانات ثانٍ.",
+   "بيع طاقة الحوسبة الليلية لمعاهد البحث وشركات التحليل.",
+   "إطفاء المركز ليلًا بشكل دائم.",
+   "رفع أسعار الاستخدام النهاري للإدارات الداخلية."
+  ],
+  "answer": 1,
+  "explain_en": "It monetises idle capacity at almost no extra cost.",
+  "explain_ar": "تحقق دخلًا من طاقة غير مستغلة بتكلفة إضافية شبه معدومة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0020",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-cog-magazine-expert-community",
+  "prompt_en": "A print industry magazine is losing advertisers, but its readers are loyal senior experts. Which idea best builds on its real asset?",
+  "options_en": [
+   "Print more pages.",
+   "Lower the cover price.",
+   "Close the magazine immediately.",
+   "Create paid events and a members' community where these experts meet and share insight."
+  ],
+  "prompt_ar": "مجلة مطبوعة متخصصة تخسر المعلنين، لكن قراءها خبراء كبار مخلصون. أي فكرة تبني على الأصل الحقيقي للمجلة أفضل؟",
+  "options_ar": [
+   "طباعة صفحات أكثر.",
+   "خفض سعر النسخة.",
+   "إغلاق المجلة فورًا.",
+   "إنشاء فعاليات مدفوعة ومجتمع أعضاء يلتقي فيه هؤلاء الخبراء ويتبادلون الخبرات."
+  ],
+  "answer": 3,
+  "explain_en": "The asset is the expert audience, not the paper; this monetises that audience.",
+  "explain_ar": "الأصل هو جمهور الخبراء وليس الورق، وهذه الفكرة تستثمر هذا الجمهور.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0021",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-cog-waste-heat-greenhouse",
+  "prompt_en": "A factory releases large amounts of waste heat. A greenhouse operator plans to build next door. Which idea creates value for both?",
+  "options_en": [
+   "Install bigger fans to remove the heat faster.",
+   "Oppose the greenhouse's building permit.",
+   "Reduce factory output.",
+   "Supply the factory's waste heat to the greenhouse under a long-term agreement."
+  ],
+  "prompt_ar": "مصنع يطلق كميات كبيرة من الحرارة المهدرة، ومشغل صوب زراعية يخطط للبناء بجواره. أي فكرة تخلق قيمة للطرفين؟",
+  "options_ar": [
+   "تركيب مراوح أكبر لطرد الحرارة أسرع.",
+   "الاعتراض على ترخيص بناء الصوب.",
+   "تقليل إنتاج المصنع.",
+   "توريد الحرارة المهدرة من المصنع للصوب الزراعية باتفاق طويل الأجل."
+  ],
+  "answer": 3,
+  "explain_en": "One firm's waste becomes the other's input, creating revenue and savings.",
+  "explain_ar": "مخلفات طرف تصبح مدخلات للآخر، فتتحقق إيرادات ووفورات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0022",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 10,
+  "idea": "clv-cog-bank-students-universities",
+  "prompt_en": "A bank wants to win young customers without opening new branches. Universities want to improve students' financial skills. Which idea serves both goals?",
+  "options_en": [
+   "Partner with universities on app-based student accounts that include financial-skills content.",
+   "Open branches on every campus.",
+   "Offer high-interest loans to students.",
+   "Run TV adverts aimed at parents."
+  ],
+  "prompt_ar": "بنك يريد كسب عملاء شباب دون فتح فروع جديدة، والجامعات تريد تحسين المهارات المالية لطلابها. أي فكرة تخدم الهدفين؟",
+  "options_ar": [
+   "شراكة مع الجامعات لحسابات طلابية عبر التطبيق تتضمن محتوى للمهارات المالية.",
+   "فتح فروع في كل حرم جامعي.",
+   "تقديم قروض بفائدة عالية للطلاب.",
+   "إعلانات تلفزيونية موجهة للآباء."
+  ],
+  "answer": 0,
+  "explain_en": "It meets both partners' aims with no branch cost and responsible products.",
+  "explain_ar": "تحقق هدفي الطرفين بدون تكلفة فروع وبمنتجات مسؤولة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0023",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "clv-cog-carpark-night",
+  "prompt_en": "A retail chain's large car parks are empty every night. Which idea earns income from them with little investment?",
+  "options_en": [
+   "Build more car parks.",
+   "Host licensed night markets and offer paid electric-vehicle charging.",
+   "Fence them off at night.",
+   "Pave them in a new colour."
+  ],
+  "prompt_ar": "مواقف السيارات الكبيرة لسلسلة متاجر تكون فارغة كل ليلة. أي فكرة تحقق دخلًا منها باستثمار قليل؟",
+  "options_ar": [
+   "بناء مواقف إضافية.",
+   "استضافة أسواق ليلية مرخصة وتقديم شحن مدفوع للسيارات الكهربائية.",
+   "تسويرها ليلًا.",
+   "رصفها بلون جديد."
+  ],
+  "answer": 1,
+  "explain_en": "It uses idle space at night for new income streams.",
+  "explain_ar": "تستغل المساحة غير المستخدمة ليلًا في مصادر دخل جديدة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0024",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-cog-prefab-rainy-season",
+  "prompt_en": "A construction firm loses about three months a year when heavy rain stops outdoor work. Which idea makes that time productive?",
+  "options_en": [
+   "Lay off staff every rainy season.",
+   "Make prefabricated building parts indoors during the rainy season for later sites.",
+   "Work outdoors in the rain anyway.",
+   "Raise prices to cover idle time."
+  ],
+  "prompt_ar": "شركة مقاولات تخسر حوالي ثلاثة أشهر سنويًا عندما يوقف المطر الغزير العمل الخارجي. أي فكرة تجعل هذا الوقت منتجًا؟",
+  "options_ar": [
+   "الاستغناء عن الموظفين كل موسم مطر.",
+   "تصنيع أجزاء مبانٍ جاهزة داخل الورش في موسم المطر لاستخدامها لاحقًا في المواقع.",
+   "العمل في الخارج تحت المطر على أي حال.",
+   "رفع الأسعار لتغطية الوقت الضائع."
+  ],
+  "answer": 1,
+  "explain_en": "It shifts work indoors and speeds up later projects.",
+  "explain_ar": "تنقل العمل للداخل وتسرّع المشاريع اللاحقة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0025",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-cog-specialist-teletriage",
+  "prompt_en": "A hospital group has 10-week waits for specialists. Many visits end with advice that did not need an in-person exam. Which idea cuts waits fastest without new specialists?",
+  "options_en": [
+   "Add short video triage by specialists so only patients who need an exam are booked in person.",
+   "Build a new hospital.",
+   "Limit referrals to one per family.",
+   "Extend clinic hours only on weekends."
+  ],
+  "prompt_ar": "مجموعة مستشفيات فيها انتظار 10 أسابيع للأخصائيين، وكثير من الزيارات تنتهي بنصيحة لم تكن تحتاج فحصًا حضوريًا. أي فكرة تقلل الانتظار أسرع بدون أخصائيين جدد؟",
+  "options_ar": [
+   "إضافة فرز قصير بالفيديو يجريه الأخصائيون، فلا يُحجز حضوريًا إلا من يحتاج فحصًا.",
+   "بناء مستشفى جديد.",
+   "تحديد إحالة واحدة لكل أسرة.",
+   "تمديد ساعات العيادات في العطلات فقط."
+  ],
+  "answer": 0,
+  "explain_en": "It frees in-person slots by handling advice-only cases remotely.",
+  "explain_ar": "تحرر مواعيد الحضور بالتعامل مع حالات النصيحة فقط عن بُعد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0026",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 10,
+  "idea": "clv-cog-internal-tool-spinout",
+  "prompt_en": "Clients keep asking to buy an internal planning tool your team built. It is not part of your core business. Which idea captures the value best while protecting the core?",
+  "options_en": [
+   "Give it to clients for free.",
+   "Refuse every request.",
+   "Spin the tool out as a separate product unit with its own team and pricing.",
+   "Make the whole company focus on the tool."
+  ],
+  "prompt_ar": "العملاء يطلبون باستمرار شراء أداة تخطيط داخلية بناها فريقك، وهي ليست جزءًا من نشاطك الأساسي. أي فكرة تحقق القيمة أفضل مع حماية النشاط الأساسي؟",
+  "options_ar": [
+   "إعطاؤها للعملاء مجانًا.",
+   "رفض كل الطلبات.",
+   "فصل الأداة كوحدة منتج مستقلة بفريق وتسعير خاص بها.",
+   "تحويل تركيز الشركة كلها إلى الأداة."
+  ],
+  "answer": 2,
+  "explain_en": "A separate unit captures demand without distracting the core business.",
+  "explain_ar": "الوحدة المستقلة تستفيد من الطلب دون تشتيت النشاط الأساسي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0027",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "clv-cog-rule-switch-last-digit",
+  "prompt_en": "Numbers were first grouped as odd or even. The rule changes: group by whether the last digit is greater than 5. Under the new rule, which number goes with 47?",
+  "options_en": [
+   "41",
+   "52",
+   "60",
+   "38"
+  ],
+  "prompt_ar": "جُمعت الأرقام أولًا حسب كونها فردية أو زوجية. تغيرت القاعدة: الجمع حسب كون آخر رقم فيها أكبر من 5. حسب القاعدة الجديدة، أي رقم يوضع مع 47؟",
+  "options_ar": [
+   "41",
+   "52",
+   "60",
+   "38"
+  ],
+  "answer": 3,
+  "explain_en": "47 ends in 7 (> 5); only 38 ends in a digit above 5. 41 matches only the old odd rule.",
+  "explain_ar": "47 آخره 7 (أكبر من 5)، و38 وحده آخره أكبر من 5. أما 41 فيناسب قاعدة الفردي القديمة فقط.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0028",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 9,
+  "idea": "clv-cog-conditional-sequence",
+  "prompt_en": "Rule: if the last number is greater than 10, subtract 4; otherwise multiply by 3. Starting at 2: 2, 6, 18, 14, 10, ... What comes next?",
+  "options_en": [
+   "6",
+   "14",
+   "26",
+   "30"
+  ],
+  "prompt_ar": "القاعدة: إذا كان الرقم الأخير أكبر من 10 اطرح 4، وإلا اضربه في 3. بدءًا من 2: 2، 6، 18، 14، 10، ... ما الرقم التالي؟",
+  "options_ar": [
+   "6",
+   "14",
+   "26",
+   "30"
+  ],
+  "answer": 3,
+  "explain_en": "10 is not greater than 10, so multiply by 3: 30.",
+  "explain_ar": "10 ليس أكبر من 10، فنضرب في 3: 30.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "10*3"
+ },
+ {
+  "id": "T-CLV-MCA-0029",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 8,
+  "idea": "clv-cog-meeting-availability-holiday",
+  "prompt_en": "A meeting needs the CFO (free Monday and Wednesday), Legal (free Tuesday, Wednesday and Thursday) and the CEO (free Wednesday and Thursday). Wednesday has just become a public holiday. Which day this week works?",
+  "options_en": [
+   "Thursday",
+   "Monday",
+   "Tuesday",
+   "No day works; the meeting must move or someone must send a delegate."
+  ],
+  "prompt_ar": "اجتماع يحتاج المدير المالي (متاح الاثنين والأربعاء)، والشؤون القانونية (متاحة الثلاثاء والأربعاء والخميس)، والرئيس التنفيذي (متاح الأربعاء والخميس). أصبح الأربعاء للتو عطلة رسمية. أي يوم هذا الأسبوع يصلح؟",
+  "options_ar": [
+   "الخميس",
+   "الاثنين",
+   "الثلاثاء",
+   "لا يوجد يوم مناسب، ويجب نقل الاجتماع أو إرسال أحدهم من ينوب عنه."
+  ],
+  "answer": 3,
+  "explain_en": "Wednesday was the only common day; without it no day has all three.",
+  "explain_ar": "الأربعاء كان اليوم المشترك الوحيد، وبدونه لا يوجد يوم يجمع الثلاثة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0030",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "clv-cog-rerank-by-profit",
+  "prompt_en": "Products were ranked by revenue: A (revenue 100, cost 80), C (revenue 90, cost 60), B (revenue 70, cost 30). The rule changes: rank by profit (revenue minus cost). Which product is now first?",
+  "options_en": [
+   "B",
+   "A",
+   "C",
+   "A and C tie"
+  ],
+  "prompt_ar": "كانت المنتجات مرتبة حسب الإيرادات: A (إيرادات 100، تكلفة 80)، C (إيرادات 90، تكلفة 60)، B (إيرادات 70، تكلفة 30). تغيرت القاعدة: الترتيب حسب الربح (الإيرادات ناقص التكلفة). أي منتج أصبح الأول؟",
+  "options_ar": [
+   "B",
+   "A",
+   "C",
+   "A وC متساويان"
+  ],
+  "answer": 0,
+  "explain_en": "Profits: A 20, C 30, B 40.",
+  "explain_ar": "الأرباح: A عشرون، C ثلاثون، B أربعون.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0031",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-cog-demand-collapse",
+  "prompt_en": "Demand for your core service suddenly falls 60%, and no one knows for how long. What is the best response?",
+  "options_en": [
+   "Keep operating exactly as before.",
+   "Protect cash, redeploy capacity to areas where demand exists, and plan several recovery scenarios.",
+   "Close the company.",
+   "Invest heavily in expanding the core service now."
+  ],
+  "prompt_ar": "الطلب على خدمتك الأساسية انخفض فجأة 60%، ولا أحد يعرف إلى متى. ما أفضل استجابة؟",
+  "options_ar": [
+   "الاستمرار تمامًا كما كان.",
+   "حماية السيولة، وتوجيه الطاقة لمجالات فيها طلب، والتخطيط لعدة سيناريوهات للتعافي.",
+   "إغلاق الشركة.",
+   "الاستثمار بقوة في توسيع الخدمة الأساسية الآن."
+  ],
+  "answer": 1,
+  "explain_en": "It secures survival and stays ready for different recovery paths.",
+  "explain_ar": "تضمن البقاء وتبقى مستعدة لمسارات تعافٍ مختلفة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0032",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-cog-regulation-reversed",
+  "prompt_en": "Your three-year strategy was built on a subsidy that the government has just cancelled. What is the best response?",
+  "options_en": [
+   "Continue as planned and lobby later.",
+   "Abandon every part of the strategy.",
+   "Wait a year to see if the subsidy returns.",
+   "Reassess the strategy quickly using scenarios and redirect investments that depended on the subsidy."
+  ],
+  "prompt_ar": "استراتيجيتك لثلاث سنوات بُنيت على دعم حكومي أُلغي للتو. ما أفضل استجابة؟",
+  "options_ar": [
+   "الاستمرار كما هو مخطط ثم الضغط لاحقًا.",
+   "التخلي عن كل أجزاء الاستراتيجية.",
+   "الانتظار سنة لعل الدعم يعود.",
+   "إعادة تقييم الاستراتيجية سريعًا بالسيناريوهات وإعادة توجيه الاستثمارات التي كانت تعتمد على الدعم."
+  ],
+  "answer": 3,
+  "explain_en": "It adapts the parts that depended on the subsidy and keeps what still works.",
+  "explain_ar": "تعدل الأجزاء المعتمدة على الدعم وتحتفظ بما يظل صالحًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0033",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "clv-cog-new-exec-style",
+  "prompt_en": "A new executive joins your leadership team with a very different working style, and meetings have become tense. What is the best step?",
+  "options_en": [
+   "Ask the new executive to copy everyone else.",
+   "Agree explicit team norms for decisions and debate together.",
+   "Avoid meetings with the new executive.",
+   "Let the tension resolve itself."
+  ],
+  "prompt_ar": "انضم مسؤول تنفيذي جديد لفريق القيادة بأسلوب عمل مختلف جدًا، وأصبحت الاجتماعات متوترة. ما أفضل خطوة؟",
+  "options_ar": [
+   "مطالبة المسؤول الجديد بتقليد الجميع.",
+   "الاتفاق معًا على قواعد واضحة للفريق في اتخاذ القرار والنقاش.",
+   "تجنب الاجتماعات معه.",
+   "ترك التوتر يُحل وحده."
+  ],
+  "answer": 1,
+  "explain_en": "Shared norms let different styles work together.",
+  "explain_ar": "القواعد المشتركة تسمح للأساليب المختلفة بالعمل معًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0034",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 10,
+  "idea": "clv-cog-disruptive-model",
+  "prompt_en": "A new technology lets start-ups offer your service at a third of the cost through a different business model. Your current model is still very profitable. What is the best response?",
+  "options_en": [
+   "Ignore the start-ups because current profits are high.",
+   "Shut down the current business and switch overnight.",
+   "Build a separate unit to pursue the new model while the core business continues.",
+   "Sue the start-ups."
+  ],
+  "prompt_ar": "تقنية جديدة تسمح لشركات ناشئة بتقديم خدمتك بثلث التكلفة عبر نموذج عمل مختلف. نموذجك الحالي ما زال مربحًا جدًا. ما أفضل استجابة؟",
+  "options_ar": [
+   "تجاهل الشركات الناشئة لأن الأرباح الحالية مرتفعة.",
+   "إغلاق النشاط الحالي والتحول في ليلة.",
+   "بناء وحدة منفصلة لتبني النموذج الجديد مع استمرار النشاط الأساسي.",
+   "مقاضاة الشركات الناشئة."
+  ],
+  "answer": 2,
+  "explain_en": "A separate unit can learn the new model without being smothered by the core.",
+  "explain_ar": "الوحدة المنفصلة تستطيع تعلم النموذج الجديد دون أن يخنقها النشاط الأساسي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0035",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-cog-partner-merges-competitor",
+  "prompt_en": "Your main distribution partner announces a merger with your biggest competitor. What should you do first?",
+  "options_en": [
+   "Reassess the partnership, protect confidential information, and start exploring alternatives.",
+   "Share your plans with the partner as usual.",
+   "End the partnership publicly today.",
+   "Do nothing until the merger closes."
+  ],
+  "prompt_ar": "شريك التوزيع الرئيسي أعلن اندماجه مع أكبر منافسيك. ماذا تفعل أولًا؟",
+  "options_ar": [
+   "إعادة تقييم الشراكة، وحماية المعلومات السرية، والبدء في استكشاف البدائل.",
+   "مشاركة خططك مع الشريك كالمعتاد.",
+   "إنهاء الشراكة علنًا اليوم.",
+   "عدم فعل شيء حتى يتم الاندماج."
+  ],
+  "answer": 0,
+  "explain_en": "It manages the new risk calmly while keeping options open.",
+  "explain_ar": "تدير الخطر الجديد بهدوء مع إبقاء الخيارات مفتوحة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0036",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-cog-lower-risk-appetite",
+  "prompt_en": "The board lowers the company's risk appetite after a bad year. Your portfolio includes several high-risk ventures. What is the best response?",
+  "options_en": [
+   "Keep all ventures and ignore the change.",
+   "Close every venture immediately.",
+   "Rebalance the portfolio to fit the new appetite, keeping only ventures with strong cases and limits.",
+   "Hide the high-risk ventures in other budgets."
+  ],
+  "prompt_ar": "خفّض المجلس مستوى قبول المخاطر بعد سنة سيئة، ومحفظتك فيها عدة مشاريع عالية المخاطر. ما أفضل استجابة؟",
+  "options_ar": [
+   "الإبقاء على كل المشاريع وتجاهل التغيير.",
+   "إغلاق كل المشاريع فورًا.",
+   "إعادة موازنة المحفظة لتناسب المستوى الجديد، والإبقاء فقط على المشاريع ذات المبررات القوية مع حدود واضحة.",
+   "إخفاء المشاريع عالية المخاطر في ميزانيات أخرى."
+  ],
+  "answer": 2,
+  "explain_en": "It follows the board's direction while keeping the best opportunities.",
+  "explain_ar": "تلتزم بتوجه المجلس مع الحفاظ على أفضل الفرص.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0037",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-cog-project-assumption-invalid",
+  "prompt_en": "Halfway through a large programme, research shows customers now want a different feature set from the one being built. What is the best response?",
+  "options_en": [
+   "Hold a formal review and reshape the remaining scope to the new needs.",
+   "Finish as planned because half is done.",
+   "Stop and write everything off.",
+   "Quietly add features without changing the plan."
+  ],
+  "prompt_ar": "في منتصف برنامج كبير، أظهرت الأبحاث أن العملاء أصبحوا يريدون خصائص مختلفة عما يتم بناؤه. ما أفضل استجابة؟",
+  "options_ar": [
+   "عقد مراجعة رسمية وإعادة تشكيل النطاق المتبقي حسب الاحتياجات الجديدة.",
+   "الإكمال كما هو مخطط لأن النصف انتهى.",
+   "التوقف وشطب كل شيء.",
+   "إضافة خصائص بهدوء دون تغيير الخطة."
+  ],
+  "answer": 0,
+  "explain_en": "A formal reset uses what is built and aims the rest at real demand.",
+  "explain_ar": "المراجعة الرسمية تستفيد مما بُني وتوجه الباقي للطلب الحقيقي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0038",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 10,
+  "idea": "clv-cog-currency-devaluation",
+  "prompt_en": "The currency of a key market falls 30% in a week. You sell there in local currency but buy inputs in US dollars. What is the best response?",
+  "options_en": [
+   "Exit the market immediately.",
+   "Review local pricing, hedge future exposure, and shift costs to local sources where possible.",
+   "Keep everything unchanged.",
+   "Raise local prices by 100%."
+  ],
+  "prompt_ar": "انخفضت عملة سوق رئيسي 30% خلال أسبوع. أنت تبيع هناك بالعملة المحلية وتشتري المدخلات بالدولار. ما أفضل استجابة؟",
+  "options_ar": [
+   "الخروج من السوق فورًا.",
+   "مراجعة الأسعار المحلية، والتحوط للمخاطر المستقبلية، ونقل التكاليف لمصادر محلية حيث أمكن.",
+   "إبقاء كل شيء كما هو.",
+   "رفع الأسعار المحلية 100%."
+  ],
+  "answer": 1,
+  "explain_en": "It addresses price, financial exposure and cost structure together.",
+  "explain_ar": "تعالج السعر والانكشاف المالي وهيكل التكاليف معًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0039",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 8,
+  "idea": "clv-cog-sjt-chair-public-criticism",
+  "prompt_en": "The chair criticises your report sharply in front of the full board. Some points are fair. What is the most effective response?",
+  "options_en": [
+   "Respond calmly to the substance, accept the fair points, and follow up privately with the chair.",
+   "Argue back forcefully in the meeting.",
+   "Stay silent and say nothing afterwards.",
+   "Complain about the chair to other directors."
+  ],
+  "prompt_ar": "انتقد رئيس المجلس تقريرك بحدة أمام المجلس كاملًا، وبعض النقاط منصفة. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "الرد بهدوء على المضمون، وقبول النقاط المنصفة، والمتابعة مع الرئيس على انفراد.",
+   "الرد بقوة في الاجتماع.",
+   "السكوت وعدم قول شيء بعدها.",
+   "الشكوى من الرئيس لأعضاء آخرين."
+  ],
+  "answer": 0,
+  "explain_en": "It keeps composure, shows openness and repairs the relationship.",
+  "explain_ar": "يحافظ على الهدوء، ويظهر الانفتاح، ويصلح العلاقة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0040",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 7,
+  "idea": "clv-cog-sjt-report-disagrees-openly",
+  "prompt_en": "A high-performing direct report openly disagrees with your decision in a team meeting. What is the most effective response?",
+  "options_en": [
+   "Shut down the disagreement firmly.",
+   "Reverse the decision on the spot.",
+   "Acknowledge the view, discuss it afterwards, explain your reasoning, and change course if their point is valid.",
+   "Remove them from the next project."
+  ],
+  "prompt_ar": "أحد مرؤوسيك المتميزين اعترض علنًا على قرارك في اجتماع الفريق. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "إسكات الاعتراض بحزم.",
+   "التراجع عن القرار فورًا.",
+   "الإقرار برأيه، ومناقشته بعد الاجتماع، وشرح أسبابك، وتغيير المسار إذا كانت وجهة نظره صحيحة.",
+   "استبعاده من المشروع القادم."
+  ],
+  "answer": 2,
+  "explain_en": "It values challenge without letting the meeting become a contest.",
+  "explain_ar": "يقدّر الاعتراض دون تحويل الاجتماع إلى صراع.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0041",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 9,
+  "idea": "clv-cog-sjt-own-strategy-failing",
+  "prompt_en": "A strategy you championed is clearly not working. The board has not noticed yet. What is the most effective response?",
+  "options_en": [
+   "Wait until it improves.",
+   "Present only the positive figures.",
+   "Raise it with the board early, with an honest assessment and options.",
+   "Blame the team running it."
+  ],
+  "prompt_ar": "استراتيجية دافعت عنها لا تنجح بوضوح، والمجلس لم يلاحظ بعد. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "الانتظار حتى تتحسن.",
+   "عرض الأرقام الإيجابية فقط.",
+   "عرض الأمر على المجلس مبكرًا بتقييم صادق وخيارات.",
+   "لوم الفريق المنفذ."
+  ],
+  "answer": 2,
+  "explain_en": "Early candour lets the board act while options remain.",
+  "explain_ar": "الصراحة المبكرة تتيح للمجلس التصرف ما دامت الخيارات متاحة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0042",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 8,
+  "idea": "clv-cog-sjt-exec-turf-war",
+  "prompt_en": "Two of your executives keep clashing over who owns customer data decisions. Work is getting blocked. What is the most effective response?",
+  "options_en": [
+   "Define decision rights clearly and communicate them to both and their teams.",
+   "Let them fight it out.",
+   "Take every data decision yourself from now on.",
+   "Replace both executives."
+  ],
+  "prompt_ar": "اثنان من المسؤولين التنفيذيين لديك يتصارعان باستمرار حول من يملك قرارات بيانات العملاء، والعمل يتعطل. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "تحديد صلاحيات القرار بوضوح وإبلاغها لهما ولفريقيهما.",
+   "تركهما يتصارعان حتى يحسماها.",
+   "اتخاذ كل قرارات البيانات بنفسك من الآن.",
+   "استبدال الاثنين."
+  ],
+  "answer": 0,
+  "explain_en": "Clear decision rights remove the cause of the conflict.",
+  "explain_ar": "الصلاحيات الواضحة تزيل سبب الخلاف.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0043",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 7,
+  "idea": "clv-cog-sjt-angry-client-ceo",
+  "prompt_en": "The CEO of a major client calls you, angry about a serious service failure. What is the most effective response?",
+  "options_en": [
+   "Explain why it was not your company's fault.",
+   "Pass the call to customer service.",
+   "Offer a discount before hearing the details.",
+   "Listen fully, take responsibility, commit to specific actions, and follow up personally."
+  ],
+  "prompt_ar": "الرئيس التنفيذي لعميل كبير اتصل بك غاضبًا بسبب خلل خطير في الخدمة. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "شرح لماذا لم يكن الخطأ من شركتك.",
+   "تحويل المكالمة لخدمة العملاء.",
+   "عرض خصم قبل سماع التفاصيل.",
+   "الاستماع كاملًا، وتحمل المسؤولية، والالتزام بإجراءات محددة، والمتابعة شخصيًا."
+  ],
+  "answer": 3,
+  "explain_en": "Ownership and specific follow-through rebuild trust at the top.",
+  "explain_ar": "تحمل المسؤولية والمتابعة المحددة يعيدان بناء الثقة على أعلى مستوى.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0044",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 8,
+  "idea": "clv-cog-sjt-low-trust-survey",
+  "prompt_en": "An employee survey shows low trust in senior leadership. What is the most effective response?",
+  "options_en": [
+   "Keep the results private.",
+   "Share the results openly, commit to specific actions, and report progress regularly.",
+   "Question the survey's method.",
+   "Run the survey again until scores improve."
+  ],
+  "prompt_ar": "استبيان الموظفين أظهر ثقة منخفضة في القيادة العليا. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "إبقاء النتائج سرية.",
+   "مشاركة النتائج بشفافية، والالتزام بإجراءات محددة، وعرض التقدم بانتظام.",
+   "التشكيك في منهجية الاستبيان.",
+   "إعادة الاستبيان حتى تتحسن النتائج."
+  ],
+  "answer": 1,
+  "explain_en": "Openness and visible follow-through are what rebuild trust.",
+  "explain_ar": "الشفافية والمتابعة الواضحة هما ما يعيد بناء الثقة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0045",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 9,
+  "idea": "clv-cog-sjt-cost-cut-impossible",
+  "prompt_en": "The board asks for a 15% cost cut within three months. Your leadership team says it is impossible. What is the most effective response?",
+  "options_en": [
+   "Impose equal cuts on every team without discussion.",
+   "Tell the board it cannot be done.",
+   "Explain the constraint, then build the plan with the team, prioritising the largest and safest savings.",
+   "Delay until the next budget cycle."
+  ],
+  "prompt_ar": "طلب المجلس خفض التكاليف 15% خلال ثلاثة أشهر، وفريق القيادة يقول إن ذلك مستحيل. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "فرض تخفيضات متساوية على كل الفرق دون نقاش.",
+   "إبلاغ المجلس أن ذلك مستحيل.",
+   "شرح القيد، ثم بناء الخطة مع الفريق مع البدء بأكبر الوفورات وأكثرها أمانًا.",
+   "التأجيل حتى دورة الميزانية القادمة."
+  ],
+  "answer": 2,
+  "explain_en": "Co-creating the plan builds ownership and finds smarter savings.",
+  "explain_ar": "بناء الخطة بالمشاركة يولد الالتزام ويكشف وفورات أذكى.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0046",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 10,
+  "idea": "clv-cog-sjt-price-fixing-approach",
+  "prompt_en": "At an industry event, a competitor's CEO suggests informally that your companies \"keep prices aligned.\" What is the most effective response?",
+  "options_en": [
+   "Refuse clearly, end the discussion, and record it with your legal team.",
+   "Agree informally but put nothing in writing.",
+   "Say you will think about it.",
+   "Laugh it off and move on without recording it."
+  ],
+  "prompt_ar": "في فعالية للقطاع، اقترح رئيس تنفيذي لشركة منافسة بشكل غير رسمي أن \"نحافظ على تقارب الأسعار\". ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "الرفض الواضح، وإنهاء الحديث، وتوثيقه مع الإدارة القانونية.",
+   "الموافقة شفهيًا دون كتابة شيء.",
+   "القول إنك ستفكر في الأمر.",
+   "الضحك وتجاوز الأمر دون توثيق."
+  ],
+  "answer": 0,
+  "explain_en": "Price alignment between competitors is illegal; a clear refusal and record protect the company.",
+  "explain_ar": "تنسيق الأسعار بين المنافسين مخالف للقانون، والرفض الواضح مع التوثيق يحمي الشركة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0047",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 8,
+  "idea": "clv-cog-sjt-bad-regulation",
+  "prompt_en": "A proposed regulation would raise costs for your whole industry, and you think it is poorly designed. What is the most effective response?",
+  "options_en": [
+   "Publicly attack the regulator.",
+   "Engage constructively in the consultation with evidence, while preparing to comply.",
+   "Ignore it and hope it fails.",
+   "Plan to avoid complying."
+  ],
+  "prompt_ar": "لائحة مقترحة سترفع التكاليف على قطاعك كله، وتراها سيئة التصميم. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "مهاجمة الجهة الرقابية علنًا.",
+   "المشاركة البناءة في الاستشارة العامة بالأدلة مع الاستعداد للالتزام.",
+   "تجاهلها على أمل أن تفشل.",
+   "التخطيط لعدم الالتزام."
+  ],
+  "answer": 1,
+  "explain_en": "Evidence-based input can improve the rule, and preparation avoids risk if it passes.",
+  "explain_ar": "المساهمة بالأدلة قد تحسن اللائحة، والاستعداد يجنب المخاطر إذا أُقرت.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0048",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 9,
+  "idea": "clv-cog-sjt-unknown-mistake",
+  "prompt_en": "Your company made a billing error that overcharged some customers. No one outside has noticed yet. What is the most effective response?",
+  "options_en": [
+   "Fix it quietly and keep the extra money.",
+   "Wait to see if anyone complains.",
+   "Fix it, refund affected customers proactively, and tell them openly.",
+   "Refund only customers who complain."
+  ],
+  "prompt_ar": "شركتك ارتكبت خطأ في الفوترة حمّل بعض العملاء مبالغ زائدة، ولم يلاحظ أحد من الخارج بعد. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "إصلاحه بهدوء والاحتفاظ بالمبالغ الزائدة.",
+   "الانتظار لمعرفة هل سيشتكي أحد.",
+   "إصلاح الخطأ، ورد المبالغ للعملاء المتأثرين بمبادرة منك، وإبلاغهم بشفافية.",
+   "رد المبالغ فقط لمن يشتكي."
+  ],
+  "answer": 2,
+  "explain_en": "Proactive correction is the ethical and trust-building choice.",
+  "explain_ar": "التصحيح بالمبادرة هو الخيار الأخلاقي الذي يبني الثقة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0049",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 8,
+  "idea": "clv-cog-sjt-loyal-exec-misfit",
+  "prompt_en": "A loyal, long-serving executive no longer fits the skills the new strategy needs. What is the most effective response?",
+  "options_en": [
+   "Keep them in the role and work around them.",
+   "Have a candid, respectful conversation and explore a better-fitting role or a dignified exit.",
+   "Remove them without explanation.",
+   "Wait for them to resign."
+  ],
+  "prompt_ar": "مسؤول تنفيذي مخلص وقديم لم تعد مهاراته تناسب ما تحتاجه الاستراتيجية الجديدة. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "إبقاؤه في دوره والعمل من حوله.",
+   "حديث صريح ومحترم واستكشاف دور أنسب أو خروج كريم.",
+   "إقالته دون توضيح.",
+   "انتظار استقالته."
+  ],
+  "answer": 1,
+  "explain_en": "It is honest, respects their service and serves the strategy.",
+  "explain_ar": "صريح، ويحترم خدمته، ويخدم الاستراتيجية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MCA-0050",
+  "exam": "c-level-cognitive-assessment",
+  "level": "c-level",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 7,
+  "idea": "clv-cog-sjt-project-rejected",
+  "prompt_en": "The board rejects a project you strongly backed. What is the most effective response?",
+  "options_en": [
+   "Keep pushing it in every meeting.",
+   "Start the project anyway with a smaller budget.",
+   "Tell your team the board made a mistake.",
+   "Accept the decision, understand the reasons, and move on, revisiting it only if new facts arise."
+  ],
+  "prompt_ar": "رفض المجلس مشروعًا دعمته بقوة. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "الاستمرار في الدفع به في كل اجتماع.",
+   "بدء المشروع رغم ذلك بميزانية أصغر.",
+   "إخبار فريقك أن المجلس أخطأ.",
+   "قبول القرار، وفهم أسبابه، والمضي قدمًا، وعدم إعادة طرحه إلا إذا ظهرت حقائق جديدة."
+  ],
+  "answer": 3,
+  "explain_en": "It respects governance while leaving room for new evidence.",
+  "explain_ar": "يحترم الحوكمة ويترك مجالًا للأدلة الجديدة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ }
+]

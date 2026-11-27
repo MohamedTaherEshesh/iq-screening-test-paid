@@ -1,0 +1,1410 @@
+[
+ {
+  "id": "T-CLV-MRS-0001",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 8,
+  "idea": "clv-mp-pyrrhic-victory",
+  "prompt_en": "\"Winning the price war turned out to be a pyrrhic victory.\" What does this mean?",
+  "options_en": [
+   "The win cost so much that it was hardly worth it.",
+   "The win was easy and cheap.",
+   "The win was later reversed by a court.",
+   "The win came from a new product."
+  ],
+  "prompt_ar": "\"تبيّن أن الفوز في حرب الأسعار كان انتصارًا باهظ الثمن.\" ماذا تعني العبارة؟",
+  "options_ar": [
+   "الفوز كلّف كثيرًا لدرجة أنه لم يكن يستحق.",
+   "الفوز كان سهلًا ورخيصًا.",
+   "الفوز أُلغي لاحقًا بحكم قضائي.",
+   "الفوز جاء من منتج جديد."
+  ],
+  "answer": 0,
+  "explain_en": "A pyrrhic victory is a win whose cost outweighs its benefit.",
+  "explain_ar": "الانتصار باهظ الثمن هو فوز تكلفته أكبر من فائدته.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0002",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-mp-board-seat-threshold",
+  "prompt_en": "Investment agreement: \"The investor may appoint one board member for as long as it holds at least 10% of the shares.\" After a new funding round, the investor's stake falls to 8%. What happens to its right?",
+  "options_en": [
+   "The right continues because it was granted earlier.",
+   "The investor may now appoint two members.",
+   "The right to appoint a board member no longer applies.",
+   "The right applies only at the next annual meeting."
+  ],
+  "prompt_ar": "اتفاقية استثمار: \"يحق للمستثمر تعيين عضو واحد في مجلس الإدارة طالما يملك 10% على الأقل من الأسهم.\" بعد جولة تمويل جديدة انخفضت حصته إلى 8%. ماذا يحدث لحقه؟",
+  "options_ar": [
+   "الحق مستمر لأنه مُنح سابقًا.",
+   "يحق للمستثمر الآن تعيين عضوين.",
+   "حق تعيين عضو في المجلس لم يعد قائمًا.",
+   "الحق يُطبق فقط في الاجتماع السنوي القادم."
+  ],
+  "answer": 2,
+  "explain_en": "'For as long as' ties the right to keeping 10%; at 8% it lapses.",
+  "explain_ar": "'طالما' تربط الحق بالاحتفاظ بنسبة 10%، وعند 8% يسقط الحق.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0003",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-mp-forward-looking-statement",
+  "prompt_en": "A shareholder letter contains these sentences. Which is a forward-looking statement that should carry a risk disclaimer?",
+  "options_en": [
+   "\"Revenue for the year was SAR 1.4 billion.\"",
+   "\"We opened 12 new branches during the year.\"",
+   "\"Net debt at year end was SAR 300 million.\"",
+   "\"We expect operating margin to reach 20% by 2028.\""
+  ],
+  "prompt_ar": "خطاب للمساهمين يتضمن الجمل التالية. أيها بيان مستقبلي يجب أن يصاحبه تنبيه بالمخاطر؟",
+  "options_ar": [
+   "\"بلغت إيرادات العام 1.4 مليار ريال.\"",
+   "\"افتتحنا 12 فرعًا جديدًا خلال العام.\"",
+   "\"صافي الدين في نهاية العام 300 مليون ريال.\"",
+   "\"نتوقع أن يصل هامش التشغيل إلى 20% بحلول 2028.\""
+  ],
+  "answer": 3,
+  "explain_en": "Only this sentence predicts the future; the others report past results.",
+  "explain_ar": "هذه الجملة وحدها تتنبأ بالمستقبل، والباقي نتائج سابقة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0004",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-mp-board-summary-three-memos",
+  "prompt_en": "Before a board vote on an acquisition you have three memos. Legal: \"Permissible if disclosed to the market.\" Finance: \"Adds value only if synergies exceed SAR 40 million.\" Strategy: \"Fits our core business.\" Which summary to the board is accurate?",
+  "options_en": [
+   "All three functions fully support the deal.",
+   "The deal fits the strategy and is allowed with disclosure, but creates value only if synergies exceed SAR 40 million.",
+   "Legal has blocked the deal.",
+   "The deal creates value whatever the synergies."
+  ],
+  "prompt_ar": "قبل تصويت المجلس على استحواذ لديك ثلاث مذكرات. القانونية: \"مسموح إذا تم الإفصاح للسوق.\" المالية: \"يضيف قيمة فقط إذا تجاوز التآزر 40 مليون ريال.\" الاستراتيجية: \"يتناسب مع نشاطنا الأساسي.\" أي ملخص للمجلس دقيق؟",
+  "options_ar": [
+   "الإدارات الثلاث تدعم الصفقة دعمًا كاملًا.",
+   "الصفقة تتناسب مع الاستراتيجية ومسموحة مع الإفصاح، لكنها تضيف قيمة فقط إذا تجاوز التآزر 40 مليون ريال.",
+   "القانونية منعت الصفقة.",
+   "الصفقة تضيف قيمة مهما كان التآزر."
+  ],
+  "answer": 1,
+  "explain_en": "It keeps each memo's condition instead of dropping or overstating it.",
+  "explain_ar": "يحافظ على شرط كل مذكرة دون حذفه أو المبالغة فيه.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0005",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-recall-statement",
+  "prompt_en": "Tests found contamination in batch 112 of a product. Other batches tested so far are clean, and testing continues. Which public statement is accurate and appropriate?",
+  "options_en": [
+   "\"All our products are 100% safe.\"",
+   "\"We are recalling batch 112 as a precaution. Testing to date has found no issue in other batches, and we will update as results come in.\"",
+   "\"There is no problem with any batch.\"",
+   "\"We are recalling all products made in the last five years.\""
+  ],
+  "prompt_ar": "كشفت الاختبارات تلوثًا في التشغيلة 112 من منتج. التشغيلات الأخرى التي اختُبرت حتى الآن سليمة، والاختبارات مستمرة. أي بيان علني دقيق ومناسب؟",
+  "options_ar": [
+   "\"كل منتجاتنا آمنة 100%.\"",
+   "\"نسحب التشغيلة 112 احترازيًا. الاختبارات حتى الآن لم تجد مشكلة في التشغيلات الأخرى، وسنعلن التحديثات مع ظهور النتائج.\"",
+   "\"لا توجد مشكلة في أي تشغيلة.\"",
+   "\"نسحب كل المنتجات المصنعة في آخر خمس سنوات.\""
+  ],
+  "answer": 1,
+  "explain_en": "It states only what is known, takes action, and commits to updates without overclaiming.",
+  "explain_ar": "يذكر المعروف فقط، ويتخذ إجراء، ويلتزم بالتحديث دون مبالغة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0006",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "verbal",
+  "format": 3,
+  "difficulty": 10,
+  "idea": "clv-mp-negotiation-signal",
+  "prompt_en": "In a negotiation the other side says: \"We cannot go below 50 per unit unless the volume commitment changes.\" What does this most likely signal?",
+  "options_en": [
+   "A lower price may be possible in exchange for a larger volume commitment.",
+   "50 is their final price under any terms.",
+   "They want a smaller volume.",
+   "They are ending the negotiation."
+  ],
+  "prompt_ar": "في مفاوضة قال الطرف الآخر: \"لا نستطيع النزول تحت 50 للوحدة إلا إذا تغير الالتزام بالكميات.\" ماذا تشير هذه العبارة على الأرجح؟",
+  "options_ar": [
+   "قد يكون سعر أقل ممكنًا مقابل التزام بكميات أكبر.",
+   "50 هو السعر النهائي بأي شروط.",
+   "يريدون كمية أقل.",
+   "ينهون التفاوض."
+  ],
+  "answer": 0,
+  "explain_en": "'Unless the volume changes' opens a trade: price for volume.",
+  "explain_ar": "'إلا إذا تغيرت الكميات' تفتح بابًا للمقايضة: السعر مقابل الكمية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0007",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "numerical",
+  "format": 1,
+  "difficulty": 8,
+  "idea": "clv-mp-npv-three-years",
+  "prompt_en": "An investment of SAR 10 million returns SAR 4 million at the end of each of the next 3 years. At a 10% discount rate, what is its net present value, to two decimals?",
+  "options_en": [
+   "-0.05 million",
+   "+2.00 million",
+   "+0.95 million",
+   "-1.20 million"
+  ],
+  "prompt_ar": "استثمار بقيمة 10 ملايين ريال يعيد 4 ملايين ريال في نهاية كل سنة من السنوات الثلاث القادمة. بمعدل خصم 10%، ما صافي القيمة الحالية لأقرب رقمين عشريين؟",
+  "options_ar": [
+   "-0.05 مليون",
+   "+2.00 مليون",
+   "+0.95 مليون",
+   "-1.20 مليون"
+  ],
+  "answer": 0,
+  "explain_en": "4/1.1 + 4/1.21 + 4/1.331 = 9.95; 9.95 − 10 = −0.05.",
+  "explain_ar": "4/1.1 + 4/1.21 + 4/1.331 = 9.95، و9.95 − 10 = −0.05.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "round(4/1.1+4/1.1**2+4/1.1**3-10,2)"
+ },
+ {
+  "id": "T-CLV-MRS-0008",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-mp-equity-value-multiple",
+  "prompt_en": "A target company has EBITDA of SAR 30 million. Comparable deals are valued at 8 times EBITDA. The target has net debt of SAR 60 million. What is the implied equity value?",
+  "options_en": [
+   "SAR 180 million",
+   "SAR 240 million",
+   "SAR 300 million",
+   "SAR 210 million"
+  ],
+  "prompt_ar": "شركة مستهدفة أرباحها قبل الفوائد والضرائب والإهلاك (EBITDA) 30 مليون ريال. الصفقات المماثلة تُقيّم بـ 8 أضعاف EBITDA. صافي دين الشركة 60 مليون ريال. ما قيمة حقوق الملكية الضمنية؟",
+  "options_ar": [
+   "180 مليون ريال",
+   "240 مليون ريال",
+   "300 مليون ريال",
+   "210 ملايين ريال"
+  ],
+  "answer": 0,
+  "explain_en": "Enterprise value 30 × 8 = 240; minus net debt 60 = 180.",
+  "explain_ar": "قيمة المنشأة 30 × 8 = 240، ناقص صافي الدين 60 = 180.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "30*8-60"
+ },
+ {
+  "id": "T-CLV-MRS-0009",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-mp-dso-cash-release",
+  "prompt_en": "Annual revenue is SAR 365 million, earned evenly through the year. Days sales outstanding falls from 60 to 45 days. About how much cash is released?",
+  "options_en": [
+   "SAR 45 million",
+   "SAR 15 million",
+   "SAR 60 million",
+   "SAR 25 million"
+  ],
+  "prompt_ar": "الإيرادات السنوية 365 مليون ريال موزعة بالتساوي على السنة. انخفضت مدة التحصيل من 60 يومًا إلى 45 يومًا. كم تقريبًا من النقد يتم تحريره؟",
+  "options_ar": [
+   "45 مليون ريال",
+   "15 مليون ريال",
+   "60 مليون ريال",
+   "25 مليون ريال"
+  ],
+  "answer": 1,
+  "explain_en": "Daily revenue is SAR 1 million; 15 fewer days outstanding frees about 15 million.",
+  "explain_ar": "الإيراد اليومي مليون ريال، و15 يومًا أقل تحرر حوالي 15 مليونًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "365/365*15"
+ },
+ {
+  "id": "T-CLV-MRS-0010",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "numerical",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-upgrade-vs-outsource",
+  "prompt_en": "Over 6 years (ignore discounting): upgrading a plant costs SAR 50 million now and saves SAR 12 million a year. Outsourcing needs no investment and saves SAR 8 million a year. Which option is better, and by how much in net savings?",
+  "options_en": [
+   "Upgrading, by SAR 24 million",
+   "Upgrading, by SAR 22 million",
+   "Outsourcing, by SAR 26 million",
+   "They are equal"
+  ],
+  "prompt_ar": "على مدى 6 سنوات (بدون خصم): تحديث المصنع يكلف 50 مليون ريال الآن ويوفر 12 مليون ريال سنويًا. الاستعانة بمصدر خارجي لا تحتاج استثمارًا وتوفر 8 ملايين ريال سنويًا. أي خيار أفضل، وبكم في صافي التوفير؟",
+  "options_ar": [
+   "التحديث، بفارق 24 مليون ريال",
+   "التحديث، بفارق 22 مليون ريال",
+   "الاستعانة بمصدر خارجي، بفارق 26 مليون ريال",
+   "متساويان"
+  ],
+  "answer": 2,
+  "explain_en": "Upgrade: 72 − 50 = 22. Outsource: 48. Difference 26 in favour of outsourcing.",
+  "explain_ar": "التحديث: 72 − 50 = 22. الخارجي: 48. الفرق 26 لصالح الاستعانة بمصدر خارجي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "8*6-(12*6-50)"
+ },
+ {
+  "id": "T-CLV-MRS-0011",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "numerical",
+  "format": 3,
+  "difficulty": 10,
+  "idea": "clv-mp-price-rise-elasticity",
+  "prompt_en": "A product sells 1,000 units at SAR 100 with a unit cost of SAR 70. You raise the price by 10%, and volume falls by 15%. By what percentage does gross profit change?",
+  "options_en": [
+   "-5.0%",
+   "+13.3%",
+   "-15.0%",
+   "+10.0%"
+  ],
+  "prompt_ar": "منتج يبيع 1,000 وحدة بسعر 100 ريال وتكلفة الوحدة 70 ريالًا. رفعت السعر 10% فانخفض الحجم 15%. بأي نسبة يتغير إجمالي الربح؟",
+  "options_ar": [
+   "-5.0%",
+   "+13.3%",
+   "-15.0%",
+   "+10.0%"
+  ],
+  "answer": 1,
+  "explain_en": "Before: 30 × 1,000 = 30,000. After: 40 × 850 = 34,000. +4,000 / 30,000 = +13.3%.",
+  "explain_ar": "قبل: 30 × 1,000 = 30,000. بعد: 40 × 850 = 34,000. الزيادة 4,000 ÷ 30,000 = +13.3%.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "round(((110-70)*850-(100-70)*1000)/((100-70)*1000)*100,1)"
+ },
+ {
+  "id": "T-CLV-MRS-0012",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "numerical",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-capital-allocation-ev",
+  "prompt_en": "You have SAR 100 million. A: repay debt at 8% interest (saves SAR 8 million a year, certain). B: a project returning 12% a year if it succeeds, with a 30% chance it returns nothing. C: a share buyback with a 6% earnings yield. Which has the highest expected annual return, and what is it?",
+  "options_en": [
+   "A, SAR 8 million",
+   "B, SAR 12 million",
+   "C, SAR 6 million",
+   "B, about SAR 8.4 million"
+  ],
+  "prompt_ar": "لديك 100 مليون ريال. A: سداد دين بفائدة 8% (يوفر 8 ملايين سنويًا بشكل مؤكد). B: مشروع يعيد 12% سنويًا إذا نجح، مع احتمال 30% ألا يعيد شيئًا. C: إعادة شراء أسهم بعائد أرباح 6%. أي خيار له أعلى عائد سنوي متوقع، وكم هو؟",
+  "options_ar": [
+   "A، ثمانية ملايين ريال",
+   "B، اثنا عشر مليون ريال",
+   "C، ستة ملايين ريال",
+   "B، حوالي 8.4 مليون ريال"
+  ],
+  "answer": 3,
+  "explain_en": "B: 0.7 × 12 = 8.4, slightly above A's certain 8 and C's 6.",
+  "explain_ar": "B: 0.7 × 12 = 8.4، أعلى قليلًا من 8 المؤكدة في A و6 في C.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "0.7*12"
+ },
+ {
+  "id": "T-CLV-MRS-0013",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "logical",
+  "format": 1,
+  "difficulty": 8,
+  "idea": "clv-mp-nested-conditional",
+  "prompt_en": "\"If the deal closes, the CEO will stay only if the board is reconstituted.\" The CEO left, and the board was reconstituted. What can be concluded about the deal?",
+  "options_en": [
+   "Nothing certain; the facts are consistent with the deal closing or not.",
+   "The deal closed.",
+   "The deal did not close.",
+   "The board was not reconstituted."
+  ],
+  "prompt_ar": "\"إذا تمت الصفقة، سيبقى الرئيس التنفيذي فقط إذا أُعيد تشكيل المجلس.\" غادر الرئيس التنفيذي وأُعيد تشكيل المجلس. ماذا نستنتج عن الصفقة؟",
+  "options_ar": [
+   "لا شيء مؤكد، فالحقائق تتفق مع إتمام الصفقة أو عدمه.",
+   "الصفقة تمت.",
+   "الصفقة لم تتم.",
+   "المجلس لم يُعاد تشكيله."
+  ],
+  "answer": 0,
+  "explain_en": "The rule only limits when the CEO stays; a departure breaks no condition either way.",
+  "explain_ar": "القاعدة تحدد متى يبقى الرئيس فقط، ومغادرته لا تخالف أي شرط في الحالتين.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0014",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-mp-board-vote-rule",
+  "prompt_en": "A 7-member board passes a resolution with 5 votes in favour, or with 4 if the chair is among them. The chair and 3 others vote yes; 3 vote no. Does it pass?",
+  "options_en": [
+   "No, because 5 votes are needed.",
+   "No, because 3 voted against.",
+   "Yes, because 4 votes including the chair are enough.",
+   "Only if the chair has a casting vote."
+  ],
+  "prompt_ar": "مجلس من 7 أعضاء يمرر القرار بـ 5 أصوات مؤيدة، أو بـ 4 إذا كان الرئيس بينهم. الرئيس و3 آخرون صوتوا بنعم، و3 بلا. هل يمر القرار؟",
+  "options_ar": [
+   "لا، لأنه يحتاج 5 أصوات.",
+   "لا، لأن 3 صوتوا ضده.",
+   "نعم، لأن 4 أصوات منها الرئيس تكفي.",
+   "فقط إذا كان للرئيس صوت مرجح."
+  ],
+  "answer": 2,
+  "explain_en": "The second rule applies: 4 in favour with the chair.",
+  "explain_ar": "القاعدة الثانية تنطبق: 4 مؤيدون بينهم الرئيس.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0015",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-mp-initiative-quarters",
+  "prompt_en": "Four initiatives (ERP, Analytics, Pricing, Hiring) run one per quarter, Q1 to Q4. ERP comes before Analytics. Pricing is not in Q1. Hiring is in the quarter immediately before Pricing. Analytics is not in Q4. Which initiative is in Q3?",
+  "options_en": [
+   "Analytics",
+   "Pricing",
+   "Hiring",
+   "ERP"
+  ],
+  "prompt_ar": "أربع مبادرات (ERP، التحليلات، التسعير، التوظيف) تُنفذ واحدة في كل ربع من الربع الأول إلى الرابع. ERP قبل التحليلات. التسعير ليس في الربع الأول. التوظيف في الربع السابق للتسعير مباشرة. التحليلات ليست في الربع الرابع. ما المبادرة في الربع الثالث؟",
+  "options_ar": [
+   "التحليلات",
+   "التسعير",
+   "التوظيف",
+   "ERP"
+  ],
+  "answer": 2,
+  "explain_en": "The only valid order is ERP, Analytics, Hiring, Pricing.",
+  "explain_ar": "الترتيب الوحيد الصحيح: ERP، التحليلات، التوظيف، التسعير.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0016",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "logical",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-mp-market-entry-first-step",
+  "prompt_en": "To enter Country X: hiring local staff needs an operating licence; the licence application needs a signed local partnership; the board releases funding only after a partnership is signed. What must happen first?",
+  "options_en": [
+   "Apply for the licence",
+   "Hire local staff",
+   "Sign the local partnership",
+   "Release the funding"
+  ],
+  "prompt_ar": "لدخول الدولة X: توظيف موظفين محليين يحتاج رخصة تشغيل، وطلب الرخصة يحتاج شراكة محلية موقعة، والمجلس لا يصرف التمويل إلا بعد توقيع الشراكة. ما الذي يجب أن يحدث أولًا؟",
+  "options_ar": [
+   "التقدم بطلب الرخصة",
+   "توظيف الموظفين المحليين",
+   "توقيع الشراكة المحلية",
+   "صرف التمويل"
+  ],
+  "answer": 2,
+  "explain_en": "Every other step depends directly or indirectly on the partnership.",
+  "explain_ar": "كل خطوة أخرى تعتمد بشكل مباشر أو غير مباشر على الشراكة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0017",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "logical",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-bidders-contracts",
+  "prompt_en": "Three bidders (X, Y, Z) each win exactly one of three contracts: Cloud, Network, Security. X does not win Network. Z does not win Security. Y does not win Cloud. If Z wins Cloud, then Y wins Security. Who wins Network?",
+  "options_en": [
+   "X",
+   "Z",
+   "Y",
+   "It cannot be determined"
+  ],
+  "prompt_ar": "ثلاثة متقدمين (X وY وZ) يفوز كل منهم بعقد واحد من ثلاثة: السحابة والشبكات والأمن. X لا يفوز بالشبكات. Z لا يفوز بالأمن. Y لا يفوز بالسحابة. إذا فاز Z بالسحابة فإن Y يفوز بالأمن. من يفوز بالشبكات؟",
+  "options_ar": [
+   "X",
+   "Z",
+   "Y",
+   "لا يمكن التحديد"
+  ],
+  "answer": 1,
+  "explain_en": "The only valid assignment is X Cloud, Y Security, Z Network.",
+  "explain_ar": "التوزيع الوحيد الصحيح: X السحابة، Y الأمن، Z الشبكات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0018",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "logical",
+  "format": 3,
+  "difficulty": 10,
+  "idea": "clv-mp-deal-approval-routes",
+  "prompt_en": "Approval rules: deals above SAR 100 million need board approval; deals in regulated sectors need regulator approval; all deals need management approval. A SAR 80 million deal in a regulated sector is proposed. Which approvals are needed?",
+  "options_en": [
+   "Management, the board and the regulator",
+   "Management and the regulator",
+   "The board only",
+   "Management only"
+  ],
+  "prompt_ar": "قواعد الموافقة: الصفقات فوق 100 مليون ريال تحتاج موافقة المجلس، والصفقات في القطاعات المنظمة تحتاج موافقة الجهة الرقابية، وكل الصفقات تحتاج موافقة الإدارة. اقتُرحت صفقة بقيمة 80 مليون ريال في قطاع منظم. ما الموافقات المطلوبة؟",
+  "options_ar": [
+   "الإدارة والمجلس والجهة الرقابية",
+   "الإدارة والجهة الرقابية",
+   "المجلس فقط",
+   "الإدارة فقط"
+  ],
+  "answer": 1,
+  "explain_en": "80 million is below the board threshold; the sector triggers the regulator; management always applies.",
+  "explain_ar": "80 مليونًا أقل من حد المجلس، والقطاع يستلزم الجهة الرقابية، والإدارة مطلوبة دائمًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0019",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "logical",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-division-heads-misreport",
+  "prompt_en": "Exactly one of three divisions missed its target. The head of the division that missed is the only one who lies. Head A: \"B missed.\" Head B: \"C missed.\" Head C: \"A and I both hit our targets.\" Which division missed?",
+  "options_en": [
+   "B",
+   "A",
+   "C",
+   "It cannot be determined"
+  ],
+  "prompt_ar": "قسم واحد فقط من ثلاثة أقسام لم يحقق هدفه، ورئيس هذا القسم هو الوحيد الذي يكذب. الرئيس A: \"B لم يحقق الهدف.\" الرئيس B: \"C لم يحقق الهدف.\" الرئيس C: \"A وأنا حققنا هدفينا.\" أي قسم لم يحقق الهدف؟",
+  "options_ar": [
+   "B",
+   "A",
+   "C",
+   "لا يمكن التحديد"
+  ],
+  "answer": 0,
+  "explain_en": "If B missed: A true, B false, C true, which fits. If A missed, B's and C's statements are also false; if C missed, A's statement is false.",
+  "explain_ar": "لو B لم يحقق: A صادق وB كاذب وC صادق، وهذا يتفق. لو A، تكون عبارتا B وC كاذبتين أيضًا. لو C، تكون عبارة A كاذبة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0020",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "logical",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-mp-board-window-close",
+  "prompt_en": "An acquisition needs board approval, then 60 days of regulatory review, then it can close. The board meets on 15 March, 15 June and 15 September, and approves only after due diligence is complete. Due diligence ends on 15 April. When is the earliest closing?",
+  "options_en": [
+   "Mid-June",
+   "Mid-August",
+   "Mid-May",
+   "Mid-November"
+  ],
+  "prompt_ar": "استحواذ يحتاج موافقة المجلس، ثم 60 يومًا مراجعة رقابية، ثم يمكن إتمامه. المجلس يجتمع في 15 مارس و15 يونيو و15 سبتمبر، ولا يوافق إلا بعد اكتمال الفحص النافي للجهالة. الفحص ينتهي في 15 أبريل. ما أقرب موعد للإتمام؟",
+  "options_ar": [
+   "منتصف يونيو",
+   "منتصف أغسطس",
+   "منتصف مايو",
+   "منتصف نوفمبر"
+  ],
+  "answer": 1,
+  "explain_en": "Next board after 15 April is 15 June; plus 60 days gives mid-August.",
+  "explain_ar": "أول اجتماع للمجلس بعد 15 أبريل هو 15 يونيو، وبعده 60 يومًا = منتصف أغسطس.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0021",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "analytical",
+  "format": 1,
+  "difficulty": 9,
+  "idea": "clv-mp-regression-to-mean",
+  "prompt_en": "\"The 10 worst-performing branches last year got new managers, and they improved the most this year. So the new managers caused the improvement.\" What is the main problem with this conclusion?",
+  "options_en": [
+   "New managers always perform worse.",
+   "Ten branches are too many to study.",
+   "Extreme poor results often improve on their own, so some recovery was likely anyway.",
+   "Improvement cannot be measured year on year."
+  ],
+  "prompt_ar": "\"أسوأ 10 فروع أداءً في العام الماضي حصلت على مديرين جدد، وكانت الأكثر تحسنًا هذا العام. إذن المديرون الجدد هم سبب التحسن.\" ما المشكلة الرئيسية في هذا الاستنتاج؟",
+  "options_ar": [
+   "المديرون الجدد دائمًا أداؤهم أسوأ.",
+   "عشرة فروع عدد كبير على الدراسة.",
+   "النتائج السيئة المتطرفة كثيرًا ما تتحسن وحدها، فبعض التحسن كان متوقعًا على أي حال.",
+   "التحسن لا يمكن قياسه من سنة لأخرى."
+  ],
+  "answer": 2,
+  "explain_en": "This is regression to the mean; a comparison group is needed.",
+  "explain_ar": "هذا هو الارتداد إلى المتوسط، والمطلوب مجموعة مقارنة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0022",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-mp-receivables-red-flag",
+  "prompt_en": "A company reports revenue up 30%, but trade receivables are up 90% and operating cash flow fell. What is the most important question to ask?",
+  "options_en": [
+   "Why did revenue not grow faster?",
+   "Is revenue being recognised too early, or are customers not paying?",
+   "How many new staff were hired?",
+   "Has the logo changed?"
+  ],
+  "prompt_ar": "شركة تعلن نمو الإيرادات 30%، لكن الذمم المدينة زادت 90% والتدفق النقدي التشغيلي انخفض. ما أهم سؤال يجب طرحه؟",
+  "options_ar": [
+   "لماذا لم تنمُ الإيرادات أسرع؟",
+   "هل يتم الاعتراف بالإيرادات مبكرًا، أم أن العملاء لا يدفعون؟",
+   "كم موظفًا جديدًا تم تعيينه؟",
+   "هل تغير الشعار؟"
+  ],
+  "answer": 1,
+  "explain_en": "Receivables growing three times faster than revenue with falling cash is a warning sign about revenue quality.",
+  "explain_ar": "نمو الذمم بثلاثة أضعاف الإيرادات مع انخفاض النقد مؤشر تحذير على جودة الإيرادات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0023",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-mp-growth-efficiency-metrics",
+  "prompt_en": "Revenue is growing fast, but the board worries growth is becoming less efficient. Which pair of measures shows this best?",
+  "options_en": [
+   "Number of employees and office space",
+   "Website traffic and app downloads",
+   "Customer acquisition cost compared with customer lifetime value, and months to recover acquisition cost",
+   "Revenue growth and number of products"
+  ],
+  "prompt_ar": "الإيرادات تنمو بسرعة، لكن المجلس قلق من أن النمو أصبح أقل كفاءة. أي مقياسين يوضحان ذلك أفضل؟",
+  "options_ar": [
+   "عدد الموظفين ومساحة المكاتب",
+   "زيارات الموقع وتنزيلات التطبيق",
+   "تكلفة اكتساب العميل مقارنة بقيمته على مدى العلاقة، وعدد الأشهر لاسترداد تكلفة الاكتساب",
+   "نمو الإيرادات وعدد المنتجات"
+  ],
+  "answer": 2,
+  "explain_en": "These measure what each customer costs against what it returns, and how fast.",
+  "explain_ar": "يقيسان تكلفة كل عميل مقابل ما يعيده، وسرعة الاسترداد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0024",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "analytical",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-target-contract-concentration",
+  "prompt_en": "An acquisition target grows 25% a year. On review, 60% of its revenue comes from one contract that ends in 12 months, with no renewal agreed. What is the key issue for the valuation?",
+  "options_en": [
+   "The target is growing too fast",
+   "The target has too many customers",
+   "The growth rate is too low for the sector",
+   "Customer concentration and the risk that the main contract is not renewed"
+  ],
+  "prompt_ar": "شركة مستهدفة بالاستحواذ تنمو 25% سنويًا. عند الفحص، 60% من إيراداتها من عقد واحد ينتهي بعد 12 شهرًا دون اتفاق على تجديده. ما القضية الرئيسية في التقييم؟",
+  "options_ar": [
+   "الشركة تنمو بسرعة زائدة",
+   "الشركة لديها عملاء أكثر من اللازم",
+   "معدل النمو منخفض بالنسبة للقطاع",
+   "تركز العملاء وخطر عدم تجديد العقد الرئيسي"
+  ],
+  "answer": 3,
+  "explain_en": "Most revenue could disappear in a year, which dominates the growth story.",
+  "explain_ar": "معظم الإيرادات قد يختفي خلال سنة، وهذا يطغى على قصة النمو.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0025",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "analytical",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-mp-erp-allocation-change",
+  "prompt_en": "After a new ERP system went live, reported margins fell by the same amount across every product line. Prices, volumes and supplier costs did not change. What should be checked first?",
+  "options_en": [
+   "Whether customers stopped buying",
+   "Whether competitors cut prices",
+   "Whether the products became obsolete",
+   "Whether the new system changed how overhead costs are allocated"
+  ],
+  "prompt_ar": "بعد تشغيل نظام ERP جديد، انخفضت الهوامش المعلنة بنفس المقدار في كل خطوط المنتجات. الأسعار والكميات وتكاليف الموردين لم تتغير. ما الذي يجب فحصه أولًا؟",
+  "options_ar": [
+   "هل توقف العملاء عن الشراء",
+   "هل خفض المنافسون أسعارهم",
+   "هل أصبحت المنتجات قديمة",
+   "هل غيّر النظام الجديد طريقة توزيع التكاليف غير المباشرة"
+  ],
+  "answer": 3,
+  "explain_en": "A uniform drop with no business change points to a measurement change, not a real one.",
+  "explain_ar": "الانخفاض الموحد بدون تغير في النشاط يشير إلى تغير في طريقة القياس وليس في الواقع.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0026",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "analytical",
+  "format": 3,
+  "difficulty": 10,
+  "idea": "clv-mp-market-share-assumption",
+  "prompt_en": "A business plan projects 40% market share within 3 years. The market leader holds 25% after 20 years. The plan claims no product advantage and a similar price. What is the best assessment?",
+  "options_en": [
+   "The plan is conservative.",
+   "The plan is reasonable because the market is large.",
+   "The leader's share is irrelevant.",
+   "The share assumption is unrealistic and needs strong evidence or revision."
+  ],
+  "prompt_ar": "خطة عمل تتوقع حصة سوقية 40% خلال 3 سنوات. الشركة الرائدة تملك 25% بعد 20 سنة. الخطة لا تدّعي أي ميزة في المنتج والسعر مشابه. ما أفضل تقييم؟",
+  "options_ar": [
+   "الخطة متحفظة.",
+   "الخطة معقولة لأن السوق كبير.",
+   "حصة الشركة الرائدة لا علاقة لها.",
+   "افتراض الحصة غير واقعي ويحتاج دليلًا قويًا أو مراجعة."
+  ],
+  "answer": 3,
+  "explain_en": "Without an advantage, overtaking a 20-year leader so fast is implausible.",
+  "explain_ar": "بدون ميزة، تجاوز شركة رائدة منذ 20 سنة بهذه السرعة غير مقنع.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0027",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "analytical",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-would-consider-conversion",
+  "prompt_en": "A survey shows 70% of target customers \"would consider\" a new product. Past launches show that about 10% of people who say \"would consider\" actually buy. What purchase rate should the board plan for?",
+  "options_en": [
+   "About 70%",
+   "About 7%",
+   "About 10%",
+   "About 17%"
+  ],
+  "prompt_ar": "استبيان يوضح أن 70% من العملاء المستهدفين \"قد يفكرون\" في منتج جديد. الإطلاقات السابقة توضح أن حوالي 10% ممن يقولون ذلك يشترون فعلًا. ما نسبة الشراء التي يجب أن يخطط لها المجلس؟",
+  "options_ar": [
+   "حوالي 70%",
+   "حوالي 7%",
+   "حوالي 10%",
+   "حوالي 17%"
+  ],
+  "answer": 1,
+  "explain_en": "0.70 × 0.10 = 7%.",
+  "explain_ar": "0.70 × 0.10 = 7%.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "0.7*0.1*100"
+ },
+ {
+  "id": "T-CLV-MRS-0028",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "analytical",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-mp-rd-cut-tradeoff",
+  "prompt_en": "Cutting R&D by 30% would raise earnings per share this year. Product teams warn it will reduce new-product revenue in three years. What analysis should guide the decision?",
+  "options_en": [
+   "Look only at this year's earnings per share.",
+   "Follow what competitors did last year.",
+   "Cut R&D because earnings matter most.",
+   "Compare this year's earnings gain with the present value of the future revenue lost."
+  ],
+  "prompt_ar": "خفض البحث والتطوير 30% سيرفع ربحية السهم هذا العام، لكن فرق المنتجات تحذر من انخفاض إيرادات المنتجات الجديدة بعد ثلاث سنوات. أي تحليل يجب أن يوجه القرار؟",
+  "options_ar": [
+   "النظر لربحية السهم هذا العام فقط.",
+   "اتباع ما فعله المنافسون العام الماضي.",
+   "خفض البحث والتطوير لأن الأرباح هي الأهم.",
+   "مقارنة مكسب الأرباح هذا العام بالقيمة الحالية للإيرادات المستقبلية المفقودة."
+  ],
+  "answer": 3,
+  "explain_en": "The decision trades short-term gain for long-term loss; both must be valued on the same basis.",
+  "explain_ar": "القرار يبادل مكسبًا قصيرًا بخسارة طويلة، ويجب تقييم الاثنين على نفس الأساس.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0029",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 8,
+  "idea": "clv-mp-correct-board-forecast",
+  "prompt_en": "You discover that a forecast presented to the board last week was overstated by mistake. What should you do?",
+  "options_en": [
+   "Wait for the next quarter and correct it quietly.",
+   "Leave it because the error was unintentional.",
+   "Correct it only if a director asks.",
+   "Inform the board promptly with the corrected figures and what caused the error."
+  ],
+  "prompt_ar": "اكتشفت أن توقعًا عُرض على المجلس الأسبوع الماضي كان مبالغًا فيه بالخطأ. ماذا تفعل؟",
+  "options_ar": [
+   "الانتظار للربع القادم وتصحيحه بهدوء.",
+   "تركه لأن الخطأ غير مقصود.",
+   "تصحيحه فقط إذا سأل أحد الأعضاء.",
+   "إبلاغ المجلس سريعًا بالأرقام الصحيحة وسبب الخطأ."
+  ],
+  "answer": 3,
+  "explain_en": "The board relies on the figures for decisions; prompt correction protects them and your credibility.",
+  "explain_ar": "المجلس يعتمد على الأرقام في قراراته، والتصحيح السريع يحميه ويحمي مصداقيتك.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0030",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 9,
+  "idea": "clv-mp-backdate-contract",
+  "prompt_en": "A major client asks you to backdate a contract so it falls into their previous financial year. What is the right response?",
+  "options_en": [
+   "Refuse, and offer to date it correctly and help in other legitimate ways.",
+   "Agree, since the client asked.",
+   "Agree only if they pay early.",
+   "Ask a junior colleague to sign it instead."
+  ],
+  "prompt_ar": "عميل كبير يطلب منك تأريخ عقد بتاريخ سابق ليقع في سنته المالية الماضية. ما الرد الصحيح؟",
+  "options_ar": [
+   "الرفض، مع عرض تأريخه بشكل صحيح والمساعدة بطرق مشروعة أخرى.",
+   "الموافقة لأن العميل طلب.",
+   "الموافقة فقط إذا دفع مبكرًا.",
+   "طلب توقيعه من زميل مبتدئ بدلًا منك."
+  ],
+  "answer": 0,
+  "explain_en": "Backdating misstates records and can support fraud.",
+  "explain_ar": "التأريخ بتاريخ سابق يزيف السجلات وقد يسهّل الاحتيال.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0031",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "clv-mp-director-supplier-stake",
+  "prompt_en": "A board director owns shares in a supplier being considered for a large contract. What should happen?",
+  "options_en": [
+   "The director votes, since the stake is legal.",
+   "The supplier is excluded automatically.",
+   "The decision is postponed for a year.",
+   "The director declares the interest and does not take part in the decision."
+  ],
+  "prompt_ar": "عضو في المجلس يملك أسهمًا في مورد مرشح لعقد كبير. ماذا يجب أن يحدث؟",
+  "options_ar": [
+   "يصوت العضو لأن ملكيته قانونية.",
+   "يُستبعد المورد تلقائيًا.",
+   "يؤجل القرار سنة.",
+   "يفصح العضو عن مصلحته ولا يشارك في القرار."
+  ],
+  "answer": 3,
+  "explain_en": "Disclosure and recusal manage the conflict without unfairly excluding the supplier.",
+  "explain_ar": "الإفصاح والتنحي يعالجان التعارض دون استبعاد المورد ظلمًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0032",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-mp-ransomware",
+  "prompt_en": "Hackers encrypt company systems and demand a ransom. Backups exist but restoring will take several days. What is the best first course of action?",
+  "options_en": [
+   "Pay the ransom immediately and say nothing.",
+   "Negotiate alone with the hackers.",
+   "Activate the incident plan, involve authorities and specialists, and restore from backups.",
+   "Shut the company down indefinitely."
+  ],
+  "prompt_ar": "قام مخترقون بتشفير أنظمة الشركة وطلبوا فدية. توجد نسخ احتياطية لكن الاستعادة ستأخذ عدة أيام. ما أفضل مسار أولي؟",
+  "options_ar": [
+   "دفع الفدية فورًا والسكوت.",
+   "التفاوض منفردًا مع المخترقين.",
+   "تفعيل خطة الحوادث، وإشراك السلطات والمتخصصين، والاستعادة من النسخ الاحتياطية.",
+   "إغلاق الشركة إلى أجل غير مسمى."
+  ],
+  "answer": 2,
+  "explain_en": "A structured, lawful response with recovery from backups avoids rewarding attackers.",
+  "explain_ar": "الاستجابة المنظمة والقانونية مع الاستعادة من النسخ تتجنب مكافأة المهاجمين.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0033",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-mp-activist-spinoff",
+  "prompt_en": "An activist investor with 6% of shares demands that you spin off a division. What is the best response?",
+  "options_en": [
+   "Assess the proposal on its merits with independent advice, and engage the investor openly.",
+   "Refuse to meet the investor.",
+   "Agree immediately to avoid conflict.",
+   "Buy back the investor's shares at any price."
+  ],
+  "prompt_ar": "مستثمر نشط يملك 6% من الأسهم يطالب بفصل أحد القطاعات في شركة مستقلة. ما أفضل رد؟",
+  "options_ar": [
+   "تقييم المقترح على أسسه مع استشارة مستقلة، والتواصل مع المستثمر بشفافية.",
+   "رفض مقابلة المستثمر.",
+   "الموافقة فورًا لتجنب الخلاف.",
+   "شراء أسهمه بأي سعر."
+  ],
+  "answer": 0,
+  "explain_en": "The board's duty is to all shareholders: judge the idea, not the source.",
+  "explain_ar": "واجب المجلس تجاه كل المساهمين: يقيّم الفكرة وليس مصدرها.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0034",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "clv-mp-sudden-ceo-exit",
+  "prompt_en": "The CEO resigns suddenly for health reasons. What should the board do first?",
+  "options_en": [
+   "Leave the role empty until a permanent CEO is found.",
+   "Ask each director to run a division.",
+   "Delay any announcement for three months.",
+   "Appoint an interim leader under the succession plan and communicate clearly to staff and markets."
+  ],
+  "prompt_ar": "الرئيس التنفيذي استقال فجأة لأسباب صحية. ماذا يفعل المجلس أولًا؟",
+  "options_ar": [
+   "ترك المنصب شاغرًا حتى إيجاد رئيس دائم.",
+   "تكليف كل عضو بإدارة قطاع.",
+   "تأخير أي إعلان ثلاثة أشهر.",
+   "تعيين قائد مؤقت وفق خطة التعاقب والتواصل بوضوح مع الموظفين والأسواق."
+  ],
+  "answer": 3,
+  "explain_en": "Interim leadership and clear communication keep stability.",
+  "explain_ar": "القيادة المؤقتة والتواصل الواضح يحافظان على الاستقرار.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0035",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-mp-new-country-jv",
+  "prompt_en": "You plan to enter a country whose regulations and culture your company does not know well. What entry model fits best?",
+  "options_en": [
+   "A large wholly owned subsidiary from day one",
+   "A joint venture with a strong local partner, with clear exit terms",
+   "Exporting with no local presence ever",
+   "Acquiring the largest local competitor immediately"
+  ],
+  "prompt_ar": "تخطط لدخول دولة لا تعرف شركتك أنظمتها وثقافتها جيدًا. أي نموذج دخول أنسب؟",
+  "options_ar": [
+   "شركة تابعة كبيرة مملوكة بالكامل من اليوم الأول",
+   "مشروع مشترك مع شريك محلي قوي وشروط خروج واضحة",
+   "التصدير دون أي وجود محلي إطلاقًا",
+   "الاستحواذ على أكبر منافس محلي فورًا"
+  ],
+  "answer": 1,
+  "explain_en": "A partner supplies local knowledge while exit terms limit risk.",
+  "explain_ar": "الشريك يوفر المعرفة المحلية وشروط الخروج تحد من المخاطر.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0036",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 9,
+  "idea": "clv-mp-customisation-vs-platform",
+  "prompt_en": "Your largest client wants heavy custom features that would pull most R&D away from the core platform for a year. What is the best decision?",
+  "options_en": [
+   "Build everything the client asks.",
+   "Drop the client.",
+   "Offer configurable options within the platform roadmap, and decline work that derails it.",
+   "Split R&D in half without a plan."
+  ],
+  "prompt_ar": "أكبر عميل لديك يريد خصائص مخصصة كثيرة ستسحب معظم فريق البحث والتطوير بعيدًا عن المنصة الأساسية لمدة سنة. ما أفضل قرار؟",
+  "options_ar": [
+   "بناء كل ما يطلبه العميل.",
+   "التخلي عن العميل.",
+   "تقديم خيارات قابلة للتهيئة ضمن خطة المنصة، ورفض العمل الذي يعطلها.",
+   "تقسيم البحث والتطوير نصفين بدون خطة."
+  ],
+  "answer": 2,
+  "explain_en": "It serves the client without sacrificing the product every customer depends on.",
+  "explain_ar": "يخدم العميل دون التضحية بالمنتج الذي يعتمد عليه كل العملاء.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0037",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 10,
+  "idea": "clv-mp-supplier-child-labour",
+  "prompt_en": "A supplier is 12% cheaper, but credible reports allege child labour in its factories. What is the best decision?",
+  "options_en": [
+   "Do not contract unless independent audits verify the allegations are false.",
+   "Sign now and investigate later.",
+   "Sign, since the reports are not proven.",
+   "Sign but avoid mentioning the supplier publicly."
+  ],
+  "prompt_ar": "مورد أرخص بنسبة 12%، لكن تقارير موثوقة تتهمه بتشغيل الأطفال في مصانعه. ما أفضل قرار؟",
+  "options_ar": [
+   "عدم التعاقد ما لم تثبت تدقيقات مستقلة أن الاتهامات غير صحيحة.",
+   "التوقيع الآن والتحقيق لاحقًا.",
+   "التوقيع لأن التقارير لم تثبت.",
+   "التوقيع مع تجنب ذكر المورد علنًا."
+  ],
+  "answer": 0,
+  "explain_en": "Credible human-rights risk outweighs a cost saving until verified otherwise.",
+  "explain_ar": "خطر حقوق الإنسان الموثوق يتقدم على التوفير حتى يثبت العكس.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0038",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "clv-mp-covenant-near-breach",
+  "prompt_en": "Forecasts show the company will breach a loan covenant in two quarters. What is the best action?",
+  "options_en": [
+   "Wait and hope results improve.",
+   "Hide the forecast from lenders.",
+   "Take a new loan to repay the old one without telling lenders.",
+   "Talk to lenders early with a credible plan and seek a waiver or amendment."
+  ],
+  "prompt_ar": "التوقعات تشير إلى أن الشركة ستخالف أحد شروط القرض خلال ربعين. ما أفضل تصرف؟",
+  "options_ar": [
+   "الانتظار على أمل تحسن النتائج.",
+   "إخفاء التوقعات عن المقرضين.",
+   "أخذ قرض جديد لسداد القديم دون إبلاغ المقرضين.",
+   "التحدث مع المقرضين مبكرًا بخطة مقنعة وطلب إعفاء أو تعديل."
+  ],
+  "answer": 3,
+  "explain_en": "Early, transparent engagement keeps options open and trust intact.",
+  "explain_ar": "التواصل المبكر والشفاف يبقي الخيارات مفتوحة والثقة قائمة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0039",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-price-war-second-brand",
+  "prompt_en": "The market leader cuts prices 20%. Research shows 60% of your customers buy mainly on quality and 40% mainly on price. Your margins cannot absorb a 20% cut across the board. What is the best strategy?",
+  "options_en": [
+   "Cut all prices by 20%.",
+   "Do nothing.",
+   "Keep the main brand's price and launch a lower-cost offer aimed at the price-sensitive 40%.",
+   "Raise prices to signal quality to everyone."
+  ],
+  "prompt_ar": "الشركة الرائدة خفضت أسعارها 20%. البحث يوضح أن 60% من عملائك يشترون أساسًا للجودة و40% للسعر. هوامشك لا تتحمل خفضًا 20% على كل المنتجات. ما أفضل استراتيجية؟",
+  "options_ar": [
+   "خفض كل الأسعار 20%.",
+   "عدم فعل شيء.",
+   "الإبقاء على سعر العلامة الرئيسية وإطلاق عرض أقل تكلفة يستهدف الـ 40% الحساسين للسعر.",
+   "رفع الأسعار لإظهار الجودة للجميع."
+  ],
+  "answer": 2,
+  "explain_en": "It defends the price-sensitive segment without giving away margin on quality buyers.",
+  "explain_ar": "تحمي الشريحة الحساسة للسعر دون التنازل عن الهامش مع عملاء الجودة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0040",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 10,
+  "idea": "clv-mp-npv-budget-choice",
+  "prompt_en": "Budget: SAR 100 million. Project A: NPV SAR 30 million, needs SAR 100 million. Project B: NPV SAR 25 million, needs SAR 50 million. Project C: NPV SAR 20 million, needs SAR 50 million. Projects cannot be split. Which choice maximises total NPV within budget?",
+  "options_en": [
+   "B and C (total NPV 45 million)",
+   "A alone (total NPV 30 million)",
+   "A and B (total NPV 55 million)",
+   "B alone (total NPV 25 million)"
+  ],
+  "prompt_ar": "الميزانية 100 مليون ريال. المشروع A: صافي قيمة حالية 30 مليونًا ويحتاج 100 مليون. المشروع B: صافي قيمة حالية 25 مليونًا ويحتاج 50 مليونًا. المشروع C: صافي قيمة حالية 20 مليونًا ويحتاج 50 مليونًا. لا يمكن تجزئة المشاريع. أي اختيار يعظم صافي القيمة الحالية الكلي ضمن الميزانية؟",
+  "options_ar": [
+   "B وC (إجمالي 45 مليون)",
+   "A وحده (إجمالي 30 مليون)",
+   "A وB (إجمالي 55 مليون)",
+   "B وحده (إجمالي 25 مليون)"
+  ],
+  "answer": 0,
+  "explain_en": "B + C uses exactly 100 million for 45 million NPV; A and B together need 150 million.",
+  "explain_ar": "B وC يستخدمان 100 مليون بالضبط بصافي 45 مليونًا، أما A وB فيحتاجان 150 مليونًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "25+20"
+ },
+ {
+  "id": "T-CLV-MRS-0041",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-safety-incident-one-market",
+  "prompt_en": "Several customers in one country report injuries linked to one of your products. Posts are spreading on social media. The cause is not yet confirmed. What is the best course of action?",
+  "options_en": [
+   "Say nothing until the cause is proven.",
+   "Pause sales of that product in the affected market, investigate with regulators, and communicate openly and regularly.",
+   "Blame the customers' misuse publicly.",
+   "Recall every product in every country."
+  ],
+  "prompt_ar": "عدد من العملاء في دولة واحدة أبلغوا عن إصابات مرتبطة بأحد منتجاتك، والمنشورات تنتشر على وسائل التواصل. السبب لم يتأكد بعد. ما أفضل مسار؟",
+  "options_ar": [
+   "السكوت حتى يثبت السبب.",
+   "إيقاف بيع المنتج في السوق المتأثر، والتحقيق مع الجهات الرقابية، والتواصل بشفافية وانتظام.",
+   "لوم العملاء علنًا على سوء الاستخدام.",
+   "سحب كل المنتجات في كل الدول."
+  ],
+  "answer": 1,
+  "explain_en": "It protects people proportionately, cooperates with regulators and keeps trust.",
+  "explain_ar": "يحمي الناس بشكل متناسب، ويتعاون مع الجهات الرقابية، ويحافظ على الثقة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0042",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-mp-acquired-engineers-leaving",
+  "prompt_en": "Three months after an acquisition, the acquired company's key engineers say they will leave because of new rules and approvals. Their know-how was the main reason for the deal. What is the best action?",
+  "options_en": [
+   "Let them leave and hire replacements.",
+   "Offer targeted retention, clarify their roles, and keep the ways of working that drive their value.",
+   "Apply the parent company's rules even more strictly.",
+   "Reverse the acquisition."
+  ],
+  "prompt_ar": "بعد ثلاثة أشهر من استحواذ، قال المهندسون الرئيسيون في الشركة المستحوذ عليها إنهم سيغادرون بسبب القواعد والموافقات الجديدة. خبرتهم كانت السبب الرئيسي للصفقة. ما أفضل تصرف؟",
+  "options_ar": [
+   "تركهم يغادرون وتعيين بدلاء.",
+   "تقديم حوافز بقاء موجهة، وتوضيح أدوارهم، والحفاظ على طرق العمل التي تصنع قيمتهم.",
+   "تطبيق قواعد الشركة الأم بصرامة أكبر.",
+   "إلغاء الاستحواذ."
+  ],
+  "answer": 1,
+  "explain_en": "Losing them would destroy the deal's value; integration should protect it.",
+  "explain_ar": "خسارتهم تهدم قيمة الصفقة، والدمج يجب أن يحميها.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0043",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 10,
+  "idea": "clv-mp-oil-price-scenarios",
+  "prompt_en": "Your profits depend heavily on oil prices, which experts expect to be anywhere between USD 50 and USD 110 over the next two years. How should you plan?",
+  "options_en": [
+   "Plan for several scenarios with trigger points that tell you when to switch plans.",
+   "Plan on the average of USD 80 only.",
+   "Plan on USD 110 to stay optimistic.",
+   "Wait until prices settle before planning."
+  ],
+  "prompt_ar": "أرباحك تعتمد بشدة على أسعار النفط، والخبراء يتوقعون أن تتراوح بين 50 و110 دولارات خلال العامين القادمين. كيف تخطط؟",
+  "options_ar": [
+   "التخطيط لعدة سيناريوهات مع نقاط تحول تحدد متى تنتقل من خطة لأخرى.",
+   "التخطيط على المتوسط 80 دولارًا فقط.",
+   "التخطيط على 110 دولارات للتفاؤل.",
+   "الانتظار حتى تستقر الأسعار قبل التخطيط."
+  ],
+  "answer": 0,
+  "explain_en": "Under wide uncertainty, prepared scenarios with triggers beat any single forecast.",
+  "explain_ar": "مع عدم اليقين الواسع، السيناريوهات الجاهزة بنقاط تحول أفضل من أي توقع واحد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0044",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-board-dissent",
+  "prompt_en": "Two of nine directors strongly oppose your proposed strategy and say the data are weak. A vote is scheduled next week. What is the best approach?",
+  "options_en": [
+   "Push the vote through as planned.",
+   "Ask the two directors to resign.",
+   "Withdraw the strategy permanently.",
+   "Hold a session to test their concerns with data, adjust where valid, then vote."
+  ],
+  "prompt_ar": "عضوان من تسعة أعضاء في المجلس يعارضان الاستراتيجية المقترحة بشدة ويقولان إن البيانات ضعيفة. التصويت الأسبوع القادم. ما أفضل نهج؟",
+  "options_ar": [
+   "تمرير التصويت كما هو مخطط.",
+   "مطالبة العضوين بالاستقالة.",
+   "سحب الاستراتيجية نهائيًا.",
+   "عقد جلسة لاختبار مخاوفهما بالبيانات، والتعديل حيث تكون محقة، ثم التصويت."
+  ],
+  "answer": 3,
+  "explain_en": "Testing objections improves the decision and keeps the board united.",
+  "explain_ar": "اختبار الاعتراضات يحسن القرار ويحافظ على وحدة المجلس.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0045",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-mp-transformation-reset",
+  "prompt_en": "A digital transformation is 18 months in, has spent 60% of its budget, and has delivered about 20% of the planned value. What is the best decision?",
+  "options_en": [
+   "Commission an independent review, reset scope to the highest-value parts, and change governance.",
+   "Keep going as planned.",
+   "Double the budget.",
+   "Cancel it and write off everything without review."
+  ],
+  "prompt_ar": "برنامج تحول رقمي مضى عليه 18 شهرًا، وصرف 60% من ميزانيته، وحقق حوالي 20% من القيمة المخططة. ما أفضل قرار؟",
+  "options_ar": [
+   "تكليف مراجعة مستقلة، وإعادة تحديد النطاق للأجزاء الأعلى قيمة، وتغيير الحوكمة.",
+   "الاستمرار كما هو مخطط.",
+   "مضاعفة الميزانية.",
+   "إلغاؤه وشطب كل شيء دون مراجعة."
+  ],
+  "answer": 0,
+  "explain_en": "The gap between spend and value calls for an evidence-based reset, not more of the same or a blind stop.",
+  "explain_ar": "الفجوة بين الإنفاق والقيمة تتطلب إعادة ضبط مبنية على الأدلة، لا الاستمرار ولا الإيقاف الأعمى.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0046",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-inflation-pricing",
+  "prompt_en": "Inflation is 8%. Your costs rose 7%. Competitors have raised prices about 5%. Customer loyalty differs strongly by segment. What pricing approach is best?",
+  "options_en": [
+   "Raise all prices by 8%.",
+   "Keep prices flat to win share.",
+   "Raise prices selectively by segment based on value and price sensitivity.",
+   "Raise all prices by 15%."
+  ],
+  "prompt_ar": "التضخم 8%، وتكاليفك زادت 7%، والمنافسون رفعوا أسعارهم حوالي 5%، وولاء العملاء يختلف كثيرًا حسب الشريحة. ما أفضل نهج للتسعير؟",
+  "options_ar": [
+   "رفع كل الأسعار 8%.",
+   "تثبيت الأسعار لكسب حصة.",
+   "رفع الأسعار بشكل انتقائي حسب الشريحة بناء على القيمة والحساسية للسعر.",
+   "رفع كل الأسعار 15%."
+  ],
+  "answer": 2,
+  "explain_en": "Different segments react differently; targeted rises protect margin and share.",
+  "explain_ar": "الشرائح تتفاعل بشكل مختلف، والزيادة الموجهة تحمي الهامش والحصة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0047",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 10,
+  "idea": "clv-mp-supply-region-risk",
+  "prompt_en": "Half of your critical components come from one region where political instability is rising. Switching suppliers fully would take two years. What is the best plan?",
+  "options_en": [
+   "Diversify suppliers step by step and hold buffer stock of the most critical parts meanwhile.",
+   "Move all purchasing out of the region next month.",
+   "Do nothing until there is a disruption.",
+   "Buy five years of stock now."
+  ],
+  "prompt_ar": "نصف المكونات الحرجة لديك يأتي من منطقة واحدة يزداد فيها عدم الاستقرار السياسي. التحول الكامل لموردين آخرين يحتاج سنتين. ما أفضل خطة؟",
+  "options_ar": [
+   "تنويع الموردين تدريجيًا مع الاحتفاظ بمخزون احتياطي لأكثر الأجزاء أهمية في الأثناء.",
+   "نقل كل المشتريات خارج المنطقة الشهر القادم.",
+   "عدم فعل شيء حتى يحدث انقطاع.",
+   "شراء مخزون خمس سنوات الآن."
+  ],
+  "answer": 0,
+  "explain_en": "It reduces the exposure over time and covers the gap meanwhile.",
+  "explain_ar": "تقلل الانكشاف مع الوقت وتغطي الفجوة في الأثناء.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0048",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 8,
+  "idea": "clv-mp-poaching-retention",
+  "prompt_en": "A competitor has hired away six of your top engineers in three months, offering 25% more pay and faster promotion. What is the best response?",
+  "options_en": [
+   "Raise everyone's pay by 25%.",
+   "Sue the competitor.",
+   "Retain critical people with targeted offers and fix the root causes, such as pay gaps and career paths.",
+   "Ignore it; people always leave."
+  ],
+  "prompt_ar": "منافس استقطب ستة من أفضل مهندسيك خلال ثلاثة أشهر بعرض رواتب أعلى 25% وترقيات أسرع. ما أفضل استجابة؟",
+  "options_ar": [
+   "رفع رواتب الجميع 25%.",
+   "مقاضاة المنافس.",
+   "الاحتفاظ بالأشخاص الحرجين بعروض موجهة، ومعالجة الأسباب الجذرية مثل فجوات الرواتب ومسارات الترقي.",
+   "التجاهل لأن الناس دائمًا يغادرون."
+  ],
+  "answer": 2,
+  "explain_en": "It addresses both the immediate risk and the reasons people leave, without a costly blanket rise.",
+  "explain_ar": "تعالج الخطر الحالي وأسباب المغادرة دون زيادة شاملة مكلفة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0049",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 9,
+  "idea": "clv-mp-divest-noncore",
+  "prompt_en": "A profitable but non-core unit takes a large share of senior management's time. A buyer offers a fair price. The core business has strong investment opportunities. What is the best decision?",
+  "options_en": [
+   "Keep it because it is profitable.",
+   "Close the unit.",
+   "Merge it into the core business.",
+   "Sell the unit with a clean transition plan, and reinvest in the core."
+  ],
+  "prompt_ar": "وحدة مربحة لكنها خارج النشاط الأساسي تأخذ جزءًا كبيرًا من وقت الإدارة العليا. مشترٍ يعرض سعرًا عادلًا. والنشاط الأساسي لديه فرص استثمار قوية. ما أفضل قرار؟",
+  "options_ar": [
+   "الاحتفاظ بها لأنها مربحة.",
+   "إغلاق الوحدة.",
+   "دمجها في النشاط الأساسي.",
+   "بيع الوحدة مع خطة انتقال واضحة وإعادة الاستثمار في النشاط الأساسي."
+  ],
+  "answer": 3,
+  "explain_en": "A fair price plus freed management focus outweighs keeping a non-core profit stream.",
+  "explain_ar": "السعر العادل مع تحرير تركيز الإدارة أفضل من الاحتفاظ بأرباح خارج النشاط الأساسي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-CLV-MRS-0050",
+  "exam": "c-level-reasoning-score",
+  "level": "c-level",
+  "family": "decision",
+  "format": 3,
+  "difficulty": 10,
+  "idea": "clv-mp-tax-loophole-reputation",
+  "prompt_en": "Advisers propose a legal tax scheme that saves SAR 30 million a year but clearly goes against the intent of the law. Regulators are known to be reviewing such schemes. What is the best decision?",
+  "options_en": [
+   "Use it, since it is legal today.",
+   "Do not use it; the reputational and future regulatory risk outweighs the saving.",
+   "Use it but do not disclose it.",
+   "Use it only in years with low profits."
+  ],
+  "prompt_ar": "المستشارون يقترحون ترتيبًا ضريبيًا قانونيًا يوفر 30 مليون ريال سنويًا، لكنه يخالف بوضوح روح القانون، ومعروف أن الجهات الرقابية تراجع مثل هذه الترتيبات. ما أفضل قرار؟",
+  "options_ar": [
+   "استخدامه لأنه قانوني اليوم.",
+   "عدم استخدامه، فخطر السمعة والمخاطر الرقابية المستقبلية أكبر من التوفير.",
+   "استخدامه دون الإفصاح عنه.",
+   "استخدامه فقط في سنوات الأرباح المنخفضة."
+  ],
+  "answer": 1,
+  "explain_en": "A saving that depends on defeating the law's intent invites lasting reputational and regulatory harm.",
+  "explain_ar": "التوفير القائم على الالتفاف على روح القانون يجلب ضررًا دائمًا للسمعة والعلاقة مع الجهات الرقابية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ }
+]
