@@ -159,7 +159,7 @@ async function loadData(sb: ReturnType<typeof stagingDb>) {
     corporateAvailable: !corp.error && !corpReq.error && !corpPrices.error && !corpBal.error && !corpLedger.error,
     corporate: corp.error ? [] : (corp.data ?? []).map((c: any) => ({
       id: c.id, ref: c.reference, org_type: c.org_type ?? null, company: c.company_name, reg_no: c.registration_no, tax_no: c.tax_no ?? null, address: c.address ?? null, website: c.website ?? null, billing_email: c.billing_email ?? null, country: c.country, city: c.city, sector: c.sector,
-      employees: c.employees, male_count: c.male_count ?? null, female_count: c.female_count ?? null, contact: c.contact_name, title: c.contact_title, email: c.email, phone: c.phone, notes: c.notes, lang: c.language,
+      employees: c.employees, male_count: c.male_count ?? null, female_count: c.female_count ?? null, exam_takers: c.exam_takers ?? null, contact: c.contact_name, title: c.contact_title, email: c.email, phone: c.phone, notes: c.notes, lang: c.language,
       status: c.status, status_at: c.status_changed_at, status_note: c.status_note, at: c.created_at,
       requests: (corpReq.data ?? []).filter((r: any) => r.company_id === c.id).map((r: any) => ({ exam: r.exam_tag, seats: r.seats_requested })),
       balances: ((corpBal.data ?? []) as any[]).filter((b) => b.company_id === c.id).map((b) => ({ exam: b.exam_tag, granted: b.granted, used: b.used, balance: b.balance })),
