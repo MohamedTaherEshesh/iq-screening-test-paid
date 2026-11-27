@@ -191,7 +191,7 @@ async function reportPdfBytes(d: ReportMail): Promise<Uint8Array> {
     const k = ar ? -1 : 1; // keep the tick pointing the right way on mirrored Arabic pages
     page.drawLine({ start: { x: cx - 9 * k, y: cy + 1 }, end: { x: cx - 2 * k, y: cy - 6 }, thickness: 2, color: TEAL });
     page.drawLine({ start: { x: cx - 2 * k, y: cy - 6 }, end: { x: cx + 10 * k, y: cy + 10 }, thickness: 2, color: TEAL });
-    const l1 = 'OMSAZE', l2 = 'VERIFIED';
+    const l1 = 'OMSAZE', l2 = 'MINDPROOF';
     page.drawText(l1, { x: cx - bold.widthOfTextAtSize(l1, 6.5) / 2, y: cy - 36, size: 6.5, font: bold, color: NAVY });
     page.drawText(l2, { x: cx - bold.widthOfTextAtSize(l2, 6.5) / 2, y: cy - 45, size: 6.5, font: bold, color: NAVY });
   }
@@ -275,7 +275,7 @@ async function reportPdfBytes(d: ReportMail): Promise<Uint8Array> {
     page.drawRectangle({ x: MARGIN, y: y - boxH, width: PAGE_W - 2 * MARGIN, height: boxH, color: rgb(0.933, 0.949, 0.949) });
     page.drawText(t('READ THE PROFILE IN CONTEXT', 'اقرأ النتائج في سياقها'), { x: MARGIN + 16, y: y - 18, size: 8, font: bold, color: NAVY });
     drawParagraph(page, t('This is a technical practice run with unapproved English draft questions. Raw key agreement is not an IQ score, percentile, pass/fail decision or validated measure of ability.', 'هذه محاولة تدريب تقنية بأسئلة تجريبية. عدد الإجابات الصحيحة ليس درجة ذكاء ولا ترتيبا مئينيا ولا قرار نجاح أو رسوب ولا مقياسا معتمدا للقدرات.'), MARGIN + 16, y - 32, PAGE_W - 2 * MARGIN - 32, 8.5, font, rgb(0.278, 0.325, 0.4), 11.5);
-    footer(page, '1 / 4');
+    footer(page, '1 / 7');
   }
 
   // ---------------- Page 2 — Domain performance map (radar) ----------------
@@ -318,7 +318,7 @@ async function reportPdfBytes(d: ReportMail): Promise<Uint8Array> {
     page.drawText(t('Consistency across domains: ', 'الاتساق بين المجالات: ') + consistency, { x: MARGIN, y, size: 11, font: bold, color: NAVY });
     y -= 16;
     drawParagraph(page, consistencyNote, MARGIN, y, PAGE_W - 2 * MARGIN, 9.5, font, BODY, 13);
-    footer(page, '2 / 4');
+    footer(page, '2 / 7');
   }
 
   // ---------------- Page 3 — Domain breakdown ----------------
@@ -352,7 +352,7 @@ async function reportPdfBytes(d: ReportMail): Promise<Uint8Array> {
       page.drawLine({ start: { x: MARGIN, y }, end: { x: PAGE_W - MARGIN, y }, thickness: 0.5, color: GRAY_LINE });
       y -= 11;
     });
-    footer(page, '3 / 4');
+    footer(page, '3 / 7');
   }
 
   // ---------------- Page 4 — Practice plan + methodology ----------------
@@ -397,17 +397,69 @@ async function reportPdfBytes(d: ReportMail): Promise<Uint8Array> {
     const fit = (img: any, maxW: number, maxH: number) => { const k = Math.min(maxW / img.width, maxH / img.height); return { width: img.width * k, height: img.height * k }; };
     const sigBlockW = 210;
     const rightX = PAGE_W - MARGIN - sigBlockW;
-    const sig1 = ar ? B.signatureAr : B.signatureEn, sig2 = ar ? B.signatureEn : B.signatureAr;
+    const sig1 = ar ? B.signatureAr : B.signatureEn;
     if (sig1) { const dm = fit(sig1, 150, 50); page.drawImage(sig1, { x: MARGIN, y: sigY + 28, width: dm.width, height: dm.height }); }
     page.drawLine({ start: { x: MARGIN, y: sigY + 26 }, end: { x: MARGIN + sigBlockW, y: sigY + 26 }, thickness: 0.7, color: NAVY });
-    page.drawText(SIGNER.name, { x: MARGIN, y: sigY + 12, size: 10, font: bold, color: NAVY });
+    page.drawText(t(SIGNER.name, 'محمد طاهر عشعش'), { x: MARGIN, y: sigY + 12, size: 10, font: bold, color: NAVY });
     page.drawText(t(SIGNER.title, SIGNER.titleAr), { x: MARGIN, y: sigY, size: 8.5, font, color: MUTED });
-    if (sig2) { const dm = fit(sig2, 130, 50); page.drawImage(sig2, { x: rightX + sigBlockW - dm.width, y: sigY + 28, width: dm.width, height: dm.height }); }
     page.drawLine({ start: { x: rightX, y: sigY + 26 }, end: { x: rightX + sigBlockW, y: sigY + 26 }, thickness: 0.7, color: NAVY });
     page.drawText('OMSAZE', { x: rightX, y: sigY + 12, size: 10, font: bold, color: NAVY });
     page.drawText('Digital Labs', { x: rightX, y: sigY, size: 8.5, font, color: MUTED });
-    footer(page, '4 / 4');
+    footer(page, '4 / 7');
   }
+
+
+  // OMS-DEV-063: evidence-based development appendix; no changes to mail transport.
+  const evidence = domains.filter(s => s.total >= 5 && s.attempted / s.total >= 0.6);
+  const rate = (s: DomainStat) => s.correct / s.total;
+  const ranked = [...evidence].sort((a,b) => rate(b)-rate(a) || a.domain.localeCompare(b.domain));
+  const strengths = ranked.filter(s => rate(s) >= .75).slice(0,3);
+  const gaps = [...ranked].reverse().filter(s => rate(s) < .75).slice(0,3);
+  const limited = domains.filter(s => !evidence.includes(s));
+  const label = (s: DomainStat) => (DL[s.domain] ?? t('Other assessed domain','مجال آخر مقاس')) + ' (' + s.correct + '/' + s.total + ')';
+  const names = (ss: DomainStat[]) => ss.map(label).join(' | ');
+  const exposure: Record<string,[string,string]> = {
+    numerical: ['Compare budgets and spreadsheet calculations; check units and assumptions.','قارن الميزانيات وحسابات الجداول وتحقق من الوحدات والافتراضات.'],
+    analytical: ['Map constraints in a business or study case and compare alternatives.','حدد قيود حالة دراسية أو عملية وقارن البدائل.'],
+    visual: ['Interpret charts and process maps; explain the pattern with evidence.','فسر الرسوم وخرائط العمليات واشرح النمط بالأدلة.'],
+    spatial: ['Practice diagrams, rotations and layout planning.','تدرب على المخططات والدوران وتخطيط المساحات.'],
+    logical: ['Build decision trees and test conclusions with counterexamples.','ابن أشجار القرارات واختبر الاستنتاجات بأمثلة مضادة.'],
+    linguistic: ['Summarize a briefing and distinguish claims from evidence.','لخص موجزا وميز بين الادعاءات والأدلة.'],
+    creative: ['Compare alternative solutions to an unfamiliar practical problem.','قارن حلولا بديلة لمشكلة عملية غير مألوفة.'],
+    critical: ['Compare sources and challenge assumptions in a short case.','قارن المصادر واختبر الافتراضات في حالة قصيرة.']
+  };
+  const practice = (s: DomainStat) => {const v = exposure[s.domain]; return v ? t(v[0],v[1]) : t('Review new items in this domain with a qualified reviewer.','راجع أسئلة جديدة في هذا المجال مع مراجع مؤهل.');};
+  function insightPage(title: string, eyebrow: string, sections: [string,string][], number: number) {
+    const page = newPage(); header(page, eyebrow);
+    let y = PAGE_H-110;
+    y = drawParagraph(page,title,MARGIN,y,PAGE_W-2*MARGIN,22,display,NAVY,27)-18;
+    for (const [heading,body] of sections) {
+      const lines = wrapText(body,PAGE_W-2*MARGIN,10.5,font);
+      if(y - lines.length*15 < 80) throw new Error('development appendix layout overflow');
+      y = drawParagraph(page,heading,MARGIN,y,PAGE_W-2*MARGIN,13,bold,NAVY,17)-5;
+      y = drawParagraph(page,body,MARGIN,y,PAGE_W-2*MARGIN,10.5,font,BODY,15)-22;
+    }
+    footer(page, String(number)+' / 7');
+  }
+  insightPage(t('Personal SWOT profile','تحليل شخصي للقدرات'),t('DEVELOPMENT / EVIDENCE','التطوير / الأدلة'),[
+    [t('Strengths in this attempt','نقاط القوة في هذه المحاولة'),strengths.length ? names(strengths) : t('No domain meets the provisional strength rule with sufficient responses.','لا يوجد مجال يستوفي قاعدة القوة الأولية مع إجابات كافية.')],
+    [t('Development areas','مجالات التطوير'),gaps.length ? names(gaps) : t('No priority gap meets the current evidence rule.','لا توجد فجوة ذات أولوية وفقا لقاعدة الأدلة الحالية.')],
+    [t('Opportunities to explore','فرص للاستكشاف'),strengths.length ? strengths.map(s=>practice(s)).join(' ') : t('Explore varied tasks before identifying potential strengths.','استكشف مهاما متنوعة قبل تحديد نقاط القوة المحتملة.')],
+    [t('Potential challenges','التحديات المحتملة'),limited.length ? t('Limited response evidence: ','أدلة إجابة محدودة: ')+names(limited.slice(0,4)) : t('Unfamiliar formats, time pressure or language may influence performance; these were not independently measured.','قد تؤثر الصيغ غير المألوفة أو ضغط الوقت أو اللغة في الأداء ولم تقاس بصورة مستقلة.')],
+    [t('Interpretation limits','حدود التفسير'),t('Rules are provisional: at least five items and 60% attempted; 75% correct marks a sample strength. These are not validated ability or population norms.','القواعد أولية: خمسة أسئلة على الأقل ومحاولة 60% منها، ونسبة 75% صحيحة مؤشر قوة في العينة وليست معيارا مقننا.')]
+  ],5);
+  insightPage(t('Talent and career exploration','استكشاف المواهب والمسار المهني'),t('DEVELOPMENT / EXPOSURE','التطوير / الخبرة العملية'),[
+    [t('Potential talent indicators','مؤشرات المواهب المحتملة'),strengths.length ? t('Explore practical tasks supported by these measured domains: ','استكشف مهاما عملية تدعمها المجالات المقاسة التالية: ')+names(strengths) : t('There is insufficient evidence to identify a strength-based talent indicator.','لا توجد أدلة كافية لتحديد مؤشر موهبة قائم على نقاط القوة.')],
+    [t('Practical applications','التطبيقات العملية'),(strengths.length?strengths:gaps).map(s=>label(s)+': '+practice(s)).join(' ') || t('Try a range of supervised learning tasks.','جرب مجموعة من المهام التعليمية تحت الإشراف.')],
+    [t('Recommended exposure','الخبرات المقترحة'),gaps.map(s=>label(s)+': '+practice(s)).join(' ') || t('Maintain practice with new tasks and seek feedback.','واصل التدريب على مهام جديدة واطلب التغذية الراجعة.')],
+    [t('Career interpretation','التفسير المهني'),t('Use these examples to explore academic or workplace activities appropriate to your experience. Interests, qualifications, motivation and interpersonal skills need separate evidence. Do not use this report for hiring or exclusion decisions.','استخدم الأمثلة لاستكشاف أنشطة دراسية أو مهنية تناسب خبرتك. تتطلب الميول والمؤهلات والدافعية والمهارات الشخصية أدلة مستقلة. لا يستخدم التقرير لاتخاذ قرارات التوظيف أو الاستبعاد.')]
+  ],6);
+  insightPage(t('30-60-90 day action plan','خطة تطوير لمدة 90 يوما'),t('DEVELOPMENT / ACTION','التطوير / العمل'),[
+    [t('Days 1-30 | Foundation','الأيام 1-30 | الأساس'),t('Establish a baseline using new reviewed tasks. Schedule three short practice sessions weekly. ','حدد خط أساس بمهام جديدة مراجعة وحدد ثلاث جلسات تدريب قصيرة أسبوعيا. ')+(gaps.length?names(gaps.slice(0,2)):t('Explore all measured domains.','استكشف جميع المجالات المقاسة.'))],
+    [t('Days 31-60 | Application','الأيام 31-60 | التطبيق'),(gaps.length?gaps.slice(0,2).map(practice).join(' '):t('Complete a practical case and explain the reasoning to a mentor.','أنجز حالة عملية واشرح التفكير لمرشد.'))],
+    [t('Days 61-90 | Consolidation','الأيام 61-90 | التثبيت'),t('Complete a new comparable practice assessment. Compare correct, attempted and skipped counts, and document one practical example of progress.','أكمل تقييما تدريبيا جديدا قابلا للمقارنة وقارن عدد الإجابات الصحيحة والمحاولات والأسئلة المتروكة ووثق مثالا عمليا للتقدم.')],
+    [t('Review with a mentor','المراجعة مع مرشد'),t('Review progress every two weeks. Adjust learning goals based on work samples and feedback, not this score alone.','راجع التقدم كل أسبوعين وعدل أهداف التعلم بناء على نماذج العمل والتغذية الراجعة وليس الدرجة وحدها.')]
+  ],7);
 
   return pdf.save();
 }
