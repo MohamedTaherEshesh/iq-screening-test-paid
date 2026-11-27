@@ -6,16 +6,19 @@ begin
   r := public.corporate_register(jsonb_build_object('org_type', 'enterprise', 'company_name', 'Svc Co', 'country', 'EG', 'contact_name', 'Test Person', 'email', 'svc@t27.example', 'phone', '+20 1093897115', 'consent', 'yes'));
   select id into cid from public.corporate_accounts where reference = r->>'reference';
   -- 04: pending company cannot sign in
-  assert public.corporate_request_code('svc@t27.example') is null, 'T1 pending gets no code';
+  assert public.corporate_request_code('svc@t27.example', 'svc co') is null, 'T1 pending gets no code';
   update public.corporate_accounts set status = 'active' where id = cid;
-  code := public.corporate_request_code(' SVC@t27.example ')->>'code';
+  code := public.corporate_request_code(' SVC@t27.example ', '  svc   CO ')->>'code';
   assert code ~ '^[0-9]{6}$', 'T2 code format';
+  assert public.corporate_request_code('svc@t27.example', 'Wrong Co') is null, 'T2b wrong company name gets no code';
+  assert public.corporate_request_code('nobody@t27.example', 'Svc Co') is null, 'T2c unregistered email gets no code';
+  code := public.corporate_request_code('svc@t27.example', 'Svc Co')->>'code';
   assert not exists (select 1 from public.corporate_login_codes where code_hash = code or code_hash = public.corp_hash(code)), 'T3 code stored only as company-bound hash';
-  r := public.corporate_verify_code('svc@t27.example', case when code = '000000' then '000001' else '000000' end);
+  r := public.corporate_verify_code('svc@t27.example', 'Svc Co', case when code = '000000' then '000001' else '000000' end);
   assert r->>'ok' = 'false', 'T4 wrong code refused';
-  r := public.corporate_verify_code('svc@t27.example', code);
+  r := public.corporate_verify_code('svc@t27.example', 'Svc Co', code);
   tok2 := r->>'token'; assert r->>'ok' = 'true' and tok2 ~ '^[0-9a-f]{64}$', 'T5 right code gives session';
-  begin perform public.corporate_verify_code('svc@t27.example', code); ok := false; exception when others then ok := sqlerrm = 'invalid_code'; end; assert ok, 'T6 used code refused';
+  begin perform public.corporate_verify_code('svc@t27.example', 'Svc Co', code); ok := false; exception when others then ok := sqlerrm = 'invalid_code'; end; assert ok, 'T6 used code refused';
   assert public.corporate_company_for_token(tok2) = cid, 'T7 session resolves to its company';
   -- 06
   port := public.corporate_portal(tok2);
@@ -39,18 +42,18 @@ begin
   r := public.corporate_register(jsonb_build_object('org_type', 'sme', 'company_name', 'Other Co', 'country', 'SA', 'contact_name', 'Other Person', 'email', 'other@t27.example', 'phone', '+966 500000000', 'consent', 'yes'));
   select id into cid2 from public.corporate_accounts where reference = r->>'reference';
   update public.corporate_accounts set status = 'active' where id = cid2;
-  code := public.corporate_request_code('other@t27.example')->>'code';
-  tok := public.corporate_verify_code('other@t27.example', code)->>'token';
+  code := public.corporate_request_code('other@t27.example', 'Other Co')->>'code';
+  tok := public.corporate_verify_code('other@t27.example', 'Other Co', code)->>'token';
   assert jsonb_array_length(public.corporate_portal(tok)->'requests') = 0 and public.corporate_portal(tok)->'company'->>'name' = 'Other Co', 'T21 company 2 sees only itself';
   -- wrong code 5 times kills the code
-  code := public.corporate_request_code('other@t27.example')->>'code';
-  for i in 1..5 loop perform public.corporate_verify_code('other@t27.example', case when code = '000000' then '000001' else '000000' end); end loop;
-  begin perform public.corporate_verify_code('other@t27.example', code); ok := false; exception when others then ok := sqlerrm = 'invalid_code'; end; assert ok, 'T22 code dead after 5 wrong tries';
+  code := public.corporate_request_code('other@t27.example', 'Other Co')->>'code';
+  for i in 1..5 loop perform public.corporate_verify_code('other@t27.example', 'Other Co', case when code = '000000' then '000001' else '000000' end); end loop;
+  begin perform public.corporate_verify_code('other@t27.example', 'Other Co', code); ok := false; exception when others then ok := sqlerrm = 'invalid_code'; end; assert ok, 'T22 code dead after 5 wrong tries';
   -- admin email change: old session closed, old email cannot sign in, new email can
   perform public.corporate_change_admin_email(cid, 'new.admin@t27.example', 'owner', 'previous admin left');
   begin perform public.corporate_portal(tok2); ok := false; exception when others then ok := sqlerrm = 'invalid_session'; end; assert ok, 'T23 old admin session closed';
-  assert public.corporate_request_code('svc@t27.example') is null, 'T24 old email no longer admin';
-  assert public.corporate_request_code('new.admin@t27.example')->>'code' ~ '^[0-9]{6}$', 'T25 new admin gets code';
+  assert public.corporate_request_code('svc@t27.example', 'svc co') is null, 'T24 old email no longer admin';
+  assert public.corporate_request_code('new.admin@t27.example', 'svc co')->>'code' ~ '^[0-9]{6}$', 'T25 new admin gets code';
   assert (select count(*) from public.corporate_email_changes where company_id = cid) = 1, 'T26 change logged';
   begin perform public.corporate_change_admin_email(cid, 'other@t27.example', 'owner'); ok := false; exception when others then ok := sqlerrm = 'Email used by another company'; end; assert ok, 'T27 cannot take another company email';
   -- registration notice once

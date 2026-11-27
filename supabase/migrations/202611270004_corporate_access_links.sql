@@ -1,6 +1,7 @@
 -- OMS-MND-261127-04  Company admin sign-in by email code (owner design 2026-11-27).
 -- * The company's registered work email is its ADMIN. Only that email can enter that company, never another one.
--- * Sign-in: admin enters the work email -> a 6-digit code is emailed (10 min, 5 tries) -> a 60-minute session
+-- * Sign-in: admin enters the company name AND the registered admin email (both must match one approved company)
+--   -> a 6-digit code is emailed (10 min, 5 tries) -> a 60-minute session
 --   for that company only. Codes and sessions are stored as SHA-256 hashes, never in plain text.
 -- * OMSAZE admin can change a company's admin email (e.g. the person left); every change is logged;
 --   open sessions of the old admin are closed.
@@ -51,11 +52,16 @@ revoke all on function public.corp_hash(text) from public, anon, authenticated;
 
 -- Edge function asks for a code for an email. Returns null when no ACTIVE company has that admin email.
 -- At most 5 codes per company per hour. The plain code is returned once (to be emailed) and never stored.
-create or replace function public.corporate_request_code(p_email text)
+create or replace function public.corp_name_key(p text) returns text language sql immutable set search_path = public, pg_temp as
+$$ select regexp_replace(lower(trim(coalesce(p, ''))), '\s+', ' ', 'g') $$;
+revoke all on function public.corp_name_key(text) from public, anon, authenticated;
+
+create or replace function public.corporate_request_code(p_email text, p_company text)
 returns jsonb language plpgsql security definer set search_path = public, pg_temp as $$
 declare c public.corporate_accounts; code text;
 begin
-  select * into c from public.corporate_accounts where lower(email) = lower(trim(p_email)) and status = 'active' order by created_at desc limit 1;
+  select * into c from public.corporate_accounts where lower(email) = lower(trim(p_email)) and public.corp_name_key(company_name) = public.corp_name_key(p_company)
+     and status = 'active' order by created_at desc limit 1;
   if not found then return null; end if;
   if (select count(*) from public.corporate_login_codes where company_id = c.id and created_at > now() - interval '1 hour') >= 5 then raise exception 'busy'; end if;
   code := lpad(((('x' || substr(replace(gen_random_uuid()::text, '-', ''), 1, 12))::bit(48)::bigint) % 1000000)::text, 6, '0');
@@ -63,15 +69,16 @@ begin
   insert into public.corporate_login_codes(company_id, email, code_hash) values (c.id, lower(c.email), public.corp_hash(c.id::text || ':' || code));
   return jsonb_build_object('code', code, 'email', c.email, 'contact_name', c.contact_name, 'company_name', c.company_name, 'reference', c.reference, 'language', c.language);
 end $$;
-revoke all on function public.corporate_request_code(text) from public, anon, authenticated;
+revoke all on function public.corporate_request_code(text, text) from public, anon, authenticated;
 
 -- Public: email + code -> session token for that company only. 5 wrong tries kill the code.
-create or replace function public.corporate_verify_code(p_email text, p_code text)
+create or replace function public.corporate_verify_code(p_email text, p_company text, p_code text)
 returns jsonb language plpgsql security definer set search_path = public, pg_temp as $$
 declare c public.corporate_accounts; lc public.corporate_login_codes; tok text;
 begin
   if p_code is null or p_code !~ '^[0-9]{6}$' then raise exception 'invalid_code'; end if;
-  select * into c from public.corporate_accounts where lower(email) = lower(trim(p_email)) and status = 'active' order by created_at desc limit 1;
+  select * into c from public.corporate_accounts where lower(email) = lower(trim(p_email)) and public.corp_name_key(company_name) = public.corp_name_key(p_company)
+     and status = 'active' order by created_at desc limit 1;
   if not found then raise exception 'invalid_code'; end if;
   select * into lc from public.corporate_login_codes where company_id = c.id and lower(email) = lower(c.email) and used_at is null and expires_at > now()
    order by created_at desc limit 1 for update;
@@ -85,8 +92,8 @@ begin
   insert into public.corporate_sessions(company_id, email, token_hash) values (c.id, lower(c.email), public.corp_hash(tok));
   return jsonb_build_object('ok', true, 'token', tok, 'expires_in', 3600);
 end $$;
-revoke all on function public.corporate_verify_code(text, text) from public;
-grant execute on function public.corporate_verify_code(text, text) to anon, authenticated;
+revoke all on function public.corporate_verify_code(text, text, text) from public;
+grant execute on function public.corporate_verify_code(text, text, text) to anon, authenticated;
 
 -- Session token -> company. The session dies if the company is no longer active or its admin email changed.
 create or replace function public.corporate_company_for_token(p_token text)

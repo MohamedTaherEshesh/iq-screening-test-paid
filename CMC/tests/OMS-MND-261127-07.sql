@@ -6,8 +6,8 @@ begin
   r := public.corporate_register(jsonb_build_object('org_type', 'enterprise', 'company_name', 'Bal Co', 'country', 'EG', 'contact_name', 'Test Person', 'email', 'bal@t27.example', 'phone', '+20 1093897115', 'consent', 'yes'));
   select id into cid from public.corporate_accounts where reference = r->>'reference';
   update public.corporate_accounts set status = 'active' where id = cid;
-  code := public.corporate_request_code('bal@t27.example')->>'code';
-  tok := public.corporate_verify_code('bal@t27.example', code)->>'token';
+  code := public.corporate_request_code('bal@t27.example', ' Bal  Co ')->>'code';
+  tok := public.corporate_verify_code('bal@t27.example', 'Bal Co', code)->>'token';
   ref1 := public.corporate_request_service(tok, '{"service":"assessment","lines":{"mindproof_manager":80,"cognitive_manager":20}}')->>'reference';
   ref2 := public.corporate_request_service(tok, '{"service":"assessment","lines":{"mindproof_manager":5}}')->>'reference';
   assert (select status from public.corporate_service_requests where reference = ref1) = 'new', 'T1 starts as new';
