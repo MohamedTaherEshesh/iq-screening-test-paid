@@ -28,6 +28,7 @@ const CODE_TTL_SECONDS = 10 * 60;
 const MAX_ROWS = 5000;
 const ALLOWED_ORIGINS = new Set([
   'https://dev.omsaze.com',
+  'https://omsaze-corporate-navy-preview-deljj2xa4-distressed-units.vercel.app', // OMS-DEV-001: verified DEV deployment only
   'https://preview.omsaze.com',
   'https://omsaze.com',
   'https://www.omsaze.com',
