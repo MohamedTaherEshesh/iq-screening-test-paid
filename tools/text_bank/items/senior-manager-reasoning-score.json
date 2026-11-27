@@ -1,0 +1,1411 @@
+[
+ {
+  "id": "T-SMG-MRS-0001",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "smg-mp-board-not-reject",
+  "prompt_en": "\"The board did not reject the proposal; it asked for a revised cost case before it decides.\" Which statement is most accurate?",
+  "options_en": [
+   "The board approved the proposal.",
+   "The board rejected the proposal.",
+   "The decision is pending until a revised cost case is presented.",
+   "The board wants a different proposal."
+  ],
+  "prompt_ar": "\"لم يرفض مجلس الإدارة المقترح، بل طلب دراسة تكاليف معدلة قبل أن يقرر.\" أي عبارة هي الأدق؟",
+  "options_ar": [
+   "المجلس وافق على المقترح.",
+   "المجلس رفض المقترح.",
+   "القرار معلق حتى تُقدم دراسة تكاليف معدلة.",
+   "المجلس يريد مقترحًا مختلفًا."
+  ],
+  "answer": 2,
+  "explain_en": "No decision was taken; the board is waiting for the revised cost case.",
+  "explain_ar": "لم يُتخذ قرار بعد، والمجلس ينتظر دراسة التكاليف المعدلة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0002",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "smg-mp-fact-vs-opinion",
+  "prompt_en": "Which sentence states a verifiable fact rather than an opinion?",
+  "options_en": [
+   "Q3 was a disappointing quarter.",
+   "The sales team should have tried harder.",
+   "Our plan for Q3 was too ambitious.",
+   "Q3 revenue was SAR 4.1 million, 6% below plan."
+  ],
+  "prompt_ar": "أي جملة تذكر حقيقة يمكن التحقق منها وليس رأيًا؟",
+  "options_ar": [
+   "الربع الثالث كان مخيبًا للآمال.",
+   "كان على فريق المبيعات أن يبذل جهدًا أكبر.",
+   "خطتنا للربع الثالث كانت طموحة أكثر من اللازم.",
+   "إيرادات الربع الثالث كانت 4.1 مليون ريال، أقل من الخطة بنسبة 6%."
+  ],
+  "answer": 3,
+  "explain_en": "Only this sentence can be checked against records; the others are judgements.",
+  "explain_ar": "هذه الجملة وحدها يمكن مطابقتها بالسجلات، والباقي أحكام شخصية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0003",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "smg-mp-suggest-not-prove",
+  "prompt_en": "\"The data suggest, but do not prove, that the price change reduced demand.\" Which reading is most accurate?",
+  "options_en": [
+   "A link is likely but not established.",
+   "The price change certainly reduced demand.",
+   "The price change had no effect on demand.",
+   "The data are wrong."
+  ],
+  "prompt_ar": "\"تشير البيانات، دون أن تثبت، إلى أن تغيير السعر قلل الطلب.\" أي فهم هو الأدق؟",
+  "options_ar": [
+   "العلاقة مرجحة لكنها غير مثبتة.",
+   "تغيير السعر قلل الطلب بالتأكيد.",
+   "تغيير السعر لم يؤثر على الطلب.",
+   "البيانات خاطئة."
+  ],
+  "answer": 0,
+  "explain_en": "'Suggest but not prove' means evidence points one way without certainty.",
+  "explain_ar": "'تشير دون أن تثبت' تعني أن الدليل يميل لاتجاه دون يقين.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0004",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-service-credit-cap",
+  "prompt_en": "Contract: \"If monthly availability falls below 99.5%, the client receives a credit of 1% of the monthly fee for each full 0.1% below 99.5%, up to a maximum of 10%.\" Availability last month was 98.0%. What credit applies?",
+  "options_en": [
+   "15% of the monthly fee",
+   "10% of the monthly fee",
+   "1.5% of the monthly fee",
+   "5% of the monthly fee"
+  ],
+  "prompt_ar": "عقد: \"إذا انخفضت نسبة الإتاحة الشهرية عن 99.5%، يحصل العميل على خصم 1% من الرسوم الشهرية عن كل 0.1% كاملة أقل من 99.5%، بحد أقصى 10%.\" الإتاحة في الشهر الماضي كانت 98.0%. ما الخصم المستحق؟",
+  "options_ar": [
+   "15% من الرسوم الشهرية",
+   "10% من الرسوم الشهرية",
+   "1.5% من الرسوم الشهرية",
+   "5% من الرسوم الشهرية"
+  ],
+  "answer": 1,
+  "explain_en": "1.5 points below = 15 steps = 15%, capped at 10%.",
+  "explain_ar": "1.5 نقطة أقل = 15 خطوة = 15%، والحد الأقصى 10%.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "min(10, round((99.5-98.0)/0.1))"
+ },
+ {
+  "id": "T-SMG-MRS-0005",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-firm-commitment",
+  "prompt_en": "A strategy memo says: \"We aim to enter two new markets. We will close the Jeddah warehouse by June. We hope to improve margins. We may review the brand next year.\" Which is a firm commitment?",
+  "options_en": [
+   "Closing the Jeddah warehouse by June",
+   "Entering two new markets",
+   "Improving margins",
+   "Reviewing the brand"
+  ],
+  "prompt_ar": "مذكرة استراتيجية تقول: \"نهدف إلى دخول سوقين جديدين. سنغلق مستودع جدة بحلول يونيو. نأمل تحسين الهوامش. قد نراجع العلامة التجارية العام القادم.\" أيها التزام قاطع؟",
+  "options_ar": [
+   "إغلاق مستودع جدة بحلول يونيو",
+   "دخول سوقين جديدين",
+   "تحسين الهوامش",
+   "مراجعة العلامة التجارية"
+  ],
+  "answer": 0,
+  "explain_en": "'We will ... by June' is definite and dated; 'aim', 'hope' and 'may' are not commitments.",
+  "explain_ar": "'سنغلق ... بحلول يونيو' قاطعة ومحددة بموعد، أما 'نهدف' و'نأمل' و'قد' فليست التزامات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0006",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-regulator-deadline",
+  "prompt_en": "A regulator's letter dated 1 March says: \"Submit your remediation plan within 30 days of the date of this letter. Late submissions will be referred to the enforcement unit.\" Today is 25 March. Which is correct?",
+  "options_en": [
+   "The plan is due 30 days from today.",
+   "The plan is due by 31 March; missing it means referral to enforcement.",
+   "The plan is due by 25 March.",
+   "Late plans are simply accepted with a note."
+  ],
+  "prompt_ar": "خطاب من الجهة الرقابية بتاريخ 1 مارس يقول: \"قدّموا خطة المعالجة خلال 30 يومًا من تاريخ هذا الخطاب. الخطط المتأخرة ستحال إلى وحدة الإنفاذ.\" اليوم 25 مارس. أي عبارة صحيحة؟",
+  "options_ar": [
+   "الخطة مستحقة بعد 30 يومًا من اليوم.",
+   "الخطة مستحقة بحلول 31 مارس، والتأخير يعني الإحالة للإنفاذ.",
+   "الخطة مستحقة بحلول 25 مارس.",
+   "الخطط المتأخرة تُقبل مع ملاحظة فقط."
+  ],
+  "answer": 1,
+  "explain_en": "30 days run from the letter date (1 March), ending 31 March; lateness triggers referral.",
+  "explain_ar": "الثلاثون يومًا تبدأ من تاريخ الخطاب (1 مارس) وتنتهي 31 مارس، والتأخير يؤدي للإحالة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0007",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-mp-travel-freeze-clarified",
+  "prompt_en": "The CEO emailed: \"Freeze all non-essential travel.\" The CFO later clarified: \"Client-funded travel is not affected by the freeze.\" A manager wants to visit a client who will reimburse the full trip cost. What applies?",
+  "options_en": [
+   "The trip is banned, because the CEO's email came first.",
+   "The trip needs the CEO's personal approval.",
+   "The trip may go ahead, because client-funded travel is outside the freeze.",
+   "The trip may go ahead only if it is essential."
+  ],
+  "prompt_ar": "أرسل الرئيس التنفيذي: \"تجميد كل السفر غير الضروري.\" ثم أوضح المدير المالي لاحقًا: \"السفر الذي يموله العميل غير مشمول بالتجميد.\" مدير يريد زيارة عميل سيعوض تكلفة الرحلة كاملة. ما الذي ينطبق؟",
+  "options_ar": [
+   "الرحلة ممنوعة لأن بريد الرئيس التنفيذي جاء أولًا.",
+   "الرحلة تحتاج موافقة شخصية من الرئيس التنفيذي.",
+   "يمكن القيام بالرحلة لأن السفر الممول من العميل خارج التجميد.",
+   "يمكن القيام بالرحلة فقط إذا كانت ضرورية."
+  ],
+  "answer": 2,
+  "explain_en": "The clarification defines the freeze's scope rather than contradicting it, and this trip is client-funded.",
+  "explain_ar": "التوضيح يحدد نطاق التجميد ولا يناقضه، وهذه الرحلة ممولة من العميل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0008",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-thread-agreed-date",
+  "prompt_en": "Email thread: the vendor proposed the 10th; the project manager replied \"We need the 12th\"; the vendor confirmed \"12th agreed\"; Finance later asked \"Can it be the 15th?\" and no one has replied. What is the currently agreed date?",
+  "options_en": [
+   "The 10th",
+   "The 15th",
+   "No date is agreed",
+   "The 12th"
+  ],
+  "prompt_ar": "سلسلة رسائل: المورد اقترح يوم 10، ومدير المشروع رد \"نحتاج يوم 12\"، والمورد أكد \"تم الاتفاق على 12\"، ثم سألت المالية \"هل يمكن أن يكون يوم 15؟\" ولم يرد أحد. ما الموعد المتفق عليه حاليًا؟",
+  "options_ar": [
+   "يوم 10",
+   "يوم 15",
+   "لا يوجد موعد متفق عليه",
+   "يوم 12"
+  ],
+  "answer": 3,
+  "explain_en": "Both parties agreed the 12th; Finance's question is an open request, not a change.",
+  "explain_ar": "الطرفان اتفقا على 12، وسؤال المالية طلب مفتوح وليس تغييرًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0009",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "numerical",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "smg-mp-compound-growth",
+  "prompt_en": "Revenue is SAR 50 million and grows 8% a year, compounded. To one decimal place, what is revenue after 3 years?",
+  "options_en": [
+   "SAR 62.0 million",
+   "SAR 63.0 million",
+   "SAR 66.0 million",
+   "SAR 58.3 million"
+  ],
+  "prompt_ar": "الإيرادات 50 مليون ريال وتنمو 8% سنويًا بشكل تراكمي. لأقرب رقم عشري واحد، كم تصبح الإيرادات بعد 3 سنوات؟",
+  "options_ar": [
+   "62.0 مليون ريال",
+   "63.0 مليون ريال",
+   "66.0 مليون ريال",
+   "58.3 مليون ريال"
+  ],
+  "answer": 1,
+  "explain_en": "50 × 1.08³ = 62.99 ≈ 63.0. 62.0 is simple growth (50 + 3 × 4).",
+  "explain_ar": "50 × 1.08³ = 62.99 ≈ 63.0، و62.0 هي النمو البسيط (50 + 3 × 4).",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "round(50*1.08**3,1)"
+ },
+ {
+  "id": "T-SMG-MRS-0010",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-payback-net",
+  "prompt_en": "A new system costs SAR 900,000. It saves SAR 30,000 a month but adds SAR 5,000 a month in maintenance. How many months until it pays back its cost?",
+  "options_en": [
+   "30 months",
+   "26 months",
+   "36 months",
+   "45 months"
+  ],
+  "prompt_ar": "نظام جديد يكلف 900,000 ريال. يوفر 30,000 ريال شهريًا لكنه يضيف 5,000 ريال شهريًا للصيانة. كم شهرًا حتى يسترد تكلفته؟",
+  "options_ar": [
+   "30 شهرًا",
+   "26 شهرًا",
+   "36 شهرًا",
+   "45 شهرًا"
+  ],
+  "answer": 2,
+  "explain_en": "Net saving 25,000 a month; 900,000 / 25,000 = 36.",
+  "explain_ar": "صافي التوفير 25,000 شهريًا، و900,000 ÷ 25,000 = 36.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "900000/(30000-5000)"
+ },
+ {
+  "id": "T-SMG-MRS-0011",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-mix-margin",
+  "prompt_en": "Product A is 60% of sales with a 30% margin. Product B is 40% of sales with a 15% margin. What is the overall margin?",
+  "options_en": [
+   "22.5%",
+   "45%",
+   "21%",
+   "24%"
+  ],
+  "prompt_ar": "المنتج A يمثل 60% من المبيعات بهامش 30%. المنتج B يمثل 40% من المبيعات بهامش 15%. ما الهامش الإجمالي؟",
+  "options_ar": [
+   "22.5%",
+   "45%",
+   "21%",
+   "24%"
+  ],
+  "answer": 3,
+  "explain_en": "0.6 × 30 + 0.4 × 15 = 18 + 6 = 24%. 22.5% is the unweighted average.",
+  "explain_ar": "0.6 × 30 + 0.4 × 15 = 18 + 6 = 24%، و22.5% هو المتوسط غير الموزون.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "0.6*30+0.4*15"
+ },
+ {
+  "id": "T-SMG-MRS-0012",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-raise-top-quarter",
+  "prompt_en": "A team has 40 staff with an average salary of SAR 180,000. The top 25% of performers get a 10% raise. Assuming their salaries equal the average, what is the extra annual cost?",
+  "options_en": [
+   "SAR 180,000",
+   "SAR 720,000",
+   "SAR 450,000",
+   "SAR 18,000"
+  ],
+  "prompt_ar": "فريق من 40 موظفًا متوسط رواتبهم 180,000 ريال. أفضل 25% أداءً سيحصلون على زيادة 10%. بافتراض أن رواتبهم تساوي المتوسط، ما التكلفة السنوية الإضافية؟",
+  "options_ar": [
+   "180,000 ريال",
+   "720,000 ريال",
+   "450,000 ريال",
+   "18,000 ريال"
+  ],
+  "answer": 0,
+  "explain_en": "10 people × 18,000 = 180,000.",
+  "explain_ar": "10 أشخاص × 18,000 = 180,000.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "40*0.25*180000*0.10"
+ },
+ {
+  "id": "T-SMG-MRS-0013",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "numerical",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-mp-fx-move",
+  "prompt_en": "A contract costs USD 2,000,000, paid from SAR. The exchange rate moves from 3.75 to 3.80 SAR per USD before payment. How much more does it cost in SAR?",
+  "options_en": [
+   "SAR 100,000",
+   "SAR 50,000",
+   "SAR 7,500,000",
+   "SAR 26,316"
+  ],
+  "prompt_ar": "عقد قيمته 2,000,000 دولار يُدفع بالريال. تغير سعر الصرف من 3.75 إلى 3.80 ريال للدولار قبل الدفع. بكم زادت التكلفة بالريال؟",
+  "options_ar": [
+   "100,000 ريال",
+   "50,000 ريال",
+   "7,500,000 ريال",
+   "26,316 ريال"
+  ],
+  "answer": 0,
+  "explain_en": "2,000,000 × 0.05 = 100,000.",
+  "explain_ar": "2,000,000 × 0.05 = 100,000.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "2000000*(3.80-3.75)"
+ },
+ {
+  "id": "T-SMG-MRS-0014",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "smg-mp-auditor-syllogism",
+  "prompt_en": "No auditor approves their own work. Some managers approve their own work. Which must be true?",
+  "options_en": [
+   "No manager is an auditor.",
+   "Some managers are not auditors.",
+   "Some auditors are managers.",
+   "All managers are auditors."
+  ],
+  "prompt_ar": "لا يوجد مراجع يعتمد عمله بنفسه. بعض المديرين يعتمدون عملهم بأنفسهم. ما الذي يجب أن يكون صحيحًا؟",
+  "options_ar": [
+   "لا يوجد مدير مراجع.",
+   "بعض المديرين ليسوا مراجعين.",
+   "بعض المراجعين مديرون.",
+   "كل المديرين مراجعون."
+  ],
+  "answer": 1,
+  "explain_en": "The managers who approve their own work cannot be auditors; nothing is known about the others.",
+  "explain_ar": "المديرون الذين يعتمدون عملهم لا يمكن أن يكونوا مراجعين، ولا نعرف شيئًا عن الباقين.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0015",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "smg-mp-necessary-not-sufficient",
+  "prompt_en": "\"Passing the security check is necessary but not sufficient for system access.\" Ahmed has passed the security check. What follows?",
+  "options_en": [
+   "Ahmed has access.",
+   "Ahmed does not have access.",
+   "Ahmed must pass the check again.",
+   "Ahmed may or may not have access."
+  ],
+  "prompt_ar": "\"اجتياز الفحص الأمني شرط لازم لكنه غير كافٍ للدخول على النظام.\" اجتاز أحمد الفحص الأمني. ماذا يترتب؟",
+  "options_ar": [
+   "لدى أحمد صلاحية دخول.",
+   "ليس لدى أحمد صلاحية دخول.",
+   "يجب أن يجتاز أحمد الفحص مرة أخرى.",
+   "قد يكون لدى أحمد صلاحية دخول وقد لا يكون."
+  ],
+  "answer": 3,
+  "explain_en": "Necessary means without it there is no access; not sufficient means other conditions may still be missing.",
+  "explain_ar": "اللازم يعني لا دخول بدونه، وغير الكافي يعني أن شروطًا أخرى قد تكون ناقصة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0016",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "smg-mp-one-true-statement",
+  "prompt_en": "Exactly one of A, B and C caused an error, and exactly one of these statements is true. A: \"B caused it.\" B: \"I did not cause it.\" C: \"A did not cause it.\" Who caused the error?",
+  "options_en": [
+   "A",
+   "B",
+   "C",
+   "It cannot be determined"
+  ],
+  "prompt_ar": "شخص واحد فقط من A وB وC تسبب في خطأ، وعبارة واحدة فقط من العبارات التالية صحيحة. A قال: \"B هو السبب.\" B قال: \"لست أنا السبب.\" C قال: \"A ليس السبب.\" من تسبب في الخطأ؟",
+  "options_ar": [
+   "A",
+   "B",
+   "C",
+   "لا يمكن التحديد"
+  ],
+  "answer": 0,
+  "explain_en": "If A did it, only B's statement is true. If B did it, A's and C's are true. If C did it, B's and C's are true.",
+  "explain_ar": "لو A هو السبب تكون عبارة B وحدها صحيحة. لو B تكون عبارتا A وC صحيحتين. لو C تكون عبارتا B وC صحيحتين.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0017",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-presentation-slots",
+  "prompt_en": "Five presenters (P, Q, R, S, T) take slots 1 to 5. Q presents immediately after P. R presents in slot 3. T presents before P. S does not present last. Who presents last?",
+  "options_en": [
+   "Q",
+   "P",
+   "S",
+   "T"
+  ],
+  "prompt_ar": "خمسة متحدثين (P وQ وR وS وT) يأخذون الفترات من 1 إلى 5. Q يتحدث مباشرة بعد P. وR في الفترة 3. وT قبل P. وS ليس الأخير. من المتحدث الأخير؟",
+  "options_ar": [
+   "Q",
+   "P",
+   "S",
+   "T"
+  ],
+  "answer": 0,
+  "explain_en": "P and Q must be slots 4 and 5 (slot 3 is R and T is before P), so Q is last; S and T fill slots 1 and 2.",
+  "explain_ar": "P وQ في الفترتين 4 و5 (لأن 3 لـ R وT قبل P)، فيكون Q الأخير، وS وT في الفترتين 1 و2.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0018",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-budget-split-rules",
+  "prompt_en": "SAR 10 million is split across projects X, Y and Z in whole millions. X gets at least twice Z. Y gets exactly 1 million more than Z. X gets no more than 6 million. Each project gets at least 1 million. How much does X get?",
+  "options_en": [
+   "6 million",
+   "4 million",
+   "7 million",
+   "5 million"
+  ],
+  "prompt_ar": "تقسيم 10 ملايين ريال على المشاريع X وY وZ بالمليون الكامل. X يحصل على ضعف Z على الأقل. Y يحصل على مليون أكثر من Z بالضبط. X لا يزيد عن 6 ملايين. كل مشروع يحصل على مليون على الأقل. كم يحصل X؟",
+  "options_ar": [
+   "6 ملايين",
+   "4 ملايين",
+   "7 ملايين",
+   "5 ملايين"
+  ],
+  "answer": 3,
+  "explain_en": "Z = 1 forces X = 7 (too high); Z = 2 gives Y = 3, X = 5 (valid); Z = 3 gives X = 3 (less than twice Z).",
+  "explain_ar": "Z = 1 تجعل X = 7 (أكثر من المسموح)، وZ = 2 تعطي Y = 3 وX = 5 (صحيح)، وZ = 3 تعطي X = 3 (أقل من ضعف Z).",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0019",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-committee-rules",
+  "prompt_en": "Three people are chosen from Ali, Basma, Chen, Dana and Eyad. Ali and Basma cannot both serve. If Chen serves, Dana must serve. Eyad must serve. If Ali serves, Dana cannot. Which two people must be on the committee?",
+  "options_en": [
+   "Ali and Eyad",
+   "Dana and Eyad",
+   "Basma and Chen",
+   "Chen and Eyad"
+  ],
+  "prompt_ar": "يُختار ثلاثة أشخاص من علي وبسمة وتشن ودانة وإياد. علي وبسمة لا يجتمعان. إذا شارك تشن يجب أن تشارك دانة. إياد يجب أن يشارك. إذا شارك علي لا تشارك دانة. أي شخصين يجب أن يكونا في اللجنة؟",
+  "options_ar": [
+   "علي وإياد",
+   "دانة وإياد",
+   "بسمة وتشن",
+   "تشن وإياد"
+  ],
+  "answer": 1,
+  "explain_en": "Only two committees work: Basma–Dana–Eyad and Chen–Dana–Eyad; both include Dana and Eyad.",
+  "explain_ar": "لجنتان فقط ممكنتان: بسمة ودانة وإياد، أو تشن ودانة وإياد، وكلتاهما فيها دانة وإياد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0020",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-invoice-approval-rule",
+  "prompt_en": "Rule: an invoice is approved if (the amount is SAR 50,000 or less AND a purchase order exists) OR the CFO signs it. An invoice for SAR 70,000 has a purchase order but no CFO signature. What is its status?",
+  "options_en": [
+   "Approved, because a purchase order exists",
+   "Not approved",
+   "Approved, because it is under SAR 100,000",
+   "Approved after 30 days"
+  ],
+  "prompt_ar": "القاعدة: تُعتمد الفاتورة إذا (كان المبلغ 50,000 ريال أو أقل ويوجد أمر شراء) أو وقّعها المدير المالي. فاتورة بمبلغ 70,000 ريال لها أمر شراء ولا يوجد توقيع للمدير المالي. ما حالتها؟",
+  "options_ar": [
+   "معتمدة لوجود أمر شراء",
+   "غير معتمدة",
+   "معتمدة لأنها أقل من 100,000 ريال",
+   "معتمدة بعد 30 يومًا"
+  ],
+  "answer": 1,
+  "explain_en": "The first branch fails on amount and there is no CFO signature.",
+  "explain_ar": "الشرط الأول لا يتحقق بسبب المبلغ، ولا يوجد توقيع المدير المالي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0021",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-mp-two-people-schedule",
+  "prompt_en": "Task A (2 days) comes first. Then tasks B (3 days), C (4 days) and E (5 days) can start; each needs one person for its full length and cannot be split. Task D (2 days) starts when B, C and E are all done. Only two people are available. What is the shortest total time?",
+  "options_en": [
+   "9 days",
+   "10 days",
+   "16 days",
+   "11 days"
+  ],
+  "prompt_ar": "المهمة A (يومان) تأتي أولًا. بعدها يمكن بدء المهام B (3 أيام) وC (4 أيام) وE (5 أيام)، وكل مهمة تحتاج شخصًا واحدًا طوال مدتها ولا تُقسم. المهمة D (يومان) تبدأ بعد انتهاء B وC وE. يوجد شخصان فقط. ما أقصر مدة كلية؟",
+  "options_ar": [
+   "9 أيام",
+   "10 أيام",
+   "16 يومًا",
+   "11 يومًا"
+  ],
+  "answer": 3,
+  "explain_en": "Best split after A: one person does E (5), the other B then C (7). 2 + 7 + 2 = 11.",
+  "explain_ar": "أفضل توزيع بعد A: شخص يعمل E (5) والآخر B ثم C (7). 2 + 7 + 2 = 11.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "2+min(max(3+4,5),max(3+5,4),max(4+5,3))+2"
+ },
+ {
+  "id": "T-SMG-MRS-0022",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-floor-allocation",
+  "prompt_en": "Sales, Finance, HR and IT each take one of floors 1 to 4. Sales is above Finance. HR is on floor 1 or 4. IT is directly above Sales. Finance is not on floor 1. Which floor is Finance on?",
+  "options_en": [
+   "Floor 3",
+   "Floor 1",
+   "Floor 2",
+   "Floor 4"
+  ],
+  "prompt_ar": "المبيعات والمالية والموارد البشرية وتقنية المعلومات، كل منها في طابق من 1 إلى 4. المبيعات فوق المالية. الموارد البشرية في الطابق 1 أو 4. تقنية المعلومات فوق المبيعات مباشرة. المالية ليست في الطابق 1. في أي طابق المالية؟",
+  "options_ar": [
+   "الطابق 3",
+   "الطابق 1",
+   "الطابق 2",
+   "الطابق 4"
+  ],
+  "answer": 2,
+  "explain_en": "The only arrangement is HR 1, Finance 2, Sales 3, IT 4.",
+  "explain_ar": "الترتيب الوحيد: الموارد البشرية 1، المالية 2، المبيعات 3، تقنية المعلومات 4.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0023",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-remote-eligibility-probation",
+  "prompt_en": "Policy: remote work is allowed if the role is eligible AND performance is 'meets' or better AND the employee is not on probation. Omar's role is eligible, his rating is 'exceeds', and he is on probation. Is remote work allowed?",
+  "options_en": [
+   "Yes",
+   "Yes, for two days only",
+   "No",
+   "Only with HR approval"
+  ],
+  "prompt_ar": "السياسة: العمل عن بُعد مسموح إذا كانت الوظيفة مؤهلة والأداء 'يحقق التوقعات' أو أفضل والموظف ليس في فترة تجربة. وظيفة عمر مؤهلة وتقييمه 'يتجاوز التوقعات' وهو في فترة تجربة. هل العمل عن بُعد مسموح؟",
+  "options_ar": [
+   "نعم",
+   "نعم ليومين فقط",
+   "لا",
+   "فقط بموافقة الموارد البشرية"
+  ],
+  "answer": 2,
+  "explain_en": "All three conditions are required; probation fails the third.",
+  "explain_ar": "الشروط الثلاثة لازمة، وفترة التجربة تُسقط الشرط الثالث.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0024",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "logical",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-mp-launch-two-true",
+  "prompt_en": "Exactly two of these statements about the launch month are true: (1) The launch is in May. (2) The launch is not in June. (3) The launch is in June or July. What must be true?",
+  "options_en": [
+   "The launch is in May.",
+   "The launch is in May or July.",
+   "The launch is in June.",
+   "The launch is in July."
+  ],
+  "prompt_ar": "عبارتان فقط من العبارات التالية عن شهر الإطلاق صحيحتان: (1) الإطلاق في مايو. (2) الإطلاق ليس في يونيو. (3) الإطلاق في يونيو أو يوليو. ما الذي يجب أن يكون صحيحًا؟",
+  "options_ar": [
+   "الإطلاق في مايو.",
+   "الإطلاق في مايو أو يوليو.",
+   "الإطلاق في يونيو.",
+   "الإطلاق في يوليو."
+  ],
+  "answer": 1,
+  "explain_en": "May makes (1) and (2) true; July makes (2) and (3) true; June or other months give only one true statement.",
+  "explain_ar": "مايو يجعل (1) و(2) صحيحتين، ويوليو يجعل (2) و(3) صحيحتين، أما يونيو أو غيره فيعطي عبارة واحدة صحيحة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0025",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "analytical",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "smg-mp-meetings-engagement",
+  "prompt_en": "\"Teams that hold more meetings have higher engagement scores, so more meetings raise engagement.\" What is the strongest criticism?",
+  "options_en": [
+   "Meetings are always a waste of time.",
+   "Engagement cannot be measured.",
+   "Engaged teams may choose to meet more, so the cause could run the other way.",
+   "The sample includes too many teams."
+  ],
+  "prompt_ar": "\"الفرق التي تعقد اجتماعات أكثر لديها درجات ارتباط أعلى، إذن الاجتماعات الأكثر ترفع الارتباط.\" ما أقوى نقد لهذا الاستنتاج؟",
+  "options_ar": [
+   "الاجتماعات دائمًا مضيعة للوقت.",
+   "الارتباط لا يمكن قياسه.",
+   "الفرق المرتبطة قد تختار الاجتماع أكثر، فقد يكون الاتجاه معكوسًا.",
+   "العينة فيها عدد كبير من الفرق."
+  ],
+  "answer": 2,
+  "explain_en": "A correlation does not show direction; engagement may drive meetings.",
+  "explain_ar": "الارتباط لا يحدد الاتجاه، فقد يكون الارتباط هو سبب كثرة الاجتماعات.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0026",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "analytical",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "smg-mp-fraud-base-rate",
+  "prompt_en": "A fraud system flags 5% of all transactions. Only 1 in 1,000 transactions is fraud, and the system catches all of them. Of the flagged transactions, what share is actually fraud?",
+  "options_en": [
+   "100%",
+   "5%",
+   "2%",
+   "50%"
+  ],
+  "prompt_ar": "نظام لكشف الاحتيال يُعلّم 5% من كل المعاملات. معاملة واحدة فقط من كل 1,000 احتيال، والنظام يكتشفها كلها. من المعاملات المُعلّمة، ما نسبة الاحتيال الفعلي؟",
+  "options_ar": [
+   "100%",
+   "5%",
+   "2%",
+   "50%"
+  ],
+  "answer": 2,
+  "explain_en": "Per 1,000: 50 flagged, 1 fraud. 1 / 50 = 2%.",
+  "explain_ar": "لكل 1,000: 50 مُعلّمة وواحدة احتيال. 1 ÷ 50 = 2%.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "1/50*100"
+ },
+ {
+  "id": "T-SMG-MRS-0027",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-margin-mix-shift",
+  "prompt_en": "Prices did not change, volume rose 10%, but gross margin fell 3 points. A new low-margin product grew from 5% to 25% of sales. What best explains the margin fall?",
+  "options_en": [
+   "The sales mix shifted toward the low-margin product.",
+   "Prices were cut.",
+   "Volume fell.",
+   "Fixed costs disappeared."
+  ],
+  "prompt_ar": "الأسعار لم تتغير، والحجم ارتفع 10%، لكن الهامش الإجمالي انخفض 3 نقاط. منتج جديد منخفض الهامش ارتفعت حصته من 5% إلى 25% من المبيعات. ما أفضل تفسير لانخفاض الهامش؟",
+  "options_ar": [
+   "مزيج المبيعات تحول نحو المنتج منخفض الهامش.",
+   "الأسعار خُفضت.",
+   "الحجم انخفض.",
+   "التكاليف الثابتة اختفت."
+  ],
+  "answer": 0,
+  "explain_en": "Prices and volume rule themselves out; the growing low-margin share pulls the average down.",
+  "explain_ar": "الأسعار والحجم ليسا السبب، والحصة المتزايدة للمنتج منخفض الهامش تخفض المتوسط.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0028",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-nps-partner-channel",
+  "prompt_en": "Customer satisfaction fell this year, but only among customers who joined through the partner channel; direct customers are unchanged. Where should the investigation start?",
+  "options_en": [
+   "How partners onboard and serve their customers",
+   "The company's overall pricing",
+   "The direct sales team",
+   "The product's core features"
+  ],
+  "prompt_ar": "انخفض رضا العملاء هذا العام، لكن فقط بين العملاء الذين انضموا عبر قناة الشركاء، أما العملاء المباشرون فلم يتغيروا. من أين يبدأ التحقيق؟",
+  "options_ar": [
+   "طريقة الشركاء في استقبال عملائهم وخدمتهم",
+   "التسعير العام للشركة",
+   "فريق المبيعات المباشرة",
+   "الخصائص الأساسية للمنتج"
+  ],
+  "answer": 0,
+  "explain_en": "The drop is limited to the partner channel, so shared factors (price, product) are less likely.",
+  "explain_ar": "الانخفاض محصور في قناة الشركاء، فالعوامل المشتركة (السعر والمنتج) أقل احتمالًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0029",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-mp-ab-small-sample",
+  "prompt_en": "An A/B test ran on 500 visitors per version. Version A converted 5.0% (25 people); version B converted 5.2% (26 people). The team wants to switch everyone to B. What is the best conclusion?",
+  "options_en": [
+   "B is clearly better and should be adopted.",
+   "A is clearly better.",
+   "The test proves the two versions are identical.",
+   "The difference is one person and too small to be reliable at this sample size."
+  ],
+  "prompt_ar": "اختبار A/B على 500 زائر لكل نسخة. النسخة A حققت تحويل 5.0% (25 شخصًا)، والنسخة B حققت 5.2% (26 شخصًا). الفريق يريد تحويل الجميع إلى B. ما أفضل استنتاج؟",
+  "options_ar": [
+   "B أفضل بوضوح ويجب اعتمادها.",
+   "A أفضل بوضوح.",
+   "الاختبار يثبت أن النسختين متطابقتان.",
+   "الفرق شخص واحد وهو صغير جدًا ولا يُعتمد عليه بهذا الحجم من العينة."
+  ],
+  "answer": 3,
+  "explain_en": "A one-conversion gap is well within random noise; it neither proves B better nor proves equality.",
+  "explain_ar": "فرق تحويل واحد يقع ضمن التذبذب العشوائي، فلا يثبت أن B أفضل ولا يثبت التطابق.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0030",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-benchmark-like-for-like",
+  "prompt_en": "Our cost per employee is 20% higher than a competitor's. The competitor outsources its IT and payroll; we do them in-house. What is the main problem with this comparison?",
+  "options_en": [
+   "It is not like-for-like: outsourced costs may not appear in their cost per employee.",
+   "Competitor figures are always false.",
+   "Cost per employee is irrelevant to profit.",
+   "20% is too small to discuss."
+  ],
+  "prompt_ar": "تكلفة الموظف لدينا أعلى 20% من منافس. المنافس يستعين بجهات خارجية لتقنية المعلومات والرواتب، ونحن ننفذها داخليًا. ما المشكلة الرئيسية في هذه المقارنة؟",
+  "options_ar": [
+   "المقارنة غير متكافئة: التكاليف الخارجية قد لا تظهر في تكلفة الموظف لديهم.",
+   "أرقام المنافسين دائمًا خاطئة.",
+   "تكلفة الموظف لا علاقة لها بالربح.",
+   "20% نسبة صغيرة لا تستحق النقاش."
+  ],
+  "answer": 0,
+  "explain_en": "Their outsourced work is paid as supplier costs, not staff costs, which lowers their ratio.",
+  "explain_ar": "العمل الخارجي لديهم يُدفع كتكلفة موردين وليس رواتب، مما يخفض النسبة لديهم.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0031",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-pull-forward-deals",
+  "prompt_en": "The sales team hit its quarterly target by offering extra discounts to close deals planned for next quarter. Which two measures would best show the true effect?",
+  "options_en": [
+   "Number of sales calls and office attendance",
+   "Average discount level and next quarter's pipeline",
+   "Website visits and social media likes",
+   "Headcount and training hours"
+  ],
+  "prompt_ar": "حقق فريق المبيعات هدفه الربعي بتقديم خصومات إضافية لإغلاق صفقات كانت مخططة للربع القادم. أي مقياسين يوضحان الأثر الحقيقي أفضل؟",
+  "options_ar": [
+   "عدد مكالمات البيع والحضور للمكتب",
+   "متوسط مستوى الخصم وحجم الفرص في الربع القادم",
+   "زيارات الموقع والإعجابات على وسائل التواصل",
+   "عدد الموظفين وساعات التدريب"
+  ],
+  "answer": 1,
+  "explain_en": "Pulling deals forward lowers margin (discounts) and empties the next quarter (pipeline).",
+  "explain_ar": "تقديم الصفقات يخفض الهامش (الخصومات) ويفرغ الربع القادم (حجم الفرص).",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0032",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "analytical",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-mp-simpson-branches",
+  "prompt_en": "Branch A has a higher overall loan approval rate than Branch B. Yet within every risk group (low, medium, high), Branch B approves a higher share. How can both be true?",
+  "options_en": [
+   "One branch's data must be wrong.",
+   "Branch A receives a much larger share of low-risk applicants.",
+   "Branch B approves fewer loans in total.",
+   "Risk groups were defined differently each month."
+  ],
+  "prompt_ar": "الفرع A نسبة الموافقة على القروض فيه أعلى إجمالًا من الفرع B. ومع ذلك، داخل كل فئة مخاطر (منخفضة ومتوسطة ومرتفعة) يوافق الفرع B على نسبة أعلى. كيف يكون الأمران صحيحين؟",
+  "options_ar": [
+   "بيانات أحد الفرعين لا بد أنها خاطئة.",
+   "الفرع A يستقبل نسبة أكبر بكثير من المتقدمين منخفضي المخاطر.",
+   "الفرع B يوافق على عدد أقل من القروض إجمالًا.",
+   "فئات المخاطر عُرّفت بشكل مختلف كل شهر."
+  ],
+  "answer": 1,
+  "explain_en": "This is Simpson's paradox: a different mix of applicants changes the overall rate.",
+  "explain_ar": "هذه مفارقة سيمبسون: اختلاف مزيج المتقدمين يغير النسبة الإجمالية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0033",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "smg-mp-whistleblower-expense",
+  "prompt_en": "A team member tells you privately that a senior colleague may be submitting false expense claims. What is the best action?",
+  "options_en": [
+   "Confront the senior colleague yourself.",
+   "Ignore it unless there is proof.",
+   "Escalate through the formal compliance channel and protect the reporter's identity.",
+   "Tell the wider team so everyone is careful."
+  ],
+  "prompt_ar": "أخبرك أحد أعضاء الفريق سرًا أن زميلًا كبيرًا قد يقدم مطالبات مصروفات غير صحيحة. ما أفضل تصرف؟",
+  "options_ar": [
+   "مواجهة الزميل الكبير بنفسك.",
+   "التجاهل ما لم يوجد دليل.",
+   "التصعيد عبر قناة الالتزام الرسمية مع حماية هوية المبلّغ.",
+   "إخبار الفريق كله ليكون الجميع حذرًا."
+  ],
+  "answer": 2,
+  "explain_en": "Formal channels investigate fairly and protect both the reporter and due process.",
+  "explain_ar": "القنوات الرسمية تحقق بعدل وتحمي المبلّغ وحق الطرف الآخر.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0034",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "smg-mp-reversible-first",
+  "prompt_en": "Two options have similar expected value. Option 1 can be reversed cheaply within three months; Option 2 locks the company in for five years. Information about the market will be much clearer in three months. Which is the better choice now?",
+  "options_en": [
+   "Option 2, because long commitments are always cheaper",
+   "Either, since expected values are similar",
+   "Option 1, because it keeps flexibility while uncertainty is high",
+   "Neither; wait five years"
+  ],
+  "prompt_ar": "خياران قيمتهما المتوقعة متقاربة. الخيار 1 يمكن التراجع عنه بتكلفة قليلة خلال ثلاثة أشهر، والخيار 2 يلزم الشركة خمس سنوات. معلومات السوق ستكون أوضح كثيرًا بعد ثلاثة أشهر. ما الاختيار الأفضل الآن؟",
+  "options_ar": [
+   "الخيار 2، لأن الالتزامات الطويلة دائمًا أرخص",
+   "أي منهما، لأن القيمتين المتوقعتين متقاربتان",
+   "الخيار 1، لأنه يحافظ على المرونة في وقت عدم اليقين",
+   "لا هذا ولا ذاك، ننتظر خمس سنوات"
+  ],
+  "answer": 2,
+  "explain_en": "With similar value, the option that can be undone after learning more is worth more.",
+  "explain_ar": "عند تقارب القيمة، الخيار القابل للتراجع بعد اتضاح المعلومات له قيمة إضافية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0035",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "smg-mp-sunk-cost-stop",
+  "prompt_en": "A project has already cost SAR 4 million. Finishing it needs SAR 3 million more and will return SAR 2 million in total. What should you do?",
+  "options_en": [
+   "Finish it, because 4 million has already been spent.",
+   "Stop the project, because the remaining spend exceeds what it will return.",
+   "Finish it but cut its quality.",
+   "Pause it for a year without reviewing it."
+  ],
+  "prompt_ar": "مشروع تكلف حتى الآن 4 ملايين ريال. إنهاؤه يحتاج 3 ملايين إضافية وسيعيد مليونين فقط إجمالًا. ماذا تفعل؟",
+  "options_ar": [
+   "إكماله لأن 4 ملايين صُرفت بالفعل.",
+   "إيقاف المشروع لأن الإنفاق المتبقي أكبر من العائد.",
+   "إكماله مع تقليل الجودة.",
+   "تجميده لمدة سنة دون مراجعة."
+  ],
+  "answer": 1,
+  "explain_en": "The 4 million is sunk; spending 3 million to get 2 million back loses money.",
+  "explain_ar": "الأربعة ملايين تكلفة غارقة، وإنفاق 3 ملايين لاسترداد مليونين خسارة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0036",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "smg-mp-cousin-hiring-panel",
+  "prompt_en": "You sit on a hiring panel and discover that one shortlisted candidate is your cousin. What should you do?",
+  "options_en": [
+   "Stay on the panel and score fairly.",
+   "Remove the candidate from the shortlist.",
+   "Declare the relationship and step away from assessing that candidate.",
+   "Ask the candidate to withdraw."
+  ],
+  "prompt_ar": "أنت عضو في لجنة توظيف واكتشفت أن أحد المرشحين في القائمة المختصرة ابن عمك. ماذا تفعل؟",
+  "options_ar": [
+   "أبقى في اللجنة وأقيّم بعدل.",
+   "أحذف المرشح من القائمة.",
+   "أفصح عن القرابة وأنسحب من تقييم هذا المرشح.",
+   "أطلب من المرشح الانسحاب."
+  ],
+  "answer": 2,
+  "explain_en": "Declaring and stepping aside removes the conflict without harming the candidate.",
+  "explain_ar": "الإفصاح والانسحاب يزيلان تعارض المصالح دون الإضرار بالمرشح.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0037",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 1,
+  "difficulty": 8,
+  "idea": "smg-mp-risk-appetite-limit",
+  "prompt_en": "The board's risk appetite: no single client exposure above 15% of capital. Capital is SAR 200 million. A deal would create a SAR 35 million exposure to one client. What is the right step?",
+  "options_en": [
+   "Restructure or share the deal to stay within the SAR 30 million limit, or seek a formal board exception.",
+   "Approve it, since 35 million is small.",
+   "Approve it and inform the board next year.",
+   "Reject the client permanently."
+  ],
+  "prompt_ar": "حد المخاطر لدى مجلس الإدارة: لا يتجاوز التعرض لعميل واحد 15% من رأس المال. رأس المال 200 مليون ريال. صفقة ستخلق تعرضًا بقيمة 35 مليون ريال لعميل واحد. ما الخطوة الصحيحة؟",
+  "options_ar": [
+   "إعادة هيكلة الصفقة أو مشاركتها للبقاء ضمن حد 30 مليون ريال، أو طلب استثناء رسمي من المجلس.",
+   "الموافقة لأن 35 مليونًا مبلغ صغير.",
+   "الموافقة وإبلاغ المجلس العام القادم.",
+   "رفض العميل نهائيًا."
+  ],
+  "answer": 0,
+  "explain_en": "The limit is 0.15 × 200 = 30 million; 35 million breaches it, so restructure or get a formal exception.",
+  "explain_ar": "الحد = 0.15 × 200 = 30 مليونًا، و35 مليونًا تتجاوزه، فإما إعادة الهيكلة أو استثناء رسمي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "0.15*200"
+ },
+ {
+  "id": "T-SMG-MRS-0038",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-breach-response",
+  "prompt_en": "Your team suspects a customer data breach. The facts are incomplete. What is the best first response?",
+  "options_en": [
+   "Wait until every fact is confirmed before doing anything.",
+   "Contain the issue, start the legal notification process, and share what is known with regular updates.",
+   "Deny publicly that anything happened.",
+   "Delete the logs to limit exposure."
+  ],
+  "prompt_ar": "فريقك يشتبه في تسرب بيانات عملاء، والمعلومات غير مكتملة. ما أفضل استجابة أولى؟",
+  "options_ar": [
+   "الانتظار حتى تتأكد كل الحقائق قبل أي تصرف.",
+   "احتواء المشكلة، وبدء إجراءات الإبلاغ القانونية، ومشاركة المعروف مع تحديثات منتظمة.",
+   "النفي العلني لحدوث أي شيء.",
+   "حذف السجلات لتقليل الانكشاف."
+  ],
+  "answer": 1,
+  "explain_en": "Fast containment and lawful, honest communication limit harm; waiting, denying or deleting evidence increase it.",
+  "explain_ar": "الاحتواء السريع والتواصل الصادق المتوافق مع القانون يقللان الضرر، والانتظار أو النفي أو حذف الأدلة يزيدونه.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0039",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-make-vs-buy",
+  "prompt_en": "Building an internal tool takes 8 months and SAR 1.2 million. A ready software service costs SAR 300,000 a year and can start in one month. The tool gives no competitive advantage. What is the better choice?",
+  "options_en": [
+   "Build the tool internally.",
+   "Build and buy at the same time.",
+   "Do neither.",
+   "Buy the software service."
+  ],
+  "prompt_ar": "بناء أداة داخلية يستغرق 8 أشهر ويكلف 1.2 مليون ريال. خدمة برمجية جاهزة تكلف 300,000 ريال سنويًا ويمكن تشغيلها خلال شهر. الأداة لا تعطي ميزة تنافسية. ما الاختيار الأفضل؟",
+  "options_ar": [
+   "بناء الأداة داخليًا.",
+   "البناء والشراء معًا.",
+   "لا هذا ولا ذاك.",
+   "شراء الخدمة البرمجية."
+  ],
+  "answer": 3,
+  "explain_en": "For a non-differentiating tool, a fast, lower-upfront service is the sound choice.",
+  "explain_ar": "لأداة لا تميز الشركة، الخدمة الأسرع والأقل تكلفة مبدئية هي الاختيار السليم.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0040",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-competitor-price-cut",
+  "prompt_en": "A competitor cut prices by 15%. Most of your customers are on multi-year contracts, and your product rates higher on quality. A small group of customers renews in the next three months. What is the best response?",
+  "options_en": [
+   "Cut all prices by 15% immediately.",
+   "Cut prices by 20% to win the price war.",
+   "Hold list prices and strengthen the offer for the customers renewing soon.",
+   "Ignore the change completely."
+  ],
+  "prompt_ar": "خفّض منافس أسعاره 15%. معظم عملائك بعقود متعددة السنوات، ومنتجك أعلى تقييمًا في الجودة. مجموعة صغيرة من العملاء تجدد خلال ثلاثة أشهر. ما أفضل استجابة؟",
+  "options_ar": [
+   "خفض كل الأسعار 15% فورًا.",
+   "خفض الأسعار 20% لكسب حرب الأسعار.",
+   "الحفاظ على الأسعار وتقوية العرض للعملاء الذين يجددون قريبًا.",
+   "تجاهل التغيير تمامًا."
+  ],
+  "answer": 2,
+  "explain_en": "Only the renewing group is exposed; a targeted response protects them without giving away margin everywhere.",
+  "explain_ar": "المجموعة المجددة وحدها معرضة، والاستجابة الموجهة تحميها دون التنازل عن الهامش للجميع.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0041",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-delegate-operations",
+  "prompt_en": "You are overloaded, and strategic work is slipping. Your team leads are capable but bring you every operational decision. What is the best change?",
+  "options_en": [
+   "Work longer hours.",
+   "Stop strategic work.",
+   "Make every decision faster yourself.",
+   "Delegate operational decisions to team leads with clear limits and reporting."
+  ],
+  "prompt_ar": "أنت مثقل بالعمل والعمل الاستراتيجي يتأخر. قادة الفرق أكفاء لكنهم يعرضون عليك كل قرار تشغيلي. ما أفضل تغيير؟",
+  "options_ar": [
+   "العمل ساعات أطول.",
+   "إيقاف العمل الاستراتيجي.",
+   "اتخاذ كل القرارات بنفسك بسرعة أكبر.",
+   "تفويض القرارات التشغيلية لقادة الفرق بحدود واضحة ونظام تقارير."
+  ],
+  "answer": 3,
+  "explain_en": "Delegating within limits frees your time and develops capable leads.",
+  "explain_ar": "التفويض بحدود يوفر وقتك ويطور القادة الأكفاء.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0042",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-top-performer-bully",
+  "prompt_en": "Your top salesperson repeatedly speaks to junior staff in a humiliating way. Two juniors have asked to transfer. What should you do?",
+  "options_en": [
+   "Ignore it because of the sales results.",
+   "Move the juniors to another team.",
+   "Give the salesperson a bonus to improve their mood.",
+   "Address the behaviour formally, with clear expectations and consequences, regardless of sales results."
+  ],
+  "prompt_ar": "أفضل موظف مبيعات لديك يتحدث مع الموظفين الجدد بطريقة مهينة بشكل متكرر، وطلب اثنان منهم النقل. ماذا تفعل؟",
+  "options_ar": [
+   "أتجاهل الأمر بسبب نتائج المبيعات.",
+   "أنقل الموظفين الجدد إلى فريق آخر.",
+   "أمنحه مكافأة لتحسين مزاجه.",
+   "أعالج السلوك رسميًا بتوقعات وعواقب واضحة بغض النظر عن نتائج المبيعات."
+  ],
+  "answer": 3,
+  "explain_en": "Results do not excuse harmful conduct; ignoring it costs people and culture.",
+  "explain_ar": "النتائج لا تبرر السلوك الضار، وتجاهله يكلف الأشخاص والثقافة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0043",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-mp-portfolio-two-of-three",
+  "prompt_en": "You can fund only two of three projects. A: high value, low risk. B: high value, high risk, and core to the new strategy. C: low value, low risk. Which pair is best?",
+  "options_en": [
+   "A and B, with strong risk controls on B",
+   "A and C, because both are low risk",
+   "B and C",
+   "A only, keeping the rest of the budget"
+  ],
+  "prompt_ar": "تستطيع تمويل مشروعين فقط من ثلاثة. A: قيمة عالية ومخاطر منخفضة. B: قيمة عالية ومخاطر عالية وأساسي للاستراتيجية الجديدة. C: قيمة منخفضة ومخاطر منخفضة. ما الزوج الأفضل؟",
+  "options_ar": [
+   "A وB مع ضوابط قوية لمخاطر B",
+   "A وC لأنهما منخفضا المخاطر",
+   "B وC",
+   "A فقط مع الاحتفاظ بباقي الميزانية"
+  ],
+  "answer": 0,
+  "explain_en": "A is clearly in; B adds high strategic value, and its risk can be managed; C adds little.",
+  "explain_ar": "A مؤكد، وB يضيف قيمة استراتيجية عالية ويمكن إدارة مخاطره، وC يضيف القليل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0044",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-vendor-renewal-hike",
+  "prompt_en": "A key software vendor proposes a 25% price increase at renewal. Switching would cost a moderate amount and take four months. Renewal is due in six months. What is the best approach?",
+  "options_en": [
+   "Get competing quotes now and negotiate, keeping a switch as a credible option.",
+   "Accept the increase immediately.",
+   "Switch vendors without negotiating.",
+   "Wait until the renewal date and decide then."
+  ],
+  "prompt_ar": "مورد برمجيات رئيسي يقترح زيادة 25% عند التجديد. التحول لمورد آخر يكلف مبلغًا متوسطًا ويستغرق أربعة أشهر. التجديد بعد ستة أشهر. ما أفضل نهج؟",
+  "options_ar": [
+   "الحصول على عروض منافسة الآن والتفاوض، مع إبقاء التحول خيارًا حقيقيًا.",
+   "قبول الزيادة فورًا.",
+   "التحول لمورد آخر دون تفاوض.",
+   "الانتظار حتى موعد التجديد ثم القرار."
+  ],
+  "answer": 0,
+  "explain_en": "Six months leaves time to build a real alternative, which gives negotiating power; waiting removes it.",
+  "explain_ar": "الستة أشهر تكفي لبناء بديل حقيقي يمنح قوة تفاوض، والانتظار يضيعها.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0045",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-unclear-regulation",
+  "prompt_en": "A new regulation affecting your product is worded unclearly. It takes effect in two months. What is the best step?",
+  "options_en": [
+   "Assume it does not apply.",
+   "Stop selling the product indefinitely.",
+   "Wait for the first fine to see what is meant.",
+   "Get a legal interpretation and apply a cautious interim approach until it is clarified."
+  ],
+  "prompt_ar": "لائحة جديدة تؤثر على منتجك مكتوبة بصياغة غير واضحة، وتدخل حيز التنفيذ بعد شهرين. ما أفضل خطوة؟",
+  "options_ar": [
+   "افتراض أنها لا تنطبق.",
+   "إيقاف بيع المنتج إلى أجل غير مسمى.",
+   "انتظار أول غرامة لمعرفة المقصود.",
+   "الحصول على تفسير قانوني وتطبيق نهج حذر مؤقت حتى يتضح الأمر."
+  ],
+  "answer": 3,
+  "explain_en": "It manages compliance risk without overreacting.",
+  "explain_ar": "يدير مخاطر الالتزام دون مبالغة في رد الفعل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0046",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-mp-ev-with-ruin",
+  "prompt_en": "Project X has an expected value of SAR +5 million, but a 10% chance of a SAR 20 million loss. The company cannot survive a loss above SAR 10 million. What should you decide?",
+  "options_en": [
+   "Reject X or restructure it so the worst case stays below SAR 10 million.",
+   "Accept X because its expected value is positive.",
+   "Accept X and hope the loss does not happen.",
+   "Double the investment to raise the expected value."
+  ],
+  "prompt_ar": "المشروع X قيمته المتوقعة +5 ملايين ريال، لكن فيه احتمال 10% لخسارة 20 مليون ريال. الشركة لا تتحمل خسارة أكبر من 10 ملايين ريال. ماذا تقرر؟",
+  "options_ar": [
+   "رفض X أو إعادة هيكلته بحيث تبقى أسوأ نتيجة أقل من 10 ملايين ريال.",
+   "قبول X لأن قيمته المتوقعة موجبة.",
+   "قبول X والأمل ألا تحدث الخسارة.",
+   "مضاعفة الاستثمار لرفع القيمة المتوقعة."
+  ],
+  "answer": 0,
+  "explain_en": "A positive average does not justify a 10% chance of a loss the company cannot survive.",
+  "explain_ar": "المتوسط الموجب لا يبرر احتمال 10% لخسارة لا تتحملها الشركة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0047",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-merger-process-choice",
+  "prompt_en": "After a merger, two finance teams use different month-end processes. One closes in 5 days with few errors; the other takes 9 days. What is the best way to choose the common process?",
+  "options_en": [
+   "Use the larger company's process.",
+   "Keep both processes forever.",
+   "Let each team vote for its own process.",
+   "Compare the processes on evidence and adopt the better one for each step."
+  ],
+  "prompt_ar": "بعد اندماج، يستخدم فريقا المالية طريقتين مختلفتين لإقفال الشهر. أحدهما يُقفل في 5 أيام بأخطاء قليلة، والآخر يحتاج 9 أيام. ما أفضل طريقة لاختيار الطريقة الموحدة؟",
+  "options_ar": [
+   "استخدام طريقة الشركة الأكبر.",
+   "الإبقاء على الطريقتين للأبد.",
+   "ترك كل فريق يصوت لطريقته.",
+   "مقارنة الطريقتين بالأدلة واعتماد الأفضل في كل خطوة."
+  ],
+  "answer": 3,
+  "explain_en": "Evidence-based choice gives the best result and is fairer than size or votes.",
+  "explain_ar": "الاختيار المبني على الأدلة يعطي أفضل نتيجة وأعدل من الحجم أو التصويت.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0048",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-mp-client-concentration",
+  "prompt_en": "One client is 45% of your revenue. They now ask for exclusivity in exchange for a 10% price cut. What is the best response?",
+  "options_en": [
+   "Accept exclusivity to secure the revenue.",
+   "Negotiate terms without exclusivity and invest in widening the client base.",
+   "End the relationship immediately.",
+   "Accept the price cut and exclusivity, then raise prices next year."
+  ],
+  "prompt_ar": "عميل واحد يمثل 45% من إيراداتك، ويطلب الآن الحصرية مقابل خفض السعر 10%. ما أفضل رد؟",
+  "options_ar": [
+   "قبول الحصرية لضمان الإيرادات.",
+   "التفاوض على شروط بدون حصرية والاستثمار في توسيع قاعدة العملاء.",
+   "إنهاء العلاقة فورًا.",
+   "قبول الخفض والحصرية ثم رفع الأسعار العام القادم."
+  ],
+  "answer": 1,
+  "explain_en": "Exclusivity at a lower price deepens a dangerous dependence; keep the client but reduce the reliance.",
+  "explain_ar": "الحصرية بسعر أقل تعمق اعتمادًا خطرًا، والأفضل الحفاظ على العميل مع تقليل الاعتماد عليه.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0049",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-mp-layoff-rumours",
+  "prompt_en": "A restructuring with job losses is approved. Rumours are already spreading inside the company. What is the best communication step?",
+  "options_en": [
+   "Deny the rumours until the last day.",
+   "Announce it publicly first, then tell staff.",
+   "Tell affected staff directly and honestly as early as possible, before any public announcement.",
+   "Say nothing and let managers handle questions individually."
+  ],
+  "prompt_ar": "تمت الموافقة على إعادة هيكلة تتضمن الاستغناء عن وظائف، والشائعات بدأت تنتشر داخل الشركة. ما أفضل خطوة تواصل؟",
+  "options_ar": [
+   "نفي الشائعات حتى آخر يوم.",
+   "الإعلان العام أولًا ثم إبلاغ الموظفين.",
+   "إبلاغ الموظفين المتأثرين مباشرة وبصدق في أقرب وقت، قبل أي إعلان عام.",
+   "الصمت وترك المديرين يجيبون على الأسئلة فرديًا."
+  ],
+  "answer": 2,
+  "explain_en": "Early, honest communication to those affected limits harm and protects trust.",
+  "explain_ar": "التواصل المبكر والصادق مع المتأثرين يقلل الضرر ويحمي الثقة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MRS-0050",
+  "exam": "senior-manager-reasoning-score",
+  "level": "senior-manager",
+  "family": "decision",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-mp-kpi-target-quality",
+  "prompt_en": "A unit hits its target of 'tickets closed per day' but customer complaints about unresolved tickets doubled. You set next year's targets. What is the best change?",
+  "options_en": [
+   "Raise the tickets-closed target further.",
+   "Pair the volume target with a resolution-quality measure, such as reopened tickets.",
+   "Remove all targets.",
+   "Keep the same target and add more staff."
+  ],
+  "prompt_ar": "وحدة حققت هدف 'عدد التذاكر المغلقة يوميًا' لكن شكاوى العملاء من تذاكر لم تُحل تضاعفت. أنت تضع أهداف العام القادم. ما أفضل تغيير؟",
+  "options_ar": [
+   "رفع هدف التذاكر المغلقة أكثر.",
+   "ربط هدف العدد بمقياس لجودة الحل، مثل التذاكر التي أُعيد فتحها.",
+   "إلغاء كل الأهداف.",
+   "إبقاء نفس الهدف وإضافة موظفين."
+  ],
+  "answer": 1,
+  "explain_en": "A volume-only target rewards closing without solving; a quality measure balances it.",
+  "explain_ar": "هدف العدد وحده يكافئ الإغلاق دون الحل، ومقياس الجودة يوازنه.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ }
+]

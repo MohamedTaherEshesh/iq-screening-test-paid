@@ -1,0 +1,1403 @@
+[
+ {
+  "id": "T-SMG-MCA-0001",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "smg-cog-ambivalent",
+  "prompt_en": "\"The director was ambivalent about the merger.\" What does 'ambivalent' mean here?",
+  "options_en": [
+   "Strongly in favour",
+   "Completely opposed",
+   "Not informed",
+   "Having mixed feelings"
+  ],
+  "prompt_ar": "\"كان المدير مترددًا بين القبول والرفض تجاه الاندماج.\" ماذا تعني العبارة هنا؟",
+  "options_ar": [
+   "مؤيد بشدة",
+   "معارض تمامًا",
+   "غير مطلع",
+   "لديه مشاعر متضاربة"
+  ],
+  "answer": 3,
+  "explain_en": "Ambivalent means holding mixed or contradictory feelings.",
+  "explain_ar": "التردد بين القبول والرفض يعني وجود مشاعر متضاربة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0002",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "smg-cog-analogy-thermometer-kpi",
+  "prompt_en": "Thermometer is to temperature as KPI is to ______.",
+  "options_en": [
+   "performance",
+   "target",
+   "bonus",
+   "report"
+  ],
+  "prompt_ar": "الترمومتر بالنسبة لدرجة الحرارة مثل مؤشر الأداء الرئيسي (KPI) بالنسبة إلى ______.",
+  "options_ar": [
+   "الأداء",
+   "الهدف",
+   "المكافأة",
+   "التقرير"
+  ],
+  "answer": 0,
+  "explain_en": "Both are instruments that measure something: temperature and performance.",
+  "explain_ar": "الاثنان أدوات قياس: الأول للحرارة والثاني للأداء.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0003",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "smg-cog-few-if-any",
+  "prompt_en": "\"Few, if any, of the proposals met the criteria.\" What does this tell us?",
+  "options_en": [
+   "Most proposals met the criteria.",
+   "Exactly one proposal met the criteria.",
+   "At most a small number met the criteria, and possibly none did.",
+   "All proposals failed the criteria."
+  ],
+  "prompt_ar": "\"قليل من المقترحات، إن وُجد أصلًا، حقق المعايير.\" ماذا تخبرنا هذه الجملة؟",
+  "options_ar": [
+   "معظم المقترحات حققت المعايير.",
+   "مقترح واحد بالضبط حقق المعايير.",
+   "عدد قليل على الأكثر حقق المعايير، وربما لا شيء.",
+   "كل المقترحات فشلت في المعايير."
+  ],
+  "answer": 2,
+  "explain_en": "'Few, if any' allows a small number or none; it does not confirm that all failed.",
+  "explain_ar": "العبارة تسمح بعدد قليل أو لا شيء، ولا تؤكد أن الكل فشل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0004",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "smg-cog-only-placement",
+  "prompt_en": "\"Only the manager approved the plan.\" What does this sentence mean?",
+  "options_en": [
+   "The manager approved nothing except the plan.",
+   "The manager merely approved the plan and did nothing else with it.",
+   "No one other than the manager approved the plan.",
+   "The plan was approved by everyone."
+  ],
+  "prompt_ar": "\"المدير وحده هو من وافق على الخطة.\" ماذا تعني هذه الجملة؟",
+  "options_ar": [
+   "المدير لم يوافق على شيء سوى الخطة.",
+   "المدير اكتفى بالموافقة على الخطة ولم يفعل شيئًا آخر.",
+   "لم يوافق أحد على الخطة غير المدير.",
+   "الجميع وافقوا على الخطة."
+  ],
+  "answer": 2,
+  "explain_en": "'Only' here limits who approved, not what was approved.",
+  "explain_ar": "'وحده' هنا تحدد من وافق، وليس ما تمت الموافقة عليه.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0005",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 1,
+  "difficulty": 8,
+  "idea": "smg-cog-breach-observance",
+  "prompt_en": "\"The travel policy is honoured more in the breach than in the observance.\" What does this mean?",
+  "options_en": [
+   "The policy is strictly followed.",
+   "The policy is broken more often than it is followed.",
+   "The policy was recently updated.",
+   "The policy is honoured by senior staff."
+  ],
+  "prompt_ar": "\"سياسة السفر تُخالَف أكثر مما تُطبَّق.\" ماذا تعني هذه العبارة؟",
+  "options_ar": [
+   "السياسة مطبقة بصرامة.",
+   "السياسة يُخرج عنها أكثر مما يُلتزم بها.",
+   "السياسة تم تحديثها مؤخرًا.",
+   "كبار الموظفين يلتزمون بالسياسة."
+  ],
+  "answer": 1,
+  "explain_en": "The expression means the rule is ignored more often than kept.",
+  "explain_ar": "العبارة تعني أن القاعدة تُتجاهل أكثر مما تُتبع.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0006",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-noted-not-approved",
+  "prompt_en": "Board minutes: \"The committee noted the expansion proposal and asked management to return with funding options.\" What is the proposal's status?",
+  "options_en": [
+   "Acknowledged but not approved",
+   "Approved",
+   "Rejected",
+   "Funded"
+  ],
+  "prompt_ar": "محضر المجلس: \"أحاطت اللجنة علمًا بمقترح التوسع وطلبت من الإدارة العودة بخيارات تمويل.\" ما حالة المقترح؟",
+  "options_ar": [
+   "تم الاطلاع عليه ولم يُعتمد",
+   "تم اعتماده",
+   "تم رفضه",
+   "تم تمويله"
+  ],
+  "answer": 0,
+  "explain_en": "'Noted' in minutes means acknowledged; the request for funding options shows no decision yet.",
+  "explain_ar": "'أحاطت علمًا' في المحاضر تعني الاطلاع، وطلب خيارات التمويل يعني أنه لا قرار بعد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0007",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-sla-maintenance-exclusion",
+  "prompt_en": "Service agreement: \"Response-time targets exclude planned maintenance announced at least 48 hours in advance.\" An outage happened during maintenance that was announced 24 hours before. Does the outage count against the targets?",
+  "options_en": [
+   "No, because it was planned maintenance.",
+   "Yes, because the maintenance was not announced 48 hours ahead.",
+   "No, because it was announced.",
+   "Only if the client complains."
+  ],
+  "prompt_ar": "اتفاقية خدمة: \"أهداف زمن الاستجابة لا تشمل الصيانة المخططة المعلن عنها قبل 48 ساعة على الأقل.\" حدث انقطاع أثناء صيانة أُعلن عنها قبل 24 ساعة. هل يُحسب الانقطاع ضمن الأهداف؟",
+  "options_ar": [
+   "لا، لأنها صيانة مخططة.",
+   "نعم، لأن الصيانة لم يُعلن عنها قبل 48 ساعة.",
+   "لا، لأنه أُعلن عنها.",
+   "فقط إذا اشتكى العميل."
+  ],
+  "answer": 1,
+  "explain_en": "The exclusion needs 48 hours' notice; 24 hours does not qualify.",
+  "explain_ar": "الاستثناء يشترط إعلانًا قبل 48 ساعة، و24 ساعة لا تكفي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0008",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-attrition-headcount",
+  "prompt_en": "HR says: \"Attrition fell to 8% this year.\" Operations says: \"We lost more people than last year.\" Both are accurate. What explains this?",
+  "options_en": [
+   "HR counted only managers.",
+   "Average headcount grew, so more leavers can still be a lower rate.",
+   "Operations counted transfers as leavers by mistake.",
+   "Attrition and leavers are unrelated."
+  ],
+  "prompt_ar": "الموارد البشرية تقول: \"انخفض معدل ترك العمل إلى 8% هذا العام.\" والعمليات تقول: \"خسرنا أشخاصًا أكثر من العام الماضي.\" الكلامان صحيحان. ما التفسير؟",
+  "options_ar": [
+   "الموارد البشرية حسبت المديرين فقط.",
+   "متوسط عدد الموظفين زاد، فيمكن أن يزيد عدد المغادرين مع انخفاض النسبة.",
+   "العمليات حسبت التنقلات الداخلية كمغادرين بالخطأ.",
+   "معدل الترك وعدد المغادرين لا علاقة بينهما."
+  ],
+  "answer": 1,
+  "explain_en": "A rate is leavers divided by headcount; a bigger base allows more leavers at a lower rate.",
+  "explain_ar": "المعدل هو المغادرون مقسومًا على العدد، وقاعدة أكبر تسمح بمغادرين أكثر بنسبة أقل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0009",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-supplier-price-hold-conditions",
+  "prompt_en": "Supplier email: \"We can hold the current price if the order is confirmed by the 20th and paid within 30 days.\" Your company normally pays in 60 days. What is needed to keep the price?",
+  "options_en": [
+   "Confirm by the 20th only",
+   "Confirm by the 20th and pay within 30 days",
+   "Pay within 60 days as usual",
+   "Pay within 30 days only"
+  ],
+  "prompt_ar": "بريد من مورد: \"يمكننا تثبيت السعر الحالي إذا تم تأكيد الطلب قبل يوم 20 والسداد خلال 30 يومًا.\" شركتك تسدد عادة خلال 60 يومًا. ما المطلوب للحفاظ على السعر؟",
+  "options_ar": [
+   "التأكيد قبل يوم 20 فقط",
+   "التأكيد قبل يوم 20 والسداد خلال 30 يومًا",
+   "السداد خلال 60 يومًا كالمعتاد",
+   "السداد خلال 30 يومًا فقط"
+  ],
+  "answer": 1,
+  "explain_en": "The offer has two conditions joined by 'and'; both must be met.",
+  "explain_ar": "العرض فيه شرطان مرتبطان بـ'و'، ويجب تحقيقهما معًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0010",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "smg-cog-board-summary-request",
+  "prompt_en": "The CEO asks you to \"cut the 30-page report to what the board needs.\" What is the best deliverable?",
+  "options_en": [
+   "A one-page summary of decisions needed, key figures and main risks",
+   "The same report with smaller fonts",
+   "Only the appendix tables",
+   "A list of everyone who worked on it"
+  ],
+  "prompt_ar": "طلب منك الرئيس التنفيذي \"اختصار التقرير المكون من 30 صفحة إلى ما يحتاجه المجلس.\" ما أفضل مخرج؟",
+  "options_ar": [
+   "ملخص من صفحة واحدة بالقرارات المطلوبة وأهم الأرقام والمخاطر الرئيسية",
+   "نفس التقرير بخط أصغر",
+   "جداول الملحق فقط",
+   "قائمة بكل من عمل عليه"
+  ],
+  "answer": 0,
+  "explain_en": "Boards need decisions, key numbers and risks, briefly.",
+  "explain_ar": "المجلس يحتاج القرارات والأرقام الرئيسية والمخاطر باختصار.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0011",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-jargon-working-capital",
+  "prompt_en": "You must explain \"too much working capital is tied up in inventory\" to a board member with no finance background. Which sentence is best?",
+  "options_en": [
+   "Our current ratio exceeds benchmark parameters.",
+   "Inventory turnover days are elevated versus plan.",
+   "We have liquidity constraints in our asset base.",
+   "Too much of our cash is sitting on shelves as unsold stock."
+  ],
+  "prompt_ar": "يجب أن تشرح عبارة \"رأس مال عامل كبير محبوس في المخزون\" لعضو مجلس ليس لديه خلفية مالية. أي جملة أفضل؟",
+  "options_ar": [
+   "نسبة التداول لدينا تتجاوز المعايير المرجعية.",
+   "أيام دوران المخزون مرتفعة مقارنة بالخطة.",
+   "لدينا قيود سيولة في قاعدة الأصول.",
+   "جزء كبير من أموالنا موجود على الرفوف في صورة بضاعة لم تُبع."
+  ],
+  "answer": 3,
+  "explain_en": "It keeps the meaning and removes the jargon.",
+  "explain_ar": "تحافظ على المعنى وتزيل المصطلحات الفنية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0012",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-summary-contradicts-table",
+  "prompt_en": "A report summary says \"Sales grew in all regions.\" The table below shows: North −2%, South +5%, East +3%, West +7%. What is the problem?",
+  "options_en": [
+   "The table is missing a total.",
+   "The summary contradicts the North figure.",
+   "West grew too fast.",
+   "The summary is too short."
+  ],
+  "prompt_ar": "ملخص تقرير يقول \"نمت المبيعات في كل المناطق.\" والجدول أسفله يوضح: الشمال −2%، الجنوب +5%، الشرق +3%، الغرب +7%. ما المشكلة؟",
+  "options_ar": [
+   "الجدول ينقصه الإجمالي.",
+   "الملخص يتعارض مع رقم الشمال.",
+   "الغرب نما بسرعة زائدة.",
+   "الملخص قصير جدًا."
+  ],
+  "answer": 1,
+  "explain_en": "North fell, so 'all regions grew' is false.",
+  "explain_ar": "الشمال انخفض، فعبارة 'نمت في كل المناطق' غير صحيحة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0013",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-cog-local-vs-group-policy",
+  "prompt_en": "\"Local policies apply unless they conflict with group policy, in which case group policy prevails.\" Local policy allows 30 days of leave to be carried over; group policy allows 10. An employee wants to carry over 25 days. How many can they carry over?",
+  "options_en": [
+   "10 days",
+   "25 days",
+   "30 days",
+   "0 days"
+  ],
+  "prompt_ar": "\"السياسات المحلية تُطبق ما لم تتعارض مع سياسة المجموعة، وفي هذه الحالة تُقدَّم سياسة المجموعة.\" السياسة المحلية تسمح بترحيل 30 يوم إجازة، وسياسة المجموعة تسمح بـ 10. موظف يريد ترحيل 25 يومًا. كم يومًا يمكنه ترحيلها؟",
+  "options_ar": [
+   "10 أيام",
+   "25 يومًا",
+   "30 يومًا",
+   "صفر"
+  ],
+  "answer": 0,
+  "explain_en": "The policies conflict, so the group limit of 10 applies.",
+  "explain_ar": "السياستان متعارضتان، فيُطبق حد المجموعة وهو 10.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0014",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-cfo-email-opening",
+  "prompt_en": "You are emailing the CFO to request funding for a process automation that saves SAR 1.2 million a year for a SAR 400,000 cost. Which opening line is strongest?",
+  "options_en": [
+   "\"I hope you are well and having a good week.\"",
+   "\"Our team has been working very hard lately.\"",
+   "\"There are many automation tools on the market.\"",
+   "\"I'm requesting SAR 400,000 for an automation that saves SAR 1.2 million a year, paying back in four months.\""
+  ],
+  "prompt_ar": "تكتب بريدًا للمدير المالي تطلب تمويلًا لأتمتة إجراء توفر 1.2 مليون ريال سنويًا بتكلفة 400,000 ريال. أي جملة افتتاحية أقوى؟",
+  "options_ar": [
+   "\"أتمنى أن تكون بخير وأن يكون أسبوعك جيدًا.\"",
+   "\"فريقنا يعمل بجد كبير مؤخرًا.\"",
+   "\"هناك أدوات أتمتة كثيرة في السوق.\"",
+   "\"أطلب 400,000 ريال لأتمتة توفر 1.2 مليون ريال سنويًا وتسترد تكلفتها خلال أربعة أشهر.\""
+  ],
+  "answer": 3,
+  "explain_en": "It leads with the ask and the financial case the CFO cares about.",
+  "explain_ar": "تبدأ بالطلب والمبرر المالي الذي يهتم به المدير المالي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0015",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-meeting-action-list",
+  "prompt_en": "In a meeting: Nadia agreed to draft the policy by the 5th. Karim said he \"might\" review it. The group agreed Legal must sign off before release. Which action list is accurate?",
+  "options_en": [
+   "Nadia drafts; Karim reviews by the 5th; release immediately.",
+   "Nadia drafts by the 5th; Legal signs off before release; Karim's review is not confirmed.",
+   "Karim drafts; Nadia reviews; Legal is optional.",
+   "Legal drafts by the 5th; Nadia signs off."
+  ],
+  "prompt_ar": "في اجتماع: وافقت نادية على كتابة مسودة السياسة قبل يوم 5. وقال كريم إنه \"قد\" يراجعها. واتفق الجميع على ضرورة اعتماد الشؤون القانونية قبل الإصدار. أي قائمة مهام دقيقة؟",
+  "options_ar": [
+   "نادية تكتب، وكريم يراجع قبل يوم 5، والإصدار فوري.",
+   "نادية تكتب المسودة قبل يوم 5، والقانونية تعتمد قبل الإصدار، ومراجعة كريم غير مؤكدة.",
+   "كريم يكتب، ونادية تراجع، والقانونية اختيارية.",
+   "القانونية تكتب قبل يوم 5، ونادية تعتمد."
+  ],
+  "answer": 1,
+  "explain_en": "It records the two firm commitments and treats 'might' as unconfirmed.",
+  "explain_ar": "تسجل الالتزامين المؤكدين وتعامل 'قد' كأمر غير مؤكد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0016",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-forecast-assumption-broken",
+  "prompt_en": "Forecast: \"Demand is expected to rise 5–8% next year, assuming no new competitor enters the market.\" A new competitor entered last week. What follows?",
+  "options_en": [
+   "Demand will still rise 5–8%.",
+   "Demand will fall 5–8%.",
+   "The forecast's condition no longer holds, so it needs to be revised.",
+   "The competitor will leave the market."
+  ],
+  "prompt_ar": "توقع: \"يتوقع أن يرتفع الطلب 5–8% العام القادم، بافتراض عدم دخول منافس جديد للسوق.\" دخل منافس جديد الأسبوع الماضي. ماذا يترتب؟",
+  "options_ar": [
+   "الطلب سيظل يرتفع 5–8%.",
+   "الطلب سينخفض 5–8%.",
+   "شرط التوقع لم يعد قائمًا، فيجب مراجعته.",
+   "المنافس سيخرج من السوق."
+  ],
+  "answer": 2,
+  "explain_en": "The forecast depended on an assumption that is now false; it does not say what happens instead.",
+  "explain_ar": "التوقع كان مبنيًا على افتراض لم يعد صحيحًا، ولا يحدد ما سيحدث بدلًا منه.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0017",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-cog-renewal-notice-missed",
+  "prompt_en": "Contract: \"Either party may renew for one year by giving notice at least 90 days before expiry. Without such notice, the contract ends at expiry.\" Expiry is 31 December. Today is 15 October and no notice has been given. What is the position?",
+  "options_en": [
+   "Notice can still be given until 31 December.",
+   "The renewal notice window has passed, so the contract ends unless both parties agree otherwise.",
+   "The contract renews automatically.",
+   "The contract has already ended."
+  ],
+  "prompt_ar": "عقد: \"يجوز لأي طرف التجديد لسنة بإشعار قبل الانتهاء بـ 90 يومًا على الأقل. وبدون هذا الإشعار ينتهي العقد في تاريخ انتهائه.\" تاريخ الانتهاء 31 ديسمبر، واليوم 15 أكتوبر ولم يُرسل أي إشعار. ما الوضع؟",
+  "options_ar": [
+   "يمكن إرسال الإشعار حتى 31 ديسمبر.",
+   "مهلة إشعار التجديد انتهت، فالعقد سينتهي ما لم يتفق الطرفان على غير ذلك.",
+   "العقد يتجدد تلقائيًا.",
+   "العقد انتهى بالفعل."
+  ],
+  "answer": 1,
+  "explain_en": "90 days before 31 December is about 2 October, which has passed; the contract runs to 31 December, then ends.",
+  "explain_ar": "90 يومًا قبل 31 ديسمبر توافق حوالي 2 أكتوبر وقد مضت، فيستمر العقد حتى 31 ديسمبر ثم ينتهي.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0018",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "verbal",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-360-feedback-focus",
+  "prompt_en": "360 feedback on a senior manager: peers call her \"decisive and clear\"; her own team says she \"rarely asks for input before deciding.\" What is the best development focus?",
+  "options_en": [
+   "Involving her team before key decisions",
+   "Becoming more decisive",
+   "Speaking more clearly to peers",
+   "Reducing contact with peers"
+  ],
+  "prompt_ar": "تقييم 360 لمديرة كبيرة: الزملاء يصفونها بأنها \"حاسمة وواضحة\"، وفريقها يقول إنها \"نادرًا ما تطلب رأيهم قبل القرار.\" ما أفضل محور للتطوير؟",
+  "options_ar": [
+   "إشراك فريقها قبل القرارات المهمة",
+   "أن تصبح أكثر حسمًا",
+   "التحدث بوضوح أكبر مع الزملاء",
+   "تقليل التواصل مع الزملاء"
+  ],
+  "answer": 0,
+  "explain_en": "Her strength is decisiveness; the gap is consulting her team.",
+  "explain_ar": "قوتها في الحسم، والفجوة في استشارة فريقها.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0019",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-stores-pickup-hubs",
+  "prompt_en": "A retailer's store visits are falling while online sales grow fast. Online orders suffer from costly last-mile delivery and returns. Which idea best uses the stores' existing assets?",
+  "options_en": [
+   "Turn stores into pickup and returns points for online orders.",
+   "Close all stores.",
+   "Open more stores in the same areas.",
+   "Stop selling online."
+  ],
+  "prompt_ar": "زيارات متاجر شركة تجزئة تنخفض بينما تنمو المبيعات أونلاين بسرعة. والطلبات الأونلاين تعاني من تكلفة عالية للتوصيل النهائي والمرتجعات. أي فكرة تستغل أصول المتاجر الحالية أفضل؟",
+  "options_ar": [
+   "تحويل المتاجر إلى نقاط استلام وإرجاع للطلبات الأونلاين.",
+   "إغلاق كل المتاجر.",
+   "فتح متاجر أكثر في نفس المناطق.",
+   "إيقاف البيع أونلاين."
+  ],
+  "answer": 0,
+  "explain_en": "It solves the online cost problem with space the company already pays for, and brings people into stores.",
+  "explain_ar": "تحل مشكلة تكلفة الأونلاين بمساحات تدفع الشركة ثمنها بالفعل، وتجلب الزوار للمتاجر.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0020",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-bench-experts-workshops",
+  "prompt_en": "A consulting firm's senior experts are often idle for two or three weeks between client projects. Which idea best turns this idle time into value?",
+  "options_en": [
+   "Reduce their salaries between projects.",
+   "Package their expertise into short paid workshops for existing clients.",
+   "Ask them to take unpaid leave.",
+   "Hire more experts."
+  ],
+  "prompt_ar": "خبراء شركة استشارات كثيرًا ما يكونون بدون عمل لمدة أسبوعين أو ثلاثة بين مشاريع العملاء. أي فكرة تحول هذا الوقت إلى قيمة أفضل؟",
+  "options_ar": [
+   "خفض رواتبهم بين المشاريع.",
+   "تقديم خبرتهم في ورش عمل قصيرة مدفوعة للعملاء الحاليين.",
+   "مطالبتهم بإجازة بدون أجر.",
+   "تعيين خبراء إضافيين."
+  ],
+  "answer": 1,
+  "explain_en": "It earns revenue from existing capacity and strengthens client relationships.",
+  "explain_ar": "تحقق دخلًا من طاقة موجودة وتقوي العلاقة مع العملاء.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0021",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-discharge-meds-early",
+  "prompt_en": "Hospital patients often wait hours to go home because discharge medicines are prepared only after the doctor signs the discharge. Most discharges are planned a day ahead. Which idea best cuts the wait without new staff?",
+  "options_en": [
+   "Hire more pharmacists.",
+   "Prepare discharge medicines the day before for planned discharges.",
+   "Discharge patients without medicines.",
+   "Ask doctors to sign discharges at night."
+  ],
+  "prompt_ar": "مرضى المستشفى ينتظرون ساعات للخروج لأن أدوية الخروج لا تُجهز إلا بعد توقيع الطبيب. معظم حالات الخروج مخطط لها قبلها بيوم. أي فكرة تقلل الانتظار بدون موظفين جدد؟",
+  "options_ar": [
+   "تعيين صيادلة إضافيين.",
+   "تجهيز أدوية الخروج في اليوم السابق للحالات المخطط لها.",
+   "إخراج المرضى بدون أدوية.",
+   "مطالبة الأطباء بتوقيع الخروج ليلًا."
+  ],
+  "answer": 1,
+  "explain_en": "It uses the known plan to move work earlier, removing the bottleneck.",
+  "explain_ar": "تستغل الخطة المعروفة لتقديم العمل مبكرًا وإزالة نقطة الاختناق.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0022",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "smg-cog-branch-midday-advice",
+  "prompt_en": "A bank's branches are busy in the morning and evening but nearly empty at midday. The bank wants to attract small-business customers. Which idea uses the quiet time best?",
+  "options_en": [
+   "Close branches at midday.",
+   "Cut staff hours at midday.",
+   "Run midday advice sessions for small-business owners in the branches.",
+   "Advertise on national TV."
+  ],
+  "prompt_ar": "فروع بنك مزدحمة صباحًا ومساءً وشبه فارغة في الظهيرة. البنك يريد جذب عملاء من أصحاب الأعمال الصغيرة. أي فكرة تستغل وقت الهدوء أفضل؟",
+  "options_ar": [
+   "إغلاق الفروع ظهرًا.",
+   "تقليل ساعات الموظفين ظهرًا.",
+   "تنظيم جلسات استشارية ظهرًا لأصحاب الأعمال الصغيرة في الفروع.",
+   "الإعلان في التلفزيون الوطني."
+  ],
+  "answer": 2,
+  "explain_en": "It uses idle space and staff to reach the target segment.",
+  "explain_ar": "تستغل المساحة والموظفين في وقت الفراغ للوصول للشريحة المستهدفة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0023",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-shared-seasonal-pool",
+  "prompt_en": "A warehouse needs 40 extra workers every November–December. A nearby farm needs about 40 extra workers every March–May. Neither wants to add permanent staff. Which idea fits best?",
+  "options_en": [
+   "Each hires 40 permanent workers.",
+   "The warehouse refuses orders in the peak.",
+   "Create a shared year-round worker pool that moves between the two businesses.",
+   "The farm reduces its harvest."
+  ],
+  "prompt_ar": "مستودع يحتاج 40 عاملًا إضافيًا كل نوفمبر وديسمبر، ومزرعة قريبة تحتاج حوالي 40 عاملًا إضافيًا كل مارس حتى مايو. لا أحد منهما يريد موظفين دائمين إضافيين. أي فكرة أنسب؟",
+  "options_ar": [
+   "كل منهما يعين 40 عاملًا دائمًا.",
+   "المستودع يرفض الطلبات في الذروة.",
+   "إنشاء مجموعة عمال مشتركة على مدار السنة تنتقل بين النشاطين.",
+   "المزرعة تقلل حصادها."
+  ],
+  "answer": 2,
+  "explain_en": "The peaks do not overlap, so sharing gives workers steadier work and both firms reliable cover.",
+  "explain_ar": "مواسم الذروة لا تتداخل، فالمشاركة تعطي العمال عملًا أثبت والطرفين تغطية موثوقة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0024",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-cog-benchmark-reports",
+  "prompt_en": "A software company holds usage data from thousands of client firms. Clients have agreed to the use of aggregated, anonymised data. Which idea creates new value without building a new product?",
+  "options_en": [
+   "Sell individual clients' data to competitors.",
+   "Delete the data to save storage.",
+   "Publish paid industry benchmark reports from the aggregated, anonymised data.",
+   "Raise prices for all clients."
+  ],
+  "prompt_ar": "شركة برمجيات تملك بيانات استخدام لآلاف الشركات العميلة، والعملاء وافقوا على استخدام البيانات المجمعة ومجهولة الهوية. أي فكرة تخلق قيمة جديدة بدون بناء منتج جديد؟",
+  "options_ar": [
+   "بيع بيانات العملاء الفردية للمنافسين.",
+   "حذف البيانات لتوفير التخزين.",
+   "إصدار تقارير مقارنة قطاعية مدفوعة من البيانات المجمعة مجهولة الهوية.",
+   "رفع الأسعار لكل العملاء."
+  ],
+  "answer": 2,
+  "explain_en": "It uses an existing asset within the consent given; selling individual data would break it.",
+  "explain_ar": "تستغل أصلًا موجودًا في حدود الموافقة، أما بيع البيانات الفردية فيخالفها.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0025",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "creativity",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-problem-sprints",
+  "prompt_en": "An employee suggestion scheme gets few and mostly minor ideas. Leaders want better ideas at low cost. Which approach is most likely to work?",
+  "options_en": [
+   "Short cross-team sprints on real business problems, with leaders committing to fund the best solution.",
+   "A suggestion box in the lobby.",
+   "Mandatory monthly idea quotas.",
+   "A larger cash prize for any idea."
+  ],
+  "prompt_ar": "برنامج اقتراحات الموظفين يحصل على أفكار قليلة ومعظمها بسيط. القيادة تريد أفكارًا أفضل بتكلفة منخفضة. أي نهج أرجح للنجاح؟",
+  "options_ar": [
+   "جولات عمل قصيرة بين الفرق على مشاكل حقيقية، مع التزام القيادة بتمويل أفضل حل.",
+   "صندوق اقتراحات في المدخل.",
+   "حصة إلزامية من الأفكار كل شهر.",
+   "جائزة مالية أكبر لأي فكرة."
+  ],
+  "answer": 0,
+  "explain_en": "Real problems focus the ideas and visible commitment shows they will be used.",
+  "explain_ar": "المشاكل الحقيقية تركز الأفكار، والالتزام الواضح يثبت أنها ستُستخدم.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0026",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 5,
+  "idea": "smg-cog-number-rule-switch",
+  "prompt_en": "Numbers were first grouped as odd or even. The rule changes: group by whether a number is greater than 50. Under the new rule, which number goes with 64?",
+  "options_en": [
+   "48",
+   "13",
+   "52",
+   "7"
+  ],
+  "prompt_ar": "جُمعت الأرقام أولًا حسب كونها فردية أو زوجية. تغيرت القاعدة: الجمع حسب كون الرقم أكبر من 50. حسب القاعدة الجديدة، أي رقم يوضع مع 64؟",
+  "options_ar": [
+   "48",
+   "13",
+   "52",
+   "7"
+  ],
+  "answer": 2,
+  "explain_en": "64 and 52 are both above 50; 48 matches only under the old odd/even rule.",
+  "explain_ar": "64 و52 كلاهما أكبر من 50، أما 48 فيناسب القاعدة القديمة فقط.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0027",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "smg-cog-alternate-x2-minus3",
+  "prompt_en": "The rule alternates: multiply by 2, then subtract 3. Sequence: 4, 8, 5, 10, 7, ... What comes next?",
+  "options_en": [
+   "4",
+   "10",
+   "11",
+   "14"
+  ],
+  "prompt_ar": "القاعدة تتبادل: اضرب في 2 ثم اطرح 3. المتتالية: 4، 8، 5، 10، 7، ... ما الرقم التالي؟",
+  "options_ar": [
+   "4",
+   "10",
+   "11",
+   "14"
+  ],
+  "answer": 3,
+  "explain_en": "After subtracting 3 (10 → 7), multiply by 2: 14.",
+  "explain_ar": "بعد طرح 3 (10 ← 7) نضرب في 2: 14.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)",
+  "check": "7*2"
+ },
+ {
+  "id": "T-SMG-MCA-0028",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 7,
+  "idea": "smg-cog-position-rules",
+  "prompt_en": "Apply rule A (add 4) to numbers in odd positions and rule B (multiply by 3) to numbers in even positions. List: 2, 5, 7, 1. What is the result?",
+  "options_en": [
+   "6, 9, 21, 5",
+   "6, 15, 21, 3",
+   "8, 15, 11, 7",
+   "6, 15, 11, 3"
+  ],
+  "prompt_ar": "طبّق القاعدة A (أضف 4) على الأرقام في المواقع الفردية، والقاعدة B (اضرب في 3) على الأرقام في المواقع الزوجية. القائمة: 2، 5، 7، 1. ما النتيجة؟",
+  "options_ar": [
+   "6، 9، 21، 5",
+   "6، 15، 21، 3",
+   "8، 15، 11، 7",
+   "6، 15، 11، 3"
+  ],
+  "answer": 3,
+  "explain_en": "Positions 1 and 3: 2+4=6, 7+4=11. Positions 2 and 4: 5×3=15, 1×3=3.",
+  "explain_ar": "الموقعان 1 و3: 2+4=6 و7+4=11. الموقعان 2 و4: 5×3=15 و1×3=3.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0029",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 1,
+  "difficulty": 6,
+  "idea": "smg-cog-blocked-chain-parallel",
+  "prompt_en": "The report needs the data; the data needs system access; access needs approval, which is delayed two days. You also have to build the report template, which needs nothing else. What can you do now?",
+  "options_en": [
+   "Write the report",
+   "Build the report template",
+   "Pull the data",
+   "Use the system without access"
+  ],
+  "prompt_ar": "التقرير يحتاج البيانات، والبيانات تحتاج صلاحية دخول للنظام، والصلاحية تحتاج موافقة متأخرة يومين. وعليك أيضًا بناء قالب التقرير الذي لا يعتمد على شيء. ماذا يمكنك أن تفعل الآن؟",
+  "options_ar": [
+   "كتابة التقرير",
+   "بناء قالب التقرير",
+   "سحب البيانات",
+   "استخدام النظام بدون صلاحية"
+  ],
+  "answer": 1,
+  "explain_en": "Everything else waits on approval; the template is independent.",
+  "explain_ar": "كل شيء آخر ينتظر الموافقة، والقالب مستقل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0030",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-pivot-core-declining",
+  "prompt_en": "Your core product's revenue is declining 10% a year, while a related service is growing 30% a year. The core still funds most of the company. What is the best strategy?",
+  "options_en": [
+   "Put all investment into the core to reverse the decline.",
+   "Close the core business immediately.",
+   "Shift investment step by step to the growing service while running the core for cash.",
+   "Keep everything as it is."
+  ],
+  "prompt_ar": "إيرادات منتجك الأساسي تنخفض 10% سنويًا، بينما خدمة مرتبطة تنمو 30% سنويًا. المنتج الأساسي ما زال يمول معظم الشركة. ما أفضل استراتيجية؟",
+  "options_ar": [
+   "ضخ كل الاستثمار في المنتج الأساسي لعكس الانخفاض.",
+   "إغلاق النشاط الأساسي فورًا.",
+   "نقل الاستثمار تدريجيًا إلى الخدمة النامية مع إدارة المنتج الأساسي لتوفير السيولة.",
+   "إبقاء كل شيء كما هو."
+  ],
+  "answer": 2,
+  "explain_en": "It adapts to the trend without cutting off the cash that funds the move.",
+  "explain_ar": "تتكيف مع الاتجاه دون قطع السيولة التي تمول التحول.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0031",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "smg-cog-timezones-meetings",
+  "prompt_en": "Your team spans Riyadh, London and Singapore. The weekly meeting is always at a time that is late at night for Singapore. What is the best adjustment?",
+  "options_en": [
+   "Keep the time; Singapore can adapt.",
+   "Cancel all meetings.",
+   "Rotate the meeting time and move routine updates to written, asynchronous notes.",
+   "Exclude Singapore from the meeting."
+  ],
+  "prompt_ar": "فريقك موزع بين الرياض ولندن وسنغافورة. الاجتماع الأسبوعي دائمًا في وقت متأخر ليلًا في سنغافورة. ما أفضل تعديل؟",
+  "options_ar": [
+   "إبقاء الموعد وعلى سنغافورة التكيف.",
+   "إلغاء كل الاجتماعات.",
+   "تدوير موعد الاجتماع ونقل التحديثات الروتينية إلى ملاحظات مكتوبة غير متزامنة.",
+   "استبعاد سنغافورة من الاجتماع."
+  ],
+  "answer": 2,
+  "explain_en": "It shares the burden fairly and reduces the need for live meetings.",
+  "explain_ar": "توزع العبء بعدل وتقلل الحاجة للاجتماعات المباشرة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0032",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-ceo-shift-profitability",
+  "prompt_en": "A new CEO shifts priorities from growth to profitability. Your large growth project is mid-way and not yet profitable. What is the best response?",
+  "options_en": [
+   "Continue unchanged and hope it is not noticed.",
+   "Stop it immediately without analysis.",
+   "Argue that growth matters more.",
+   "Re-plan the project around profitability milestones, or scale it down if it cannot meet them."
+  ],
+  "prompt_ar": "رئيس تنفيذي جديد غيّر الأولوية من النمو إلى الربحية. مشروع النمو الكبير الذي تديره في منتصفه ولم يحقق ربحًا بعد. ما أفضل استجابة؟",
+  "options_ar": [
+   "الاستمرار بدون تغيير على أمل ألا يُلاحظ.",
+   "إيقافه فورًا بدون تحليل.",
+   "الجدال بأن النمو أهم.",
+   "إعادة تخطيط المشروع حول مراحل ربحية، أو تقليصه إذا لم يستطع تحقيقها."
+  ],
+  "answer": 3,
+  "explain_en": "It aligns with the new direction while keeping value where it exists.",
+  "explain_ar": "تتماشى مع الاتجاه الجديد مع الحفاظ على القيمة حيث توجد.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0033",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-venue-cancelled",
+  "prompt_en": "The venue for your 300-person conference cancels one week before the event. What is the best plan?",
+  "options_en": [
+   "Cancel the conference.",
+   "Wait to see if the venue changes its mind.",
+   "Hold it in the office car park.",
+   "Secure an alternative venue now, tell attendees promptly, and prepare an online fallback."
+  ],
+  "prompt_ar": "القاعة المحجوزة لمؤتمرك الذي يحضره 300 شخص ألغت الحجز قبل الحدث بأسبوع. ما أفضل خطة؟",
+  "options_ar": [
+   "إلغاء المؤتمر.",
+   "الانتظار لعل القاعة تغير رأيها.",
+   "إقامته في موقف سيارات المكتب.",
+   "حجز قاعة بديلة فورًا، وإبلاغ الحضور سريعًا، وتجهيز بديل أونلاين."
+  ],
+  "answer": 3,
+  "explain_en": "It acts quickly, keeps attendees informed and adds a backup.",
+  "explain_ar": "تتحرك بسرعة وتبقي الحضور على علم وتضيف خطة بديلة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0034",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-cog-conversion-assumption-wrong",
+  "prompt_en": "Your business case assumed 30% of trial users would convert to paid. After two months the rate is 12%. What is the best response?",
+  "options_en": [
+   "Revisit the model and test changes to the offer, pricing or onboarding.",
+   "Keep the original forecast in all reports.",
+   "Shut the product down immediately.",
+   "Increase marketing spend without changing anything else."
+  ],
+  "prompt_ar": "دراسة الجدوى افترضت أن 30% من مستخدمي التجربة سيتحولون لمشتركين مدفوعين. بعد شهرين النسبة 12%. ما أفضل استجابة؟",
+  "options_ar": [
+   "مراجعة النموذج واختبار تغييرات في العرض أو السعر أو تجربة البداية.",
+   "الإبقاء على التوقع الأصلي في كل التقارير.",
+   "إغلاق المنتج فورًا.",
+   "زيادة الإنفاق التسويقي بدون أي تغيير آخر."
+  ],
+  "answer": 0,
+  "explain_en": "Evidence shows the assumption was wrong; adapt and test rather than ignore or abandon.",
+  "explain_ar": "الأدلة تثبت خطأ الافتراض، فالأفضل التكيف والاختبار بدل التجاهل أو الترك.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0035",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-it-vs-business-timeline",
+  "prompt_en": "IT says the full system needs six months. The business needs something working in two months. What is the best way forward?",
+  "options_en": [
+   "Force IT to deliver everything in two months.",
+   "Let the business wait six months.",
+   "Agree a minimum first release in two months and phase the rest.",
+   "Buy three different systems."
+  ],
+  "prompt_ar": "تقنية المعلومات تقول إن النظام الكامل يحتاج ستة أشهر، والعمل يحتاج شيئًا يعمل خلال شهرين. ما أفضل طريق؟",
+  "options_ar": [
+   "إجبار تقنية المعلومات على تسليم كل شيء خلال شهرين.",
+   "ترك العمل ينتظر ستة أشهر.",
+   "الاتفاق على إصدار أول بالحد الأدنى خلال شهرين وتقسيم الباقي على مراحل.",
+   "شراء ثلاثة أنظمة مختلفة."
+  ],
+  "answer": 2,
+  "explain_en": "Phasing meets the urgent need without an unrealistic full deadline.",
+  "explain_ar": "التقسيم على مراحل يلبي الحاجة العاجلة دون موعد غير واقعي للنظام الكامل.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0036",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-regulator-format-change",
+  "prompt_en": "The regulator changes its reporting format with three weeks' notice. Your system cannot produce the new format yet. What is the best plan?",
+  "options_en": [
+   "Submit in the old format.",
+   "Ask for a one-year delay without a plan.",
+   "Skip this reporting period.",
+   "Map the changes, cover mandatory fields with a temporary controlled manual process, then automate."
+  ],
+  "prompt_ar": "الجهة الرقابية غيرت شكل التقارير بإشعار قبل ثلاثة أسابيع، ونظامك لا يستطيع إخراج الشكل الجديد بعد. ما أفضل خطة؟",
+  "options_ar": [
+   "التقديم بالشكل القديم.",
+   "طلب تأجيل سنة بدون خطة.",
+   "تخطي فترة التقرير هذه.",
+   "تحديد التغييرات، وتغطية الحقول الإلزامية بإجراء يدوي مؤقت مضبوط، ثم الأتمتة."
+  ],
+  "answer": 3,
+  "explain_en": "It meets the deadline safely now and fixes the system later.",
+  "explain_ar": "تلتزم بالموعد بأمان الآن وتصلح النظام لاحقًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0037",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 5,
+  "idea": "smg-cog-new-client-contact",
+  "prompt_en": "A key client restructures, and your new contact there has different priorities from the previous one. What should you do first?",
+  "options_en": [
+   "Keep the old plan and wait.",
+   "Meet the new contact to learn their priorities and adjust the account plan.",
+   "Ask for the old contact back.",
+   "Reduce service until things settle."
+  ],
+  "prompt_ar": "عميل رئيسي أعاد هيكلته، والشخص الجديد المسؤول عن التعامل معك لديه أولويات مختلفة عن سابقه. ماذا تفعل أولًا؟",
+  "options_ar": [
+   "الإبقاء على الخطة القديمة والانتظار.",
+   "الاجتماع بالمسؤول الجديد لفهم أولوياته وتعديل خطة الحساب.",
+   "طلب عودة المسؤول السابق.",
+   "تقليل الخدمة حتى تستقر الأمور."
+  ],
+  "answer": 1,
+  "explain_en": "Understanding the new priorities is the basis for adapting.",
+  "explain_ar": "فهم الأولويات الجديدة هو أساس التكيف.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0038",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 7,
+  "idea": "smg-cog-own-decision-wrong",
+  "prompt_en": "You chose a vendor that is now clearly failing to deliver. What is the best response?",
+  "options_en": [
+   "Defend the choice to avoid looking wrong.",
+   "Blame the procurement team.",
+   "Wait for the contract to end.",
+   "Acknowledge it, move quickly to a fix or replacement, and share the lessons."
+  ],
+  "prompt_ar": "اخترت موردًا ثبت الآن بوضوح أنه يفشل في التسليم. ما أفضل تصرف؟",
+  "options_ar": [
+   "الدفاع عن الاختيار لتجنب الظهور بمظهر المخطئ.",
+   "لوم فريق المشتريات.",
+   "انتظار انتهاء العقد.",
+   "الاعتراف بذلك، والتحرك سريعًا للإصلاح أو الاستبدال، ومشاركة الدروس المستفادة."
+  ],
+  "answer": 3,
+  "explain_en": "Changing course openly limits damage and builds trust.",
+  "explain_ar": "تغيير المسار بصراحة يحد من الضرر ويبني الثقة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0039",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-rolling-forecast",
+  "prompt_en": "The company moves from a fixed annual budget to quarterly rolling forecasts. Your team is used to planning once a year. What is the best adaptation?",
+  "options_en": [
+   "Keep making one annual plan and copy it four times.",
+   "Stop planning.",
+   "Ask Finance to do your forecasts.",
+   "Build a simple driver-based model that can be updated each quarter."
+  ],
+  "prompt_ar": "الشركة تنتقل من ميزانية سنوية ثابتة إلى توقعات ربعية متجددة، وفريقك معتاد على التخطيط مرة واحدة في السنة. ما أفضل تكيف؟",
+  "options_ar": [
+   "الاستمرار في خطة سنوية ونسخها أربع مرات.",
+   "التوقف عن التخطيط.",
+   "مطالبة المالية بعمل توقعاتك.",
+   "بناء نموذج بسيط قائم على المحركات الرئيسية يمكن تحديثه كل ربع."
+  ],
+  "answer": 3,
+  "explain_en": "A driver-based model makes frequent updates quick and meaningful.",
+  "explain_ar": "النموذج القائم على المحركات يجعل التحديث المتكرر سريعًا وذا معنى.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0040",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 6,
+  "idea": "smg-cog-system-resistance",
+  "prompt_en": "Staff are resisting a new system and keep using old spreadsheets. What is the best approach?",
+  "options_en": [
+   "Delete the spreadsheets overnight.",
+   "Issue warnings to anyone using spreadsheets.",
+   "Involve users, address their specific concerns, and train champions in each team.",
+   "Return to the old way."
+  ],
+  "prompt_ar": "الموظفون يقاومون نظامًا جديدًا ويستمرون في استخدام الجداول القديمة. ما أفضل نهج؟",
+  "options_ar": [
+   "حذف الجداول ليلًا.",
+   "إنذار كل من يستخدم الجداول.",
+   "إشراك المستخدمين، ومعالجة مخاوفهم المحددة، وتدريب سفراء في كل فريق.",
+   "العودة للطريقة القديمة."
+  ],
+  "answer": 2,
+  "explain_en": "Understanding and addressing the reasons builds lasting adoption.",
+  "explain_ar": "فهم الأسباب ومعالجتها يبني استخدامًا دائمًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0041",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 2,
+  "difficulty": 8,
+  "idea": "smg-cog-input-cost-spike",
+  "prompt_en": "The cost of your main raw material jumps 40% and is expected to stay high. What is the best response?",
+  "options_en": [
+   "Absorb the full cost and change nothing.",
+   "Pass 100% of the cost to customers immediately.",
+   "Review pricing, look for alternative materials, and lock in future supply prices where possible.",
+   "Stop production until prices fall."
+  ],
+  "prompt_ar": "تكلفة المادة الخام الرئيسية ارتفعت 40% ومتوقع أن تبقى مرتفعة. ما أفضل استجابة؟",
+  "options_ar": [
+   "تحمل التكلفة كاملة وعدم تغيير شيء.",
+   "تحميل العملاء الزيادة كاملة فورًا.",
+   "مراجعة التسعير، والبحث عن مواد بديلة، وتثبيت أسعار التوريد المستقبلية حيث أمكن.",
+   "إيقاف الإنتاج حتى تنخفض الأسعار."
+  ],
+  "answer": 2,
+  "explain_en": "A lasting cost change needs several adjustments, not one extreme move.",
+  "explain_ar": "التغير الدائم في التكلفة يحتاج عدة تعديلات وليس خطوة واحدة متطرفة.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0042",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 6,
+  "idea": "smg-cog-sjt-credit-taken",
+  "prompt_en": "In a meeting with the director, a colleague presents your idea as their own. What is the most effective response?",
+  "options_en": [
+   "Interrupt the meeting and accuse the colleague.",
+   "Say nothing and stop sharing ideas.",
+   "Complain about the colleague to the whole team.",
+   "Speak to the colleague privately, and if needed clarify the facts calmly with the director."
+  ],
+  "prompt_ar": "في اجتماع مع المدير، عرض زميل فكرتك على أنها فكرته. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "مقاطعة الاجتماع واتهام الزميل.",
+   "السكوت والتوقف عن مشاركة الأفكار.",
+   "الشكوى من الزميل أمام الفريق كله.",
+   "التحدث مع الزميل على انفراد، وإذا لزم توضيح الحقائق بهدوء للمدير."
+  ],
+  "answer": 3,
+  "explain_en": "It corrects the record while keeping relationships professional.",
+  "explain_ar": "يصحح الحقائق مع الحفاظ على علاقات مهنية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0043",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 7,
+  "idea": "smg-cog-sjt-two-bosses",
+  "prompt_en": "Your manager gives you an urgent task that clashes with a deadline set by another senior leader. What is the most effective response?",
+  "options_en": [
+   "Do your manager's task and miss the other deadline silently.",
+   "Tell both leaders about the clash and ask them to agree the priority.",
+   "Try to do both and accept lower quality.",
+   "Ask a junior colleague to do one without telling anyone."
+  ],
+  "prompt_ar": "مديرك أعطاك مهمة عاجلة تتعارض مع موعد نهائي حدده قائد كبير آخر. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "تنفيذ مهمة مديرك وتفويت الموعد الآخر بصمت.",
+   "إبلاغ القائدين بالتعارض وطلب الاتفاق على الأولوية.",
+   "محاولة إنجاز الاثنين وقبول جودة أقل.",
+   "تكليف زميل مبتدئ بإحداهما دون إبلاغ أحد."
+  ],
+  "answer": 1,
+  "explain_en": "Making the conflict visible lets the right people set the priority.",
+  "explain_ar": "إظهار التعارض يسمح لأصحاب القرار بتحديد الأولوية.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0044",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 7,
+  "idea": "smg-cog-sjt-client-public-criticism",
+  "prompt_en": "A client criticises your team harshly in front of your staff. Some points are valid, some are not. What is the most effective response?",
+  "options_en": [
+   "Acknowledge the valid points, commit to follow up, and discuss the rest privately.",
+   "Defend the team point by point in front of everyone.",
+   "Agree with everything to end the conversation.",
+   "End the meeting immediately."
+  ],
+  "prompt_ar": "عميل انتقد فريقك بقسوة أمام موظفيك. بعض النقاط صحيحة وبعضها غير صحيح. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "الإقرار بالنقاط الصحيحة، والالتزام بالمتابعة، ومناقشة الباقي على انفراد.",
+   "الدفاع عن الفريق نقطة بنقطة أمام الجميع.",
+   "الموافقة على كل شيء لإنهاء الحديث.",
+   "إنهاء الاجتماع فورًا."
+  ],
+  "answer": 0,
+  "explain_en": "It respects the client, keeps credibility, and protects the team from public argument.",
+  "explain_ar": "يحترم العميل، ويحافظ على المصداقية، ويحمي الفريق من جدال علني.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0045",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 5,
+  "idea": "smg-cog-sjt-new-member-questions",
+  "prompt_en": "A new team member asks you questions many times a day, which slows your own work. What is the most effective response?",
+  "options_en": [
+   "Ignore the questions.",
+   "Set a regular daily time for questions and point them to useful resources.",
+   "Ask your manager to move them to another team.",
+   "Answer every question immediately, whatever you are doing."
+  ],
+  "prompt_ar": "عضو جديد في الفريق يسألك أسئلة كثيرة يوميًا، مما يبطئ عملك. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "تجاهل الأسئلة.",
+   "تحديد وقت يومي ثابت للأسئلة وتوجيهه لمصادر مفيدة.",
+   "طلب نقله إلى فريق آخر.",
+   "الإجابة على كل سؤال فورًا مهما كان عملك."
+  ],
+  "answer": 1,
+  "explain_en": "It supports the newcomer and protects your own time.",
+  "explain_ar": "يدعم الموظف الجديد ويحمي وقتك.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0046",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 6,
+  "idea": "smg-cog-sjt-sponsor-leaves",
+  "prompt_en": "The executive sponsor of your project leaves the company. What is the most effective response?",
+  "options_en": [
+   "Quickly find a new sponsor and reconfirm scope and priorities with them.",
+   "Carry on as if nothing changed.",
+   "Pause the project until someone asks about it.",
+   "Cancel the project."
+  ],
+  "prompt_ar": "الراعي التنفيذي لمشروعك غادر الشركة. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "البحث سريعًا عن راعٍ جديد وإعادة تأكيد النطاق والأولويات معه.",
+   "الاستمرار وكأن شيئًا لم يتغير.",
+   "إيقاف المشروع حتى يسأل عنه أحد.",
+   "إلغاء المشروع."
+  ],
+  "answer": 0,
+  "explain_en": "Projects without a sponsor lose support; reconfirming keeps it aligned.",
+  "explain_ar": "المشروع بدون راعٍ يفقد الدعم، وإعادة التأكيد تبقيه متوافقًا.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0047",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 6,
+  "idea": "smg-cog-sjt-peer-error-board",
+  "prompt_en": "You notice an error in a peer's report that goes to the board tomorrow. What is the most effective response?",
+  "options_en": [
+   "Tell the board after the meeting.",
+   "Correct it yourself without telling them.",
+   "Say nothing; it is not your report.",
+   "Tell the peer directly today so they can correct it."
+  ],
+  "prompt_ar": "لاحظت خطأ في تقرير زميل سيُعرض على المجلس غدًا. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "إخبار المجلس بعد الاجتماع.",
+   "تصحيحه بنفسك دون إخباره.",
+   "السكوت لأنه ليس تقريرك.",
+   "إخبار الزميل مباشرة اليوم ليصححه."
+  ],
+  "answer": 3,
+  "explain_en": "It fixes the problem in time and respects the owner of the report.",
+  "explain_ar": "يصلح المشكلة في الوقت المناسب ويحترم صاحب التقرير.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0048",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 8,
+  "idea": "smg-cog-sjt-disagree-policy",
+  "prompt_en": "You are asked to implement a company policy you disagree with. It is legal and ethical, but you think it is inefficient. What is the most effective response?",
+  "options_en": [
+   "Raise your concerns through the proper channel while implementing it in good faith.",
+   "Refuse to implement it.",
+   "Implement it badly to show it does not work.",
+   "Tell your team the policy is foolish."
+  ],
+  "prompt_ar": "طُلب منك تطبيق سياسة للشركة لا توافق عليها. هي قانونية وأخلاقية، لكنك تراها غير فعالة. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "عرض ملاحظاتك عبر القناة المناسبة مع تطبيقها بحسن نية.",
+   "رفض تطبيقها.",
+   "تطبيقها بشكل سيئ لإثبات فشلها.",
+   "إخبار فريقك أن السياسة غبية."
+  ],
+  "answer": 0,
+  "explain_en": "It respects the decision while giving useful feedback.",
+  "explain_ar": "يحترم القرار ويقدم ملاحظات مفيدة في نفس الوقت.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0049",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 6,
+  "idea": "smg-cog-sjt-failed-bid-morale",
+  "prompt_en": "Your team worked for months on a major bid and lost. Morale is low. What is the most effective response?",
+  "options_en": [
+   "Hold a short review focused on lessons, recognise the effort, and set the next goal.",
+   "Find out who is to blame.",
+   "Avoid mentioning the bid again.",
+   "Give everyone a week off without discussion."
+  ],
+  "prompt_ar": "عمل فريقك أشهرًا على عطاء كبير وخسره، والمعنويات منخفضة. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "عقد مراجعة قصيرة تركز على الدروس، وتقدير الجهد، وتحديد الهدف التالي.",
+   "البحث عن المسؤول عن الخسارة.",
+   "تجنب ذكر العطاء مرة أخرى.",
+   "منح الجميع إجازة أسبوع بدون نقاش."
+  ],
+  "answer": 0,
+  "explain_en": "It learns, recognises and refocuses without blame.",
+  "explain_ar": "يتعلم ويقدّر ويعيد التركيز دون لوم.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ },
+ {
+  "id": "T-SMG-MCA-0050",
+  "exam": "senior-manager-cognitive-assessment",
+  "level": "senior-manager",
+  "family": "flexibility",
+  "format": 12,
+  "difficulty": 7,
+  "idea": "smg-cog-sjt-two-good-solutions",
+  "prompt_en": "Two team members propose opposite solutions to the same problem. Both are reasonable and both feel strongly. What is the most effective response?",
+  "options_en": [
+   "Agree decision criteria together, then test both options against them.",
+   "Pick the solution of the more senior person.",
+   "Toss a coin.",
+   "Ask them to sort it out between themselves."
+  ],
+  "prompt_ar": "عضوان في الفريق يقترحان حلين متعاكسين لنفس المشكلة، والحلان معقولان وكل منهما متمسك برأيه. ما التصرف الأكثر فاعلية؟",
+  "options_ar": [
+   "الاتفاق معًا على معايير القرار ثم اختبار الحلين وفقها.",
+   "اختيار حل الأقدم منهما.",
+   "إجراء قرعة.",
+   "طلب أن يحسما الأمر بينهما."
+  ],
+  "answer": 0,
+  "explain_en": "Shared criteria make the choice fair and explainable.",
+  "explain_ar": "المعايير المشتركة تجعل الاختيار عادلًا وقابلًا للتفسير.",
+  "status": "draft",
+  "provenance": "ai_written_v1 (OMS-MND-261126-23)"
+ }
+]
