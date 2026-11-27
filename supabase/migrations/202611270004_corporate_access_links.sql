@@ -2,7 +2,8 @@
 -- * The company's registered work email is its first ADMIN. OMSAZE admin can add more admin emails, remove them,
 --   or change the first one. Only a company's admin emails can enter that company, never another one.
 -- * The company code is its registration reference (CORP-YYMMDD-XXXXX), sent in the registration emails.
--- * Sign-in: company code -> the company name is shown -> admin email (must be one of that company's admins)
+-- * Sign-in (owner 2026-11-27 09:49Z): company admin email; company code optional (people forget it).
+--   Without a code the company is found from the email (it must be an admin of exactly one approved company).
 --   -> a 6-digit code is emailed (10 min, 5 tries) -> a 60-minute session
 --   for that company only. Codes and sessions are stored as SHA-256 hashes, never in plain text.
 -- * OMSAZE admin can change a company's admin email (e.g. the person left); every change is logged;
@@ -75,7 +76,24 @@ language sql stable security definer set search_path = public, pg_temp as $$
 $$;
 revoke all on function public.corp_is_admin(uuid, text) from public, anon, authenticated;
 
--- Public step 1: company code -> company name (approved companies only).
+-- Which approved company does this sign-in mean? Code given: that company, if the email is its admin.
+-- No code: the one approved company where the email is an admin (null if none or more than one).
+create or replace function public.corp_company_for_admin(p_code text, p_email text) returns uuid
+language plpgsql stable security definer set search_path = public, pg_temp as $$
+declare cid uuid; n int; em text := lower(trim(p_email));
+begin
+  if nullif(trim(coalesce(p_code, '')), '') is not null then
+    select id into cid from public.corporate_accounts where reference = upper(trim(p_code)) and status = 'active';
+    if cid is null or not public.corp_is_admin(cid, em) then return null; end if;
+    return cid;
+  end if;
+  select count(*), min(c.id::text)::uuid into n, cid from public.corporate_accounts c where c.status = 'active' and public.corp_is_admin(c.id, em);
+  if n = 1 then return cid; end if;
+  return null;
+end $$;
+revoke all on function public.corp_company_for_admin(text, text) from public, anon, authenticated;
+
+-- Public: company code -> company name (approved companies only). Optional helper for the sign-in page.
 create or replace function public.corporate_lookup(p_code text)
 returns jsonb language plpgsql stable security definer set search_path = public, pg_temp as $$
 declare c public.corporate_accounts;
@@ -94,8 +112,8 @@ create or replace function public.corporate_request_code(p_code text, p_email te
 returns jsonb language plpgsql security definer set search_path = public, pg_temp as $$
 declare c public.corporate_accounts; code text; em text := lower(trim(p_email));
 begin
-  select * into c from public.corporate_accounts where reference = upper(trim(p_code)) and status = 'active';
-  if not found or not public.corp_is_admin(c.id, em) then return null; end if;
+  select * into c from public.corporate_accounts where id = public.corp_company_for_admin(p_code, em);
+  if not found then return null; end if;
   if (select count(*) from public.corporate_login_codes where company_id = c.id and created_at > now() - interval '1 hour') >= 5 then raise exception 'busy'; end if;
   code := lpad(((('x' || substr(replace(gen_random_uuid()::text, '-', ''), 1, 12))::bit(48)::bigint) % 1000000)::text, 6, '0');
   update public.corporate_login_codes set used_at = coalesce(used_at, now()) where company_id = c.id and email = em and used_at is null;
@@ -110,8 +128,8 @@ returns jsonb language plpgsql security definer set search_path = public, pg_tem
 declare c public.corporate_accounts; lc public.corporate_login_codes; tok text; em text := lower(trim(p_email));
 begin
   if p_otp is null or p_otp !~ '^[0-9]{6}$' then raise exception 'invalid_code'; end if;
-  select * into c from public.corporate_accounts where reference = upper(trim(p_code)) and status = 'active';
-  if not found or not public.corp_is_admin(c.id, em) then raise exception 'invalid_code'; end if;
+  select * into c from public.corporate_accounts where id = public.corp_company_for_admin(p_code, em);
+  if not found then raise exception 'invalid_code'; end if;
   select * into lc from public.corporate_login_codes where company_id = c.id and email = em and used_at is null and expires_at > now()
    order by created_at desc limit 1 for update;
   if not found then raise exception 'invalid_code'; end if;

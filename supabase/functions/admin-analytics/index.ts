@@ -237,8 +237,8 @@ Deno.serve(async (req: Request) => {
     }
     if (body.action === 'companyRequestCode') {
       const email = String(body.email ?? '').trim().toLowerCase(), code = String(body.code ?? '').trim().toUpperCase();
-      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) && email.length <= 200 && /^CORP-\d{6}-[0-9A-F]{5}$/.test(code)) {
-        const { data, error } = await sb.rpc('corporate_request_code', { p_code: code, p_email: email });
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) && email.length <= 200 && (code === '' || /^CORP-\d{6}-[0-9A-F]{5}$/.test(code))) {
+        const { data, error } = await sb.rpc('corporate_request_code', { p_code: code || null, p_email: email });
         if (!error && data?.code) await mailCompany(data, 'code');
       }
       await sleep(500);

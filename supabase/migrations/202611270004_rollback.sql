@@ -8,6 +8,7 @@ drop function if exists public.corporate_company_for_token(text);
 drop function if exists public.corporate_verify_code(text, text, text);
 drop function if exists public.corporate_request_code(text, text);
 drop function if exists public.corporate_lookup(text);
+drop function if exists public.corp_company_for_admin(text, text);
 drop function if exists public.corp_is_admin(uuid, text);
 drop function if exists public.corp_hash(text);
 drop table if exists public.corporate_email_changes;

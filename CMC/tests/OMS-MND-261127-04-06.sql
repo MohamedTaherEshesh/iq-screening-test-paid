@@ -13,6 +13,10 @@ begin
   assert public.corporate_request_code(ref1, 'stranger@t27.example') is null, 'T2b email not admin of this company gets no code';
   assert public.corporate_request_code('CORP-000000-00000', 'svc@t27.example') is null, 'T2c wrong company code gets no code';
   assert public.corporate_lookup(lower(ref1))->>'company' = 'Svc Co', 'T2d company code shows name';
+  assert public.corporate_request_code(null, 'svc@t27.example')->>'reference' = ref1, 'T2f email only finds the company';
+  assert public.corporate_request_code('', 'stranger@t27.example') is null, 'T2g email only, not an admin: no code';
+  code := public.corporate_request_code('', 'svc@t27.example')->>'code';
+  assert (public.corporate_verify_code(null, 'svc@t27.example', code)->>'ok')::boolean, 'T2h email only sign-in works';
   begin perform public.corporate_lookup('CORP-000000-00000'); ok := false; exception when others then ok := sqlerrm = 'unknown_company'; end; assert ok, 'T2e unknown code';
   code := public.corporate_request_code(ref1, 'svc@t27.example')->>'code';
   assert not exists (select 1 from public.corporate_login_codes where code_hash = code or code_hash = public.corp_hash(code)), 'T3 code stored only as company-bound hash';
