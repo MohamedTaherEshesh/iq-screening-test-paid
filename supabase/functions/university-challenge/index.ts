@@ -193,9 +193,9 @@ Deno.serve(async (req) => {
       } else if (whole < 18) {
         return reply({error:'This exam is for ages 18 and over. Under 18? Please choose a Junior exam.'}, 400);
       }
-      // OMS-MND-261126-16: gender is required for every exam taker (analytics only; never used for scoring or question selection).
-      const candidateGender = b.candidateGender === 'male' || b.candidateGender === 'female' ? b.candidateGender : '';
-      if (!candidateGender) return reply({error:'Select your gender.'}, 400);
+      // OMS-MND-261126-21: gender is optional (male / female / prefer not to say). Blank counts as 'undisclosed'.
+      // Used only for anonymised fairness analysis; never for scoring, question selection, reports or certificates.
+      const candidateGender = b.candidateGender === 'male' || b.candidateGender === 'female' ? b.candidateGender : 'undisclosed';
       // OMS-MND-261126-20: research notice shown to everyone; sharing with academic partners is opt-in.
       const researchShareConsent = b.researchConsent === true;
       // Optional pilot demographics only - never used for scoring, access control, or question selection.
