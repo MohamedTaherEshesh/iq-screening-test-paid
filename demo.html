@@ -42,6 +42,7 @@ p{color:var(--muted);line-height:1.7}
 .score{font-family:Manrope,sans-serif;font-size:46px;font-weight:800;margin:6px 0}
 .review li{margin:0 0 14px;line-height:1.6}.ok{color:var(--ok);font-weight:700}.no{color:var(--bad);font-weight:700}
 .fine{font-size:13.5px}
+.grid{border-collapse:collapse;margin:14px 0;font-family:monospace;font-size:18px}.grid td{border:1px solid var(--line);padding:8px 12px;text-align:center}
 </style>
 </head>
 <body>
@@ -55,7 +56,7 @@ p{color:var(--muted);line-height:1.7}
   var T = {
     eyebrow: ['OMSAZE MindProof · Free demo', 'OMSAZE MindProof · تجربة مجانية'],
     title: ['Free demo: 5 questions', 'تجربة مجانية: 5 أسئلة'],
-    lead: ['5 sample questions in the same style as the real exam. No payment and no certificate. Each verified email can take the demo up to 2 times per exam.', '5 أسئلة نموذجية بنفس شكل الاختبار الحقيقي. بدون دفع وبدون شهادة. كل بريد إلكتروني موثق له تجربتان بحد أقصى لكل اختبار.'],
+    lead: ['5 questions from the real exam bank, at the same level as the full exam. No payment and no certificate. Each verified email can take the demo up to 2 times per exam.', '5 أسئلة من بنك الاختبار الحقيقي وبنفس مستوى صعوبة الاختبار الكامل. بدون دفع وبدون شهادة. كل بريد إلكتروني موثق له تجربتان بحد أقصى لكل اختبار.'],
     left: ['Demos left: {n} of 2', 'التجارب المتبقية: {n} من 2'],
     usedUp: ['You have used both free demos for this exam. Start the full exam when you are ready.', 'لقد استخدمت التجربتين المجانيتين لهذا الاختبار. ابدأ الاختبار الكامل عندما تكون جاهزا.'],
     signIn: ['To take the demo, first verify your email (the same step as the real exam). You will come straight back to the demo.', 'لأداء التجربة، وثّق بريدك الإلكتروني أولا (نفس خطوة الاختبار الحقيقي). بعدها ترجع للتجربة مباشرة.'],
@@ -67,6 +68,7 @@ p{color:var(--muted);line-height:1.7}
     result: ['Your demo result', 'نتيجة التجربة'], correct: ['correct', 'إجابات صحيحة'],
     resultNote: ['Final demo score. Practice only: no payment, no certificate.', 'النتيجة النهائية للتجربة. للتدريب فقط: بدون دفع وبدون شهادة.'],
     error: ['Something went wrong. Please try again.', 'حدث خطأ. حاول مرة أخرى.'],
+    noQ: ['There are no new demo questions for you right now.', 'لا توجد أسئلة تجربة جديدة لك الآن.'],
     ok: ['OK', 'حسنا'], back2: ['Back to exams', 'العودة للاختبارات']
   };
   var params = new URLSearchParams(location.search);
@@ -100,7 +102,7 @@ p{color:var(--muted);line-height:1.7}
   var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   var app = document.getElementById('app');
   function fail(e) { var m = String(e && e.message || e); busy = false;
-    if (/sign_in_required/.test(m)) { state = 'signin'; } else if (/demo_limit_reached/.test(m)) { status = { remaining: 0 }; state = 'intro'; } else { err = t('error'); }
+    if (/sign_in_required/.test(m)) { state = 'signin'; } else if (/demo_limit_reached/.test(m)) { status = { remaining: 0 }; state = 'intro'; } else if (/demo_no_questions/.test(m)) { err = t('noQ'); } else { err = t('error'); }
     render(); }
   async function loadStatus() { if (!signedIn()) { state = 'signin'; render(); return; }
     try { status = await rpc('demo_status', { p_exam_tag: exam }); state = 'intro'; render(); } catch (e) { fail(e); } }
@@ -112,7 +114,7 @@ p{color:var(--muted);line-height:1.7}
   function head() {
     return '<div class="top"><p class="eyebrow">' + esc(t('eyebrow')) + '</p><button class="langbtn" id="lang" type="button">' + esc(t('lang')) + '</button></div>';
   }
-  // OMS-MND-261127-01: the demo ends with OK, which returns to the first demo page. No link into the full exam or payment.
+  // OMS-MND-261127-20: the demo ends with OK, which returns to the first demo page. No link into the full exam or payment.
   function homeLink(label) { return '<a class="btn" href="./index.html">' + esc(label) + '</a>'; }
   function render() {
     document.documentElement.lang = ar ? 'ar' : 'en'; document.documentElement.dir = ar ? 'rtl' : 'ltr';
@@ -130,7 +132,9 @@ p{color:var(--muted);line-height:1.7}
       h += '<div class="card"><div class="meta"><span>' + esc(t('of').replace('{n}', i + 1).replace('{t}', Q.length)) + '</span><span class="tag">' + esc(q.domain[L()]) + '</span></div>' +
         '<div class="bar"><i style="width:' + Math.round((i + 1) * 100 / Q.length) + '%"></i></div>' +
         (en && ar ? '<p class="note">' + esc(t('enOnly')) + '</p>' : '') +
-        '<div class="q' + (en ? ' ltr' : '') + '">' + esc(q.question[li]) + '</div><div class="opts' + (en ? ' ltr' : '') + '">';
+        '<div class="q' + (en ? ' ltr' : '') + '">' + esc(q.question[li]) + '</div>' +
+        (Array.isArray(q.grid) ? '<table class="grid ltr">' + q.grid.map(function (row) { return '<tr>' + (Array.isArray(row) ? row : [row]).map(function (c) { return '<td>' + esc(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</table>' : '') +
+        '<div class="opts' + (en ? ' ltr' : '') + '">';
       q.options.forEach(function (o, k) { h += '<button class="opt" type="button" data-k="' + k + '" aria-pressed="' + (ans[i] === k) + '">' + esc(li ? o.ar : o.en) + '</button>'; });
       h += '</div><div class="row"><button class="btn ghost" id="back" type="button"' + (i === 0 ? ' disabled' : '') + '>' + esc(t('back')) + '</button>' +
         '<button class="btn" id="next" type="button"' + (ans[i] === null || busy ? ' disabled' : '') + '>' + esc(i === Q.length - 1 ? (busy ? t('loading') : t('finish')) : t('next')) + '</button></div></div>';
