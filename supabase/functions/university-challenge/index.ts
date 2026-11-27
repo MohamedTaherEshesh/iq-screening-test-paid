@@ -196,6 +196,8 @@ Deno.serve(async (req) => {
       // OMS-MND-261126-16: gender is required for every exam taker (analytics only; never used for scoring or question selection).
       const candidateGender = b.candidateGender === 'male' || b.candidateGender === 'female' ? b.candidateGender : '';
       if (!candidateGender) return reply({error:'Select your gender.'}, 400);
+      // OMS-MND-261126-20: research notice shown to everyone; sharing with academic partners is opt-in.
+      const researchShareConsent = b.researchConsent === true;
       // Optional pilot demographics only - never used for scoring, access control, or question selection.
       const candidateCountry = cleanOptionalText(b.candidateCountry, 64);
       const candidateCity = cleanOptionalText(b.candidateCity, 80);
@@ -266,6 +268,9 @@ Deno.serve(async (req) => {
           candidate_name: candidateName,
           candidate_birthdate: candidateBirthdate,
           candidate_gender: candidateGender,
+          research_notice_version: 'research-notice-v1-draft',
+          research_share_consent: researchShareConsent,
+          research_consent_at: new Date(nowMs).toISOString(),
           candidate_country: candidateCountry,
           candidate_city: candidateCity,
           item_codes: itemCodes,
